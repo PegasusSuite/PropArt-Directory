@@ -62,6 +62,46 @@
     .nav-top a {
       font-size: 0.85rem;
     }
+    .nav-code-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+      align-items: center;
+    }
+    .lockup-card {
+      max-width: 560px;
+    }
+    .lockup-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: clamp(10px, 2.2vw, 18px);
+      padding: 8px 4px 12px;
+    }
+    .lockup-bar__icon {
+      width: clamp(56px, 11vw, 80px);
+      height: auto;
+      flex-shrink: 0;
+      object-fit: contain;
+      filter: drop-shadow(0 3px 12px var(--propart-purple-glow));
+    }
+    .lockup-bar__mark {
+      font-family: var(--font-display);
+      font-size: clamp(1.65rem, 5vw, 2.65rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      background: linear-gradient(135deg, #3d3366, var(--propart-purple-deep), #c96b8a);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .lockup-bar__mark sup {
+      font-size: 0.45em;
+      font-weight: 800;
+      vertical-align: super;
+      margin-left: 0.06em;
+    }
     h1 {
       margin: 0 0 6px;
       font-size: clamp(1.5rem, 4vw, 2rem);
@@ -230,7 +270,10 @@
       <div class="panel__inner">
         <div class="nav-top">
           <a class="propart-link" href="./index.html">← Directory of Applications</a>
-          <a class="propart-link" href="./propart-generic-theme.css">propart-generic-theme.css</a>
+          <div class="nav-code-links">
+            <a class="propart-link" href="./propart-generic-theme.css">propart-generic-theme.css</a>
+            <a class="propart-link" href="./suite-carousel.js">suite-carousel.js</a>
+          </div>
         </div>
         <h1 class="propart-text-gradient-display">PropArt™ Brand showcase</h1>
         <p class="subtitle">Logos, favicon, CSS tokens, and reusable patterns shipped with this directory. Use this page as an internal reference or specimen layout.</p>
@@ -240,6 +283,22 @@
     <main id="main" class="panel propart-surface-panel">
       <span class="propart-accent-strip" aria-hidden="true"></span>
       <div class="panel__inner">
+
+        <section aria-labelledby="sec-lockup">
+          <h2 id="sec-lockup">Horizontal lockup</h2>
+          <p class="subtitle" style="margin-bottom:14px">
+            Product header treatment: butterfly SVG + gradient serif wordmark + superscript ™ (matches <code>index.html</code> masthead).
+          </p>
+          <figure class="asset-card lockup-card">
+            <div class="lockup-bar" role="group" aria-label="PropArt trademark">
+              <img class="lockup-bar__icon" src="./propart-logo.svg" alt="" width="72" height="106" decoding="async">
+              <span class="lockup-bar__mark">PropArt<sup>™</sup></span>
+            </div>
+            <figcaption>
+              <strong>Combined mark</strong> — icon from <code>propart-logo.svg</code>; “PropArt” uses the same gradient stops as the directory page (<code>.suite-brand-row__name</code>).
+            </figcaption>
+          </figure>
+        </section>
 
         <section aria-labelledby="sec-assets">
           <h2 id="sec-assets">Raster &amp; vector assets</h2>
@@ -322,8 +381,17 @@
           <p class="subtitle" style="margin-bottom:0">This page uses <code>class=&quot;propart-bg-page&quot;</code> on <code>body</code> (lavender radii + mist gradient). Inner panels use <code>.propart-surface-panel</code> plus <code>.propart-accent-strip</code>.</p>
         </section>
 
+        <section aria-labelledby="sec-carousel">
+          <h2 id="sec-carousel">Directory carousel (JavaScript)</h2>
+          <p class="subtitle" style="margin-bottom:8px">
+            Coverflow-style slides, dots, arrows, swipe, keyboard, autoplay (5s), and reduced-motion handling live in
+            <a class="propart-link" href="./suite-carousel.js"><code>suite-carousel.js</code></a>.
+            The directory page loads it with <code>&lt;script src=&quot;./suite-carousel.js&quot; defer&gt;&lt;/script&gt;</code>; pair with the carousel rules in <code>index.html</code>’s <code>&lt;style&gt;</code> block.
+          </p>
+        </section>
+
         <footer>
-          PropArt™ appears as the product mark; Pegasus Suite LLC is shown without ™. Files in this folder: <code>propart-logo.svg</code>, <code>favicon.svg</code>, <code>propart-generic-theme.css</code>, <code>index.html</code>, <code>brand-showcase.html</code>.
+          PropArt™ appears as the product mark; Pegasus Suite LLC is shown without ™. Files in this folder: <code>propart-logo.svg</code>, <code>favicon.svg</code>, <code>propart-generic-theme.css</code>, <code>suite-carousel.js</code>, <code>index.html</code>, <code>brand-showcase.html</code>.
         </footer>
       </div>
     </main>
