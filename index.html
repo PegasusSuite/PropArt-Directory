@@ -309,9 +309,9 @@
       flex-direction: column;
       padding: 18px 18px 24px;
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
-      -webkit-font-smoothing: subpixel-antialiased;
-      -moz-osx-font-smoothing: auto;
-      text-rendering: optimizeLegibility;
+      /* Flatten card paint vs parent preserve-3d so UI text (esp. CTA) stays sharp */
+      transform: translateZ(0);
+      transform-style: flat;
     }
     .suite-carousel-slide.is-active .tool {
       border-color: rgba(93, 80, 198, 0.32);
@@ -327,6 +327,8 @@
       font-weight: 800;
       color: var(--suite-card-ink);
       line-height: 1.25;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
       min-height: 2.52em;
       display: -webkit-box;
       -webkit-box-orient: vertical;
@@ -340,6 +342,8 @@
       font-size: 0.95rem;
       line-height: 1.48;
       opacity: 0.92;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 3;
@@ -352,6 +356,7 @@
       gap: 8px;
       align-items: center;
       margin-top: auto;
+      isolation: isolate;
     }
     .tool-actions a.cta-main {
       display: inline-flex;
@@ -372,9 +377,17 @@
       background: linear-gradient(135deg, var(--butterfly-blue, #5D50C6), var(--vibrant-pink, #E17897));
       color: #fff;
       box-shadow: 0 4px 14px rgba(93, 80, 198, 0.32);
+      position: relative;
+      z-index: 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: geometricPrecision;
+      /* Own composited layer so label isn’t blurred with the slide’s 3D transform */
+      transform: translate3d(0, 0, 1px);
+      backface-visibility: hidden;
     }
     .tool-actions a.cta-main:hover {
-      transform: translateY(-1px);
+      transform: translate3d(0, -1px, 1px);
       box-shadow: 0 8px 22px rgba(93, 80, 198, 0.35);
     }
     .tool-actions a.cta-main:focus-visible {
@@ -456,7 +469,7 @@
           rotateY(-18deg);
       }
       .suite-carousel-slide.is-active {
-        transform: translate3d(-50%, -50%, 0) translateZ(56px) scale(0.99) rotateY(0deg);
+        transform: translate3d(-50%, -50%, 0) translateZ(56px) scale(1) rotateY(0deg);
       }
       .suite-carousel-btn {
         width: 44px;
