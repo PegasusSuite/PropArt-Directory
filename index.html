@@ -65,13 +65,13 @@
       max-height: min(92vh, 900px);
       overflow-y: auto;
       background: rgba(255, 255, 255, 0.96);
-      border: 1px solid rgba(255, 255, 255, 0.95);
+      border: none;
       border-radius: var(--radius-lg, 24px);
       padding: clamp(14px, 2.2vw, 22px) clamp(14px, 2.2vw, 22px);
       display: flex;
       flex-direction: column;
-      /* Thick inset “frame” + outer glow that pulses (breathing border treatment) */
-      animation: suite-frame-breathe 5.2s ease-in-out infinite alternate;
+      /* Inset frame + glow; no white border/gleam so color meets the card edge */
+      animation: suite-frame-breathe 10.4s ease-in-out infinite alternate;
       will-change: box-shadow;
     }
     @keyframes suite-frame-breathe {
@@ -79,25 +79,19 @@
         box-shadow:
           0 14px 44px rgba(60, 40, 90, 0.13),
           0 0 22px rgba(93, 80, 198, 0.18),
-          0 0 1px rgba(93, 80, 198, 0.35),
-          inset 0 0 0 clamp(5px, 1.35vw, 8px) rgba(93, 80, 198, 0.52),
-          inset 0 1px 0 rgba(255, 255, 255, 0.96);
+          inset 0 0 0 clamp(2.5px, 0.68vw, 4px) rgba(93, 80, 198, 0.52);
       }
       50% {
         box-shadow:
           0 18px 54px rgba(109, 213, 195, 0.14),
           0 0 36px rgba(109, 213, 195, 0.28),
-          0 0 1px rgba(109, 213, 195, 0.4),
-          inset 0 0 0 clamp(7px, 1.95vw, 11px) rgba(82, 170, 160, 0.48),
-          inset 0 1px 0 rgba(255, 255, 255, 0.96);
+          inset 0 0 0 clamp(3.5px, 0.98vw, 5.5px) rgba(82, 170, 160, 0.48);
       }
       100% {
         box-shadow:
           0 16px 52px rgba(225, 120, 151, 0.14),
           0 0 32px rgba(225, 120, 151, 0.26),
-          0 0 1px rgba(225, 120, 151, 0.38),
-          inset 0 0 0 clamp(6px, 1.55vw, 9px) rgba(186, 95, 175, 0.56),
-          inset 0 1px 0 rgba(255, 255, 255, 0.96);
+          inset 0 0 0 clamp(3px, 0.78vw, 4.5px) rgba(186, 95, 175, 0.56);
       }
     }
     .masthead {
@@ -486,8 +480,7 @@
         animation: none;
         box-shadow:
           0 16px 48px rgba(60, 40, 90, 0.12),
-          inset 0 0 0 clamp(6px, 1.5vw, 9px) rgba(93, 80, 198, 0.48),
-          inset 0 1px 0 rgba(255, 255, 255, 0.96);
+          inset 0 0 0 clamp(3px, 0.78vw, 4.5px) rgba(93, 80, 198, 0.48);
       }
     }
   </style>
