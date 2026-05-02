@@ -1,0 +1,413 @@
+/* Source of truth: BRAND_SYSTEM.md */
+:root {
+  /* Core Brand Colors */
+  --base-charcoal: #36454F;
+  --signature-navy: #000080;
+  --tech-silver: #C0C0C0;
+  --butterfly-blue: #5D50C6;
+  --vibrant-pink: #E17897;
+
+  /* Glassmorphism Specs */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-blur: 12px;
+  --glass-border: rgba(255, 255, 255, 0.2);
+
+  /* Animation Timing */
+  --butterfly-pulse: 2s infinite ease-in-out;
+
+  /* Typography */
+  --font-size-display: 2.25rem;
+  --font-size-h1: 1.9rem;
+  --font-size-h2: 1.5rem;
+  --font-size-h3: 1.2rem;
+  --font-size-body: 1rem;
+  --font-size-small: 0.875rem;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  /* Radius */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  /* Elevation */
+  --elevation-1: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --elevation-2: 0 8px 22px rgba(0, 0, 0, 0.18);
+  --elevation-3: 0 16px 40px rgba(0, 0, 0, 0.24);
+}
+
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+@keyframes butterfly-glow {
+  0%, 100% { filter: drop-shadow(0 0 5px var(--butterfly-blue)); transform: scale(1); }
+  50% { filter: drop-shadow(0 0 20px var(--vibrant-pink)); transform: scale(1.1); }
+}
+
+.butterfly-loader {
+  animation: butterfly-glow var(--butterfly-pulse);
+  width: 50px;
+  height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--butterfly-blue);
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-ghost,
+.btn-danger {
+  border: none;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: var(--font-size-small);
+  padding: 10px 14px;
+  min-height: 40px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--butterfly-blue), var(--vibrant-pink));
+  color: #fff;
+  box-shadow: var(--elevation-1);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--elevation-2);
+  filter: brightness(1.04);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, rgba(93, 80, 198, 0.18), rgba(225, 120, 151, 0.18));
+  border: 1px solid rgba(93, 80, 198, 0.35);
+  color: var(--text-primary, #2d1f3d);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  color: inherit;
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #cc3c5e, #a22d4a);
+  color: #fff;
+}
+
+.btn-lift-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.btn-lift-hover:hover {
+  transform: translateY(-2px);
+}
+
+.btn-lift-hover.btn-lift-shadow:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22);
+}
+
+.btn-donate {
+  background: linear-gradient(135deg, #d4526e, #ff7a9c);
+  color: #fff;
+}
+
+.btn-donate:hover {
+  box-shadow: 0 8px 20px rgba(212, 82, 110, 0.4);
+}
+
+.admin-level-btn {
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  border: 2px solid rgba(155, 126, 189, 0.4);
+  background: rgba(155, 126, 189, 0.2);
+  color: var(--text-primary, #2d1f3d);
+  transition: transform 0.2s ease, filter 0.2s ease, background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.admin-level-btn:hover {
+  transform: scale(1.05);
+}
+
+.admin-level-btn.is-active-beginner {
+  background: linear-gradient(135deg, #4fc3b0, #6dd5c3);
+  color: #fff;
+  border-color: #4fc3b0;
+}
+
+.admin-level-btn.is-active-intermediate {
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+  color: #fff;
+  border-color: #f39c12;
+}
+
+.admin-level-btn.is-active-advanced {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: #fff;
+  border-color: #e74c3c;
+}
+
+.tip-amount-btn {
+  background: #fff;
+  border: 2px solid #ddd;
+  padding: 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tip-amount-btn:hover {
+  background: #fff5f0;
+  border-color: #d4526e;
+  transform: translateY(-1px);
+}
+
+.tip-amount-btn.is-selected {
+  background: #fff1f6;
+  border-color: #d4526e;
+  box-shadow: 0 6px 16px rgba(212, 82, 110, 0.2);
+}
+
+.pricing-tab-btn {
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(93, 80, 198, 0.2);
+  background: rgba(93, 80, 198, 0.08);
+  color: #4b2d67;
+  padding: 10px 16px;
+  font-size: var(--font-size-small);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pricing-tab-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+}
+
+.pricing-tab-btn.is-active {
+  background: linear-gradient(135deg, var(--butterfly-blue), var(--vibrant-pink));
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: var(--elevation-1);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1.35rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  transform: scale(1.05);
+  filter: brightness(1.08);
+}
+
+.modal-shell {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  overflow: auto;
+}
+
+.modal-shell--priority {
+  z-index: 5001;
+}
+
+.modal-panel {
+  position: relative;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  border: 2px solid rgba(109, 213, 195, 0.3);
+  background: linear-gradient(135deg, rgba(248, 245, 250, 0.98) 0%, rgba(230, 245, 250, 0.95) 100%);
+  box-shadow: 0 20px 60px rgba(109, 213, 195, 0.3);
+}
+
+.modal-panel--pricing {
+  max-width: 900px;
+}
+
+.modal-panel--growth {
+  max-width: 1600px;
+  max-height: 95vh;
+  border-width: 3px;
+  border-color: rgba(109, 213, 195, 0.4);
+  box-shadow: 0 20px 80px rgba(109, 213, 195, 0.4);
+  margin: 20px 0;
+}
+
+.modal-panel--buyout {
+  max-width: 1400px;
+  border-color: rgba(255, 105, 180, 0.3);
+  box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
+}
+
+/* Shared top nav across PropArt apps */
+.pegasus-bar {
+  width: min(1120px, calc(100% - 24px));
+  margin: 0 auto 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.pegasus-bar__brand {
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.pegasus-bar__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pegasus-bar__links a {
+  text-decoration: none;
+  font-size: 0.83rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, rgba(93, 80, 198, 0.9), rgba(225, 120, 151, 0.9));
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  padding: 6px 11px;
+}
+
+/* Enchanted cart = premium lab asset */
+#cartPanel {
+  background: rgba(54, 69, 79, 0.9) !important;
+  border: 1px solid var(--glass-border) !important;
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+
+/* Primary action gradient */
+.cta-button,
+.add-to-cart-btn,
+#cartPanel button[onclick*="handleStripeCheckout"],
+#pricingModal button[onclick*="handleStripeCheckout"] {
+  background: linear-gradient(135deg, var(--butterfly-blue), var(--vibrant-pink)) !important;
+  border-color: rgba(255, 255, 255, 0.22) !important;
+}
+
+/* Pricing card accents */
+.pricing-card {
+  transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55), box-shadow 0.5s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+
+.pricing-card--tilt-right:hover {
+  transform: translateY(-15px) scale(1.05) rotate(2deg);
+}
+
+.pricing-card--tilt-left:hover {
+  transform: translateY(-15px) scale(1.05) rotate(-2deg);
+}
+
+.pricing-card--tilt-left-strong:hover {
+  transform: translateY(-15px) scale(1.08) rotate(-2deg);
+}
+
+.pricing-card.pricing-individual {
+  border-color: var(--tech-silver) !important;
+}
+.pricing-card.pricing-individual:hover {
+  box-shadow: 0 20px 40px rgba(109, 213, 195, 0.4);
+  border-color: rgba(109, 213, 195, 0.8) !important;
+}
+.pricing-card.pricing-white-label {
+  border-color: var(--butterfly-blue) !important;
+  box-shadow: 0 5px 20px rgba(255, 105, 180, 0.2);
+}
+.pricing-card.pricing-white-label:hover {
+  box-shadow: 0 25px 50px rgba(255, 105, 180, 0.5);
+  border-color: rgba(255, 105, 180, 0.8) !important;
+}
+.pricing-card.pricing-team-pro {
+  border-color: var(--vibrant-pink) !important;
+  box-shadow: 0 0 20px rgba(225, 120, 151, 0.35) !important;
+}
+.pricing-card.pricing-team-pro:hover {
+  box-shadow: 0 20px 40px rgba(153, 102, 204, 0.4);
+  border-color: rgba(153, 102, 204, 0.8) !important;
+}
+
+.pricing-card.pricing-one-time:hover {
+  box-shadow: 0 20px 40px rgba(0, 200, 150, 0.4);
+  border-color: rgba(0, 200, 150, 0.8) !important;
+}
+
+/* Studio mode: larger targets + stronger contrast */
+body.studio-mode button,
+body.studio-mode .cta-button,
+body.studio-mode .quick-jump-btn,
+body.studio-mode .nav-cta-btn,
+body.studio-mode .tab-btn,
+body.studio-mode .event-btn {
+  min-height: 48px !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.01em;
+}
+
+body.studio-mode {
+  --text-primary: #121821;
+  --text-secondary: #1e2631;
+}
+
+@media (max-width: 768px), (prefers-reduced-motion: reduce) {
+  .glass-panel {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+}
