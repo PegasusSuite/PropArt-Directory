@@ -86,7 +86,7 @@
     }
     .lockup-bar__mark {
       font-family: var(--font-display);
-      font-size: clamp(1.65rem, 5vw, 2.65rem);
+      font-size: clamp(1.85rem, 5.5vw, 2.95rem);
       font-weight: 700;
       letter-spacing: -0.03em;
       line-height: 1.05;
@@ -95,12 +95,14 @@
       background-clip: text;
       color: transparent;
       -webkit-text-fill-color: transparent;
+      -webkit-text-stroke: 0.55px #fff;
+      paint-order: stroke fill;
     }
     .lockup-bar__mark sup {
-      font-size: 0.45em;
+      font-size: 0.48em;
       font-weight: 800;
       vertical-align: super;
-      margin-left: 0.06em;
+      margin-left: 0.04em;
     }
     h1 {
       margin: 0 0 6px;
