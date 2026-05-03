@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 820 200" role="img" aria-labelledby="propartLockupTitle">
-  <title id="propartLockupTitle">PropArt" Tools for Polymer Clay Artists</title>
+  <title id="propartLockupTitle">PropArt™ Tools for Polymer Clay Artists</title>
   <defs>
     <linearGradient id="propartWordmarkGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#5d50c6"/>
@@ -8,8 +8,152 @@
       <stop offset="100%" stop-color="#c96b8a"/>
     </linearGradient>
   </defs>
-  <!-- Butterfly / cane geometry mark  same source as propart-logo.svg -->
-  <image href="propart-logo.svg" x="6" y="10" width="112" height="164" preserveAspectRatio="xMidYMid meet"/>
-  <text x="134" y="104" font-family="Georgia, 'Times New Roman', Times, serif" font-weight="700" font-size="54" letter-spacing="-0.03em" fill="url(#propartWordmarkGrad)">PropArt<tspan font-size="0.42em" baseline-shift="super">"</tspan></text>
+  <svg x="6" y="10" width="112" height="164" viewBox="0 0 480 705.31238" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+    <defs
+         id="defs1"><clipPath
+           clipPathUnits="userSpaceOnUse"
+           id="clipPath375"><path
+             id="path375"
+             style="stroke-width:0.1;stroke-linecap:square;paint-order:markers fill stroke;stop-color:#000000"
+             d="m -880.82767,-187.29769 h 1640.84 v 73.28155 h -1640.84 z" /></clipPath><linearGradient
+           id="swatch177"
+           inkscape:swatch="solid"><stop
+             style="stop-color:#6dd5c3;stop-opacity:1;"
+             offset="0"
+             id="stop177" /></linearGradient><clipPath
+           clipPathUnits="userSpaceOnUse"
+           id="clipPath168"><path
+             id="path168"
+             style="stroke-width:0.1;stroke-linecap:square;paint-order:markers fill stroke;stop-color:#000000"
+             d="m -880.82767,-187.29769 h 1640.84 v 73.28155 h -1640.84 z" /></clipPath><linearGradient
+           id="swatch159"
+           inkscape:swatch="solid"><stop
+             style="stop-color:#6dd5c3;stop-opacity:1;"
+             offset="0"
+             id="stop159" /></linearGradient><clipPath
+           clipPathUnits="userSpaceOnUse"
+           id="clipPath52"><path
+             id="path52"
+             style="stroke-width:0.1;stroke-linecap:square;paint-order:markers fill stroke;stop-color:#000000"
+             d="m -880.82767,-187.29769 h 1640.84 v 73.28155 h -1640.84 z" /></clipPath><clipPath
+           clipPathUnits="userSpaceOnUse"
+           id="clipPath139"><path
+             id="path139"
+             style="stroke-width:0.0999999;stroke-linecap:square;paint-order:markers fill stroke;stop-color:#000000"
+             d="m 1691.1994,-792.32001 h 1634.8919 v 92.82806 H 1691.1994 Z" /></clipPath><clipPath
+           clipPathUnits="userSpaceOnUse"
+           id="clipPath54"><path
+             id="path54"
+             style="stroke-width:0.0999999;stroke-linecap:square;paint-order:markers fill stroke;stop-color:#000000"
+             d="m 1691.1994,-792.32001 h 1634.8919 v 92.82806 H 1691.1994 Z" /></clipPath></defs><g
+         inkscape:label="Layer 1"
+         inkscape:groupmode="layer"
+         id="layer1"
+         transform="translate(-99.426211,-3.3411555)"><g
+           id="g612"
+           transform="matrix(30.101766,0,0,30.101766,-2411.8504,-3006.7561)"><ellipse
+             style="opacity:1;fill:#5d50c6;fill-opacity:1;stroke:#eafcf8;stroke-width:0.299648;stroke-opacity:1"
+             id="path10-18"
+             cx="-136.67542"
+             cy="-53.343815"
+             rx="3.263139"
+             ry="7.590857"
+             transform="matrix(-0.86269095,-0.50573148,0.46476445,-0.88543436,0,0)" /><ellipse
+             style="opacity:1;fill:#5d50c6;fill-opacity:1;stroke:#eafcf8;stroke-width:0.223254;stroke-opacity:1"
+             id="path10-1"
+             cx="91.826805"
+             cy="106.73859"
+             rx="4.973"
+             ry="4.9734936" /><circle
+             style="opacity:1;fill:#5d50c6;fill-opacity:1;stroke:#eafcf8;stroke-width:0.25;stroke-dasharray:none;stroke-opacity:1"
+             id="path10-68"
+             cx="96.002449"
+             cy="108.70361"
+             r="3.0699999" /><ellipse
+             style="opacity:1;fill:#5d50c6;fill-opacity:1;stroke:#eafcf8;stroke-width:0.223254;stroke-opacity:1"
+             id="path10-6"
+             cx="89.002098"
+             cy="115.94958"
+             rx="4.973"
+             ry="4.9734936" /><ellipse
+             style="opacity:1;fill:#5d50c6;fill-opacity:1;stroke:#eafcf8;stroke-width:0.223254;stroke-opacity:1"
+             id="path10-5"
+             cx="88.510849"
+             cy="110.66862"
+             rx="4.973"
+             ry="4.9734936" /><ellipse
+             style="opacity:1;fill:#5d50c6;fill-opacity:1;stroke:#eafcf8;stroke-width:0.25;stroke-dasharray:none;stroke-opacity:1"
+             id="path10-3"
+             cx="92.440865"
+             cy="113.24769"
+             rx="4.973"
+             ry="4.9734936" /><ellipse
+             style="opacity:1;fill:#5d50c6;fill-opacity:1;stroke:#eafcf8;stroke-width:0.345245;stroke-dasharray:none;stroke-opacity:1"
+             id="path10-18-9"
+             cx="-210.89288"
+             cy="90.393326"
+             rx="0.79670423"
+             ry="2.9946334"
+             transform="matrix(-0.40467287,-0.91446152,0.13492438,-0.9908559,0,0)" /><ellipse
+             style="opacity:1;fill:#5d50c6;fill-opacity:1;stroke:#eafcf8;stroke-width:0.307376;stroke-dasharray:none;stroke-opacity:1"
+             id="path10-18-9-1"
+             cx="-197.41261"
+             cy="88.862801"
+             rx="0.72555631"
+             ry="2.3657641"
+             transform="matrix(-0.32746843,-0.94486212,0.37946075,-0.92520783,0,0)" /><ellipse
+             style="opacity:1;fill:#5d50c6;fill-opacity:1;stroke:#eafcf8;stroke-width:0.562858;stroke-opacity:1"
+             id="path10-4"
+             cx="97.802193"
+             cy="107.87939"
+             rx="0.23723102"
+             ry="0.26793432" /><use
+             x="0"
+             y="0"
+             xlink:href="#path10-18"
+             id="use187"
+             style="opacity:1;fill:#5d50c6;fill-opacity:1;stroke:#eafcf8;stroke-opacity:1" /><use
+             x="0"
+             y="0"
+             xlink:href="#path10-1"
+             id="use188"
+             style="opacity:1;fill:#5d50c6;fill-opacity:1;stroke:#eafcf8;stroke-opacity:1" /><use
+             x="0"
+             y="0"
+             xlink:href="#path10-68"
+             id="use189"
+             style="opacity:1;fill:#5d50c6;fill-opacity:1;stroke:#eafcf8;stroke-opacity:1" /><use
+             x="0"
+             y="0"
+             xlink:href="#path10-6"
+             id="use190"
+             style="opacity:1;fill:#5d50c6;fill-opacity:1;stroke:#eafcf8;stroke-opacity:1" /><use
+             x="0"
+             y="0"
+             xlink:href="#path10-5"
+             id="use191"
+             style="opacity:1;fill:#5d50c6;fill-opacity:1;stroke:#eafcf8;stroke-opacity:1" /><use
+             x="0"
+             y="0"
+             xlink:href="#path10-3"
+             id="use192"
+             style="opacity:1;fill:#5d50c6;fill-opacity:1;stroke:#eafcf8;stroke-opacity:1" /><use
+             x="0"
+             y="0"
+             xlink:href="#path10-18-9"
+             id="use193"
+             style="opacity:1;fill:#5d50c6;fill-opacity:1;stroke:#eafcf8;stroke-opacity:1" /><use
+             x="0"
+             y="0"
+             xlink:href="#path10-18-9-1"
+             id="use194"
+             style="opacity:1;fill:#5d50c6;fill-opacity:1;stroke:#eafcf8;stroke-opacity:1" /><use
+             x="0"
+             y="0"
+             xlink:href="#path10-4"
+             id="use195"
+             style="opacity:1;fill:#5d50c6;fill-opacity:1;stroke:#eafcf8;stroke-opacity:1" /></g></g>
+  </svg>
+  <text x="134" y="104" font-family="Georgia, 'Times New Roman', Times, serif" font-weight="700" font-size="54" letter-spacing="-0.03em" fill="url(#propartWordmarkGrad)">PropArt<tspan font-size="0.42em" baseline-shift="super">™</tspan></text>
   <text x="136" y="150" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-weight="700" font-size="14.5" letter-spacing="0.12em" fill="#5c4f62">TOOLS FOR POLYMER CLAY ARTISTS</text>
 </svg>
