@@ -2,5 +2,5 @@
 User-agent: *
 Allow: /
 
-# Authoritative ownership and legal context
-# https://craft-inardor.web.app/about.html
+# Canonical suite hub (Firebase Hosting: propart-directory)
+# https://www.propart.app/

@@ -6,7 +6,9 @@ Every suite app should expose **one** canonical link to the **PropArt Directory*
 
 | Kind | URL |
 |------|-----|
-| **Public (hosted)** | `https://pegasussuite.github.io/PropArt-Directory/` |
+| **Canonical (custom domain)** | `https://www.propart.app/` (apex `https://propart.app/` when DNS connected) |
+| **Firebase Hosting (site)** | `https://propart-directory.web.app/` |
+| **GitHub Pages (legacy mirror)** | `https://pegasussuite.github.io/PropArt-Directory/` |
 | **Local file** (same machine, `file://` pages only) | `file:///C:/Projects/Git/PropArt-Directory/index.html` |
 
 Hosted apps **cannot** open `file://` from `https://` (browser security). The shared script `propart-suite-directory.js` picks `PUBLIC` vs `LOCAL_FILE` automatically.
@@ -20,9 +22,7 @@ Hosted apps **cannot** open `file://` from `https://` (browser security). The sh
 
 Change **`PUBLIC`** in each copy when you use Firebase Hosting or a custom domain for the Directory instead of GitHub Pages.
 
-## Enable the public Directory
+## Publish the Directory
 
-1. GitHub → **PropArt-Directory** → **Settings → Pages** → deploy from `master` / root (or `/docs`).
-2. Confirm `https://pegasussuite.github.io/PropArt-Directory/` loads `index.html`.
-
-Until Pages is live, **Suite** links from Firebase apps may **404** until you either enable Pages or update **`PUBLIC`** to your real Directory URL everywhere above.
+1. **Primary:** from this repo, `firebase deploy --only hosting` (project `ps---propartsuite`, site `propart-directory`). Confirm `https://propart-directory.web.app/` and your custom domain (`https://www.propart.app/`).
+2. **Optional mirror:** GitHub → **Settings → Pages** → deploy from `master` / root so `https://pegasussuite.github.io/PropArt-Directory/` stays available for bookmarks.
