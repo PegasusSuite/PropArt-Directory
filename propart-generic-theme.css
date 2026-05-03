@@ -129,6 +129,13 @@
   text-decoration: none;
   background: linear-gradient(135deg, var(--propart-purple), var(--propart-pink));
   color: #fff;
+  /* Hairline halo: darkest purple (eggplant) matches masthead / directory CTAs */
+  text-shadow:
+    -1px -1px 0 var(--propart-eggplant), 1px -1px 0 var(--propart-eggplant),
+    -1px 1px 0 var(--propart-eggplant), 1px 1px 0 var(--propart-eggplant),
+    0 -1px 0 var(--propart-eggplant), 0 1px 0 var(--propart-eggplant),
+    -1px 0 0 var(--propart-eggplant), 1px 0 0 var(--propart-eggplant),
+    0 2px 1px rgba(31, 24, 48, 0.28);
   box-shadow: 0 4px 14px rgba(93, 80, 198, 0.32);
   transition: transform var(--propart-transition-fast), box-shadow var(--propart-transition-fast);
 }

@@ -1,0 +1,6 @@
+# Keep project notes local (proprietary / internal)
+README.md
+
+.DS_Store
+Thumbs.db
+Desktop.ini
