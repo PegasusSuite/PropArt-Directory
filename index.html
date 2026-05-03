@@ -3,10 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Directory of PropArt™ applications — Creator Space, Cropper Tool, Studio, Color Blend Visualizer, Cane Design Studio — one account across the suite. Open any app from here.">
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Official hub for PropArt™ Tools for Polymer Clay Artists — Creator Space (craftinardor.com), Cropper Tool, PropArt™ Studio, Color Blend Visualizer, Cane Design Studio. Developed and owned by Pegasus Suite LLC.">
+  <meta name="author" content="Pegasus Suite LLC">
+  <meta name="copyright" content="© 2026 Pegasus Suite LLC. PropArt™ is a trademark of Pegasus Suite LLC.">
+  <meta name="robots" content="index, follow">
   <title>PropArt™ Directory of Applications</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="./manifest.json">
+  <meta name="theme-color" content="#9B7EBD">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"WebApplication","name":"PropArt™ Directory of Applications","alternateName":"PropArt™ Tools for Polymer Clay Artists — Suite Hub","applicationCategory":"DesignApplication","operatingSystem":"Any","url":"https://pegasussuite.github.io/PropArt-Directory/","description":"Official directory hub listing PropArt™ web applications for polymer clay artists.","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Pegasus Suite LLC","url":"https://craft-inardor.web.app/about.html"},"author":{"@type":"Organization","name":"Pegasus Suite LLC","sameAs":["https://github.com/PegasusSuite"]},"copyrightHolder":{"@type":"Organization","name":"Pegasus Suite LLC"},"copyrightYear":2026,"codeRepository":"https://github.com/PegasusSuite/PropArt-Directory"},
+    {"@type":"Organization","name":"Pegasus Suite LLC","url":"https://craft-inardor.web.app/about.html","brand":{"@type":"Brand","name":"PropArt™","description":"Tools for polymer clay artists"},"sameAs":["https://github.com/PegasusSuite"]}
+  ]}
+  </script>
   <link rel="stylesheet" href="./propart-generic-theme.css">
   <style>
     :root {
@@ -105,6 +115,24 @@
       margin-bottom: 6px;
       flex-shrink: 0;
     }
+    .suite-lockup-link {
+      display: block;
+      text-decoration: none;
+      outline: none;
+      margin: 0 auto 4px;
+    }
+    .suite-lockup-link:focus-visible {
+      outline: 2px solid var(--butterfly-blue, #5D50C6);
+      outline-offset: 4px;
+      border-radius: 12px;
+    }
+    .suite-lockup-img {
+      width: min(100%, 560px);
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      filter: drop-shadow(0 4px 20px rgba(93, 80, 198, 0.2));
+    }
     .suite-brand-row {
       display: inline-flex;
       align-items: center;
@@ -132,7 +160,7 @@
     /* Per-letter gradient slice */
     .suite-letter {
       display: inline-block;
-      background-image: linear-gradient(135deg, #3d3366 0%, #5d50c6 48%, #c96b8a 100%);
+      background-image: linear-gradient(135deg, #5d50c6 0%, #7a5dcf 42%, #c96b8a 100%);
       background-size: 240% 100%;
       -webkit-background-clip: text;
       background-clip: text;
@@ -337,7 +365,7 @@
       letter-spacing: -0.02em;
       line-height: 1.22;
       /* Match masthead wordmark gradient, scaled for card tiles */
-      background-image: linear-gradient(135deg, #3d3366 0%, #5d50c6 48%, #c96b8a 100%);
+      background-image: linear-gradient(135deg, #5d50c6 0%, #7a5dcf 42%, #c96b8a 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -446,6 +474,10 @@
       outline-offset: 2px;
     }
 
+    footer.site-footer strong {
+      color: var(--suite-card-ink);
+      font-weight: 700;
+    }
     footer.site-footer {
       flex-shrink: 0;
       margin-top: auto;
@@ -468,6 +500,35 @@
     }
     .site-footer-link:hover {
       border-bottom-color: var(--vibrant-pink, #E17897);
+    }
+
+    .suite-brand-authority {
+      margin: 10px 0 14px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--suite-border);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(245, 240, 252, 0.95) 100%);
+      box-shadow: 0 6px 20px var(--suite-shadow);
+      text-align: left;
+      font-size: clamp(13px, 1.05vw, 15px);
+      line-height: 1.55;
+      color: var(--suite-muted);
+    }
+    .suite-brand-authority strong {
+      color: var(--suite-card-ink);
+      font-weight: 700;
+    }
+    .suite-brand-authority a {
+      color: var(--butterfly-blue, #5D50C6);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .suite-history {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed rgba(93, 80, 198, 0.25);
+      font-size: 0.95em;
     }
 
     @media (max-width: 520px) {
@@ -527,14 +588,20 @@
   <a class="skip-link" href="#suite-apps">Skip to app carousel</a>
   <main class="wrap">
     <header class="masthead">
-      <h1 class="suite-brand-row" aria-label="PropArt — Directory of Applications">
-        <img class="suite-brand-row__icon" src="./propart-logo.svg" alt="" width="72" height="106" decoding="async">
-        <span class="suite-brand-row__name">
-          <span class="suite-letter suite-letter--1">P</span><span class="suite-letter suite-letter--2">r</span><span class="suite-letter suite-letter--3">o</span><span class="suite-letter suite-letter--4">p</span><span class="suite-letter suite-letter--5">A</span><span class="suite-letter suite-letter--6">r</span><span class="suite-letter suite-letter--7">t</span><sup class="suite-tm-sup"><span class="suite-letter-tm">™</span></sup>
-        </span>
-      </h1>
+      <h1 class="visually-hidden">PropArt™ Directory of Applications</h1>
+      <a class="suite-lockup-link" href="./index.html" title="PropArt™ suite directory — home" aria-label="PropArt™ Tools for Polymer Clay Artists — suite directory home">
+        <img class="suite-lockup-img" src="./propart-lockup-horizontal.svg" alt="PropArt™ Tools for Polymer Clay Artists — official horizontal mark" width="820" height="200" decoding="async">
+      </a>
       <p class="suite-tagline">Directory of Applications</p>
     </header>
+
+    <section class="suite-brand-authority" aria-labelledby="suite-brand-heading">
+      <h2 id="suite-brand-heading" class="visually-hidden">Brand and ownership</h2>
+      <p><strong>PropArt™ Tools for Polymer Clay Artists</strong> is a unified suite of browser-based design tools developed and owned by <a href="https://craft-inardor.web.app/about.html">Pegasus Suite LLC</a>. This directory is the canonical entry point for switching between live applications; it exists so artists, partners, and automated systems can see the same ownership and URLs in one place.</p>
+      <div class="suite-history">
+        <p><strong>History / origin.</strong> The suite grew from Craft In Ardor and related PropArt™ experiments into production web apps (PropArt™ Creator Space, Cropper Tool, PropArt™ Studio, Color Blend Visualizer, and Cane Design Studio). New tools and domains are listed here first so attribution stays accurate as the ecosystem expands.</p>
+      </div>
+    </section>
 
     <section id="suite-apps" class="suite-carousel-section" aria-label="PropArt™ applications carousel" tabindex="0">
       <p id="suite-carousel-live" class="visually-hidden" aria-live="polite"></p>
@@ -548,7 +615,7 @@
                 <h2>PropArt™ Creator Space</h2>
                 <small>Main hub: shop, community, courses, account &amp; settings.</small>
                 <div class="tool-actions">
-                  <a class="cta-main" href="https://craft-inardor.web.app/">Open hub</a>
+                  <a class="cta-main" href="https://www.craftinardor.com/">Open hub</a>
                 </div>
               </article>
             </li>
@@ -566,7 +633,7 @@
                 <h2>PropArt™ Studio</h2>
                 <small>Palette planning, inventory, and slab workflow — paired with cane design flows.</small>
                 <div class="tool-actions">
-                  <a class="cta-main" href="https://pc-design-tool-studio.web.app/">Open Studio</a>
+                  <a class="cta-main" href="https://www.craftinardor.com/studio">Open Studio</a>
                 </div>
               </article>
             </li>
@@ -582,7 +649,7 @@
             <li class="suite-carousel-slide">
               <article class="tool">
                 <h2>PropArt™ Cane Design Studio</h2>
-                <small>Cane builder and shared-project flows — return to Polymer Clay Studio anytime.</small>
+                <small>Cane builder and shared-project flows — return to PropArt™ Studio anytime.</small>
                 <div class="tool-actions">
                   <a class="cta-main" href="https://tbbutterfly-8966b.web.app/">Open system</a>
                 </div>
@@ -597,7 +664,7 @@
     </section>
 
     <footer class="site-footer">
-      <span>© 2026 <a class="site-footer-link" href="https://craft-inardor.web.app/about.html">Pegasus Suite LLC</a>. All Rights Reserved.</span>
+      <span><strong>© 2026 PropArt™ Tools for Polymer Clay Artists.</strong> Developed and Owned by <a class="site-footer-link" href="https://craft-inardor.web.app/about.html">Pegasus Suite LLC</a>. All Rights Reserved.</span>
     </footer>
   </main>
 

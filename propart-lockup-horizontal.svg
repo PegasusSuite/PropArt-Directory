@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 820 200" role="img" aria-labelledby="propartLockupTitle">
+  <title id="propartLockupTitle">PropArt" Tools for Polymer Clay Artists</title>
+  <defs>
+    <linearGradient id="propartWordmarkGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#5d50c6"/>
+      <stop offset="52%" stop-color="#8f6ec4"/>
+      <stop offset="100%" stop-color="#c96b8a"/>
+    </linearGradient>
+  </defs>
+  <!-- Butterfly / cane geometry mark  same source as propart-logo.svg -->
+  <image href="propart-logo.svg" x="6" y="10" width="112" height="164" preserveAspectRatio="xMidYMid meet"/>
+  <text x="134" y="104" font-family="Georgia, 'Times New Roman', Times, serif" font-weight="700" font-size="54" letter-spacing="-0.03em" fill="url(#propartWordmarkGrad)">PropArt<tspan font-size="0.42em" baseline-shift="super">"</tspan></text>
+  <text x="136" y="150" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-weight="700" font-size="14.5" letter-spacing="0.12em" fill="#5c4f62">TOOLS FOR POLYMER CLAY ARTISTS</text>
+</svg>

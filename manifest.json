@@ -1,0 +1,11 @@
+{
+  "name": "PropArt™ Tools for Polymer Clay Artists — Directory",
+  "short_name": "PropArt™ Directory",
+  "description": "Official suite hub for PropArt™ web applications. Developed and owned by Pegasus Suite LLC.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f0fc",
+  "theme_color": "#9B7EBD",
+  "categories": ["design", "lifestyle", "productivity"]
+}
