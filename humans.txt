@@ -1,3 +1,6 @@
+/* CONTACT */
+Support: support@propart.app
+
 /* TEAM */
 Organization: Pegasus Suite LLC
 Brand: PropArt™ Tools for Polymer Clay Artists
