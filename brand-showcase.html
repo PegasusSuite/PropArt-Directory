@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="PropArt™ brand kit — logos, favicon, color tokens, typography, and UI patterns.">
   <title>PropArt™ Brand showcase</title>
-  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="./propart-logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./propart-generic-theme.css">
   <style>
     * { box-sizing: border-box; }
@@ -169,6 +169,7 @@
     .favicon-hero {
       width: 96px;
       height: 96px;
+      object-fit: contain;
       border-radius: 22px;
       box-shadow: 0 8px 24px rgba(60, 40, 90, 0.15);
     }
@@ -276,7 +277,10 @@
       <span class="propart-accent-strip" aria-hidden="true"></span>
       <div class="panel__inner">
         <div class="nav-top">
-          <a class="propart-link" href="./index.html">← Directory of Applications</a>
+          <div class="nav-code-links" style="gap:12px 18px">
+            <a class="propart-link" href="./index.html">← Directory of Applications</a>
+            <a class="propart-link" href="./login-modal-splash.html">Login modal splash</a>
+          </div>
           <div class="nav-code-links">
             <a class="propart-link" href="./propart-generic-theme.css">propart-generic-theme.css</a>
             <a class="propart-link" href="./suite-carousel.js">suite-carousel.js</a>
@@ -320,9 +324,9 @@
               </figcaption>
             </figure>
             <figure class="asset-card">
-              <img class="favicon-hero" src="./favicon.svg" alt="PropArt favicon: purple rounded square with white mark" width="96" height="96" decoding="async">
+              <img class="favicon-hero" src="./propart-logo.svg" alt="PropArt butterfly mark as used in the browser tab" width="96" height="96" decoding="async">
               <figcaption>
-                <strong>App / tab icon</strong> — <code>favicon.svg</code>. Linked in every HTML head as <code>rel=&quot;icon&quot;</code>.
+                <strong>App / tab icon</strong> — <code>propart-logo.svg</code> via <code>rel=&quot;icon&quot;</code> on directory pages. Optional square tile: <code>favicon.svg</code>.
               </figcaption>
             </figure>
           </div>
@@ -398,7 +402,7 @@
         </section>
 
         <footer>
-          PropArt™ appears as the product mark; Pegasus Suite LLC is shown without ™. Files in this folder: <code>propart-logo.svg</code>, <code>favicon.svg</code>, <code>propart-generic-theme.css</code>, <code>suite-carousel.js</code>, <code>index.html</code>, <code>brand-showcase.html</code>.
+          PropArt™ appears as the product mark; Pegasus Suite LLC is shown without ™. Files in this folder: <code>propart-logo.svg</code>, <code>favicon.svg</code>, <code>propart-generic-theme.css</code>, <code>suite-carousel.js</code>, <code>index.html</code>, <code>brand-showcase.html</code>, <code>login-modal-splash.html</code>.
         </footer>
       </div>
     </main>
