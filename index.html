@@ -77,13 +77,13 @@
     }
     .wrap {
       position: relative;
-      width: min(920px, 100%);
-      max-height: min(92vh, 900px);
-      overflow-y: auto;
+      width: min(960px, 100%);
+      max-height: none;
+      overflow: visible;
       background: rgba(255, 255, 255, 0.96);
       border: none;
       border-radius: var(--radius-lg, 24px);
-      padding: clamp(14px, 2.2vw, 22px) clamp(14px, 2.2vw, 22px);
+      padding: clamp(12px, 1.8vw, 18px) clamp(12px, 1.8vw, 18px);
       display: flex;
       flex-direction: column;
       /* Inset frame + glow; no white border/gleam so color meets the card edge */
@@ -215,119 +215,42 @@
       border: 0;
     }
 
-    /* Rolodex bay — vertically centers stack in remaining space */
-    .suite-carousel-section {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    /* App grid — no overlap on any viewport (replaces 3D carousel) */
+    .suite-apps-section {
+      flex: 1 1 auto;
       min-height: 0;
-      margin-top: 2px;
-      outline: none;
+      margin-top: 4px;
     }
-    .suite-carousel-stage {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      gap: 8px;
-      margin: 0 auto;
-      max-width: 100%;
+    .suite-apps-heading {
+      margin: 0 0 8px;
+      font-size: clamp(0.72rem, 1.6vw, 0.82rem);
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-align: center;
+      background: linear-gradient(90deg, var(--butterfly-blue, #6a5bcf), var(--vibrant-pink, #d4879f));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
     }
-    .suite-carousel-btn {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      border: 1px solid rgba(93, 80, 198, 0.22);
-      background: var(--suite-card);
-      color: var(--butterfly-blue, #5D50C6);
-      font-size: 1.22rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-      flex-shrink: 0;
-      box-shadow: 0 4px 14px var(--suite-shadow);
-    }
-    .suite-carousel-btn:hover {
-      transform: scale(1.06);
-    }
-    .suite-carousel-btn:focus-visible {
-      outline: 2px solid var(--butterfly-blue, #5D50C6);
-      outline-offset: 2px;
-    }
-    .suite-coverflow-shell {
-      position: relative;
-      min-height: 300px;
-      padding: 20px 0 28px;
-      /* Shallower focal length reduces scale-through-texture softness on center card */
-      perspective: 2600px;
-      /* Viewer slightly below rack — uplifted smile, not a “droopy V” */
-      perspective-origin: 50% 98%;
-      overflow: visible;
-    }
-    /* Soft ground shadow under rack */
-    .suite-coverflow-shell::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      bottom: 7%;
-      transform: translateX(-50%);
-      width: min(82%, 440px);
-      height: 32px;
-      border-radius: 50%;
-      background: radial-gradient(ellipse 100% 100% at 50% 50%, rgba(93, 80, 198, 0.1), transparent 72%);
-      pointer-events: none;
-      z-index: 0;
-    }
-    .suite-carousel-track {
-      position: relative;
-      width: 100%;
-      height: 280px;
+    .suite-apps-grid {
       list-style: none;
       margin: 0;
       padding: 0;
-      transform-style: preserve-3d;
-      /* Flat rack — avoids the downturned (“sad”) outer-top line */
-      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+      gap: clamp(10px, 2.2vw, 14px);
+      align-items: stretch;
     }
-    .suite-carousel-slide {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: min(296px, 82vw);
+    .suite-app-card {
       margin: 0;
       padding: 0;
-      transform-style: preserve-3d;
-      /* Do not put filter: drop-shadow here — it bitmap-blurs text inside transformed slides */
-      transition: transform 0.58s cubic-bezier(0.45, 0.05, 0.25, 1), opacity 0.4s ease;
+      display: flex;
+      min-width: 0;
     }
-    /* Side slides nudge up slightly so tops don’t sag below center */
-    .suite-carousel-slide.is-active {
-      /* translateZ(0): center tile reads at screen plane → text comparable to masthead crispness */
-      transform: translate3d(-50%, -50%, 0) translateZ(0) scale(1) rotateY(0deg);
-      transform-style: flat;
-      opacity: 1;
-      z-index: 10;
-    }
-    .suite-carousel-slide.is-left {
-      transform: translate3d(-50%, calc(-50% - 18px), 0) translateX(-46%) translateZ(-32px)
-        scale(0.915) rotateY(20deg);
-      opacity: 0.96;
-      z-index: 4;
-    }
-    .suite-carousel-slide.is-right {
-      transform: translate3d(-50%, calc(-50% - 18px), 0) translateX(46%) translateZ(-32px)
-        scale(0.915) rotateY(-20deg);
-      opacity: 0.96;
-      z-index: 4;
-    }
-    .suite-carousel-slide.is-hidden {
-      transform: translate3d(-50%, -50%, 0) translateZ(-340px) scale(0.52) rotateY(0deg);
-      opacity: 0;
-      pointer-events: none;
-      z-index: 1;
+    .suite-app-card .tool {
+      width: 100%;
     }
 
     /* Card tile — crisp panels, slick friendly curve */
@@ -340,23 +263,17 @@
       box-shadow: 0 4px 16px rgba(93, 80, 198, 0.08), 0 12px 32px rgba(44, 36, 53, 0.06),
         inset 0 1px 0 rgba(255, 255, 255, 1);
       height: 100%;
-      min-height: 256px;
-      max-height: 292px;
+      min-height: 212px;
+      max-height: none;
       display: flex;
       flex-direction: column;
-      padding: 18px 18px 24px;
+      padding: 14px 14px 16px;
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
       /* Flatten card paint vs parent preserve-3d so UI text (esp. CTA) stays sharp */
       transform: translateZ(0);
       transform-style: flat;
     }
-    .suite-carousel-slide.is-active .tool {
-      border-color: rgba(93, 80, 198, 0.32);
-      box-shadow:
-        0 6px 20px rgba(93, 80, 198, 0.12),
-        0 20px 44px rgba(93, 80, 198, 0.14),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
-    }
+
     .tool h2 {
       margin: 0 0 10px;
       font-family: Georgia, "Times New Roman", serif;
@@ -372,7 +289,7 @@
       -webkit-text-fill-color: transparent;
       -webkit-font-smoothing: antialiased;
       text-rendering: geometricPrecision;
-      min-height: 2.52em;
+      min-height: 2.4em;
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
@@ -380,7 +297,7 @@
     }
     .tool small {
       flex: 1 1 auto;
-      margin: 0 0 14px;
+      margin: 0 0 10px;
       color: var(--suite-card-ink);
       font-size: 0.95rem;
       line-height: 1.48;
@@ -391,7 +308,7 @@
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 3;
       overflow: hidden;
-      min-height: 4.45em;
+      min-height: 3.9em;
     }
     .tool-actions {
       display: flex;
@@ -419,7 +336,7 @@
       width: 100%;
       box-sizing: border-box;
       text-align: center;
-      margin-bottom: 34px;
+      margin-bottom: 0;
       background: linear-gradient(135deg, var(--butterfly-blue, #5D50C6), var(--vibrant-pink, #E17897));
       color: #fff;
       /* Outline in masthead darkest purple (--suite-card-ink #3d3366); light drop for snap */
@@ -447,31 +364,12 @@
       outline-offset: 2px;
     }
 
-    .suite-carousel-dots {
-      flex-shrink: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 0 4px;
-    }
-    .suite-carousel-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      padding: 0;
-      border: none;
-      background: rgba(93, 80, 198, 0.22);
-      cursor: pointer;
-      transition: transform 0.15s ease, background 0.15s ease;
-    }
-    .suite-carousel-dot[aria-current="true"] {
-      background: linear-gradient(135deg, var(--butterfly-blue, #5D50C6), var(--vibrant-pink, #E17897));
-      transform: scale(1.22);
-    }
-    .suite-carousel-dot:focus-visible {
-      outline: 2px solid var(--butterfly-blue, #5D50C6);
-      outline-offset: 2px;
+    .suite-apps-grid .tool:hover {
+      border-color: rgba(93, 80, 198, 0.32);
+      box-shadow:
+        0 6px 20px rgba(93, 80, 198, 0.1),
+        0 14px 36px rgba(93, 80, 198, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
     }
 
     footer.site-footer strong {
@@ -503,15 +401,15 @@
     }
 
     .suite-brand-authority {
-      margin: 10px 0 14px;
-      padding: 14px 16px;
+      margin: 6px 0 10px;
+      padding: 12px 14px;
       border-radius: 16px;
       border: 1px solid var(--suite-border);
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(245, 240, 252, 0.95) 100%);
       box-shadow: 0 6px 20px var(--suite-shadow);
       text-align: left;
       font-size: clamp(13px, 1.05vw, 15px);
-      line-height: 1.55;
+      line-height: 1.5;
       color: var(--suite-muted);
     }
     .suite-brand-authority strong {
@@ -524,54 +422,13 @@
       text-decoration: underline;
       text-underline-offset: 2px;
     }
-    .suite-history {
-      margin-top: 10px;
-      padding-top: 10px;
-      border-top: 1px dashed rgba(93, 80, 198, 0.25);
-      font-size: 0.95em;
-    }
-
     @media (max-width: 520px) {
       body {
         align-items: flex-start;
       }
-      .wrap {
-        max-height: none;
-      }
-      .suite-carousel-section {
-        justify-content: flex-start;
-      }
-      .suite-coverflow-shell {
-        min-height: 288px;
-        perspective: 2000px;
-      }
-      .suite-carousel-slide.is-left {
-        transform: translate3d(-50%, calc(-50% - 14px), 0) translateX(-42%) translateZ(-28px) scale(0.86)
-          rotateY(18deg);
-      }
-      .suite-carousel-slide.is-right {
-        transform: translate3d(-50%, calc(-50% - 14px), 0) translateX(42%) translateZ(-28px) scale(0.86)
-          rotateY(-18deg);
-      }
-      .suite-carousel-slide.is-active {
-        transform: translate3d(-50%, -50%, 0) translateZ(0) scale(1) rotateY(0deg);
-        transform-style: flat;
-      }
-      .suite-carousel-btn {
-        width: 44px;
-        height: 44px;
-        font-size: 1.1rem;
-      }
-      .tool-actions a.cta-main {
-        margin-bottom: 38px;
-      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .suite-carousel-slide {
-        transition-duration: 0.01ms;
-      }
-      .suite-carousel-btn:hover,
       .tool-actions a.cta-main:hover {
         transform: none;
       }
@@ -585,7 +442,7 @@
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#suite-apps">Skip to app carousel</a>
+  <a class="skip-link" href="#suite-apps">Skip to applications</a>
   <main class="wrap">
     <header class="masthead">
       <h1 class="visually-hidden">PropArt™ Directory of Applications</h1>
@@ -598,69 +455,57 @@
     <section class="suite-brand-authority" aria-labelledby="suite-brand-heading">
       <h2 id="suite-brand-heading" class="visually-hidden">Brand and ownership</h2>
       <p><strong>PropArt™ Tools for Polymer Clay Artists</strong> is a unified suite of browser-based design tools developed and owned by <a href="https://propart-creator.web.app/about.html">Pegasus Suite LLC</a>. This directory is the canonical entry point for switching between live applications; it exists so artists, partners, and automated systems can see the same ownership and URLs in one place.</p>
-      <div class="suite-history">
-        <p><strong>History / origin.</strong> The suite grew from Craft In Ardor and related PropArt™ experiments into production web apps (PropArt™ Creator Space, Cropper Tool, PropArt™ Studio, Color Blend Visualizer, and Cane Design Studio). New tools and domains are listed here first so attribution stays accurate as the ecosystem expands.</p>
-      </div>
     </section>
 
-    <section id="suite-apps" class="suite-carousel-section" aria-label="PropArt™ applications carousel" tabindex="0">
-      <p id="suite-carousel-live" class="visually-hidden" aria-live="polite"></p>
-
-      <div class="suite-carousel-stage">
-        <button type="button" class="suite-carousel-btn suite-carousel-prev" aria-label="Previous application">❮</button>
-        <div class="suite-coverflow-shell" aria-hidden="false">
-          <ul class="suite-carousel-track" id="suiteCarouselTrack">
-            <li class="suite-carousel-slide">
-              <article class="tool">
-                <h2>PropArt™ Creator Space</h2>
-                <small>Main hub: shop, community, courses, account &amp; settings.</small>
-                <div class="tool-actions">
-                  <a class="cta-main" href="https://propart-creator.web.app/">Open hub</a>
-                </div>
-              </article>
-            </li>
-            <li class="suite-carousel-slide">
-              <article class="tool">
-                <h2>PropArt™ Cropper Tool</h2>
-                <small>Slice sheets, pack exports, and keep cropper-native projects ready for Studio.</small>
-                <div class="tool-actions">
-                  <a class="cta-main" href="https://propart-cropper.web.app/">Open Cropper</a>
-                </div>
-              </article>
-            </li>
-            <li class="suite-carousel-slide">
-              <article class="tool">
-                <h2>PropArt™ Studio</h2>
-                <small>Palette planning, inventory, and slab workflow — paired with cane design flows.</small>
-                <div class="tool-actions">
-                  <a class="cta-main" href="https://propart-studio.web.app/">Open Studio</a>
-                </div>
-              </article>
-            </li>
-            <li class="suite-carousel-slide">
-              <article class="tool">
-                <h2>PropArt™ Color Blend Visualizer</h2>
-                <small>Fast palettes and clay blend recipes — built for cane and surface work.</small>
-                <div class="tool-actions">
-                  <a class="cta-main" href="https://propart-color-blend.web.app/">Open picker</a>
-                </div>
-              </article>
-            </li>
-            <li class="suite-carousel-slide">
-              <article class="tool">
-                <h2>PropArt™ Cane Design Studio</h2>
-                <small>Cane builder and shared-project flows — return to PropArt™ Studio anytime.</small>
-                <div class="tool-actions">
-                  <a class="cta-main" href="https://propart-cane.web.app/">Open system</a>
-                </div>
-              </article>
-            </li>
-          </ul>
-        </div>
-        <button type="button" class="suite-carousel-btn suite-carousel-next" aria-label="Next application">❯</button>
-      </div>
-
-      <div class="suite-carousel-dots" role="tablist" aria-label="Choose application slide"></div>
+    <section id="suite-apps" class="suite-apps-section" aria-labelledby="suite-apps-heading">
+      <h2 id="suite-apps-heading" class="suite-apps-heading">Applications</h2>
+      <ul class="suite-apps-grid">
+        <li class="suite-app-card">
+          <article class="tool">
+            <h2>PropArt™ Creator Space</h2>
+            <small>Main hub: shop, community, courses, account &amp; settings.</small>
+            <div class="tool-actions">
+              <a class="cta-main" href="https://propart-creator.web.app/">Open hub</a>
+            </div>
+          </article>
+        </li>
+        <li class="suite-app-card">
+          <article class="tool">
+            <h2>PropArt™ Cropper Tool</h2>
+            <small>Slice sheets, pack exports, and keep cropper-native projects ready for Studio.</small>
+            <div class="tool-actions">
+              <a class="cta-main" href="https://propart-cropper.web.app/">Open Cropper</a>
+            </div>
+          </article>
+        </li>
+        <li class="suite-app-card">
+          <article class="tool">
+            <h2>PropArt™ Studio</h2>
+            <small>Palette planning, inventory, and slab workflow — paired with cane design flows.</small>
+            <div class="tool-actions">
+              <a class="cta-main" href="https://propart-studio.web.app/">Open Studio</a>
+            </div>
+          </article>
+        </li>
+        <li class="suite-app-card">
+          <article class="tool">
+            <h2>PropArt™ Color Blend Visualizer</h2>
+            <small>Fast palettes and clay blend recipes — built for cane and surface work.</small>
+            <div class="tool-actions">
+              <a class="cta-main" href="https://propart-color-blend.web.app/">Open picker</a>
+            </div>
+          </article>
+        </li>
+        <li class="suite-app-card">
+          <article class="tool">
+            <h2>PropArt™ Cane Design Studio</h2>
+            <small>Cane builder and shared-project flows — return to PropArt™ Studio anytime.</small>
+            <div class="tool-actions">
+              <a class="cta-main" href="https://propart-cane.web.app/">Open system</a>
+            </div>
+          </article>
+        </li>
+      </ul>
     </section>
 
     <footer class="site-footer">
@@ -668,6 +513,5 @@
     </footer>
   </main>
 
-  <script src="./suite-carousel.js" defer></script>
 </body>
 </html>
