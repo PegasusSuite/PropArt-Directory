@@ -46,11 +46,39 @@
       border-radius: var(--radius-lg);
       overflow: hidden;
       background: rgba(255, 255, 255, 0.98);
-      border: 1px solid rgba(255, 255, 255, 0.95);
+      border: none;
       box-shadow:
         0 24px 64px rgba(44, 36, 53, 0.28),
         0 8px 24px rgba(93, 80, 198, 0.18),
         inset 0 1px 0 #fff;
+      animation: login-modal-breathe 10.4s ease-in-out infinite alternate;
+      will-change: box-shadow;
+    }
+    @keyframes login-modal-breathe {
+      0% {
+        box-shadow:
+          0 24px 64px rgba(44, 36, 53, 0.26),
+          0 8px 24px rgba(93, 80, 198, 0.16),
+          0 0 22px rgba(93, 80, 198, 0.2),
+          inset 0 0 0 clamp(2.5px, 0.68vw, 4px) rgba(93, 80, 198, 0.45),
+          inset 0 1px 0 #fff;
+      }
+      50% {
+        box-shadow:
+          0 26px 68px rgba(44, 36, 53, 0.22),
+          0 10px 28px rgba(109, 213, 195, 0.18),
+          0 0 36px rgba(109, 213, 195, 0.22),
+          inset 0 0 0 clamp(3.5px, 0.98vw, 5.5px) rgba(82, 170, 160, 0.42),
+          inset 0 1px 0 #fff;
+      }
+      100% {
+        box-shadow:
+          0 24px 64px rgba(44, 36, 53, 0.24),
+          0 8px 26px rgba(225, 120, 151, 0.16),
+          0 0 32px rgba(225, 120, 151, 0.2),
+          inset 0 0 0 clamp(3px, 0.78vw, 4.5px) rgba(186, 95, 175, 0.5),
+          inset 0 1px 0 #fff;
+      }
     }
 
     .login-modal__close {
@@ -184,10 +212,10 @@
     }
     .login-field label {
       display: block;
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      text-transform: none;
       color: var(--propart-ink);
       margin-bottom: 6px;
     }
@@ -234,18 +262,28 @@
     .login-footer a {
       font-weight: 700;
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      .login-modal {
+        animation: none;
+        box-shadow:
+          0 24px 64px rgba(44, 36, 53, 0.28),
+          0 8px 24px rgba(93, 80, 198, 0.18),
+          inset 0 0 0 clamp(3px, 0.78vw, 4.5px) rgba(93, 80, 198, 0.48),
+          inset 0 1px 0 #fff;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="login-stage" role="presentation">
     <div
-      class="login-modal propart-surface-panel"
+      class="login-modal"
       role="dialog"
       aria-modal="true"
       aria-labelledby="login-title"
       aria-describedby="login-desc"
     >
-      <span class="propart-accent-strip" aria-hidden="true"></span>
       <button type="button" class="login-modal__close" aria-label="Close sign in" onclick="document.querySelector('.login-stage').style.display='none'">×</button>
       <div class="login-modal__body">
         <div class="login-brand">
