@@ -13,10 +13,17 @@ Every suite app should expose **one** canonical link to the **PropArt Directory*
 
 Hosted apps **cannot** open `file://` from `https://` (browser security). The shared script `propart-suite-directory.js` picks `PUBLIC` vs `LOCAL_FILE` automatically.
 
-## Canonical masthead asset (copy into other sites)
+## Canonical brand SVGs (copy into other sites)
 
-- **`propart-lockup-horizontal.svg`** — butterfly + outlined **PropArt™** + tagline (**TOOLS FOR POLYMER CLAY ARTISTS**), transparent background. Used by **`index.html`** on [propart.app](https://www.propart.app/).
-- **Mirror / source name in monorepo:** `Assets/PropArtLogo-TextMarkIconTagline.svg` (same cleaned SVG; keep in sync when the mark changes). Suite apps can copy **`propart-lockup-horizontal.svg`** from this directory repo into `public/` / `static/` and reference it from headers or marketing pages.
+Use these **Final** exports from `Assets/` (copied beside directory pages for deploy):
+
+| File | Use |
+|------|-----|
+| **`PropArtTextLogoTagline-Final.svg`** | Full horizontal lockup: butterfly + **PropArt™** + product tagline. **`index.html`** masthead on [propart.app](https://www.propart.app/). |
+| **`PropArtTextLogo-Final.svg`** | Butterfly + wordmark + ™ (no tagline line). **`login-modal-splash.html`** brand row. |
+| **`PropArtLogo-Final.svg`** | Butterfly only; **`rel="icon"`** on directory pages. |
+
+**Legacy aliases in `Assets/`** (same pixels as the Finals when freshly synced): `propart-lockup-horizontal.svg` ↔ tagline Final, `propart-logo.svg` ↔ logo Final. Prefer the **`PropArt*Final.svg`** names in new work.
 
 ## Where this lives in repos
 

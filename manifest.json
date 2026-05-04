@@ -7,5 +7,13 @@
   "display": "standalone",
   "background_color": "#f5f0fc",
   "theme_color": "#9B7EBD",
-  "categories": ["design", "lifestyle", "productivity"]
+  "categories": ["design", "lifestyle", "productivity"],
+  "icons": [
+    {
+      "src": "https://pegasussuite.github.io/PropArt-Directory/favicon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
 }

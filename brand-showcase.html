@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="PropArt™ brand kit — logos, wordmark SVG, lockup, carousel script, color tokens, typography, and UI patterns for the directory.">
+  <meta name="description" content="PropArt™ brand kit — Final SVG lockups, optional wordmark, carousel script, color tokens, typography, and UI patterns for the directory.">
   <title>PropArt™ Brand showcase</title>
-  <link rel="icon" href="./propart-logo.svg" type="image/svg+xml">
+  <link rel="icon" href="https://pegasussuite.github.io/PropArt-Directory/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./propart-generic-theme.css">
   <style>
     * { box-sizing: border-box; }
@@ -302,18 +302,25 @@
           </p>
           <figure class="asset-card lockup-card">
             <div class="lockup-bar" role="group" aria-label="PropArt trademark">
-              <img class="lockup-bar__icon" src="./propart-logo.svg" alt="" width="72" height="106" decoding="async">
+              <img class="lockup-bar__icon" src="./PropArtLogo-Final.svg" alt="" width="72" height="106" decoding="async">
               <span class="lockup-bar__mark">PropArt<sup>™</sup></span>
             </div>
             <figcaption>
-              <strong>Combined mark</strong> — icon from <code>propart-logo.svg</code>; “PropArt” uses the same gradient stops as the directory page (<code>.suite-brand-row__name</code>).
+              <strong>Combined mark</strong> — icon from <code>PropArtLogo-Final.svg</code> (logo only); “PropArt” uses the same gradient stops as the directory page (<code>.suite-brand-row__name</code>).
             </figcaption>
           </figure>
-          <p class="subtitle" style="margin:18px 0 10px">Masthead image on <a class="propart-link" href="./index.html"><code>index.html</code></a> (butterfly + wordmark + tagline in one SVG):</p>
+          <p class="subtitle" style="margin:18px 0 10px">Masthead image on <a class="propart-link" href="./index.html"><code>index.html</code></a> (butterfly + wordmark + product tagline in one SVG):</p>
           <figure class="asset-card" style="max-width:100%;overflow:auto">
-            <img src="./propart-lockup-horizontal.svg" alt="PropArt horizontal lockup: butterfly, PropArt™ wordmark, and tagline" width="820" height="300" decoding="async" style="max-width:min(720px,100%);height:auto;display:block;margin:0 auto">
+            <img src="./PropArtTextLogoTagline-Final.svg" alt="PropArt horizontal lockup: butterfly, PropArt™ wordmark, and tagline" width="820" height="300" decoding="async" style="max-width:min(720px,100%);height:auto;display:block;margin:0 auto">
             <figcaption>
-              <strong>Horizontal lockup</strong> — <code>propart-lockup-horizontal.svg</code> (same art as <code>PropArtLogo-TextMarkIconTagline.svg</code> in Assets). Butterfly + outlined Georgia wordmark + ™ + tagline; transparent background. Masthead on <code>index.html</code> scales with <code>width=&quot;820&quot;</code> and <code>height: auto</code> via <code>.suite-lockup-img</code>.
+              <strong>Text + logo + tagline</strong> — <code>PropArtTextLogoTagline-Final.svg</code>. Canonical masthead asset; scales with <code>width=&quot;820&quot;</code> and <code>height: auto</code> via <code>.suite-lockup-img</code>. Mirror in monorepo: <code>Assets/PropArtTextLogoTagline-Final.svg</code> (and synced <code>Assets/propart-lockup-horizontal.svg</code>).
+            </figcaption>
+          </figure>
+          <p class="subtitle" style="margin:18px 0 10px">Text + logo (no “Tools for polymer clay artists” line inside the SVG) — e.g. login splash brand row:</p>
+          <figure class="asset-card" style="max-width:100%;overflow:auto">
+            <img src="./PropArtTextLogo-Final.svg" alt="PropArt butterfly with PropArt™ wordmark" width="820" height="300" decoding="async" style="max-width:min(720px,100%);height:auto;display:block;margin:0 auto">
+            <figcaption>
+              <strong>Text + logo</strong> — <code>PropArtTextLogo-Final.svg</code>. Used on <a class="propart-link" href="./login-modal-splash.html"><code>login-modal-splash.html</code></a>.
             </figcaption>
           </figure>
         </section>
@@ -323,17 +330,17 @@
           <div class="asset-grid">
             <figure class="asset-card">
               <div class="logo-row">
-                <img src="./propart-logo.svg" alt="PropArt butterfly logo" width="120" height="176" decoding="async">
-                <img src="./propart-logo.svg" alt="" width="64" height="94" decoding="async" aria-hidden="true">
+                <img src="./PropArtLogo-Final.svg" alt="PropArt butterfly logo" width="120" height="176" decoding="async">
+                <img src="./PropArtLogo-Final.svg" alt="" width="64" height="94" decoding="async" aria-hidden="true">
               </div>
               <figcaption>
-                <strong>Primary mark</strong> — <code>propart-logo.svg</code>. SVG scales cleanly; pair with wordmark in product headers.
+                <strong>Logo only</strong> — <code>PropArtLogo-Final.svg</code>. Butterfly mark; pair with live text or <code>PropArtTextLogo-Final.svg</code> where you need both in one asset.
               </figcaption>
             </figure>
             <figure class="asset-card">
-              <img class="favicon-hero" src="./propart-logo.svg" alt="PropArt butterfly mark as used in the browser tab" width="96" height="96" decoding="async">
+              <img class="favicon-hero" src="./favicon.svg" alt="PropArt suite favicon: purple rounded square with white mark" width="96" height="96" decoding="async">
               <figcaption>
-                <strong>App / tab icon</strong> — <code>propart-logo.svg</code> via <code>rel=&quot;icon&quot;</code> on directory pages. Optional square tile: <code>favicon.svg</code>.
+                <strong>App / tab icon</strong> — canonical <code>favicon.svg</code> on the <a href="https://pegasussuite.github.io/PropArt-Directory/">live directory</a>; all suite pages link the same asset via <code>rel=&quot;icon&quot;</code>.
               </figcaption>
             </figure>
             <figure class="asset-card">
@@ -341,7 +348,7 @@
                 <img src="./propart-wordmark-textmark.svg" alt="PropArt™ outlined wordmark with trademark" width="212" height="36" decoding="async" style="max-width:min(320px,100%);height:auto">
               </div>
               <figcaption>
-                <strong>Wordmark + ™</strong> — <code>propart-wordmark-textmark.svg</code>. Georgia outlines + suite gradient + superscript ™; used on <a class="propart-link" href="./login-modal-splash.html"><code>login-modal-splash.html</code></a>.
+                <strong>Wordmark + ™</strong> (optional) — <code>propart-wordmark-textmark.svg</code>. Georgia outlines + superscript ™; kept for small wordmark-only layouts. Full brand row on login uses <code>PropArtTextLogo-Final.svg</code>.
               </figcaption>
             </figure>
           </div>
@@ -424,7 +431,7 @@
         </section>
 
         <footer>
-          PropArt™ appears as the product mark; Pegasus Suite LLC is shown without ™. <strong>Key files:</strong> <code>index.html</code>, <code>brand-showcase.html</code>, <code>login-modal-splash.html</code>, <code>propart-generic-theme.css</code>, <code>suite-carousel.js</code>, <code>manifest.json</code>, <code>firebase.json</code>, <code>propart-logo.svg</code>, <code>propart-wordmark-textmark.svg</code>, <code>propart-lockup-horizontal.svg</code> (canonical masthead; mirror in repo <code>Assets/</code> as <code>PropArtLogo-TextMarkIconTagline.svg</code>), <code>favicon.svg</code>.
+          PropArt™ appears as the product mark; Pegasus Suite LLC is shown without ™. <strong>Key SVGs:</strong> <code>PropArtTextLogoTagline-Final.svg</code> (masthead), <code>PropArtTextLogo-Final.svg</code> (text + logo), <code>PropArtLogo-Final.svg</code> (logo). <strong>Tab icon:</strong> <code>favicon.svg</code> (canonical on the live directory). <strong>Also:</strong> <code>propart-wordmark-textmark.svg</code> (optional wordmark). <strong>Key pages:</strong> <code>index.html</code>, <code>brand-showcase.html</code>, <code>login-modal-splash.html</code>, <code>propart-generic-theme.css</code>, <code>suite-carousel.js</code>, <code>firebase.json</code>.
         </footer>
       </div>
     </main>
