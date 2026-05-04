@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="PropArt™ brand kit — logos, favicon, color tokens, typography, and UI patterns.">
+  <meta name="description" content="PropArt™ brand kit — logos, wordmark SVG, lockup, carousel script, color tokens, typography, and UI patterns for the directory.">
   <title>PropArt™ Brand showcase</title>
   <link rel="icon" href="./propart-logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./propart-generic-theme.css">
@@ -287,7 +287,7 @@
           </div>
         </div>
         <h1 class="propart-text-gradient-display">PropArt™ Brand showcase</h1>
-        <p class="subtitle">Logos, favicon, CSS tokens, and reusable patterns shipped with this directory. Use this page as an internal reference or specimen layout.</p>
+        <p class="subtitle">Logos, wordmark, horizontal lockup, tab icon, CSS tokens, carousel script, and patterns shipped with this directory. Use as an internal reference; deploy the site separately (see <a class="propart-link" href="#sec-publish">Publishing</a>).</p>
       </div>
     </header>
 
@@ -307,6 +307,13 @@
             </div>
             <figcaption>
               <strong>Combined mark</strong> — icon from <code>propart-logo.svg</code>; “PropArt” uses the same gradient stops as the directory page (<code>.suite-brand-row__name</code>).
+            </figcaption>
+          </figure>
+          <p class="subtitle" style="margin:18px 0 10px">Masthead image on <a class="propart-link" href="./index.html"><code>index.html</code></a> (butterfly + wordmark + tagline in one SVG):</p>
+          <figure class="asset-card" style="max-width:100%;overflow:auto">
+            <img src="./propart-lockup-horizontal.svg" alt="PropArt horizontal lockup: butterfly and PropArt Tools for Polymer Clay Artists" width="820" height="200" decoding="async" style="max-width:min(720px,100%);height:auto;display:block;margin:0 auto">
+            <figcaption>
+              <strong>Horizontal lockup</strong> — <code>propart-lockup-horizontal.svg</code>. Full-width masthead; scales with <code>width=&quot;820&quot;</code> / CSS <code>min(100%, 560px)</code> on the directory.
             </figcaption>
           </figure>
         </section>
@@ -370,11 +377,11 @@
 
         <section aria-labelledby="sec-patterns">
           <h2 id="sec-patterns">Patterns</h2>
-          <p class="subtitle" style="margin-bottom:14px">Accent bar (page chrome) and full-width gradient strip.</p>
+          <p class="subtitle" style="margin-bottom:14px"><strong>Accent strip</strong> — <code>.propart-accent-strip</code> (4px gradient bar) on panel headers such as this showcase. The live directory <strong>shell</strong> (<code>.wrap</code> on <code>index.html</code>) uses a <strong>breathing inset frame</strong> (<code>suite-frame-breathe</code>) instead of the strip. <a class="propart-link" href="./login-modal-splash.html">Login modal splash</a> uses the same idea on the dialog (<code>login-modal-breathe</code>), not the accent strip.</p>
           <div class="pattern-row">
             <div class="strip-demo" role="img" aria-label="Purple to teal to pink gradient"></div>
           </div>
-          <p style="margin:18px 0 12px;font-size:0.88rem;color:var(--propart-muted)">Primary button and text link (utilities from <code>propart-generic-theme.css</code>):</p>
+          <p style="margin:18px 0 12px;font-size:0.88rem;color:var(--propart-muted)">Primary button and text link (utilities from <code>propart-generic-theme.css</code>). Card CTAs on the directory use <strong>sentence case</strong> (e.g. “Open cropper”).</p>
           <div class="pattern-row">
             <a class="propart-btn-primary" href="./index.html">Example primary CTA</a>
             <a class="propart-link" href="./index.html">Example text link</a>
@@ -403,14 +410,21 @@
         <section aria-labelledby="sec-carousel">
           <h2 id="sec-carousel">Directory carousel (JavaScript)</h2>
           <p class="subtitle" style="margin-bottom:8px">
-            Coverflow-style slides, dots, arrows, swipe, keyboard, autoplay (5s), and reduced-motion handling live in
-            <a class="propart-link" href="./suite-carousel.js"><code>suite-carousel.js</code></a>.
-            The directory page loads it with <code>&lt;script src=&quot;./suite-carousel.js&quot; defer&gt;&lt;/script&gt;</code>; pair with the carousel rules in <code>index.html</code>’s <code>&lt;style&gt;</code> block.
+            <a class="propart-link" href="./index.html">Directory home</a> uses a <strong>3D coverflow</strong> for application cards: prev/next, dots, swipe, keyboard, autoplay (5s), and reduced-motion fallbacks. Logic lives in
+            <a class="propart-link" href="./suite-carousel.js"><code>suite-carousel.js</code></a>
+            (<code>&lt;script src=&quot;./suite-carousel.js&quot; defer&gt;&lt;/script&gt;</code>). Pair with the <code>.suite-carousel-*</code> and <code>.suite-coverflow-shell</code> rules in <code>index.html</code> (perspective, <code>rotateY(±20deg)</code> on side slides, tighter angles under 520px).
+          </p>
+        </section>
+
+        <section aria-labelledby="sec-publish">
+          <h2 id="sec-publish">Publishing &amp; live site</h2>
+          <p class="subtitle" style="margin-bottom:0">
+            Pushing to GitHub does <strong>not</strong> update <a class="propart-link" href="https://www.propart.app/">https://www.propart.app/</a> by itself. The custom domain is served by <strong>Firebase Hosting</strong> (site <code>propart-directory</code>). From this repo folder, run <code>firebase deploy --only hosting</code> (see <code>README-SUITE-URLS.md</code>). Verify on <a class="propart-link" href="https://propart-directory.web.app/">propart-directory.web.app</a> after deploy. Optional mirror: <a class="propart-link" href="https://pegasussuite.github.io/PropArt-Directory/">GitHub Pages</a> if enabled on the repo.
           </p>
         </section>
 
         <footer>
-          PropArt™ appears as the product mark; Pegasus Suite LLC is shown without ™. Files in this folder: <code>propart-logo.svg</code>, <code>propart-wordmark-textmark.svg</code>, <code>favicon.svg</code>, <code>propart-generic-theme.css</code>, <code>suite-carousel.js</code>, <code>index.html</code>, <code>brand-showcase.html</code>, <code>login-modal-splash.html</code>.
+          PropArt™ appears as the product mark; Pegasus Suite LLC is shown without ™. <strong>Key files:</strong> <code>index.html</code>, <code>brand-showcase.html</code>, <code>login-modal-splash.html</code>, <code>propart-generic-theme.css</code>, <code>suite-carousel.js</code>, <code>manifest.json</code>, <code>firebase.json</code>, <code>propart-logo.svg</code>, <code>propart-wordmark-textmark.svg</code>, <code>propart-lockup-horizontal.svg</code>, <code>favicon.svg</code>.
         </footer>
       </div>
     </main>
