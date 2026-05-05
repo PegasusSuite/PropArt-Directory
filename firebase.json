@@ -19,48 +19,6 @@
       }
     ],
     "redirects": [
-<<<<<<< HEAD
-      {
-        "source": "/creator",
-        "destination": "https://propart-creator.web.app/",
-        "type": 301
-      },
-      {
-        "source": "/studio",
-        "destination": "https://propart-studio.web.app/",
-        "type": 301
-      },
-      {
-        "source": "/cropper",
-        "destination": "https://propart-cropper.web.app/",
-        "type": 301
-      },
-      {
-        "source": "/blend",
-        "destination": "https://propart-color-blend.web.app/",
-        "type": 301
-      },
-      {
-        "source": "/color-blend",
-        "destination": "https://propart-color-blend.web.app/",
-        "type": 301
-      },
-      {
-        "source": "/cane",
-        "destination": "https://propart-cane.web.app/",
-        "type": 301
-      },
-      {
-        "source": "/pod",
-        "destination": "https://propart-pod.web.app/",
-        "type": 301
-      },
-      {
-        "source": "/cardart",
-        "destination": "https://propart-pod.web.app/",
-        "type": 301
-      }
-=======
       { "source": "/studio", "destination": "/Studio", "type": 301 },
       { "source": "/creator", "destination": "/Hub", "type": 301 },
       { "source": "/pod", "destination": "/POD", "type": 301 },
@@ -80,7 +38,6 @@
       { "source": "/BlendVisualizer", "destination": "/BlendVisualizer/index.html" },
       { "source": "/CaneDesigner", "destination": "/CaneDesigner/index.html" },
       { "source": "/CropperTool", "destination": "/CropperTool/index.html" }
->>>>>>> da35d90 (feat(directory): host suite apps under propart.app canonical paths)
     ]
   }
 }
