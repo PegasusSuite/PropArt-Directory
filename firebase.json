@@ -17,6 +17,38 @@
           { "key": "X-Frame-Options", "value": "SAMEORIGIN" }
         ]
       }
+    ],
+    "redirects": [
+      {
+        "source": "/creator",
+        "destination": "https://propart-creator.web.app/",
+        "type": 301
+      },
+      {
+        "source": "/studio",
+        "destination": "https://propart-studio.web.app/",
+        "type": 301
+      },
+      {
+        "source": "/cropper",
+        "destination": "https://propart-cropper.web.app/",
+        "type": 301
+      },
+      {
+        "source": "/blend",
+        "destination": "https://propart-color-blend.web.app/",
+        "type": 301
+      },
+      {
+        "source": "/color-blend",
+        "destination": "https://propart-color-blend.web.app/",
+        "type": 301
+      },
+      {
+        "source": "/cane",
+        "destination": "https://propart-cane.web.app/",
+        "type": 301
+      }
     ]
   }
 }
