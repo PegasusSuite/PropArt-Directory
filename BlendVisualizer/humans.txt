@@ -1,0 +1,4 @@
+/* TEAM */
+Organization: Pegasus Suite LLC
+Brand: PropArt™ Tools for Polymer Clay Artists — Color Blend Visualizer
+GitHub: https://github.com/PegasusSuite/PropArt-Color-Blend-Visualizer

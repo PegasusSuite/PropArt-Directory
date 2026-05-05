@@ -19,6 +19,7 @@
       }
     ],
     "redirects": [
+<<<<<<< HEAD
       {
         "source": "/creator",
         "destination": "https://propart-creator.web.app/",
@@ -59,6 +60,27 @@
         "destination": "https://propart-pod.web.app/",
         "type": 301
       }
+=======
+      { "source": "/studio", "destination": "/Studio", "type": 301 },
+      { "source": "/creator", "destination": "/Hub", "type": 301 },
+      { "source": "/pod", "destination": "/POD", "type": 301 },
+      { "source": "/cardart", "destination": "/POD", "type": 301 },
+      { "source": "/blend", "destination": "/BlendVisualizer", "type": 301 },
+      { "source": "/cane", "destination": "/CaneDesigner", "type": 301 },
+      { "source": "/cropper", "destination": "/CropperTool", "type": 301 },
+      { "source": "/hub", "destination": "/Hub", "type": 301 },
+      { "source": "/blendvisualizer", "destination": "/BlendVisualizer", "type": 301 },
+      { "source": "/canedesigner", "destination": "/CaneDesigner", "type": 301 },
+      { "source": "/croppertool", "destination": "/CropperTool", "type": 301 }
+    ],
+    "rewrites": [
+      { "source": "/Hub", "destination": "/Hub/index.html" },
+      { "source": "/Studio", "destination": "/Studio/index.html" },
+      { "source": "/POD", "destination": "/POD/index.html" },
+      { "source": "/BlendVisualizer", "destination": "/BlendVisualizer/index.html" },
+      { "source": "/CaneDesigner", "destination": "/CaneDesigner/index.html" },
+      { "source": "/CropperTool", "destination": "/CropperTool/index.html" }
+>>>>>>> da35d90 (feat(directory): host suite apps under propart.app canonical paths)
     ]
   }
 }

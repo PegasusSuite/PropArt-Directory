@@ -1,0 +1,7 @@
+/* TEAM */
+Organization: Pegasus Suite LLC
+Brand: PropArt™ Tools for Polymer Clay Artists
+GitHub: https://github.com/PegasusSuite
+
+/* SITE */
+Suite directory co-hosted with Creator Space.

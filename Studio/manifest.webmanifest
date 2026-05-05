@@ -1,0 +1,8 @@
+{
+  "name": "Studio | Palette & Slab Cutter",
+  "short_name": "Studio",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#FFF9FB",
+  "theme_color": "#FAD0DF"
+}

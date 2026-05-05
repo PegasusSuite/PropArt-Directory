@@ -1,0 +1,5 @@
+# PropArt™ suite directory — Pegasus Suite LLC
+User-agent: *
+Allow: /
+
+# Ownership: https://craft-inardor.web.app/about.html

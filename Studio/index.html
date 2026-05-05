@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/Studio/">
+    <title>Studio | Palette & Slab Cutter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#FAD0DF">
+    <style>
+        :root {
+            --accent: #D96A8A;
+            --accent-strong: #C55478;
+            --accent-soft: #FFE4EA;
+            --accent-border: #FBCFE8;
+            --accent-nav-bg: rgba(255, 240, 245, 0.85);
+            --page-bg: #FFF9FB;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --text-main: #4A4A4A;
+        }
+
+        body.dark {
+            --page-bg: #120b10;
+            --card-bg: rgba(24, 16, 20, 0.96);
+            --accent-soft: rgba(217, 106, 138, 0.12);
+            --accent-border: rgba(255, 255, 255, 0.1);
+            color: #f6edf3;
+        }
+
+        body.dark .bg-white { background-color: #1b1217 !important; }
+        body.dark .bg-pink-50\/50 { background-color: rgba(255, 182, 193, 0.1) !important; }
+        body.dark .border-pink-200 { border-color: rgba(255, 255, 255, 0.12) !important; }
+        body.dark .text-gray-600 { color: #c9b8c2 !important; }
+        body.dark .text-gray-500 { color: #b9a9b3 !important; }
+        body.dark input,
+        body.dark select,
+        body.dark textarea {
+            background-color: #1f151b !important;
+            border-color: rgba(255, 255, 255, 0.12) !important;
+            color: #f6edf3 !important;
+        }
+
+        /* --- Navigation Bar Styles --- */
+        .nav-bar {
+            background-color: var(--accent-nav-bg);
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 1em;
+            position: sticky;
+            top: 10px;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(188, 145, 158, 0.1);
+            border: 1px solid var(--accent-border);
+        }
+
+        .nav-bar a {
+            color: var(--accent);
+            padding: 8px 12px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 2px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .nav-bar a:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .nav-bar .nav-divider {
+            border-left: 2px solid var(--accent-border);
+            margin: 5px 10px;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Quicksand', sans-serif;
+            color: var(--text-main);
+            line-height: 1.6;
+            background-color: var(--page-bg);
+        }
+
+        body.large-text {
+            font-size: 18px;
+        }
+
+        body.cb-check .swatch::before,
+        body.cb-check .inventory-swatch::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: repeating-linear-gradient(
+                45deg,
+                rgba(0, 0, 0, 0.18),
+                rgba(0, 0, 0, 0.18) 6px,
+                rgba(255, 255, 255, 0.18) 6px,
+                rgba(255, 255, 255, 0.18) 12px
+            );
+            mix-blend-mode: soft-light;
+            pointer-events: none;
+        }
+
+        body.cb-check .swatch,
+        body.cb-check .inventory-swatch {
+            outline: 2px dashed rgba(217, 106, 138, 0.6);
+            outline-offset: 2px;
+        }
+
+        #background-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+        }
+
+        .themed-container {
+            max-width: 1280px;
+            margin: 40px auto;
+            padding: 20px 40px;
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(188, 145, 158, 0.2);
+            border: 1px solid var(--accent-border);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+
+        .themed-container header {
+            text-align: center;
+            border-bottom: 2px dashed #FFB6C1;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .themed-container h1 {
+            color: var(--accent);
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .droppable {
+            border: 3px dashed #fbcfe8;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .droppable.dragover {
+            border-color: #D96A8A;
+            background-color: #fff0f5;
+        }
+
+        .swatch {
+            width: 100%;
+            height: 44px;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .swatch:hover {
+            transform: scale(1.05);
+        }
+
+        .shiny-swatch::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.55), transparent 40%, rgba(255,255,255,0.25));
+            mix-blend-mode: screen;
+            pointer-events: none;
+        }
+
+        .tab-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .tab-btn.active {
+            background-color: var(--accent);
+            color: white;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        .tab-btn:not(.active) {
+            background-color: var(--accent-soft);
+            color: var(--accent);
+        }
+
+        .panel-tab-btn {
+            padding: 0.35rem 0.7rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            background-color: var(--accent-soft);
+            color: var(--accent);
+        }
+
+        .panel-tab-btn.active {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .tab-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 14px rgba(217, 106, 138, 0.2);
+        }
+
+        .hover-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .hover-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(217, 106, 138, 0.18);
+        }
+
+        button {
+            transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.03);
+        }
+
+        .cutter-shape-btn:hover {
+            box-shadow: 0 0 0 2px rgba(217, 106, 138, 0.2);
+        }
+
+        #slab-canvas:hover {
+            box-shadow: 0 0 0 3px rgba(217, 106, 138, 0.15);
+        }
+
+        #slab-canvas {
+            height: clamp(320px, 50vh, 420px);
+            width: 100%;
+            display: block;
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        .transparent-bg {
+            background-image: linear-gradient(45deg, #ccc 25%, transparent 25%),
+                              linear-gradient(-45deg, #ccc 25%, transparent 25%),
+                              linear-gradient(45deg, transparent 75%, #ccc 75%),
+                              linear-gradient(-45deg, transparent 75%, #ccc 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        }
+
+        .cutter-shape-btn { font-size: 1.25rem; }
+        .cutter-shape-btn.selected { background-color: #D96A8A; color: white; }
+        .asset-item.selected { border-color: #D96A8A; box-shadow: 0 0 0 2px #D96A8A; }
+
+        #cutter-shapes .cutter-shape-btn {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        .compact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .inventory-card {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.35rem;
+            align-items: center;
+            border: 1px solid #fbcfe8;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.6rem;
+            background: #fff;
+        }
+
+        .inventory-swatch {
+            width: 64px;
+            height: 48px;
+            border-radius: 9999px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.08);
+            justify-self: center;
+        }
+
+        .inventory-swatch::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.55), transparent 40%, rgba(255,255,255,0.25));
+            mix-blend-mode: screen;
+        }
+
+        .auth-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 9999px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.75rem;
+            border: 1px solid var(--accent-border);
+        }
+
+        .auth-avatar {
+            width: 26px;
+            height: 26px;
+            border-radius: 9999px;
+            background: var(--accent);
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        .auth-prompt {
+            background: #fff3f7;
+            border: 1px solid #fbcfe8;
+            border-radius: 12px;
+            padding: 10px 12px;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .auth-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2100;
+        }
+
+        .auth-panel {
+            width: min(520px, 92vw);
+            background: #fff;
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .creative-card {
+            border: 1px solid #fbcfe8;
+            border-radius: 12px;
+            padding: 12px;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .creative-chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.15rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            background: var(--accent-soft);
+            border: 1px solid var(--accent-border);
+            color: var(--accent);
+        }
+
+        .pill-btn,
+        .theme-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 9999px;
+            border: 1px solid var(--accent-border);
+            background: var(--accent-soft);
+            color: var(--accent-strong);
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .pill-btn:hover,
+        .theme-pill:hover {
+            filter: brightness(0.98);
+        }
+
+        .theme-pill.active {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        .theme-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 9999px;
+            display: inline-block;
+        }
+
+        .barcode-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+
+        .barcode-panel {
+            width: min(520px, 92vw);
+            background: #fff;
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        #barcode-preview {
+            width: 100%;
+            height: 240px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fdf2f8;
+            border: 1px solid #fbcfe8;
+        }
+
+        @media (max-width: 768px) {
+            .themed-container {
+                margin: 16px auto;
+                padding: 16px;
+            }
+
+            .themed-container h1 {
+                font-size: 2rem;
+            }
+
+            .tab-btn {
+                padding: 0.45rem 0.7rem;
+                font-size: 0.85rem;
+            }
+
+            .panel-tab-btn {
+                font-size: 0.7rem;
+                padding: 0.3rem 0.55rem;
+            }
+
+            #slab-canvas {
+                height: clamp(260px, 42vh, 360px);
+            }
+
+            .compact-grid {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            }
+
+            #barcode-preview {
+                height: 200px;
+            }
+
+            .barcode-panel {
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .themed-container {
+                padding: 12px;
+            }
+
+            .tab-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .panel-tab-btn {
+                font-size: 0.68rem;
+            }
+
+            .inventory-card input,
+            .bg-white input,
+            .bg-white button {
+                min-height: 36px;
+            }
+
+            #slab-canvas {
+                height: clamp(240px, 38vh, 320px);
+            }
+
+            #barcode-preview {
+                height: 180px;
+            }
+
+            #cutter-shapes {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        @media (hover: none) and (pointer: coarse) {
+            button:hover,
+            .hover-card:hover,
+            .tab-btn:hover {
+                transform: none;
+                box-shadow: none;
+                filter: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="background-canvas"></canvas>
+
+    <div class="container max-w-7xl mx-auto">
+        <div class="themed-container mx-auto p-4">
+            <header>
+                <div class="flex items-center justify-between">
+                    <div class="w-8"></div>
+                    <h1 class="flex-1">Studio: Palette + Slab Cutter</h1>
+                    <div class="flex items-center gap-2">
+                        <span id="auth-status" class="text-xs text-gray-500 hidden"></span>
+                        <a href="monetize-vault.html" class="auth-btn" aria-label="Monetize and Vault">Monetize + Vault</a>
+                        <button id="auth-btn" class="auth-btn" aria-label="Account">
+                            <span id="auth-avatar" class="auth-avatar">U</span>
+                            <span id="auth-label">Sign in</span>
+                        </button>
+                    </div>
+                </div>
+                <div id="auth-prompt" class="auth-prompt hidden">
+                    <div>
+                        <div class="font-semibold text-pink-800">Save your studio across devices</div>
+                        <div class="text-gray-600">Create an account or sign in with Google in 2–3 clicks.</div>
+                    </div>
+                    <button id="auth-prompt-btn" class="bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Get Started</button>
+                </div>
+                <div class="mt-2 flex flex-wrap items-center gap-2 text-[10px] text-gray-600">
+                    <div class="bg-pink-50/50 border border-pink-200 rounded px-2 py-1 flex items-center gap-2">
+                        <span id="network-status">Checking…</span>
+                        <span id="sync-status" class="text-pink-700"></span>
+                    </div>
+                    <div class="bg-pink-50/50 border border-pink-200 rounded px-2 py-1 flex items-center gap-2">
+                        <span id="sync-last" class="text-pink-700">Never</span>
+                    </div>
+                    <label class="flex items-center gap-1 cursor-pointer">
+                        <input id="toggle-large-text" type="checkbox" class="accent-pink-600">
+                        <span>Large text</span>
+                    </label>
+                    <label class="flex items-center gap-1 cursor-pointer">
+                        <input id="toggle-cb-check" type="checkbox" class="accent-pink-600">
+                        <span>Colorblind check</span>
+                    </label>
+                    <label class="flex items-center gap-1 cursor-pointer">
+                        <input id="toggle-night-mode" type="checkbox" class="accent-pink-600">
+                        <span>Night mode</span>
+                    </label>
+                    <div class="text-[9px] uppercase tracking-wide text-gray-500">Theme</div>
+                    <div id="theme-picker" class="flex flex-wrap gap-1">
+                        <button type="button" class="theme-pill" data-theme="rose"><span class="theme-dot" style="background:#D96A8A"></span>Rose</button>
+                        <button type="button" class="theme-pill" data-theme="lavender"><span class="theme-dot" style="background:#8B6ACB"></span>Lavender</button>
+                        <button type="button" class="theme-pill" data-theme="mint"><span class="theme-dot" style="background:#4FB6A8"></span>Mint</button>
+                        <button type="button" class="theme-pill" data-theme="sky"><span class="theme-dot" style="background:#4E8FD9"></span>Sky</button>
+                        <button type="button" class="theme-pill" data-theme="ember"><span class="theme-dot" style="background:#D97B5F"></span>Ember</button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="flex justify-center gap-4 mb-4 flex-wrap">
+                <button id="tab-btn-palette" class="tab-btn active" data-tab="palette">Palette & Recipes</button>
+                <button id="tab-btn-cutter" class="tab-btn" data-tab="cutter">Slab Cutter Studio</button>
+                <button id="tab-btn-inventory" class="tab-btn" data-tab="inventory">Clay Inventory</button>
+                <button id="tab-btn-tools" class="tab-btn" data-tab="tools">Studio Tools</button>
+            </div>
+
+            <main>
+                <!-- Palette & Recipes -->
+                <div id="tab-content-palette" class="tab-content active">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                        <div class="space-y-4">
+                            <div class="bg-white p-4 rounded-xl shadow-lg">
+                                <h2 class="text-xl font-semibold mb-2 text-center text-pink-800">1. Project Hub</h2>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div id="drop-zone" class="droppable bg-pink-50 rounded-lg p-4 text-center flex flex-col justify-center items-center">
+                                        <p class="text-pink-700 text-sm">Drag & drop image</p>
+                                        <input type="file" id="file-input" class="hidden" accept="image/*">
+                                        <button id="upload-button" class="mt-2 bg-pink-600 text-white px-4 py-1 rounded-lg text-sm font-semibold hover:bg-pink-700 transition">Select File</button>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <div class="grid grid-cols-2 gap-2">
+                                            <button id="new-project-btn" class="w-full bg-blue-500 text-white px-4 py-1 rounded-lg font-semibold hover:bg-blue-600 transition text-sm">New</button>
+                                            <button id="export-summary-btn" class="w-full bg-rose-500 text-white px-4 py-1 rounded-lg font-semibold hover:bg-rose-600 transition text-sm">Export Summary</button>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <label for="bw-toggle" class="flex items-center cursor-pointer">
+                                                <span class="mr-2 text-sm font-medium text-gray-900">Cane Mode</span>
+                                                <input type="checkbox" id="bw-toggle" class="sr-only">
+                                                <div class="relative">
+                                                    <div class="block bg-pink-300 w-10 h-6 rounded-full"></div>
+                                                    <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full"></div>
+                                                </div>
+                                            </label>
+                                            <button id="regenerate-btn" class="bg-pink-500 text-white px-3 py-1 rounded-lg font-semibold hover:bg-pink-600 transition text-xs" disabled>Regen</button>
+                                        </div>
+                                        <div class="border-t border-pink-200 pt-2">
+                                            <label class="text-xs text-pink-700">Quick Notes</label>
+                                            <textarea id="project-notes" class="w-full mt-1 rounded-lg border border-pink-200 p-2 text-xs" rows="3" placeholder="Project idea, color story, baking notes..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-xl shadow-lg">
+                                <h2 class="text-xl font-semibold mb-2 text-center text-pink-800">2. Preview</h2>
+                                <div id="original-image-container" class="hidden">
+                                    <h3 class="font-semibold text-center text-sm mb-1">Original</h3>
+                                    <img id="image-preview" class="w-full rounded-lg shadow-md mb-2" alt="Image Preview"/>
+                                </div>
+                                <div id="reimagined-container" class="hidden">
+                                    <h3 class="font-semibold text-center text-sm mb-1">Reimagined</h3>
+                                    <canvas id="reimagined-canvas" class="w-full rounded-lg shadow-md"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="bg-white p-4 rounded-xl shadow-lg">
+                                <h2 class="text-xl font-semibold mb-2 text-center text-pink-800">3. Palettes & Recipes</h2>
+                                <div class="grid grid-cols-2 gap-4 mb-4">
+                                    <div>
+                                        <div class="flex justify-between items-center mb-1">
+                                            <h3 class="font-semibold text-sm">P1</h3>
+                                        </div>
+                                        <div id="palette-container-original" class="grid grid-cols-4 gap-2"></div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between items-center mb-1">
+                                            <h3 class="font-semibold text-sm">P2</h3>
+                                        </div>
+                                        <div id="palette-container-comp" class="grid grid-cols-4 gap-2"></div>
+                                    </div>
+                                </div>
+                                <div id="cb-warning" class="text-[11px] text-rose-600 mb-3"></div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 border-t pt-4">
+                                    <div id="recipes-container" class="grid grid-cols-1 gap-3 max-h-[420px] overflow-y-auto pr-2"></div>
+                                    <div class="space-y-3">
+                                        <div class="bg-pink-50/50 border rounded-lg p-3">
+                                            <h3 class="text-sm font-semibold text-pink-800">Selected Recipe</h3>
+                                            <div id="recipe-detail" class="text-xs text-gray-700 mt-2">Select a recipe to see details.</div>
+                                        </div>
+                                        <div class="bg-pink-50/50 border rounded-lg p-3">
+                                            <h3 class="text-sm font-semibold text-pink-800">Batch Calculator</h3>
+                                            <div class="text-xs text-gray-700">Total grams:</div>
+                                            <input id="batch-grams" type="number" min="10" value="60" class="w-full mt-1 rounded border border-pink-200 px-2 py-1 text-sm" />
+                                            <button id="calculate-batch" class="w-full mt-2 bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Calculate</button>
+                                            <div id="batch-output" class="text-xs text-gray-700 mt-2"></div>
+                                            <div id="mix-warning" class="text-[11px] text-rose-600 mt-1"></div>
+                                            <button id="reserve-from-inventory" class="w-full mt-2 bg-amber-500 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-amber-600 transition" disabled>Reserve from Inventory</button>
+                                        </div>
+                                        <div class="bg-pink-50/50 border rounded-lg p-3">
+                                            <h3 class="text-sm font-semibold text-pink-800">Favorite Recipes</h3>
+                                            <div id="favorites-container" class="text-xs text-gray-700">No favorites yet.</div>
+                                        </div>
+                                        <div class="bg-white border rounded-lg p-3">
+                                            <h3 class="text-sm font-semibold text-pink-800">Recipe Library</h3>
+                                            <div class="text-[11px] text-gray-600">Save recipes with tags, photos, and shareable links.</div>
+                                            <div class="grid grid-cols-1 gap-2 mt-2 text-xs">
+                                                <input id="recipe-tags" type="text" class="rounded border border-pink-200 px-2 py-1" placeholder="tags (comma separated)">
+                                                <input id="recipe-photo" type="file" accept="image/*" class="text-[11px]">
+                                                <div class="flex gap-2">
+                                                    <button id="recipe-save-btn" class="flex-1 bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Save Selected</button>
+                                                    <button id="recipe-clear-photo" class="bg-white border border-pink-200 text-pink-700 px-3 py-1 rounded-lg text-xs font-semibold">Clear Photo</button>
+                                                </div>
+                                                <div class="flex gap-2">
+                                                    <input id="recipe-share-input" type="text" class="flex-1 rounded border border-pink-200 px-2 py-1" placeholder="paste share link">
+                                                    <button id="recipe-import-btn" class="bg-amber-500 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-amber-600 transition">Import</button>
+                                                </div>
+                                            </div>
+                                            <div id="recipe-library" class="grid grid-cols-1 gap-2 mt-3 text-xs"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slab Cutter Studio -->
+                <div id="tab-content-cutter" class="tab-content">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <div class="md:col-span-2 bg-white p-3 rounded-xl shadow-lg hover-card">
+                            <h2 class="text-lg font-semibold mb-2 text-center text-pink-800">Slab Canvas</h2>
+                            <canvas id="slab-canvas" width="600" height="450" class="w-full rounded-lg border bg-pink-50/50"></canvas>
+                        </div>
+                        <div>
+                            <div class="bg-white p-3 rounded-xl shadow-lg hover-card">
+                                <div class="flex items-center justify-center gap-2 mb-3">
+                                    <button class="panel-tab-btn active slab-panel-btn" data-panel="controls">Controls</button>
+                                    <button class="panel-tab-btn slab-panel-btn" data-panel="backgrounds">Backgrounds</button>
+                                    <button class="panel-tab-btn slab-panel-btn" data-panel="cutouts">Cut-outs</button>
+                                </div>
+
+                                <div id="slab-panel-controls" class="slab-panel">
+                                    <div class="grid grid-cols-2 gap-3 text-xs">
+                                        <div>
+                                            <label class="text-sm font-medium">Cutter Shape</label>
+                                            <div id="cutter-shapes" class="grid grid-cols-4 gap-2 mt-1">
+                                                <button class="cutter-shape-btn p-2 border rounded selected" data-shape="circle" aria-label="Circle cutter">&#9675;</button>
+                                                <button class="cutter-shape-btn p-2 border rounded" data-shape="square" aria-label="Square cutter">&#9634;</button>
+                                                <button class="cutter-shape-btn p-2 border rounded" data-shape="star" aria-label="Star cutter">&#9733;</button>
+                                                <button class="cutter-shape-btn p-2 border rounded" data-shape="heart" aria-label="Heart cutter">&#9829;</button>
+                                                <button class="cutter-shape-btn p-2 border rounded" data-shape="teardrop" aria-label="Teardrop cutter">&#128167;</button>
+                                                <button class="cutter-shape-btn p-2 border rounded" data-shape="triangle" aria-label="Triangle cutter">&#9651;</button>
+                                                <button class="cutter-shape-btn p-2 border rounded" data-shape="hexagon" aria-label="Hexagon cutter">&#11042;</button>
+                                                <button class="cutter-shape-btn p-2 border rounded" data-shape="arch" aria-label="Arch cutter">&#8978;</button>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label for="cutter-size" class="text-sm font-medium">Cutter Size: <span id="cutter-size-val">80</span>px</label>
+                                            <input type="range" id="cutter-size" min="20" max="260" value="80" class="w-full">
+                                        </div>
+                                        <div>
+                                            <label for="cutter-rotation" class="text-sm font-medium">Rotation: <span id="cutter-rotation-val">0</span>°</label>
+                                            <input type="range" id="cutter-rotation" min="0" max="360" value="0" class="w-full">
+                                        </div>
+                                        <div>
+                                            <label class="text-sm font-medium">Grid</label>
+                                            <div class="flex items-center gap-2">
+                                                <input id="slab-grid-toggle" type="checkbox" class="accent-pink-500" checked>
+                                                <input id="slab-grid-size" type="number" min="10" value="40" class="w-full rounded border border-pink-200 px-2 py-1" placeholder="px">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="text-sm font-medium">Snap to Grid</label>
+                                            <div class="flex items-center gap-2">
+                                                <input id="slab-snap-toggle" type="checkbox" class="accent-pink-500" checked>
+                                                <span class="text-[11px] text-gray-500">Align cutter</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-span-2 grid grid-cols-2 gap-2">
+                                            <button id="undo-cut-btn" class="w-full bg-amber-500 text-white px-3 py-1 rounded-lg font-semibold hover:bg-amber-600 transition text-xs">Undo</button>
+                                            <button id="duplicate-cut-btn" class="w-full bg-purple-500 text-white px-3 py-1 rounded-lg font-semibold hover:bg-purple-600 transition text-xs">Duplicate</button>
+                                        </div>
+                                        <div class="col-span-2 grid grid-cols-2 gap-2">
+                                            <button id="download-sheet-btn" class="w-full bg-pink-600 text-white px-3 py-1 rounded-lg font-semibold hover:bg-pink-700 transition text-xs">Contact Sheet</button>
+                                            <button id="clear-cuts-btn" class="w-full bg-red-500 text-white px-3 py-1 rounded-lg font-semibold hover:bg-red-600 transition text-xs">Clear Cuts</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="slab-panel-backgrounds" class="slab-panel hidden">
+                                    <div class="text-xs text-gray-600 mb-1">Choose an image or a palette swatch.</div>
+                                    <div id="slab-assets-container" class="grid grid-cols-3 gap-2"></div>
+                                    <div id="slab-swatch-container" class="grid grid-cols-6 gap-2 mt-3"></div>
+                                </div>
+
+                                <div id="slab-panel-cutouts" class="slab-panel hidden">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-sm font-semibold text-pink-800">Cut-outs</span>
+                                        <span id="cuts-count" class="text-xs text-pink-700">0 pieces</span>
+                                    </div>
+                                    <div id="cuts-gallery" class="grid grid-cols-4 gap-2 transparent-bg p-2 rounded-lg min-h-[60px]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools -->
+                <div id="tab-content-tools" class="tab-content">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-white p-4 rounded-xl shadow-lg">
+                            <h2 class="text-xl font-semibold mb-2 text-center text-pink-800">Studio Checklist</h2>
+                            <div class="space-y-2 text-sm">
+                                <label class="flex items-center gap-2"><input type="checkbox" class="task-box"> Condition clay</label>
+                                <label class="flex items-center gap-2"><input type="checkbox" class="task-box"> Mix palette colors</label>
+                                <label class="flex items-center gap-2"><input type="checkbox" class="task-box"> Roll slab evenly</label>
+                                <label class="flex items-center gap-2"><input type="checkbox" class="task-box"> Cut and log shapes</label>
+                                <label class="flex items-center gap-2"><input type="checkbox" class="task-box"> Bake + cool</label>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl shadow-lg">
+                            <h2 class="text-xl font-semibold mb-2 text-center text-pink-800">Bake Timer</h2>
+                            <div class="text-sm text-gray-600 mb-2">Set a timer for baking (minutes).</div>
+                            <input id="bake-minutes" type="number" min="1" value="30" class="w-full rounded border border-pink-200 px-2 py-1 text-sm" />
+                            <button id="start-timer" class="w-full mt-2 bg-pink-600 text-white px-3 py-1 rounded-lg text-sm font-semibold hover:bg-pink-700 transition">Start Timer</button>
+                            <div id="timer-display" class="text-center text-lg font-semibold text-pink-700 mt-3">00:00</div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-lg mt-4">
+                        <div class="flex items-center justify-between gap-2">
+                            <h2 class="text-xl font-semibold text-pink-800">Projects & Sync</h2>
+                            <span class="creative-chip">Shared projects</span>
+                        </div>
+                        <div class="text-xs text-gray-600 mb-3">Save snapshots, load on any device, or share a project code.</div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                            <div>
+                                <label class="text-[11px] text-gray-500">Project name</label>
+                                <input id="project-name-input" type="text" class="w-full rounded border border-pink-200 px-2 py-1" placeholder="Project name">
+                                <div class="flex gap-2 mt-2">
+                                    <button id="project-save-btn" class="flex-1 bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Save Snapshot</button>
+                                    <button id="project-share-btn" class="flex-1 bg-amber-500 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-amber-600 transition">Share</button>
+                                </div>
+                                <div id="project-share-code" class="text-[11px] text-pink-700 mt-2"></div>
+                            </div>
+                            <div>
+                                <label class="text-[11px] text-gray-500">Saved projects</label>
+                                <select id="project-list" class="w-full rounded border border-pink-200 px-2 py-1"></select>
+                                <div class="flex gap-2 mt-2">
+                                    <button id="project-load-btn" class="flex-1 bg-emerald-500 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-emerald-600 transition">Load</button>
+                                    <button id="project-delete-btn" class="flex-1 bg-white border border-pink-200 text-pink-700 px-3 py-1 rounded-lg text-xs font-semibold">Delete</button>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="text-[11px] text-gray-500">Import share code</label>
+                                <input id="project-import-code" type="text" class="w-full rounded border border-pink-200 px-2 py-1" placeholder="e.g. CLAY-7G2K">
+                                <button id="project-import-btn" class="w-full mt-2 bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Import</button>
+                                <div id="project-import-status" class="text-[11px] text-pink-700 mt-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-lg mt-4">
+                        <div class="flex items-center justify-between gap-2">
+                            <h2 class="text-xl font-semibold text-pink-800">Creativity Sparks</h2>
+                            <span class="creative-chip">Daily inspiration</span>
+                        </div>
+                        <div class="text-xs text-gray-600 mb-3">Pick your interest and goal to generate daily prompts and challenge cards.</div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                            <div>
+                                <label class="text-[11px] text-gray-500">Interest</label>
+                                <select id="creativity-interest" class="w-full rounded border border-pink-200 px-2 py-1"></select>
+                            </div>
+                            <div>
+                                <label class="text-[11px] text-gray-500">Goal</label>
+                                <select id="creativity-goal" class="w-full rounded border border-pink-200 px-2 py-1"></select>
+                            </div>
+                            <div class="flex items-end gap-2">
+                                <button id="daily-prompt-btn" class="w-full bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">New Prompt</button>
+                                <button id="shuffle-cards-btn" class="w-full bg-amber-500 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-amber-600 transition">Shuffle Cards</button>
+                            </div>
+                        </div>
+                        <div class="bg-pink-50/50 border rounded-lg p-3 mt-3">
+                            <div class="text-xs font-semibold text-pink-800">Daily Prompt</div>
+                            <div id="daily-prompt-text" class="text-sm text-gray-700 mt-1">Choose your interest to generate a prompt.</div>
+                        </div>
+                        <div id="challenge-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-3"></div>
+                    </div>
+                </div>
+
+                <!-- Inventory -->
+                <div id="tab-content-inventory" class="tab-content">
+                    <div class="bg-white p-4 rounded-xl shadow-lg">
+                        <div class="flex flex-wrap items-center justify-between gap-3 mb-2">
+                            <h2 class="text-xl font-semibold text-pink-800">Clay Inventory</h2>
+                            <div class="flex gap-2">
+                                <button id="barcode-scan-btn" class="bg-amber-500 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-amber-600 transition">Scan Barcode</button>
+                                <button id="barcode-usb-btn" class="bg-sky-500 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-sky-600 transition">USB Scanner</button>
+                                <button id="barcode-register-btn" class="bg-violet-500 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-violet-600 transition">Register Barcode</button>
+                                <button id="inventory-edit-btn" class="bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Edit</button>
+                                <button id="inventory-save-btn" class="bg-green-500 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-green-600 transition hidden">Save</button>
+                            </div>
+                        </div>
+                        <div class="text-xs text-gray-600 mb-2">Edit mode shows all colors (including discontinued). View mode shows only colors with quantities.</div>
+                        <div class="flex flex-wrap items-center gap-2 text-[11px] text-gray-600 mb-3">
+                            <span>Scan adds</span>
+                            <input id="barcode-default-grams" type="number" min="1" value="56" class="w-20 rounded border border-pink-200 px-2 py-1 text-[11px]" />
+                            <span>grams per scan</span>
+                            <span id="barcode-status" class="text-pink-700"></span>
+                        </div>
+                        <div id="inventory-container" class="compact-grid"></div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-lg mt-4">
+                        <div class="flex flex-wrap items-center justify-between gap-2">
+                            <h3 class="text-lg font-semibold text-pink-800">Inventory Power Tools</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <button id="inventory-export-btn" class="bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Export CSV</button>
+                                <button id="inventory-import-btn" class="bg-white border border-pink-200 text-pink-700 px-3 py-1 rounded-lg text-xs font-semibold">Import CSV</button>
+                                <input id="inventory-import-file" type="file" accept=".csv" class="hidden" />
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-3 text-[11px]">
+                            <div class="bg-pink-50/50 border rounded-lg p-3">
+                                <div class="font-semibold text-pink-800 mb-1">Low‑Stock Settings</div>
+                                <div class="flex items-center gap-2">
+                                    <label class="text-gray-600">Alert below</label>
+                                    <input id="low-stock-threshold" type="number" min="1" class="w-16 rounded border border-pink-200 px-2 py-1" />
+                                </div>
+                            </div>
+                            <div class="bg-pink-50/50 border rounded-lg p-3">
+                                <div class="font-semibold text-pink-800 mb-1">Reorder Builder</div>
+                                <div class="grid grid-cols-1 gap-2">
+                                    <select id="reorder-color-select" class="w-full rounded border border-pink-200 px-2 py-1"></select>
+                                    <div class="flex items-center gap-2">
+                                        <input id="reorder-grams-input" type="number" min="1" value="56" class="w-20 rounded border border-pink-200 px-2 py-1" />
+                                        <button id="reorder-add-btn" class="bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Add to List</button>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2">
+                                        <button type="button" class="pill-btn reorder-quick-btn" data-grams="56"><span>＋</span>56g</button>
+                                        <button type="button" class="pill-btn reorder-quick-btn" data-grams="112"><span>＋</span>112g</button>
+                                        <button type="button" class="pill-btn reorder-quick-btn" data-grams="227"><span>＋</span>227g</button>
+                                        <button type="button" class="pill-btn reorder-quick-btn" data-grams="454"><span>＋</span>454g</button>
+                                    </div>
+                                    <div id="reorder-status" class="text-[10px] text-gray-500"></div>
+                                </div>
+                            </div>
+                            <div class="bg-pink-50/50 border rounded-lg p-3">
+                                <div class="font-semibold text-pink-800 mb-1">Barcode Tools</div>
+                                <div class="flex flex-wrap gap-2">
+                                    <button id="barcode-export-btn" class="bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Export Barcodes</button>
+                                    <button id="barcode-import-btn" class="bg-white border border-pink-200 text-pink-700 px-3 py-1 rounded-lg text-xs font-semibold">Import Barcodes</button>
+                                    <input id="barcode-import-file" type="file" accept=".csv" class="hidden" />
+                                    <button id="barcode-print-labels" class="bg-emerald-500 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-emerald-600 transition">Print Labels</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
+                            <div class="bg-white border rounded-lg p-3">
+                                <div class="flex items-center justify-between">
+                                    <div class="font-semibold text-pink-800 text-[11px] mb-1">Reorder List</div>
+                                    <div id="reorder-total" class="text-[10px] text-gray-500">0g</div>
+                                </div>
+                                <div id="reorder-list" class="text-[11px] text-gray-600">Reorder list is empty (0 items).</div>
+                                <div class="flex flex-wrap gap-2 mt-2">
+                                    <button id="reorder-copy-btn" class="bg-amber-500 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-amber-600 transition">Copy Reorder List</button>
+                                    <button id="reorder-clear-btn" class="bg-white border border-pink-200 text-pink-700 px-3 py-1 rounded-lg text-xs font-semibold">Clear List</button>
+                                </div>
+                            </div>
+                            <div class="bg-white border rounded-lg p-3">
+                                <div class="font-semibold text-pink-800 text-[11px] mb-1">Usage History</div>
+                                <div id="usage-history" class="text-[11px] text-gray-600">No usage yet.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <details class="bg-white p-4 rounded-xl shadow-lg mt-4">
+                        <summary class="flex items-center justify-between cursor-pointer select-none">
+                            <span class="text-lg font-semibold text-pink-800">Registered Barcodes</span>
+                            <span id="barcode-registry-count" class="text-[11px] text-gray-500"></span>
+                        </summary>
+                        <div class="text-xs text-gray-600 mt-2">Review, edit, or remove barcode mappings.</div>
+                        <div id="barcode-registry" class="space-y-2 text-xs mt-2"></div>
+                    </details>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <div id="barcode-modal" class="barcode-modal hidden">
+        <div class="barcode-panel">
+            <div class="flex items-center justify-between mb-2">
+                <h3 class="text-sm font-semibold text-pink-800">Barcode Scanner</h3>
+                <button id="barcode-close-btn" class="text-xs bg-pink-100 px-2 py-1 rounded">Close</button>
+            </div>
+            <div id="barcode-preview"></div>
+            <div class="text-[11px] text-gray-600 mt-2">Aim the barcode in the box. Works on https or localhost.</div>
+            <div class="grid grid-cols-1 gap-2 text-xs mt-3">
+                <div class="flex items-center gap-2">
+                    <input id="barcode-manual-input" type="text" class="flex-1 rounded border border-pink-200 px-2 py-1" placeholder="Enter barcode manually">
+                    <button id="barcode-manual-btn" class="bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Use</button>
+                </div>
+                <label class="flex items-center gap-2 text-[11px] text-gray-600">
+                    <input id="barcode-batch-toggle" type="checkbox" class="accent-pink-600">
+                    Batch mode (keep scanning)
+                </label>
+            </div>
+            <div id="barcode-register-panel" class="mt-3 hidden">
+                <div class="text-xs text-gray-700 mb-2">Unknown barcode detected. Assign it to a clay color.</div>
+                <div class="grid grid-cols-1 gap-2 text-xs">
+                    <select id="barcode-color-select" class="w-full rounded border border-pink-200 px-2 py-1"></select>
+                    <input id="barcode-grams-input" type="number" min="1" value="56" class="w-full rounded border border-pink-200 px-2 py-1" placeholder="grams to add per scan">
+                    <button id="barcode-save-mapping" class="bg-green-500 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-green-600 transition">Save Mapping</button>
+                </div>
+            </div>
+            <div id="barcode-keyboard-panel" class="mt-3 hidden">
+                <div class="text-xs text-gray-700 mb-2">USB scanner mode: click the field and scan, then press Enter.</div>
+                <div class="flex items-center gap-2 text-xs">
+                    <input id="barcode-hardware-input" type="text" class="flex-1 rounded border border-pink-200 px-2 py-1" placeholder="Scan barcode here">
+                    <button id="barcode-hardware-focus" class="bg-white border border-pink-200 text-pink-700 px-2 py-1 rounded-lg text-xs font-semibold">Focus</button>
+                </div>
+            </div>
+            <div id="barcode-last" class="text-[11px] text-gray-500 mt-2"></div>
+        </div>
+    </div>
+
+    <div id="auth-modal" class="auth-modal hidden">
+        <div class="auth-panel">
+            <div class="flex items-center justify-between mb-2">
+                <h3 class="text-sm font-semibold text-pink-800">Sign in to save your studio</h3>
+                <button id="auth-close-btn" class="text-xs bg-pink-100 px-2 py-1 rounded">Close</button>
+            </div>
+            <div class="text-[11px] text-gray-600 mb-3">Fast sign-in keeps inventory, notes, and barcodes synced.</div>
+            <div class="grid grid-cols-1 gap-2">
+                <button id="auth-google-btn" class="bg-white border border-pink-200 text-pink-700 px-3 py-2 rounded-lg text-xs font-semibold hover:bg-pink-50 transition">Continue with Google</button>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <input id="auth-email" type="email" class="rounded border border-pink-200 px-2 py-1" placeholder="email">
+                    <input id="auth-password" type="password" class="rounded border border-pink-200 px-2 py-1" placeholder="password">
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <button id="auth-signin-btn" class="bg-pink-600 text-white px-3 py-2 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Sign In</button>
+                    <button id="auth-signup-btn" class="bg-amber-500 text-white px-3 py-2 rounded-lg text-xs font-semibold hover:bg-amber-600 transition">Create Account</button>
+                </div>
+                <button id="auth-signout-btn" class="bg-gray-100 text-gray-600 px-3 py-2 rounded-lg text-xs font-semibold hover:bg-gray-200 transition hidden">Sign Out</button>
+                <div id="auth-message" class="text-[11px] text-pink-700"></div>
+            </div>
+        </div>
+    </div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

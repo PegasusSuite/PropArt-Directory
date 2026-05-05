@@ -1,0 +1,6 @@
+# PropArt™ Creator Space — Pegasus Suite LLC
+User-agent: *
+Allow: /
+
+# Authoritative ownership and about
+# https://craft-inardor.web.app/about.html

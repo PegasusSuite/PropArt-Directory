@@ -1,0 +1,5 @@
+# PropArt™ Color Blend Visualizer — Pegasus Suite LLC
+User-agent: *
+Allow: /
+
+# About / ownership: https://craft-inardor.web.app/about.html

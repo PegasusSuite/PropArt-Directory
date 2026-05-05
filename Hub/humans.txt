@@ -1,0 +1,8 @@
+/* TEAM */
+Organization: Pegasus Suite LLC
+Brand: PropArt™ Tools for Polymer Clay Artists — Creator Space
+GitHub: https://github.com/PegasusSuite
+
+/* SITE */
+Primary app / suite hub (custom domain): https://www.craftinardor.com/
+(PropArt™ web presence maps here; Firebase `craft-inardor.web.app` remains Hosting until redirects are final.)

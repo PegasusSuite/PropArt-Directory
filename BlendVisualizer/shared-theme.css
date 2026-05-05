@@ -1,0 +1,69 @@
+/* Source of truth: C:/Users/pilon/OneDrive/Desktop/ClayWorks/shared/theme.css */
+:root {
+  --base-charcoal: #36454f;
+  --signature-navy: #000080;
+  --tech-silver: #c0c0c0;
+  --butterfly-blue: #5d50c6;
+  --vibrant-pink: #e17897;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-blur: 12px;
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --font-size-small: 0.875rem;
+  --radius-pill: 999px;
+  --elevation-1: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --elevation-2: 0 8px 22px rgba(0, 0, 0, 0.18);
+}
+
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-ghost,
+.btn-danger {
+  border: none;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: var(--font-size-small);
+  padding: 10px 14px;
+  min-height: 40px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--butterfly-blue), var(--vibrant-pink));
+  color: #fff;
+  box-shadow: var(--elevation-1);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--elevation-2);
+  filter: brightness(1.04);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, rgba(93, 80, 198, 0.18), rgba(225, 120, 151, 0.18));
+  border: 1px solid rgba(93, 80, 198, 0.35);
+  color: var(--text-primary, #2d1f3d);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #cc3c5e, #a22d4a);
+  color: #fff;
+}
+
+.btn-lift-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.btn-lift-hover:hover {
+  transform: translateY(-2px);
+}

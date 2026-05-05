@@ -1,0 +1,170 @@
+/**
+ * PropArt™ generic theme — design tokens + reusable patterns.
+ * Drop into any page: <link rel="stylesheet" href="propart-generic-theme.css">
+ * Aliases match legacy theme.css / suite directory (--butterfly-blue, --suite-*).
+ */
+
+:root {
+  /* —— Core brand (primary names) —— */
+  --propart-purple: #5d50c6;
+  --propart-purple-deep: #6a5bcf;
+  --propart-pink: #e17897;
+  --propart-pink-soft: #d4879f;
+  --propart-teal: #6dd5c3;
+  --propart-eggplant: #3d3366;
+
+  /* Surfaces & type */
+  --propart-ink: #3b3140;
+  --propart-muted: #5c4f62;
+  --propart-surface: #ffffff;
+  --propart-surface-tint: #fcfaff;
+  --propart-page-lilac: #b7a8dc;
+  --propart-page-mist-start: #faf6ff;
+  --propart-page-mist-mid: #ede4f7;
+  --propart-page-mist-end: #f8f4fc;
+
+  /* Transparent accents (borders, shadows) */
+  --propart-border-pink: rgba(225, 120, 151, 0.22);
+  --propart-border-strong: rgba(225, 120, 151, 0.35);
+  --propart-purple-glow: rgba(93, 80, 198, 0.35);
+  --propart-shadow-purple: rgba(93, 80, 198, 0.14);
+  --propart-shadow-ink: rgba(44, 36, 53, 0.12);
+  --propart-overlay-lilac: rgba(183, 168, 220, 0.45);
+  --propart-overlay-teal: rgba(109, 213, 195, 0.18);
+
+  /* —— Legacy aliases (theme.css / suite) —— */
+  --base-charcoal: #36454f;
+  --signature-navy: #000080;
+  --tech-silver: #c0c0c0;
+  --butterfly-blue: var(--propart-purple);
+  --vibrant-pink: var(--propart-pink);
+
+  --suite-border: var(--propart-border-strong);
+  --suite-muted: var(--propart-muted);
+  --suite-heading: var(--propart-ink);
+  --suite-card: var(--propart-surface);
+  --suite-shadow: var(--propart-shadow-purple);
+  --suite-shadow-deep: var(--propart-shadow-ink);
+
+  /* Radius & motion */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+  --propart-ease-out: cubic-bezier(0.45, 0.05, 0.25, 1);
+  --propart-transition-fast: 0.15s ease;
+  --propart-transition-med: 0.2s ease;
+
+  /* Typography scale (optional) */
+  --font-ui: "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-display: Georgia, "Times New Roman", serif;
+  --font-size-body: 1rem;
+  --font-size-small: 0.875rem;
+}
+
+/* —— Page shells —— */
+
+.propart-bg-page {
+  background:
+    radial-gradient(120% 80% at 50% -10%, var(--propart-overlay-lilac), transparent),
+    radial-gradient(90% 60% at 100% 30%, var(--propart-overlay-teal), transparent),
+    linear-gradient(165deg, var(--propart-page-mist-start) 0%, var(--propart-page-mist-mid) 45%, var(--propart-page-mist-end) 100%);
+}
+
+.propart-surface-panel {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 16px 48px rgba(60, 40, 90, 0.12), inset 0 1px 0 #fff;
+}
+
+.propart-accent-strip {
+  display: block;
+  height: 4px;
+  margin: -1px -1px 0;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  background: linear-gradient(90deg, var(--propart-purple), var(--propart-teal), var(--propart-pink));
+}
+
+/* —— Typography utilities —— */
+
+.propart-text-gradient-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  background: linear-gradient(
+    135deg,
+    var(--propart-eggplant),
+    var(--propart-purple-deep),
+    #c96b8a
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.propart-text-gradient-tagline {
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, var(--propart-purple-deep), var(--propart-pink-soft));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* —— Buttons & links —— */
+
+.propart-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  padding: 10px 18px;
+  font-weight: 700;
+  font-size: 0.86rem;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--propart-purple), var(--propart-pink));
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(93, 80, 198, 0.32);
+  transition: transform var(--propart-transition-fast), box-shadow var(--propart-transition-fast);
+}
+
+.propart-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(93, 80, 198, 0.35);
+}
+
+.propart-btn-primary:focus-visible {
+  outline: 2px solid var(--propart-purple);
+  outline-offset: 2px;
+}
+
+.propart-link {
+  color: var(--propart-purple);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(93, 80, 198, 0.35);
+  transition: border-color var(--propart-transition-med);
+}
+
+.propart-link:hover {
+  border-bottom-color: var(--propart-pink);
+}
+
+/* —— Cards (optional) —— */
+
+.propart-card {
+  border-radius: 20px;
+  border: 1px solid var(--propart-border-pink);
+  background: linear-gradient(180deg, #fff 0%, var(--propart-surface-tint) 55%, #faf7fd 100%);
+  box-shadow: 0 4px 16px rgba(93, 80, 198, 0.08), 0 12px 32px rgba(44, 36, 53, 0.06), inset 0 1px 0 #fff;
+}
+
+.propart-card--raised {
+  border-color: rgba(93, 80, 198, 0.32);
+  box-shadow: 0 6px 20px rgba(93, 80, 198, 0.12), 0 20px 44px rgba(93, 80, 198, 0.14), inset 0 1px 0 #fff;
+}

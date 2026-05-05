@@ -1,0 +1,31 @@
+<!-- Featured Products Carousel - Horizontal Sliding -->
+<div id="featuredProductsCarousel" style="position:relative;width:100%;max-width:500px;margin:0 auto 30px;overflow:hidden;border-radius:12px;min-height:350px;">
+    <div class="carousel-slide" style="position:relative;transform:translateX(0);transition:transform 0.8s ease-in-out;width:100%;">
+        <div style="background:var(--card-bg);padding:20px;border-radius:12px;text-align:center;">
+            <img src="https://images.unsplash.com/photo-1611532736579-6b16e2b50449?auto=format&fit=crop&w=400&q=80" alt="Polymer Clay Starter Kit" style="width:100%;height:250px;object-fit:cover;border-radius:8px;margin-bottom:15px;">
+            <h3>Polymer Clay Starter Kit</h3>
+            <p style="color:var(--text-secondary);">Everything you need to begin!</p>
+            <p style="font-weight:700;color:var(--accent-color);font-size:1.3em;">$24.99</p>
+            <button class="add-to-cart-btn" onclick="addToCart('Polymer Clay Starter Kit', 24.99)" style="width:100%;"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+        </div>
+    </div>
+    <div class="carousel-slide" style="position:absolute;top:0;left:0;width:100%;transform:translateX(100%);transition:transform 0.8s ease-in-out;">
+        <div style="background:var(--card-bg);padding:20px;border-radius:12px;text-align:center;">
+            <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400" alt="Handmade Earrings" style="width:100%;height:250px;object-fit:cover;border-radius:8px;margin-bottom:15px;">
+            <h3>Handmade Polymer Earrings</h3>
+            <p style="color:var(--text-secondary);">Unique handcrafted designs!</p>
+            <p style="font-weight:700;color:var(--accent-color);font-size:1.3em;">$12.99</p>
+            <button class="add-to-cart-btn" onclick="addToCart('Handmade Polymer Earrings', 12.99)" style="width:100%;"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+        </div>
+    </div>
+    <div class="carousel-slide" style="position:absolute;top:0;left:0;width:100%;transform:translateX(100%);transition:transform 0.8s ease-in-out;">
+        <div style="background:var(--card-bg);padding:20px;border-radius:12px;text-align:center;">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400" alt="Clay Tools Bundle" style="width:100%;height:250px;object-fit:cover;border-radius:8px;margin-bottom:15px;">
+            <h3>Clay Tools Bundle (15pcs)</h3>
+            <p style="color:var(--text-secondary);">Professional sculpting tools!</p>
+            <p style="font-weight:700;color:var(--accent-color);font-size:1.3em;">$16.99</p>
+            <button class="add-to-cart-btn" onclick="addToCart('Clay Tools Bundle (15pcs)', 16.99)" style="width:100%;"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+        </div>
+    </div>
+</div>
+<p style="text-align:center;color:var(--text-secondary);font-size:0.9em;">Rotates automatically every 5 seconds ✨</p>

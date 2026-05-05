@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <base href="/CaneDesigner/">
+    <link rel="icon" type="image/svg+xml" href="vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PropArt™ Cane Design System</title>
+    <script type="module" crossorigin src="assets/index-DGEiUVLw.js"></script>
+    <link rel="stylesheet" crossorigin href="assets/index-CWoz4qzd.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      (function () {
+        try {
+          var root = document.documentElement;
+          var d = localStorage.getItem('tbb_darkMode');
+          var o = localStorage.getItem('tbb_oppositeMode');
+          var t = localStorage.getItem('tbb_selectedTheme') || 'default';
+          var themes = ['default','ocean','sunset','forest','berry','lavender','synthwave'];
+          if (d === '1' || d === 'true') root.classList.add('dark');
+          if (o === '1' || o === 'true') root.classList.add('opposite');
+          root.setAttribute('data-theme', themes.indexOf(t) >= 0 ? t : 'default');
+        } catch (e) {}
+      })();
+    </script>
+  </body>
+</html>

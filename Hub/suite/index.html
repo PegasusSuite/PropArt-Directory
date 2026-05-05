@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Official hub for PropArt™ Tools for Polymer Clay Artists — suite directory co-hosted with Creator Space. Developed and owned by Pegasus Suite LLC.">
+  <meta name="author" content="Pegasus Suite LLC">
+  <meta name="copyright" content="© 2026 Pegasus Suite LLC. PropArt™ is a trademark of Pegasus Suite LLC.">
+  <meta name="robots" content="index, follow">
+  <title>PropArt™ Directory of Applications</title>
+  <link rel="icon" href="https://pegasussuite.github.io/PropArt-Directory/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="./manifest.json">
+  <meta name="theme-color" content="#9B7EBD">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"WebApplication","name":"PropArt™ Directory of Applications","alternateName":"PropArt™ Tools for Polymer Clay Artists — Suite Hub","applicationCategory":"DesignApplication","operatingSystem":"Any","url":"https://www.propart.app/suite/","description":"Co-hosted suite directory for PropArt™ web applications.","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Pegasus Suite LLC","url":"https://www.propart.app/about.html"},"author":{"@type":"Organization","name":"Pegasus Suite LLC","sameAs":["https://github.com/PegasusSuite"]},"copyrightHolder":{"@type":"Organization","name":"Pegasus Suite LLC"},"copyrightYear":2026,"codeRepository":"https://github.com/PegasusSuite/PropArt-Creator-Space"}
+  ]}
+  </script>
+  <link rel="stylesheet" href="./propart-generic-theme.css">
+  <style>
+    :root {
+      --suite-border: rgba(225, 120, 151, 0.35);
+      --suite-muted: #5c4f62;
+      --suite-heading: #3b3140;
+      /* Darkest brand ink for card titles & body (not neutral black) */
+      --suite-card-ink: #3d3366;
+      --suite-card: #ffffff;
+      --suite-shadow: rgba(93, 80, 198, 0.14);
+      --suite-shadow-deep: rgba(44, 36, 53, 0.12);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background:
+        radial-gradient(125% 90% at 50% -12%, rgba(155, 128, 210, 0.52), transparent 58%),
+        radial-gradient(95% 60% at 8% 40%, rgba(120, 95, 185, 0.14), transparent 45%),
+        radial-gradient(90% 55% at 100% 28%, rgba(95, 200, 180, 0.24), transparent 50%),
+        linear-gradient(168deg, #e8dbf7 0%, #ddd0ee 38%, #ebe2f9 62%, #f5f0fc 100%);
+      color: var(--suite-heading);
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: clamp(12px, 3vw, 24px);
+    }
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      left: 12px;
+      top: 12px;
+      width: auto;
+      height: auto;
+      padding: 10px 14px;
+      background: var(--butterfly-blue, #5D50C6);
+      color: #fff;
+      border-radius: 10px;
+      z-index: 10000;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .wrap {
+      position: relative;
+      width: min(960px, 100%);
+      max-height: none;
+      overflow: visible;
+      background: rgba(255, 255, 255, 0.96);
+      border: none;
+      border-radius: var(--radius-lg, 24px);
+      padding: clamp(12px, 1.8vw, 18px) clamp(12px, 1.8vw, 18px);
+      display: flex;
+      flex-direction: column;
+      /* Inset frame + glow; no white border/gleam so color meets the card edge */
+      animation: suite-frame-breathe 10.4s ease-in-out infinite alternate;
+      will-change: box-shadow;
+    }
+    @keyframes suite-frame-breathe {
+      0% {
+        box-shadow:
+          0 14px 44px rgba(60, 40, 90, 0.13),
+          0 0 22px rgba(93, 80, 198, 0.18),
+          inset 0 0 0 clamp(2.5px, 0.68vw, 4px) rgba(93, 80, 198, 0.52);
+      }
+      50% {
+        box-shadow:
+          0 18px 54px rgba(109, 213, 195, 0.14),
+          0 0 36px rgba(109, 213, 195, 0.28),
+          inset 0 0 0 clamp(3.5px, 0.98vw, 5.5px) rgba(82, 170, 160, 0.48);
+      }
+      100% {
+        box-shadow:
+          0 16px 52px rgba(225, 120, 151, 0.14),
+          0 0 32px rgba(225, 120, 151, 0.26),
+          inset 0 0 0 clamp(3px, 0.78vw, 4.5px) rgba(186, 95, 175, 0.56);
+      }
+    }
+    .masthead {
+      text-align: center;
+      margin-bottom: 6px;
+      flex-shrink: 0;
+    }
+    .suite-lockup-link {
+      display: block;
+      text-decoration: none;
+      outline: none;
+      margin: 0 auto 4px;
+    }
+    .suite-lockup-link:focus-visible {
+      outline: 2px solid var(--butterfly-blue, #5D50C6);
+      outline-offset: 4px;
+      border-radius: 12px;
+    }
+    .suite-lockup-img {
+      width: min(100%, 560px);
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      filter: drop-shadow(0 4px 20px rgba(93, 80, 198, 0.2));
+    }
+    .suite-brand-row {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(10px, 2.2vw, 18px);
+      margin: 0;
+      padding: 0;
+      border: none;
+      font: inherit;
+    }
+    .suite-brand-row__icon {
+      width: clamp(54px, 11vw, 76px);
+      height: auto;
+      flex-shrink: 0;
+      object-fit: contain;
+      filter: drop-shadow(0 3px 12px rgba(93, 80, 198, 0.35));
+    }
+    .suite-brand-row__name {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.1rem, 5.8vw, 3.15rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+    /* Per-letter gradient slice */
+    .suite-letter {
+      display: inline-block;
+      background-image: linear-gradient(135deg, #5d50c6 0%, #7a5dcf 42%, #c96b8a 100%);
+      background-size: 240% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .suite-letter--1 { background-position: 0% 50%; }
+    .suite-letter--2 { background-position: 16% 50%; }
+    .suite-letter--3 { background-position: 32% 50%; }
+    .suite-letter--4 { background-position: 48% 50%; }
+    .suite-letter--5 { background-position: 64% 50%; }
+    .suite-letter--6 { background-position: 80% 50%; }
+    .suite-letter--7 { background-position: 100% 50%; }
+    .suite-tm-sup {
+      font-size: 0.48em;
+      font-weight: 800;
+      vertical-align: super;
+      margin-left: 0.04em;
+      line-height: 0;
+    }
+    .suite-letter-tm {
+      display: inline-block;
+      background-image: linear-gradient(135deg, #7a5dcf, #e09ab5);
+      background-size: 100% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .suite-tagline {
+      margin: 10px 0 0;
+      font-size: clamp(0.8rem, 1.9vw, 0.95rem);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, var(--butterfly-blue, #6a5bcf), var(--vibrant-pink, #d4879f));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      opacity: 0.96;
+    }
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* App grid — no overlap on any viewport (replaces 3D carousel) */
+    .suite-apps-section {
+      flex: 1 1 auto;
+      min-height: 0;
+      margin-top: 4px;
+    }
+    .suite-apps-heading {
+      margin: 0 0 8px;
+      font-size: clamp(0.72rem, 1.6vw, 0.82rem);
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-align: center;
+      background: linear-gradient(90deg, var(--butterfly-blue, #6a5bcf), var(--vibrant-pink, #d4879f));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .suite-apps-grid {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+      gap: clamp(10px, 2.2vw, 14px);
+      align-items: stretch;
+    }
+    .suite-app-card {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      min-width: 0;
+    }
+    .suite-app-card .tool {
+      width: 100%;
+    }
+
+    /* Card tile — crisp panels, slick friendly curve */
+    .tool {
+      border-radius: 20px;
+      overflow: hidden;
+      isolation: isolate;
+      border: 1px solid rgba(225, 120, 151, 0.22);
+      background: linear-gradient(180deg, #ffffff 0%, #fcfaff 55%, #faf7fd 100%);
+      box-shadow: 0 4px 16px rgba(93, 80, 198, 0.08), 0 12px 32px rgba(44, 36, 53, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+      height: 100%;
+      min-height: 212px;
+      max-height: none;
+      display: flex;
+      flex-direction: column;
+      padding: 14px 14px 16px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      /* Flatten card paint vs parent preserve-3d so UI text (esp. CTA) stays sharp */
+      transform: translateZ(0);
+      transform-style: flat;
+    }
+
+    .tool h2 {
+      margin: 0 0 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.02rem, 3.15vw, 1.14rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.22;
+      /* Match masthead wordmark gradient, scaled for card tiles */
+      background-image: linear-gradient(135deg, #5d50c6 0%, #7a5dcf 42%, #c96b8a 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
+      min-height: 2.4em;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
+    .tool small {
+      flex: 1 1 auto;
+      margin: 0 0 10px;
+      color: var(--suite-card-ink);
+      font-size: 0.95rem;
+      line-height: 1.48;
+      opacity: 0.92;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+      min-height: 3.9em;
+    }
+    .tool-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-top: auto;
+      isolation: isolate;
+    }
+    .tool-actions a.cta-main {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border-radius: var(--radius-pill, 999px);
+      padding: 12px 20px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 700;
+      font-size: clamp(0.92rem, 2.62vw, 1.02rem);
+      letter-spacing: -0.012em;
+      line-height: 1.2;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      margin-bottom: 0;
+      background: linear-gradient(135deg, var(--butterfly-blue, #5D50C6), var(--vibrant-pink, #E17897));
+      color: #fff;
+      /* Tight shadow reads sharper than blurred glow on LCD */
+      text-shadow: 0 1px 0 rgba(31, 24, 48, 0.45);
+      box-shadow: 0 4px 14px rgba(93, 80, 198, 0.32);
+      position: relative;
+      z-index: 1;
+      -webkit-font-smoothing: subpixel-antialiased;
+      -moz-osx-font-smoothing: auto;
+      text-rendering: geometricPrecision;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+    }
+    .tool-actions a.cta-main:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 22px rgba(93, 80, 198, 0.35);
+    }
+    .tool-actions a.cta-main:focus-visible {
+      outline: 2px solid var(--butterfly-blue, #5D50C6);
+      outline-offset: 2px;
+    }
+
+    .suite-apps-grid .tool:hover {
+      border-color: rgba(93, 80, 198, 0.32);
+      box-shadow:
+        0 6px 20px rgba(93, 80, 198, 0.1),
+        0 14px 36px rgba(93, 80, 198, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+    }
+
+    footer.site-footer strong {
+      color: var(--suite-card-ink);
+      font-weight: 700;
+    }
+    footer.site-footer {
+      flex-shrink: 0;
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid rgba(225, 120, 151, 0.22);
+      font-size: 0.84rem;
+      color: var(--suite-muted);
+      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: baseline;
+      gap: 0.25rem 1rem;
+    }
+    .site-footer-link {
+      color: var(--butterfly-blue, #5D50C6);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(93, 80, 198, 0.35);
+    }
+    .site-footer-link:hover {
+      border-bottom-color: var(--vibrant-pink, #E17897);
+    }
+
+    .suite-brand-authority {
+      margin: 6px 0 10px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid var(--suite-border);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(245, 240, 252, 0.95) 100%);
+      box-shadow: 0 6px 20px var(--suite-shadow);
+      text-align: left;
+      font-size: clamp(13px, 1.05vw, 15px);
+      line-height: 1.5;
+      color: var(--suite-muted);
+    }
+    .suite-brand-authority strong {
+      color: var(--suite-card-ink);
+      font-weight: 700;
+    }
+    .suite-brand-authority a {
+      color: var(--butterfly-blue, #5D50C6);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    @media (max-width: 520px) {
+      body {
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tool-actions a.cta-main:hover {
+        transform: none;
+      }
+      .wrap {
+        animation: none;
+        box-shadow:
+          0 16px 48px rgba(60, 40, 90, 0.12),
+          inset 0 0 0 clamp(3px, 0.78vw, 4.5px) rgba(93, 80, 198, 0.48);
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#suite-apps">Skip to applications</a>
+  <main class="wrap">
+    <header class="masthead">
+      <h1 class="visually-hidden">PropArt™ Directory of Applications</h1>
+      <a class="suite-lockup-link" href="./index.html" title="PropArt™ suite directory — home" aria-label="PropArt™ Tools for Polymer Clay Artists — suite directory home">
+        <img class="suite-lockup-img" src="./propart-lockup-horizontal.svg" alt="PropArt™ Tools for Polymer Clay Artists — official horizontal mark" width="820" height="200" decoding="async">
+      </a>
+      <p class="suite-tagline">Directory of Applications</p>
+    </header>
+
+    <section class="suite-brand-authority" aria-labelledby="suite-brand-heading">
+      <h2 id="suite-brand-heading" class="visually-hidden">Brand and ownership</h2>
+      <p><strong>PropArt™ Tools for Polymer Clay Artists</strong> is a unified suite of browser-based design tools developed and owned by <a href="../about.html">Pegasus Suite LLC</a>. This directory is the canonical entry point for switching between live applications; it exists so artists, partners, and automated systems can see the same ownership and URLs in one place.</p>
+    </section>
+
+    <section id="suite-apps" class="suite-apps-section" aria-labelledby="suite-apps-heading">
+      <h2 id="suite-apps-heading" class="suite-apps-heading">Applications</h2>
+      <ul class="suite-apps-grid">
+        <li class="suite-app-card">
+          <article class="tool">
+            <h2>PropArt™ Creator Space</h2>
+            <small>Main hub: shop, community, courses, account &amp; settings.</small>
+            <div class="tool-actions">
+              <a class="cta-main" href="../index.html">Open hub</a>
+            </div>
+          </article>
+        </li>
+        <li class="suite-app-card">
+          <article class="tool">
+            <h2>PropArt™ Cropper Tool</h2>
+            <small>Slice sheets, pack exports, and keep cropper-native projects ready for Studio.</small>
+            <div class="tool-actions">
+              <a class="cta-main" href="https://propart-cropper.web.app/">Open Cropper</a>
+            </div>
+          </article>
+        </li>
+        <li class="suite-app-card">
+          <article class="tool">
+            <h2>PropArt™ Studio</h2>
+            <small>Palette planning, inventory, and slab workflow — paired with cane design flows.</small>
+            <div class="tool-actions">
+              <a class="cta-main" href="https://propart-studio.web.app/">Open Studio</a>
+            </div>
+          </article>
+        </li>
+        <li class="suite-app-card">
+          <article class="tool">
+            <h2>PropArt™ Color Blend Visualizer</h2>
+            <small>Fast palettes and clay blend recipes — built for cane and surface work.</small>
+            <div class="tool-actions">
+              <a class="cta-main" href="https://propart-color-blend.web.app/">Open picker</a>
+            </div>
+          </article>
+        </li>
+        <li class="suite-app-card">
+          <article class="tool">
+            <h2>PropArt™ Cane Design Studio</h2>
+            <small>Cane builder and shared-project flows — return to PropArt™ Studio anytime.</small>
+            <div class="tool-actions">
+              <a class="cta-main" href="https://propart-cane.web.app/">Open system</a>
+            </div>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <footer class="site-footer">
+      <span><strong>© 2026 PropArt™ Tools for Polymer Clay Artists.</strong> Developed and Owned by <a class="site-footer-link" href="../about.html">Pegasus Suite LLC</a>. All Rights Reserved.</span>
+    </footer>
+  </main>
+
+</body>
+</html>

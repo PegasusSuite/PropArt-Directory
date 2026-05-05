@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio | Monetize & Vault</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <style>
+        body { margin: 0; font-family: 'Quicksand', sans-serif; background: #FFF9FB; color: #4A4A4A; }
+        .themed-container { max-width: 1280px; margin: 32px auto; padding: 20px 32px; background: rgba(255,255,255,0.92); border-radius: 16px; border: 1px solid #fbcfe8; box-shadow: 0 10px 30px rgba(217,106,138,0.15); }
+        .vault-pill { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.2rem 0.55rem; border-radius: 9999px; font-size: 0.7rem; font-weight: 600; border: 1px solid #fbcfe8; color: #D96A8A; background: #fff0f5; }
+        .vault-card { border: 1px solid #fbcfe8; border-radius: 12px; padding: 12px; background: #fff; display: flex; flex-direction: column; gap: 8px; }
+        .vault-card.locked { background: #fff7fb; }
+        .product-card { border: 1px solid #fbcfe8; border-radius: 12px; padding: 12px; background: #fff; display: flex; flex-direction: column; gap: 8px; }
+        .product-thumb { height: 120px; border-radius: 10px; background: linear-gradient(135deg, #ffe4e9, #fdf2f8); display: flex; align-items: center; justify-content: center; font-weight: 700; color: #D96A8A; }
+        .cart-panel { border: 1px dashed #fbcfe8; border-radius: 12px; padding: 10px 12px; background: #fff7fb; }
+        .checkout-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.35); display: none; align-items: center; justify-content: center; z-index: 2200; }
+        .checkout-panel { width: min(620px, 94vw); background: #fff; border-radius: 16px; padding: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+        .basket-btn { position: relative; display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.7rem; border-radius: 9999px; background: #fff0f5; color: #D96A8A; font-weight: 600; font-size: 0.75rem; border: 1px solid #fbcfe8; }
+        .basket-badge { position: absolute; top: -6px; right: -6px; background: #f43f5e; color: white; border-radius: 9999px; font-size: 0.65rem; padding: 0 6px; line-height: 1.4; border: 2px solid #fff; }
+    </style>
+</head>
+<body>
+    <div class="themed-container">
+        <div class="flex items-center justify-between mb-4">
+            <h1 class="text-2xl font-bold text-pink-800">Monetize & Figuring Vault</h1>
+            <a href="index.html" class="text-xs text-pink-700 underline">Back to Studio</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-xl shadow-lg mb-4">
+            <div class="flex items-center justify-between gap-3 mb-3">
+                <h2 class="text-xl font-semibold text-pink-800">Quick Order (2–3 clicks)</h2>
+                <div class="flex items-center gap-2">
+                    <button id="basket-btn" class="basket-btn" aria-label="Basket">
+                        <span>🧺</span>
+                        <span>Basket</span>
+                        <span id="basket-count" class="basket-badge">0</span>
+                    </button>
+                    <button id="checkout-open-btn" class="bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Checkout</button>
+                </div>
+            </div>
+            <div class="text-xs text-gray-600 mb-3">Tap Buy Now to jump straight to checkout.</div>
+            <div id="quick-cart" class="cart-panel text-xs text-gray-700 mb-3">Cart is empty.</div>
+            <div id="quick-order-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div class="bg-white p-4 rounded-xl shadow-lg">
+                <h2 class="text-xl font-semibold mb-2 text-center text-pink-800">1) Price & Profit Calculator</h2>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <input id="mat-cost" type="number" step="0.01" class="rounded border border-pink-200 px-2 py-1" placeholder="$/gram">
+                    <input id="grams-used" type="number" step="1" class="rounded border border-pink-200 px-2 py-1" placeholder="grams used">
+                    <input id="overhead" type="number" step="0.01" class="rounded border border-pink-200 px-2 py-1" placeholder="overhead $">
+                    <input id="labor-mins" type="number" step="1" class="rounded border border-pink-200 px-2 py-1" placeholder="labor mins">
+                    <input id="hourly-rate" type="number" step="0.01" class="rounded border border-pink-200 px-2 py-1" placeholder="$ / hour">
+                    <input id="profit-margin" type="number" step="1" class="rounded border border-pink-200 px-2 py-1" placeholder="profit %">
+                </div>
+                <button id="calc-price" class="w-full mt-2 bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Calculate</button>
+                <div id="price-output" class="text-xs text-gray-700 mt-2"></div>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl shadow-lg">
+                <h2 class="text-xl font-semibold mb-2 text-center text-pink-800">2) Wholesale / Retail</h2>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <input id="retail-price" type="number" step="0.01" class="rounded border border-pink-200 px-2 py-1" placeholder="retail $">
+                    <input id="wholesale-discount" type="number" step="1" class="rounded border border-pink-200 px-2 py-1" placeholder="discount %">
+                </div>
+                <button id="calc-wholesale" class="w-full mt-2 bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Calculate</button>
+                <div id="wholesale-output" class="text-xs text-gray-700 mt-2"></div>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl shadow-lg">
+                <h2 class="text-xl font-semibold mb-2 text-center text-pink-800">3) Batch Profit Planner</h2>
+                <div class="grid grid-cols-3 gap-2 text-xs">
+                    <input id="batch-qty" type="number" step="1" class="rounded border border-pink-200 px-2 py-1" placeholder="qty">
+                    <input id="price-item" type="number" step="0.01" class="rounded border border-pink-200 px-2 py-1" placeholder="price $">
+                    <input id="cost-item" type="number" step="0.01" class="rounded border border-pink-200 px-2 py-1" placeholder="cost $">
+                </div>
+                <button id="calc-batch" class="w-full mt-2 bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Calculate</button>
+                <div id="batch-profit-output" class="text-xs text-gray-700 mt-2"></div>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl shadow-lg">
+                <h2 class="text-xl font-semibold mb-2 text-center text-pink-800">4) Break-Even Finder</h2>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <input id="fixed-costs" type="number" step="0.01" class="rounded border border-pink-200 px-2 py-1" placeholder="fixed costs $">
+                    <input id="profit-per-item" type="number" step="0.01" class="rounded border border-pink-200 px-2 py-1" placeholder="profit/item $">
+                </div>
+                <button id="calc-breakeven" class="w-full mt-2 bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Calculate</button>
+                <div id="breakeven-output" class="text-xs text-gray-700 mt-2"></div>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl shadow-lg">
+                <h2 class="text-xl font-semibold mb-2 text-center text-pink-800">5) Listing Builder</h2>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <input id="listing-name" type="text" class="rounded border border-pink-200 px-2 py-1" placeholder="product name">
+                    <input id="listing-size" type="text" class="rounded border border-pink-200 px-2 py-1" placeholder="size">
+                    <input id="listing-materials" type="text" class="rounded border border-pink-200 px-2 py-1" placeholder="materials">
+                    <input id="listing-keywords" type="text" class="rounded border border-pink-200 px-2 py-1" placeholder="keywords">
+                </div>
+                <button id="build-listing" class="w-full mt-2 bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Generate</button>
+                <textarea id="listing-output" class="w-full mt-2 rounded border border-pink-200 p-2 text-xs" rows="4" placeholder="Listing text..."></textarea>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl shadow-lg">
+                <h2 class="text-xl font-semibold mb-2 text-center text-pink-800">6) SKU Generator</h2>
+                <div class="grid grid-cols-3 gap-2 text-xs">
+                    <input id="sku-prefix" type="text" class="rounded border border-pink-200 px-2 py-1" placeholder="prefix">
+                    <input id="sku-color" type="text" class="rounded border border-pink-200 px-2 py-1" placeholder="color">
+                    <input id="sku-size" type="text" class="rounded border border-pink-200 px-2 py-1" placeholder="size">
+                </div>
+                <button id="gen-sku" class="w-full mt-2 bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Generate</button>
+                <div id="sku-output" class="text-xs text-gray-700 mt-2"></div>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl shadow-lg">
+                <h2 class="text-xl font-semibold mb-2 text-center text-pink-800">7) Sales Log</h2>
+                <div class="grid grid-cols-4 gap-2 text-xs">
+                    <input id="sale-date" type="date" class="rounded border border-pink-200 px-2 py-1">
+                    <input id="sale-item" type="text" class="rounded border border-pink-200 px-2 py-1" placeholder="item">
+                    <input id="sale-price" type="number" step="0.01" class="rounded border border-pink-200 px-2 py-1" placeholder="price">
+                    <input id="sale-cost" type="number" step="0.01" class="rounded border border-pink-200 px-2 py-1" placeholder="cost">
+                </div>
+                <button id="add-sale" class="w-full mt-2 bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Add Sale</button>
+                <div id="sales-summary" class="text-xs text-gray-700 mt-2"></div>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl shadow-lg">
+                <h2 class="text-xl font-semibold mb-2 text-center text-pink-800">8) Shipping Estimator</h2>
+                <div class="grid grid-cols-3 gap-2 text-xs">
+                    <input id="ship-weight" type="number" step="0.1" class="rounded border border-pink-200 px-2 py-1" placeholder="oz">
+                    <input id="ship-base" type="number" step="0.01" class="rounded border border-pink-200 px-2 py-1" placeholder="base $">
+                    <input id="ship-per-oz" type="number" step="0.01" class="rounded border border-pink-200 px-2 py-1" placeholder="$ per oz">
+                </div>
+                <button id="calc-ship" class="w-full mt-2 bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Estimate</button>
+                <div id="ship-output" class="text-xs text-gray-700 mt-2"></div>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl shadow-lg">
+                <h2 class="text-xl font-semibold mb-2 text-center text-pink-800">9) Bundle Optimizer</h2>
+                <div class="grid grid-cols-3 gap-2 text-xs">
+                    <input id="bundle-price" type="number" step="0.01" class="rounded border border-pink-200 px-2 py-1" placeholder="price $">
+                    <input id="bundle-qty" type="number" step="1" class="rounded border border-pink-200 px-2 py-1" placeholder="qty">
+                    <input id="bundle-discount" type="number" step="1" class="rounded border border-pink-200 px-2 py-1" placeholder="discount %">
+                </div>
+                <button id="calc-bundle" class="w-full mt-2 bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Optimize</button>
+                <div id="bundle-output" class="text-xs text-gray-700 mt-2"></div>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl shadow-lg">
+                <h2 class="text-xl font-semibold mb-2 text-center text-pink-800">10) Inventory Valuation</h2>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <input id="avg-cost" type="number" step="0.01" class="rounded border border-pink-200 px-2 py-1" placeholder="avg $/gram">
+                    <input id="value-margin" type="number" step="1" class="rounded border border-pink-200 px-2 py-1" placeholder="markup %">
+                </div>
+                <button id="calc-value" class="w-full mt-2 bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Calculate</button>
+                <div id="value-output" class="text-xs text-gray-700 mt-2"></div>
+            </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-xl shadow-lg my-6">
+            <div class="flex items-center justify-between gap-3 mb-2">
+                <h2 class="text-xl font-semibold text-pink-800">Polymer Clay Figuring Vault</h2>
+                <div class="vault-pill">Tokens: <span id="vault-token-balance">0</span></div>
+            </div>
+            <div class="text-xs text-gray-600 mb-3">Micro‑lessons, pose guides, and templates. Unlock with tokens.</div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-2 text-xs">
+                <button class="bg-amber-500 text-white px-3 py-2 rounded-lg font-semibold hover:bg-amber-600 transition" data-token-pack="10">Buy 10 tokens · $1.99</button>
+                <button class="bg-pink-600 text-white px-3 py-2 rounded-lg font-semibold hover:bg-pink-700 transition" data-token-pack="25">Buy 25 tokens · $3.99</button>
+                <button class="bg-purple-500 text-white px-3 py-2 rounded-lg font-semibold hover:bg-purple-600 transition" data-token-pack="60">Buy 60 tokens · $7.99</button>
+            </div>
+            <div id="vault-message" class="text-[11px] text-pink-700 mt-2"></div>
+        </div>
+
+        <div class="bg-white p-4 rounded-xl shadow-lg mb-6">
+            <div class="flex items-center justify-between gap-3 mb-2">
+                <h3 class="text-sm font-semibold text-pink-800">Token Studio</h3>
+                <span class="vault-pill">Earn tokens</span>
+            </div>
+            <div class="text-xs text-gray-600 mb-2">Complete sculpt sprints or claim a daily bonus.</div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-2 text-xs">
+                <button id="vault-sprint-btn" class="bg-pink-600 text-white px-3 py-2 rounded-lg font-semibold hover:bg-pink-700 transition">Sculpt Sprint</button>
+                <button id="vault-daily-btn" class="bg-amber-500 text-white px-3 py-2 rounded-lg font-semibold hover:bg-amber-600 transition">Daily Bonus</button>
+                <div class="vault-pill justify-center">Progress: <span id="vault-sprint-progress">0/10</span></div>
+            </div>
+            <div id="vault-game-message" class="text-[11px] text-pink-700 mt-2"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div class="vault-card locked" data-content-id="armature" data-cost="8">
+                <div class="flex items-center justify-between">
+                    <div class="text-sm font-semibold text-pink-800">Armature Blueprint</div>
+                    <span class="vault-pill">8 tokens</span>
+                </div>
+                <div class="text-xs text-gray-600">Wire gauges, spine bends, and balance points for 3–6" figures.</div>
+                <div class="vault-content text-xs text-gray-700 hidden">
+                    <ul class="list-disc pl-4">
+                        <li>Gauge 18–20 for torso, 22–24 for limbs</li>
+                        <li>Anchor feet with a wide base for stability</li>
+                        <li>Keep shoulders and hips on opposite tilt</li>
+                    </ul>
+                </div>
+                <button class="vault-unlock-btn bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Unlock</button>
+            </div>
+            <div class="vault-card locked" data-content-id="face" data-cost="10">
+                <div class="flex items-center justify-between">
+                    <div class="text-sm font-semibold text-pink-800">Face Proportions Guide</div>
+                    <span class="vault-pill">10 tokens</span>
+                </div>
+                <div class="text-xs text-gray-600">Stylized ratios, eye spacing, and nose bridge landmarks.</div>
+                <div class="vault-content text-xs text-gray-700 hidden">
+                    <div>Eye line sits at the mid‑height of the head. Eyes one‑eye apart.</div>
+                    <div class="mt-1">Nose base halfway between eye line and chin.</div>
+                </div>
+                <button class="vault-unlock-btn bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Unlock</button>
+            </div>
+            <div class="vault-card locked" data-content-id="poses" data-cost="12">
+                <div class="flex items-center justify-between">
+                    <div class="text-sm font-semibold text-pink-800">Dynamic Pose Pack</div>
+                    <span class="vault-pill">12 tokens</span>
+                </div>
+                <div class="text-xs text-gray-600">Turnarounds and balance tips for action poses.</div>
+                <div class="vault-content text-xs text-gray-700 hidden">
+                    <div>Use a line of action to drive the spine curve.</div>
+                    <div class="mt-1">Shift weight over the support foot for stability.</div>
+                </div>
+                <button class="vault-unlock-btn bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Unlock</button>
+            </div>
+            <div class="vault-card locked" data-content-id="hands" data-cost="9">
+                <div class="flex items-center justify-between">
+                    <div class="text-sm font-semibold text-pink-800">Hands & Feet Mini‑Course</div>
+                    <span class="vault-pill">9 tokens</span>
+                </div>
+                <div class="text-xs text-gray-600">Quick sculpting steps for expressive hands and clean toes.</div>
+                <div class="vault-content text-xs text-gray-700 hidden">
+                    <div>Start with mitten shapes, then slice finger grooves.</div>
+                    <div class="mt-1">Feet read best with a defined heel and arch.</div>
+                </div>
+                <button class="vault-unlock-btn bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Unlock</button>
+            </div>
+            <div class="vault-card locked" data-content-id="clothing" data-cost="7">
+                <div class="flex items-center justify-between">
+                    <div class="text-sm font-semibold text-pink-800">Clothing Fold Cheat‑Sheet</div>
+                    <span class="vault-pill">7 tokens</span>
+                </div>
+                <div class="text-xs text-gray-600">How to sculpt believable fabric flow.</div>
+                <div class="vault-content text-xs text-gray-700 hidden">
+                    <div>Pull folds toward anchor points: elbows, waistline, knees.</div>
+                    <div class="mt-1">Deep folds = shadows; shallow folds = highlights.</div>
+                </div>
+                <button class="vault-unlock-btn bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Unlock</button>
+            </div>
+            <div class="vault-card locked" data-content-id="scale" data-cost="6">
+                <div class="flex items-center justify-between">
+                    <div class="text-sm font-semibold text-pink-800">Scale & Silhouette Planner</div>
+                    <span class="vault-pill">6 tokens</span>
+                </div>
+                <div class="text-xs text-gray-600">Mini scale charts and silhouette templates.</div>
+                <div class="vault-content text-xs text-gray-700 hidden">
+                    <div>3" figure: head ~0.9", torso ~1", legs ~1.1".</div>
+                    <div class="mt-1">Keep silhouettes readable with 3 big shapes.</div>
+                </div>
+                <button class="vault-unlock-btn bg-pink-600 text-white px-3 py-1 rounded-lg text-xs font-semibold hover:bg-pink-700 transition">Unlock</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="checkout-modal" class="checkout-modal">
+        <div class="checkout-panel">
+            <div class="flex items-center justify-between mb-2">
+                <h3 class="text-sm font-semibold text-pink-800">Quick Checkout</h3>
+                <button id="checkout-close-btn" class="text-xs bg-pink-100 px-2 py-1 rounded">Close</button>
+            </div>
+            <div id="checkout-summary" class="text-xs text-gray-700 border rounded-lg p-2 mb-3"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs">
+                <input id="checkout-name" type="text" class="rounded border border-pink-200 px-2 py-1" placeholder="full name">
+                <input id="checkout-email" type="email" class="rounded border border-pink-200 px-2 py-1" placeholder="email">
+                <input id="checkout-address" type="text" class="rounded border border-pink-200 px-2 py-1" placeholder="address">
+                <input id="checkout-city" type="text" class="rounded border border-pink-200 px-2 py-1" placeholder="city">
+                <input id="checkout-state" type="text" class="rounded border border-pink-200 px-2 py-1" placeholder="state">
+                <input id="checkout-zip" type="text" class="rounded border border-pink-200 px-2 py-1" placeholder="zip">
+            </div>
+            <div class="flex items-center justify-between mt-3">
+                <div id="checkout-total" class="text-sm font-semibold text-pink-800"></div>
+                <button id="checkout-place-btn" class="bg-emerald-500 text-white px-4 py-2 rounded-lg text-xs font-semibold hover:bg-emerald-600 transition">Place Order</button>
+            </div>
+            <div id="checkout-message" class="text-[11px] text-pink-700 mt-2"></div>
+        </div>
+    </div>
+
+    <script>
+        const state = {
+            cart: JSON.parse(localStorage.getItem('studioCart') || '[]'),
+            salesLog: JSON.parse(localStorage.getItem('studioSalesLog') || '[]'),
+            market: JSON.parse(localStorage.getItem('studioMarket') || '{"tokens":0,"unlocks":{},"game":{"clicks":0,"goal":10,"lastDaily":""}}')
+        };
+
+        const quickProducts = [
+            { id: 'starter-kit', name: 'Starter Clay Kit', price: 24.0 },
+            { id: 'cutter-pack', name: 'Cutter Pack (10)', price: 18.0 },
+            { id: 'texture-roller', name: 'Texture Roller', price: 12.0 },
+            { id: 'premium-slab', name: 'Premium Slab Pack', price: 28.0 },
+            { id: 'tool-set', name: 'Detail Tool Set', price: 16.0 },
+            { id: 'gloss-finish', name: 'Gloss Finish', price: 10.0 }
+        ];
+
+        const dom = {
+            quickOrderGrid: document.getElementById('quick-order-grid'),
+            quickCart: document.getElementById('quick-cart'),
+            basketCount: document.getElementById('basket-count'),
+            basketBtn: document.getElementById('basket-btn'),
+            checkoutOpenBtn: document.getElementById('checkout-open-btn'),
+            checkoutModal: document.getElementById('checkout-modal'),
+            checkoutCloseBtn: document.getElementById('checkout-close-btn'),
+            checkoutSummary: document.getElementById('checkout-summary'),
+            checkoutTotal: document.getElementById('checkout-total'),
+            checkoutPlaceBtn: document.getElementById('checkout-place-btn'),
+            checkoutMessage: document.getElementById('checkout-message'),
+            vaultTokenBalance: document.getElementById('vault-token-balance'),
+            vaultMessage: document.getElementById('vault-message'),
+            vaultSprintBtn: document.getElementById('vault-sprint-btn'),
+            vaultDailyBtn: document.getElementById('vault-daily-btn'),
+            vaultSprintProgress: document.getElementById('vault-sprint-progress'),
+            vaultGameMessage: document.getElementById('vault-game-message')
+        };
+
+        function getInventoryTotals(avgCost) {
+            const inventory = JSON.parse(localStorage.getItem('studioInventory') || '{}');
+            const packCosts = JSON.parse(localStorage.getItem('studioInventoryCosts') || '{}');
+            const packSizes = JSON.parse(localStorage.getItem('studioInventoryPackSizes') || '{}');
+            let totalGrams = 0;
+            let totalCost = 0;
+            let missingCostGrams = 0;
+
+            Object.entries(inventory).forEach(([key, grams]) => {
+                const gramsNum = parseFloat(grams) || 0;
+                if (gramsNum <= 0) return;
+                totalGrams += gramsNum;
+                const packCost = parseFloat(packCosts[key]) || 0;
+                const packSize = parseFloat(packSizes[key]) || 0;
+                let costPerGram = 0;
+                if (packCost > 0 && packSize > 0) {
+                    costPerGram = packCost / packSize;
+                } else if (avgCost > 0) {
+                    costPerGram = avgCost;
+                } else {
+                    missingCostGrams += gramsNum;
+                }
+                totalCost += gramsNum * costPerGram;
+            });
+
+            return { totalGrams, totalCost, missingCostGrams };
+        }
+
+        function renderQuickProducts() {
+            dom.quickOrderGrid.innerHTML = '';
+            quickProducts.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="product-thumb">${product.name.split(' ')[0]}</div>
+                    <div class="text-sm font-semibold text-pink-800">${product.name}</div>
+                    <div class="text-xs text-gray-600">$${product.price.toFixed(2)}</div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button class="bg-pink-600 text-white px-2 py-1 rounded-lg text-[11px] font-semibold" data-action="buy" data-id="${product.id}">Buy Now</button>
+                        <button class="bg-white border border-pink-200 text-pink-700 px-2 py-1 rounded-lg text-[11px] font-semibold" data-action="add" data-id="${product.id}">Add</button>
+                    </div>
+                `;
+                card.querySelectorAll('button').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const action = btn.dataset.action;
+                        const id = btn.dataset.id;
+                        const selected = quickProducts.find(p => p.id === id);
+                        if (!selected) return;
+                        if (action === 'buy') {
+                            state.cart = [{ ...selected, qty: 1 }];
+                            localStorage.setItem('studioCart', JSON.stringify(state.cart));
+                            renderCartSummary();
+                            openCheckoutModal();
+                        } else {
+                            addToCart(selected);
+                        }
+                    });
+                });
+                dom.quickOrderGrid.appendChild(card);
+            });
+        }
+
+        function addToCart(product) {
+            const existing = state.cart.find(item => item.id === product.id);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                state.cart.push({ ...product, qty: 1 });
+            }
+            localStorage.setItem('studioCart', JSON.stringify(state.cart));
+            renderCartSummary();
+        }
+
+        function renderCartSummary() {
+            if (!state.cart.length) {
+                dom.quickCart.textContent = 'Cart is empty.';
+                dom.basketCount.textContent = '0';
+                return;
+            }
+            const lines = state.cart.map(item => `${item.qty}× ${item.name}`);
+            const total = state.cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+            dom.quickCart.innerHTML = `
+                <div>${lines.join(' · ')}</div>
+                <div class="mt-1 text-pink-800 font-semibold">Total: $${total.toFixed(2)}</div>
+            `;
+            const count = state.cart.reduce((sum, item) => sum + item.qty, 0);
+            dom.basketCount.textContent = String(count);
+        }
+
+        function openCheckoutModal() {
+            dom.checkoutMessage.textContent = '';
+            dom.checkoutModal.style.display = 'flex';
+            renderCheckoutSummary();
+        }
+
+        function closeCheckoutModal() {
+            dom.checkoutModal.style.display = 'none';
+        }
+
+        function renderCheckoutSummary() {
+            const total = state.cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+            dom.checkoutSummary.innerHTML = state.cart.length
+                ? state.cart.map(item => `<div>${item.qty}× ${item.name} · $${(item.price * item.qty).toFixed(2)}</div>`).join('')
+                : '<div>Cart is empty.</div>';
+            dom.checkoutTotal.textContent = `Total: $${total.toFixed(2)}`;
+        }
+
+        function renderSalesSummary(log) {
+            const totalRevenue = log.reduce((sum, entry) => sum + (entry.price || 0), 0);
+            const totalCost = log.reduce((sum, entry) => sum + (entry.cost || 0), 0);
+            const profit = totalRevenue - totalCost;
+            document.getElementById('sales-summary').textContent = `Sales: ${log.length} · Revenue: $${totalRevenue.toFixed(2)} · Profit: $${profit.toFixed(2)}`;
+        }
+
+        function renderVaultState() {
+            dom.vaultTokenBalance.textContent = String(state.market.tokens || 0);
+            document.querySelectorAll('.vault-card').forEach(card => {
+                const id = card.dataset.contentId;
+                const unlocked = !!state.market.unlocks?.[id];
+                const content = card.querySelector('.vault-content');
+                const btn = card.querySelector('.vault-unlock-btn');
+                card.classList.toggle('locked', !unlocked);
+                if (content) content.classList.toggle('hidden', !unlocked);
+                if (btn) btn.classList.toggle('hidden', unlocked);
+            });
+        }
+
+        function renderVaultGameState() {
+            const game = state.market.game || { clicks: 0, goal: 10, lastDaily: '' };
+            state.market.game = game;
+            dom.vaultSprintProgress.textContent = `${game.clicks}/${game.goal}`;
+            const today = new Date().toISOString().slice(0, 10);
+            dom.vaultDailyBtn.disabled = game.lastDaily === today;
+        }
+
+        function handleVaultSprint() {
+            const game = state.market.game || { clicks: 0, goal: 10, lastDaily: '' };
+            game.clicks += 1;
+            if (game.clicks >= game.goal) {
+                game.clicks = 0;
+                game.goal = Math.min(30, game.goal + 2);
+                state.market.tokens = (state.market.tokens || 0) + 1;
+                dom.vaultGameMessage.textContent = 'Sprint complete! +1 token.';
+            } else {
+                dom.vaultGameMessage.textContent = 'Nice! Keep sculpting.';
+            }
+            state.market.game = game;
+            localStorage.setItem('studioMarket', JSON.stringify(state.market));
+            renderVaultState();
+            renderVaultGameState();
+        }
+
+        function claimDailyBonus() {
+            const game = state.market.game || { clicks: 0, goal: 10, lastDaily: '' };
+            const today = new Date().toISOString().slice(0, 10);
+            if (game.lastDaily === today) {
+                dom.vaultGameMessage.textContent = 'Daily bonus already claimed.';
+                return;
+            }
+            game.lastDaily = today;
+            state.market.tokens = (state.market.tokens || 0) + 2;
+            state.market.game = game;
+            localStorage.setItem('studioMarket', JSON.stringify(state.market));
+            dom.vaultGameMessage.textContent = 'Daily bonus claimed! +2 tokens.';
+            renderVaultState();
+            renderVaultGameState();
+        }
+
+        function unlockVaultContent(card) {
+            const id = card.dataset.contentId;
+            const cost = parseInt(card.dataset.cost, 10) || 0;
+            const tokens = state.market.tokens || 0;
+            if (tokens < cost) {
+                dom.vaultMessage.textContent = 'Not enough tokens.';
+                return;
+            }
+            state.market.tokens = tokens - cost;
+            state.market.unlocks = state.market.unlocks || {};
+            state.market.unlocks[id] = true;
+            localStorage.setItem('studioMarket', JSON.stringify(state.market));
+            dom.vaultMessage.textContent = 'Unlocked!';
+            renderVaultState();
+        }
+
+        document.getElementById('calc-price').addEventListener('click', () => {
+            const mat = parseFloat(document.getElementById('mat-cost').value) || 0;
+            const grams = parseFloat(document.getElementById('grams-used').value) || 0;
+            const overhead = parseFloat(document.getElementById('overhead').value) || 0;
+            const mins = parseFloat(document.getElementById('labor-mins').value) || 0;
+            const rate = parseFloat(document.getElementById('hourly-rate').value) || 0;
+            const margin = parseFloat(document.getElementById('profit-margin').value) || 0;
+            const materialCost = mat * grams;
+            const laborCost = (mins / 60) * rate;
+            const baseCost = materialCost + laborCost + overhead;
+            const price = baseCost * (1 + margin / 100);
+            const profit = price - baseCost;
+            document.getElementById('price-output').innerHTML = `Cost: $${baseCost.toFixed(2)} · Price: <strong>$${price.toFixed(2)}</strong> · Profit: $${profit.toFixed(2)}`;
+        });
+        document.getElementById('calc-wholesale').addEventListener('click', () => {
+            const retail = parseFloat(document.getElementById('retail-price').value) || 0;
+            const discount = parseFloat(document.getElementById('wholesale-discount').value) || 0;
+            const wholesale = retail * (1 - discount / 100);
+            document.getElementById('wholesale-output').textContent = `Wholesale price: $${wholesale.toFixed(2)}`;
+        });
+        document.getElementById('calc-batch').addEventListener('click', () => {
+            const qty = parseInt(document.getElementById('batch-qty').value, 10) || 0;
+            const price = parseFloat(document.getElementById('price-item').value) || 0;
+            const cost = parseFloat(document.getElementById('cost-item').value) || 0;
+            const revenue = qty * price;
+            const totalCost = qty * cost;
+            const profit = revenue - totalCost;
+            document.getElementById('batch-profit-output').textContent = `Revenue: $${revenue.toFixed(2)} · Cost: $${totalCost.toFixed(2)} · Profit: $${profit.toFixed(2)}`;
+        });
+        document.getElementById('calc-breakeven').addEventListener('click', () => {
+            const fixed = parseFloat(document.getElementById('fixed-costs').value) || 0;
+            const perItem = parseFloat(document.getElementById('profit-per-item').value) || 0;
+            const units = perItem > 0 ? Math.ceil(fixed / perItem) : 0;
+            document.getElementById('breakeven-output').textContent = perItem > 0 ? `Break-even units: ${units}` : 'Enter profit per item.';
+        });
+        document.getElementById('build-listing').addEventListener('click', () => {
+            const name = document.getElementById('listing-name').value || 'Handmade polymer clay piece';
+            const size = document.getElementById('listing-size').value || 'custom size';
+            const materials = document.getElementById('listing-materials').value || 'polymer clay, findings';
+            const keywords = document.getElementById('listing-keywords').value || 'handmade, clay, gift';
+            const title = `${name} · ${size} · ${keywords}`.trim();
+            const description = `This ${name} is crafted with ${materials}. Size: ${size}. Perfect for ${keywords}. Each piece is made by hand and finished for durability.`;
+            document.getElementById('listing-output').value = `${title}\n\n${description}`;
+        });
+        document.getElementById('gen-sku').addEventListener('click', () => {
+            const prefix = (document.getElementById('sku-prefix').value || 'CW').toUpperCase();
+            const color = (document.getElementById('sku-color').value || 'CLR').toUpperCase().replace(/\s+/g, '').slice(0, 4);
+            const size = (document.getElementById('sku-size').value || 'SZ').toUpperCase().replace(/\s+/g, '').slice(0, 3);
+            const rand = Math.floor(100 + Math.random() * 900);
+            document.getElementById('sku-output').textContent = `${prefix}-${color}-${size}-${rand}`;
+        });
+        document.getElementById('add-sale').addEventListener('click', () => {
+            const date = document.getElementById('sale-date').value || new Date().toISOString().slice(0, 10);
+            const item = document.getElementById('sale-item').value || 'Item';
+            const price = parseFloat(document.getElementById('sale-price').value) || 0;
+            const cost = parseFloat(document.getElementById('sale-cost').value) || 0;
+            state.salesLog.push({ date, item, price, cost });
+            localStorage.setItem('studioSalesLog', JSON.stringify(state.salesLog));
+            renderSalesSummary(state.salesLog);
+        });
+        document.getElementById('calc-ship').addEventListener('click', () => {
+            const oz = parseFloat(document.getElementById('ship-weight').value) || 0;
+            const base = parseFloat(document.getElementById('ship-base').value) || 0;
+            const per = parseFloat(document.getElementById('ship-per-oz').value) || 0;
+            const total = base + oz * per;
+            document.getElementById('ship-output').textContent = `Estimated shipping: $${total.toFixed(2)}`;
+        });
+        document.getElementById('calc-bundle').addEventListener('click', () => {
+            const price = parseFloat(document.getElementById('bundle-price').value) || 0;
+            const qty = parseInt(document.getElementById('bundle-qty').value, 10) || 0;
+            const discount = parseFloat(document.getElementById('bundle-discount').value) || 0;
+            const total = qty * price;
+            const discounted = total * (1 - discount / 100);
+            const perItem = qty > 0 ? discounted / qty : 0;
+            document.getElementById('bundle-output').textContent = `Bundle price: $${discounted.toFixed(2)} · $${perItem.toFixed(2)} each`;
+        });
+        document.getElementById('calc-value').addEventListener('click', () => {
+            const avg = parseFloat(document.getElementById('avg-cost').value) || 0;
+            const markup = parseFloat(document.getElementById('value-margin').value) || 0;
+            const totals = getInventoryTotals(avg);
+            if (totals.totalGrams <= 0) {
+                document.getElementById('value-output').textContent = 'No inventory data found. Add inventory in the Studio first.';
+                return;
+            }
+            const value = totals.totalCost;
+            const retail = value * (1 + markup / 100);
+            const missingNote = totals.missingCostGrams > 0 && avg <= 0
+                ? ` · ${Math.round(totals.missingCostGrams)}g missing cost data`
+                : '';
+            document.getElementById('value-output').textContent = `Inventory grams: ${Math.round(totals.totalGrams)}g · Cost: $${value.toFixed(2)} · Potential retail: $${retail.toFixed(2)}${missingNote}`;
+        });
+
+        dom.checkoutOpenBtn.addEventListener('click', openCheckoutModal);
+        dom.checkoutCloseBtn.addEventListener('click', closeCheckoutModal);
+        dom.checkoutPlaceBtn.addEventListener('click', () => {
+            dom.checkoutMessage.textContent = 'Order placed!';
+            state.cart = [];
+            localStorage.setItem('studioCart', JSON.stringify(state.cart));
+            renderCartSummary();
+            renderCheckoutSummary();
+        });
+        dom.basketBtn.addEventListener('click', openCheckoutModal);
+
+        document.querySelectorAll('[data-token-pack]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const pack = parseInt(btn.dataset.tokenPack, 10) || 0;
+                if (pack <= 0) return;
+                state.market.tokens = (state.market.tokens || 0) + pack;
+                localStorage.setItem('studioMarket', JSON.stringify(state.market));
+                dom.vaultMessage.textContent = `Added ${pack} tokens.`;
+                renderVaultState();
+            });
+        });
+        document.querySelectorAll('.vault-card').forEach(card => {
+            const unlockBtn = card.querySelector('.vault-unlock-btn');
+            if (!unlockBtn) return;
+            unlockBtn.addEventListener('click', () => unlockVaultContent(card));
+        });
+        dom.vaultSprintBtn.addEventListener('click', handleVaultSprint);
+        dom.vaultDailyBtn.addEventListener('click', claimDailyBonus);
+
+        renderQuickProducts();
+        renderCartSummary();
+        renderSalesSummary(state.salesLog);
+        renderVaultState();
+        renderVaultGameState();
+    </script>
+</body>
+</html>

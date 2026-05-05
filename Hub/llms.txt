@@ -1,0 +1,18 @@
+# Craft: In Ardor — llms.txt
+# https://github.com/PegasusSuite/craftinardor
+
+Site: Quirky crafts, polymer clay shop, games, courses, and community.
+Primary audience: hobbyists and makers shopping handmade supplies and digital resources.
+
+## Key URLs (when deployed)
+- / — main SPA (tabs include About, Platform, Community, Shop, Courses, Games, Events, Resources, FAQ, Contact; Admin when owner)
+- /products.html — product catalog (if present on host)
+
+## Contact
+- Public inbox: contact@latrese.world  
+- Strategic / internal docs stay in-repo only; Hosting does not serve `*.md` from this bundle.
+
+## First-run UX (implemented on main page)
+- Browse without login; checkout can use guest flow.
+- Compact sticky tab bar; reduced vertical padding; mobile tabs single-row scroll.
+- Hero + trust strip + 3-step path; search + shop filters; guest cart; newsletter; Firebase Analytics (`__CRAFT_DEBUG` for verbose logs).
