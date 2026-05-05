@@ -48,6 +48,16 @@
         "source": "/cane",
         "destination": "https://propart-cane.web.app/",
         "type": 301
+      },
+      {
+        "source": "/pod",
+        "destination": "https://propart-pod.web.app/",
+        "type": 301
+      },
+      {
+        "source": "/cardart",
+        "destination": "https://propart-pod.web.app/",
+        "type": 301
       }
     ]
   }

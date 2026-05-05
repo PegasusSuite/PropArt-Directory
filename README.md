@@ -27,6 +27,7 @@ firebase deploy --only hosting --project ps---propartsuite
 | `/cropper` | `https://propart-cropper.web.app/` |
 | `/blend`, `/color-blend` | `https://propart-color-blend.web.app/` |
 | `/cane` | `https://propart-cane.web.app/` |
+| `/pod`, `/cardart` | `https://propart-pod.web.app/` (CardArt / POD) |
 
 Useful for short links and bookmarks; **`propart.app`** DNS should still point at **one** primary host (Pages vs Firebase vs other).
 
