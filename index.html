@@ -8,9 +8,16 @@
   <meta name="copyright" content="© 2026 Pegasus Suite LLC. PropArt™ is a trademark of Pegasus Suite LLC.">
   <meta name="robots" content="index, follow">
   <title>PropArt™ Directory of Applications</title>
-  <link rel="icon" href="https://pegasussuite.github.io/PropArt-Directory/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./favicon.svg">
   <link rel="manifest" href="./manifest.json">
   <meta name="theme-color" content="#9B7EBD">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PropArt™ Directory of Applications">
+  <meta property="og:description" content="Official hub for PropArt™ Tools for Polymer Clay Artists — Creator Space, Cropper, Studio, Color Blend, Cane Design, POD CardArt.">
+  <meta property="og:image" content="https://www.propart.app/PropArtTextLogoTagline-Final.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.propart.app/PropArtTextLogoTagline-Final.svg">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@graph":[
     {"@type":"WebApplication","name":"PropArt™ Directory of Applications","alternateName":"PropArt™ Tools for Polymer Clay Artists — Suite Hub","applicationCategory":"DesignApplication","operatingSystem":"Any","url":"https://www.propart.app/","description":"Official directory hub listing PropArt™ web applications for polymer clay artists.","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Pegasus Suite LLC","url":"https://www.propart.app/"},"author":{"@type":"Organization","name":"Pegasus Suite LLC","sameAs":["https://github.com/PegasusSuite"]},"copyrightHolder":{"@type":"Organization","name":"Pegasus Suite LLC"},"copyrightYear":2026,"codeRepository":"https://github.com/PegasusSuite/PropArt-Directory"},
@@ -230,11 +237,24 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
       text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .suite-apps-heading__label {
       background: linear-gradient(90deg, var(--butterfly-blue, #6a5bcf), var(--vibrant-pink, #d4879f));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       -webkit-text-fill-color: transparent;
+    }
+    .suite-section-icon {
+      width: clamp(22px, 4.2vw, 30px);
+      height: auto;
+      flex-shrink: 0;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 10px rgba(93, 80, 198, 0.35));
     }
 
     /* App carousel — 3D coverflow (suite-carousel.js) */
@@ -603,6 +623,10 @@
       text-transform: uppercase;
       text-align: center;
       color: var(--suite-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
     }
     .directory-app-grid {
       list-style: none;
@@ -623,7 +647,7 @@
     <header class="masthead">
       <h1 class="visually-hidden">PropArt™ Directory of Applications</h1>
       <a class="suite-lockup-link" href="./index.html" title="PropArt™ suite directory — home" aria-label="PropArt™ Tools for Polymer Clay Artists — suite directory home">
-        <img class="suite-lockup-img" src="./PropArtTextLogoTagline-Final.svg" alt="PropArt™ Tools for Polymer Clay Artists — official horizontal mark" width="820" height="300" decoding="async">
+        <img class="suite-lockup-img" src="./PropArtTextLogoTagline-Final.svg" alt="PropArt™ Tools for Polymer Clay Artists — official horizontal mark" width="820" height="300" decoding="async" fetchpriority="high">
       </a>
       <p class="suite-tagline">Directory of Applications</p>
     </header>
@@ -634,7 +658,10 @@
     </section>
 
     <section id="suite-apps" class="suite-carousel-section" aria-labelledby="suite-apps-heading" tabindex="0">
-      <h2 id="suite-apps-heading" class="suite-apps-heading">Applications</h2>
+      <h2 id="suite-apps-heading" class="suite-apps-heading">
+        <img class="suite-section-icon" src="./PropArtLogo-Final.svg" alt="" width="30" height="44" decoding="async" aria-hidden="true">
+        <span class="suite-apps-heading__label">Applications</span>
+      </h2>
       <p id="suite-carousel-live" class="visually-hidden" aria-live="polite"></p>
 
       <div class="suite-carousel-stage">
@@ -703,7 +730,10 @@
     </section>
 
     <section class="directory-all-apps" aria-labelledby="all-apps-grid-heading">
-      <h2 id="all-apps-grid-heading" class="directory-all-apps-heading">All applications</h2>
+      <h2 id="all-apps-grid-heading" class="directory-all-apps-heading">
+        <img class="suite-section-icon" src="./PropArtLogo-Final.svg" alt="" width="30" height="44" decoding="async" aria-hidden="true">
+        All applications
+      </h2>
       <ul class="directory-app-grid">
         <li>
           <article class="tool">

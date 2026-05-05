@@ -10,7 +10,7 @@
   "categories": ["design", "lifestyle", "productivity"],
   "icons": [
     {
-      "src": "https://pegasussuite.github.io/PropArt-Directory/favicon.svg",
+      "src": "./favicon.svg",
       "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "any maskable"
