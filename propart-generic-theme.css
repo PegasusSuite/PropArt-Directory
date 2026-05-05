@@ -129,13 +129,6 @@
   text-decoration: none;
   background: linear-gradient(135deg, var(--propart-purple), var(--propart-pink));
   color: #fff;
-  /* Hairline halo: darkest purple (eggplant) matches masthead / directory CTAs */
-  text-shadow:
-    -1px -1px 0 var(--propart-eggplant), 1px -1px 0 var(--propart-eggplant),
-    -1px 1px 0 var(--propart-eggplant), 1px 1px 0 var(--propart-eggplant),
-    0 -1px 0 var(--propart-eggplant), 0 1px 0 var(--propart-eggplant),
-    -1px 0 0 var(--propart-eggplant), 1px 0 0 var(--propart-eggplant),
-    0 2px 1px rgba(31, 24, 48, 0.28);
   box-shadow: 0 4px 14px rgba(93, 80, 198, 0.32);
   transition: transform var(--propart-transition-fast), box-shadow var(--propart-transition-fast);
 }
@@ -174,4 +167,198 @@
 .propart-card--raised {
   border-color: rgba(93, 80, 198, 0.32);
   box-shadow: 0 6px 20px rgba(93, 80, 198, 0.12), 0 20px 44px rgba(93, 80, 198, 0.14), inset 0 1px 0 #fff;
+}
+
+/* —— Toolbar & action buttons (universal)
+      Visual parity with PropArt™ Color Blend Visualizer — top toolbar
+      https://propart-color-blend.web.app/ — use with .propart-toolbar + .propart-btn-tb —— */
+
+:root {
+  --propart-tb-icon-size: 40px;
+  --propart-tb-min-height: 38px;
+  --propart-tb-radius: 12px;
+  --propart-tb-radius-pill: 999px;
+  --propart-tb-gradient-start: var(--propart-purple);
+  --propart-tb-gradient-end: var(--propart-teal);
+  --propart-tb-gradient-hover-start: #4b3fae;
+  --propart-tb-gradient-hover-end: #57c6b4;
+  --propart-tb-neutral-a: #a89bb5;
+  --propart-tb-neutral-b: #8b7a9b;
+  --propart-tb-neutral-flat: #c4c2d4;
+  --propart-tb-neutral-ink: #2a2438;
+  --propart-tb-shadow: rgba(75, 54, 102, 0.3);
+  --propart-tb-shadow-hover: rgba(75, 54, 102, 0.42);
+  --propart-tb-rim: rgba(255, 255, 255, 0.38);
+}
+
+.propart-toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 22px;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 200, 232, 0.88) 0%,
+    rgba(212, 244, 240, 0.88) 100%
+  );
+  border-radius: var(--radius-md);
+  border: 2px solid var(--propart-purple);
+  box-shadow: 0 4px 12px rgba(93, 80, 198, 0.2);
+}
+
+.propart-toolbar--inline {
+  display: inline-flex;
+  justify-content: flex-start;
+}
+
+.propart-toolbar__divider {
+  width: 1px;
+  align-self: stretch;
+  min-height: 32px;
+  margin: 0 4px;
+  background: rgba(93, 80, 198, 0.2);
+  flex-shrink: 0;
+}
+
+/* Base: “universal” tool control (squircle or pill) */
+.propart-btn-tb {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: var(--propart-tb-min-height);
+  padding: 0.45rem 1.25rem;
+  border-radius: var(--propart-tb-radius);
+  border: 1px solid var(--propart-tb-rim);
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  background: linear-gradient(
+    135deg,
+    var(--propart-tb-gradient-start) 0%,
+    var(--propart-tb-gradient-end) 100%
+  );
+  box-shadow:
+    0 3px 10px var(--propart-tb-shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition:
+    transform var(--propart-transition-fast),
+    box-shadow var(--propart-transition-fast),
+    background 0.25s ease,
+    filter 0.2s ease;
+}
+
+.propart-btn-tb:hover:not(:disabled):not(.propart-btn-tb--muted) {
+  background: linear-gradient(
+    135deg,
+    var(--propart-tb-gradient-hover-start) 0%,
+    var(--propart-tb-gradient-hover-end) 100%
+  );
+  box-shadow:
+    0 5px 14px var(--propart-tb-shadow-hover),
+    inset 0 1px 0 rgba(255, 255, 255, 0.42);
+  transform: translateY(-1px);
+}
+
+.propart-btn-tb:focus-visible {
+  outline: 2px solid var(--propart-purple-deep);
+  outline-offset: 2px;
+}
+
+.propart-btn-tb:active:not(:disabled):not(.propart-btn-tb--muted) {
+  transform: translateY(0);
+}
+
+/* Icon-only squircle (~40×40) */
+.propart-btn-tb--icon {
+  width: var(--propart-tb-icon-size);
+  min-width: var(--propart-tb-icon-size);
+  padding: 0.45rem;
+}
+
+/* Wide capsule (Export / PDF style) */
+.propart-btn-tb--pill {
+  border-radius: var(--propart-tb-radius-pill);
+  padding: 0.45rem 1.15rem;
+}
+
+.propart-btn-tb__icon {
+  display: block;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.propart-btn-tb__icon[src$=".svg"] {
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.12));
+}
+
+/* Muted / disabled: lavender slate (inactive redo, optional neutral pills) */
+.propart-btn-tb:disabled,
+.propart-btn-tb.propart-btn-tb--muted {
+  cursor: not-allowed;
+  transform: none;
+  color: #fff;
+  background: linear-gradient(
+    135deg,
+    var(--propart-tb-neutral-a) 0%,
+    var(--propart-tb-neutral-b) 100%
+  );
+  box-shadow:
+    0 2px 8px rgba(60, 48, 78, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.propart-btn-tb:disabled:hover,
+.propart-btn-tb.propart-btn-tb--muted:hover {
+  background: linear-gradient(
+    135deg,
+    var(--propart-tb-neutral-b) 0%,
+    var(--propart-tb-neutral-a) 100%
+  );
+  transform: none;
+  box-shadow:
+    0 2px 8px rgba(60, 48, 78, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+/* Icon-only muted: charcoal glyph on neutral metal */
+.propart-btn-tb--icon:disabled .propart-btn-tb__icon,
+.propart-btn-tb--icon.propart-btn-tb--muted .propart-btn-tb__icon {
+  filter: brightness(0) saturate(100%) invert(12%) sepia(8%) saturate(800%)
+    hue-rotate(220deg) brightness(0.95) contrast(1.05);
+  opacity: 0.92;
+}
+
+/* Flat neutral pill: light lavender panel + white label (secondary actions) */
+.propart-btn-tb--pill.propart-btn-tb--muted:not(:disabled) {
+  cursor: pointer;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.35);
+  background: linear-gradient(180deg, #d4d2e4 0%, var(--propart-tb-neutral-flat) 100%);
+  box-shadow:
+    0 3px 10px rgba(75, 54, 102, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.propart-btn-tb--pill.propart-btn-tb--muted:not(:disabled):hover {
+  background: linear-gradient(180deg, #e0deef 0%, #d4d2e4 100%);
+  box-shadow:
+    0 4px 12px rgba(75, 54, 102, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+.propart-btn-tb--pill.propart-btn-tb--muted:not(:disabled) .propart-btn-tb__icon {
+  filter: brightness(0) invert(1);
+  opacity: 0.95;
 }

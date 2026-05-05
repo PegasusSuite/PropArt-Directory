@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="studio-light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="PropArt™ Unified Ecosystem — Whitepaper V1.0 UI mockup (USB + Hub)." />
+  <title>PropArt™ — Unified Ecosystem mockup (V1)</title>
+  <link rel="icon" href="https://pegasussuite.github.io/PropArt-Directory/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="./propart-usb-whitepaper-mockup.css" />
+  <!-- propart-usb-whitepaper-mockup.css imports propart-generic-theme.css (toolbar button utilities) -->
+</head>
+<body class="wp-mock">
+  <style>
+    .mockup-page-links {
+      max-width: 1120px;
+      margin: 10px auto 6px;
+      padding: 0 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    .mockup-page-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      border: 1px solid rgba(109, 102, 146, 0.34);
+      background: rgba(255, 255, 255, 0.84);
+      color: #4a3f73;
+      box-shadow: 0 6px 16px rgba(71, 57, 113, 0.12);
+    }
+  </style>
+
+  <div class="mockup-page-links" aria-label="Page navigation">
+    <a class="mockup-page-link" href="./brand-showcase.html">Open brand showcase</a>
+    <a class="mockup-page-link" href="./propart-universal-banner-mockup.html" aria-current="page">Suite banner mockup</a>
+  </div>
+
+  <!-- Universal Suite Bar — Whitepaper §3 -->
+  <header class="usb" aria-label="PropArt universal suite bar">
+    <a
+      class="usb__brand"
+      href="https://pegasussuite.github.io/PropArt-Directory/"
+      title="Return to Directory of Applications"
+    >
+      <img
+        class="usb__wordmark"
+        src="./PropArtLogo-TextMark-web.svg"
+        width="212"
+        height="35"
+        alt="PropArt™"
+      />
+      <span class="usb__tagline">Tools for polymer clay artists</span>
+    </a>
+
+    <div class="usb__center">
+      <details class="usb__jump">
+        <summary aria-label="Open suite quick jump">
+          <span class="usb__jump-label">Quick jump</span>
+          <span class="usb__jump-current">
+            Whitepaper mockup
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </span>
+        </summary>
+        <div class="usb__jump-panel" role="group" aria-label="Applications in the suite">
+          <a class="usb__jump-tile" href="https://propart-creator.web.app/">
+            <span class="usb__jump-icon usb__jump-icon--violet" aria-hidden="true">H</span>
+            <span class="usb__jump-name">Creator Space</span>
+          </a>
+          <a class="usb__jump-tile" href="#">
+            <span class="usb__jump-icon usb__jump-icon--teal" aria-hidden="true">C</span>
+            <span class="usb__jump-name">Cropper Tool</span>
+          </a>
+          <a class="usb__jump-tile" href="#">
+            <span class="usb__jump-icon usb__jump-icon--slate" aria-hidden="true">S</span>
+            <span class="usb__jump-name">Studio</span>
+          </a>
+          <a class="usb__jump-tile" href="#">
+            <span class="usb__jump-icon usb__jump-icon--rose" aria-hidden="true">B</span>
+            <span class="usb__jump-name">Color Blend</span>
+          </a>
+          <a class="usb__jump-tile" href="#">
+            <span class="usb__jump-icon usb__jump-icon--orchid" aria-hidden="true">K</span>
+            <span class="usb__jump-name">Cane Design</span>
+          </a>
+          <a class="usb__jump-tile" href="https://pegasussuite.github.io/PropArt-Directory/">
+            <span class="usb__jump-icon usb__jump-icon--violet" aria-hidden="true">⌂</span>
+            <span class="usb__jump-name">Directory</span>
+          </a>
+        </div>
+      </details>
+    </div>
+
+    <div class="usb__utils">
+      <a class="usb__btn" href="https://propart-creator.web.app/" title="Supplies and physical goods">Shop</a>
+      <button type="button" class="usb__btn" id="usbThemeToggle" aria-pressed="false" title="Switch Studio Light / Kiln Dark">
+        <span id="usbThemeIcon" aria-hidden="true">☀</span>
+        <span id="usbThemeLabel">Studio Light</span>
+      </button>
+      <span class="usb__tier" id="usbTier" data-tier="free" title="Account tier">Free</span>
+    </div>
+  </header>
+
+  <!-- Style 1 demo: Gradient ribbon suite bar -->
+  <section aria-labelledby="suite-style-1">
+    <h2 id="suite-style-1">Suite bar — Style 1: Gradient ribbon</h2>
+    <style>
+      .suite-bar--gradient {
+        --suite-bar-height: 60px;
+        --suite-bg: linear-gradient(120deg, #5d50c6, #8b6fa8 40%, #c36a8e);
+        --suite-text: #fdfbfd;
+        --suite-subtle: rgba(255,255,255,0.85);
+        --suite-pill: rgba(255,255,255,0.15);
+        --suite-pill-active: #ffffff;
+        --suite-pill-active-text: #5d50c6;
+        --suite-shadow: 0 10px 30px rgba(61,51,102,0.25);
+      }
+      .suite-bar {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        height: var(--suite-bar-height);
+        min-height: var(--suite-bar-height);
+        background: var(--suite-bg);
+        color: var(--suite-text);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        box-shadow: var(--suite-shadow);
+        box-sizing: border-box;
+        margin: 12px auto;
+        border-radius: 16px;
+        max-width: 1120px;
+      }
+      .suite-bar__brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: inherit;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.34);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.34);
+      }
+      .suite-bar__logo {
+        width: 140px;
+        height: auto;
+        display: block;
+        filter: drop-shadow(0 1px 2px rgba(35, 25, 54, 0.36));
+      }
+      .suite-bar__tagline {
+        font-size: 0.8rem;
+        color: #ffffff;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        text-shadow: 0 1px 1px rgba(34, 24, 54, 0.35);
+      }
+      .suite-bar__center {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        max-width: 50%;
+      }
+      .suite-bar__where {
+        font-size: 0.8rem;
+        opacity: 0.9;
+        white-space: nowrap;
+      }
+      .suite-bar__where strong {
+        font-weight: 600;
+      }
+      .suite-bar__apps {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .suite-bar__chip {
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,0.5);
+        padding: 4px 10px;
+        font-size: 0.8rem;
+        color: var(--suite-subtle);
+        background: var(--suite-pill);
+        text-decoration: none;
+        white-space: nowrap;
+        transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+      }
+      .suite-bar__chip:hover {
+        background: rgba(255,255,255,0.25);
+        color: #ffffff;
+        transform: translateY(-1px);
+      }
+      .suite-bar__chip--active {
+        background: var(--suite-pill-active);
+        color: var(--suite-pill-active-text);
+        border-color: transparent;
+        font-weight: 600;
+      }
+      .suite-bar__right {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .suite-bar__btn {
+        border-radius: 999px;
+        border: none;
+        padding: 4px 10px;
+        font-size: 0.78rem;
+        background: rgba(255,255,255,0.14);
+        color: #ffffff;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .suite-bar__btn span[aria-hidden="true"] {
+        font-size: 0.9rem;
+      }
+      @media (max-width: 720px) {
+        .suite-bar { padding-inline: 12px; border-radius: 12px; }
+        .suite-bar__tagline { display: none; }
+        .suite-bar__where { display: none; }
+        .suite-bar__center { max-width: 100%; justify-content: center; }
+      }
+    </style>
+    <header class="suite-bar suite-bar--gradient" aria-label="PropArt suite navigation (Style 1)">
+      <a class="suite-bar__brand" href="https://propart.app/Hub" aria-label="PropArt suite — Hub">
+        <img src="./PropArtLogo-TextMark-web.svg" alt="PropArt™" class="suite-bar__logo">
+        <span class="suite-bar__tagline">Tools for polymer clay artists</span>
+      </a>
+      <div class="suite-bar__center">
+        <div class="suite-bar__where">
+          You are in <strong>Creator Space</strong>
+        </div>
+        <nav class="suite-bar__apps" aria-label="Switch PropArt applications">
+          <a href="https://propart.app/Hub" class="suite-bar__chip suite-bar__chip--active">Hub</a>
+          <a href="https://propart.app/Studio" class="suite-bar__chip">Studio</a>
+          <a href="https://propart.app/CropperTool" class="suite-bar__chip">Cropper</a>
+          <a href="https://propart.app/BlendVisualizer" class="suite-bar__chip">Color Blend</a>
+          <a href="https://propart.app/CaneDesigner" class="suite-bar__chip">Cane</a>
+          <a href="https://propart.app/POD" class="suite-bar__chip">POD</a>
+        </nav>
+      </div>
+      <div class="suite-bar__right">
+        <button type="button" class="suite-bar__btn">
+          <span aria-hidden="true">☀</span>
+          <span>Theme</span>
+        </button>
+        <button type="button" class="suite-bar__btn">
+          <span aria-hidden="true">👤</span>
+          <span>Account</span>
+        </button>
+      </div>
+    </header>
+  </section>
+
+  <!-- Style 2 demo: Neutral glass suite bar -->
+  <section aria-labelledby="suite-style-2">
+    <h2 id="suite-style-2">Suite bar — Style 2: Neutral glass</h2>
+    <style>
+      .suite-bar--glass {
+        --bar-height: 52px;
+        --bg-glass: rgba(255,255,255,0.9);
+        --border: rgba(209, 213, 219, 0.9);
+        --ink-main: #1f2933;
+        --ink-muted: #6b7280;
+        --accent: #5d50c6;
+      }
+      .suite-bar--glass {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        height: var(--bar-height);
+        min-height: var(--bar-height);
+        background: var(--bg-glass);
+        color: var(--ink-main);
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        padding: 0 14px;
+        box-sizing: border-box;
+        backdrop-filter: blur(10px);
+        max-width: 1120px;
+        margin: 12px auto;
+        border-radius: 12px;
+      }
+      .sb2__brand {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        color: inherit;
+      }
+      .sb2__logo {
+        width: 120px;
+        height: auto;
+      }
+      .sb2__where {
+        font-size: 0.78rem;
+        color: var(--ink-muted);
+        margin-left: 6px;
+      }
+      .sb2__where strong { color: var(--accent); }
+      .sb2__nav {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin-left: 24px;
+        flex-wrap: wrap;
+      }
+      .sb2__link {
+        font-size: 0.78rem;
+        padding: 4px 9px;
+        border-radius: 999px;
+        text-decoration: none;
+        color: var(--ink-muted);
+        transition: background 0.1s ease, color 0.1s ease;
+      }
+      .sb2__link:hover {
+        background: rgba(93,80,198,0.07);
+        color: var(--accent);
+      }
+      .sb2__link--active {
+        background: rgba(93,80,198,0.12);
+        color: var(--accent);
+        font-weight: 600;
+      }
+      .sb2__spacer { flex: 1; }
+      .sb2__utils {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .sb2__pill {
+        font-size: 0.78rem;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: #f3f4ff;
+        color: #4b5563;
+      }
+      @media (max-width: 720px) {
+        .sb2__where { display: none; }
+        .sb2__nav { margin-left: 8px; }
+      }
+    </style>
+    <header class="suite-bar--glass" aria-label="PropArt suite navigation (Style 2)">
+      <a href="https://propart.app/CropperTool" class="sb2__brand" aria-label="PropArt suite — Cropper Tool">
+        <img src="./PropArtLogo-TextMark-web.svg" alt="PropArt™" class="sb2__logo">
+        <span class="sb2__where">You are in <strong>Cropper Tool</strong></span>
+      </a>
+      <nav class="sb2__nav" aria-label="Switch PropArt applications">
+        <a href="https://propart.app/Hub" class="sb2__link">Hub</a>
+        <a href="https://propart.app/Studio" class="sb2__link">Studio</a>
+        <a href="https://propart.app/CropperTool" class="sb2__link sb2__link--active">Cropper</a>
+        <a href="https://propart.app/BlendVisualizer" class="sb2__link">Color Blend</a>
+        <a href="https://propart.app/CaneDesigner" class="sb2__link">Cane</a>
+        <a href="https://propart.app/POD" class="sb2__link">POD</a>
+      </nav>
+      <div class="sb2__spacer"></div>
+      <div class="sb2__utils">
+        <span class="sb2__pill">Free tier</span>
+      </div>
+    </header>
+  </section>
+
+  <!-- Style 3 demo: Color-pill tabs -->
+  <section aria-labelledby="suite-style-3">
+    <h2 id="suite-style-3">Suite bar — Style 3: Color-pill tabs</h2>
+    <style>
+      .suite-bar--tabs {
+        --height: 60px;
+        --bg: #f9fafb;
+        --border: #e5e7eb;
+        --ink: #111827;
+        --muted: #6b7280;
+        --accent-hub: #6366f1;
+        --accent-studio: #ec4899;
+        --accent-cropper: #8b5cf6;
+        --accent-blend: #10b981;
+        --accent-cane: #f97316;
+        --accent-pod: #ef4444;
+      }
+      .suite-bar--tabs {
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        height: var(--height);
+        min-height: var(--height);
+        background: var(--bg);
+        border-radius: 16px;
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+        box-sizing: border-box;
+        max-width: 1120px;
+        margin: 12px auto;
+      }
+      .sb3__brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: var(--ink);
+      }
+      .sb3__logo {
+        width: 120px;
+      }
+      .sb3__tagline {
+        font-size: 0.78rem;
+        color: var(--muted);
+      }
+      .sb3__tabs {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-left: 28px;
+        flex-wrap: wrap;
+      }
+      .sb3__tab {
+        position: relative;
+        padding: 4px 12px;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        text-decoration: none;
+        color: var(--muted);
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        transition: transform 0.1s ease, box-shadow 0.1s ease, color 0.1s ease, border-color 0.1s ease;
+      }
+      .sb3__tab:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 12px rgba(15,23,42,0.08);
+        color: var(--ink);
+      }
+      .sb3__tab--active {
+        color: #ffffff;
+        border-color: transparent;
+        box-shadow: 0 8px 18px rgba(15,23,42,0.18);
+      }
+      .sb3__tab--hub    { background: var(--accent-hub); }
+      .sb3__tab--studio { background: var(--accent-studio); }
+      .sb3__tab--crop   { background: var(--accent-cropper); }
+      .sb3__tab--blend  { background: var(--accent-blend); }
+      .sb3__tab--cane   { background: var(--accent-cane); }
+      .sb3__tab--pod    { background: var(--accent-pod); }
+      .sb3__where {
+        margin-left: 16px;
+        font-size: 0.78rem;
+        color: var(--muted);
+      }
+      .sb3__spacer { flex: 1; }
+      .sb3__acct {
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+      .sb3__acct strong { color: var(--ink); }
+      @media (max-width: 768px) {
+        .sb3__tagline { display: none; }
+        .sb3__where { display: none; }
+        .sb3__tabs { margin-left: 12px; }
+      }
+    </style>
+    <header class="suite-bar--tabs" aria-label="PropArt suite navigation (Style 3)">
+      <a href="https://propart.app/CropperTool" class="sb3__brand" aria-label="PropArt suite — Cropper Tool">
+        <img src="./PropArtLogo-TextMark-web.svg" alt="PropArt™" class="sb3__logo">
+        <span class="sb3__tagline">Tools for polymer clay artists</span>
+      </a>
+      <nav class="sb3__tabs" aria-label="Switch PropArt applications">
+        <a href="https://propart.app/Hub" class="sb3__tab sb3__tab--hub">Hub</a>
+        <a href="https://propart.app/Studio" class="sb3__tab sb3__tab--studio">Studio</a>
+        <a href="https://propart.app/CropperTool" class="sb3__tab sb3__tab--crop sb3__tab--active">Cropper</a>
+        <a href="https://propart.app/BlendVisualizer" class="sb3__tab sb3__tab--blend">Color Blend</a>
+        <a href="https://propart.app/CaneDesigner" class="sb3__tab sb3__tab--cane">Cane</a>
+        <a href="https://propart.app/POD" class="sb3__tab sb3__tab--pod">POD</a>
+      </nav>
+      <span class="sb3__where">You are in <strong>Cropper Tool</strong></span>
+      <div class="sb3__spacer"></div>
+      <div class="sb3__acct">
+        Signed in as <strong>you@propart.app</strong>
+      </div>
+    </header>
+  </section>
+
+  <!-- Style 4 demo: Ultra-compact strip -->
+  <section aria-labelledby="suite-style-4">
+    <h2 id="suite-style-4">Suite bar — Style 4: Ultra-compact strip</h2>
+    <style>
+      .suite-bar--strip {
+        --h: 40px;
+        --bg: #111827;
+        --ink: #e5e7eb;
+        --accent: #f9a8d4;
+        --muted: #9ca3af;
+      }
+      .suite-bar--strip {
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        height: var(--h);
+        min-height: var(--h);
+        background: var(--bg);
+        color: var(--ink);
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        font-size: 0.78rem;
+        box-sizing: border-box;
+      }
+      .sb4__brand {
+        display: flex;
+        align-items: baseline;
+        gap: 4px;
+        text-decoration: none;
+        color: var(--ink);
+        white-space: nowrap;
+      }
+      .sb4__wordmark {
+        font-family: Georgia, "Times New Roman", serif;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        font-size: 1rem;
+        background: linear-gradient(135deg, #5d50c6, #c36a8e);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .sb4__tagline {
+        color: var(--muted);
+      }
+      .sb4__nav {
+        margin-left: 18px;
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .sb4__link {
+        color: var(--muted);
+        text-decoration: none;
+        padding-inline: 4px;
+        position: relative;
+      }
+      .sb4__link--active {
+        color: var(--accent);
+      }
+      .sb4__link--active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -2px;
+        height: 2px;
+        border-radius: 999px;
+        background: var(--accent);
+      }
+      .sb4__spacer { flex: 1; }
+      .sb4__where {
+        color: var(--muted);
+        white-space: nowrap;
+      }
+      @media (max-width: 720px) {
+        .sb4__tagline { display: none; }
+        .sb4__where { display: none; }
+      }
+    </style>
+    <header class="suite-bar--strip" aria-label="PropArt suite navigation (Style 4)">
+      <a href="https://propart.app/BlendVisualizer" class="sb4__brand" aria-label="PropArt suite — Color Blend">
+        <span class="sb4__wordmark">PropArt</span>
+        <span class="sb4__tagline">Suite</span>
+      </a>
+      <nav class="sb4__nav" aria-label="Switch PropArt applications">
+        <a href="https://propart.app/Hub" class="sb4__link">Hub</a>
+        <a href="https://propart.app/Studio" class="sb4__link">Studio</a>
+        <a href="https://propart.app/CropperTool" class="sb4__link">Cropper</a>
+        <a href="https://propart.app/BlendVisualizer" class="sb4__link sb4__link--active">Blend</a>
+        <a href="https://propart.app/CaneDesigner" class="sb4__link">Cane</a>
+        <a href="https://propart.app/POD" class="sb4__link">POD</a>
+      </nav>
+      <div class="sb4__spacer"></div>
+      <div class="sb4__where">
+        In <strong>Color Blend Visualizer</strong>
+      </div>
+    </header>
+  </section>
+
+  <!-- Style 5 demo: Floating card bar -->
+  <section aria-labelledby="suite-style-5">
+    <h2 id="suite-style-5">Suite bar — Style 5: Floating card</h2>
+    <style>
+      .suite-bar--card {
+        --h: 68px;
+        --bg: rgba(255,255,255,0.98);
+        --border: rgba(148, 163, 184, 0.65);
+        --shadow: 0 18px 40px rgba(15,23,42,0.22);
+        --ink: #020617;
+        --muted: #64748b;
+        --accent-pill: linear-gradient(135deg, #5d50c6, #c36a8e);
+      }
+      .suite-bar--card {
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        height: var(--h);
+        min-height: var(--h);
+        background: var(--bg);
+        color: var(--ink);
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        box-shadow: var(--shadow);
+        box-sizing: border-box;
+        max-width: 1120px;
+        margin: 12px auto;
+      }
+      .sb5__brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: var(--ink);
+      }
+      .sb5__logo {
+        width: 110px;
+      }
+      .sb5__tagline {
+        font-size: 0.78rem;
+        color: var(--muted);
+      }
+      .sb5__where {
+        margin-left: 18px;
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+      .sb5__where strong { color: #0f172a; }
+      .sb5__nav {
+        display: flex;
+        gap: 4px;
+        margin-left: 18px;
+        flex-wrap: wrap;
+      }
+      .sb5__pill {
+        padding: 5px 11px;
+        border-radius: 999px;
+        border: 1px solid rgba(148,163,184,0.5);
+        font-size: 0.78rem;
+        text-decoration: none;
+        color: var(--muted);
+        background: #f9fafb;
+      }
+      .sb5__pill--active {
+        background: var(--accent-pill);
+        color: #ffffff;
+        border-color: transparent;
+        font-weight: 600;
+      }
+      .sb5__spacer { flex: 1; }
+      .sb5__btn {
+        font-size: 0.78rem;
+        border-radius: 999px;
+        border: none;
+        padding: 4px 10px;
+        background: #0f172a;
+        color: #e5e7eb;
+        cursor: pointer;
+      }
+      @media (max-width: 900px) {
+        .suite-bar--card { border-radius: 16px; }
+        .sb5__tagline { display: none; }
+        .sb5__where { display: none; }
+      }
+    </style>
+    <header class="suite-bar--card" aria-label="PropArt suite navigation (Style 5)">
+      <a href="https://propart.app/Hub" class="sb5__brand" aria-label="PropArt suite — Hub">
+        <img src="./PropArtLogo-TextMark-web.svg" alt="PropArt™" class="sb5__logo">
+        <span class="sb5__tagline">Tools for polymer clay artists</span>
+      </a>
+      <span class="sb5__where">You are in <strong>Creator Space</strong></span>
+      <nav class="sb5__nav" aria-label="Switch PropArt applications">
+        <a href="https://propart.app/Hub" class="sb5__pill sb5__pill--active">Hub</a>
+        <a href="https://propart.app/Studio" class="sb5__pill">Studio</a>
+        <a href="https://propart.app/CropperTool" class="sb5__pill">Cropper</a>
+        <a href="https://propart.app/BlendVisualizer" class="sb5__pill">Color Blend</a>
+        <a href="https://propart.app/CaneDesigner" class="sb5__pill">Cane</a>
+        <a href="https://propart.app/POD" class="sb5__pill">POD</a>
+      </nav>
+      <div class="sb5__spacer"></div>
+      <button type="button" class="sb5__btn">Sign in</button>
+    </header>
+  </section>
+
+  <!-- Style 6 demo: Pastel/metallic floating card with neutral glass controls -->
+  <section aria-labelledby="suite-style-6">
+    <h2 id="suite-style-6">Suite bar — Style 6: Pastel/metallic floating card + glass controls</h2>
+    <style>
+      .suite-bar--metallic {
+        --h: 92px;
+        --bg: linear-gradient(
+          110deg,
+          rgba(255, 255, 255, 0.92) 0%,
+          rgba(241, 236, 251, 0.9) 22%,
+          rgba(233, 244, 244, 0.9) 43%,
+          rgba(247, 236, 242, 0.92) 66%,
+          rgba(255, 255, 255, 0.94) 100%
+        );
+        --edge: rgba(170, 154, 196, 0.56);
+        --ink: #2f2a4f;
+        --muted: #5d5876;
+        --chip-bg: rgba(255, 255, 255, 0.62);
+        --chip-border: rgba(109, 102, 146, 0.32);
+        --chip-active-bg: linear-gradient(135deg, #5d50c6, #8b6fa8 52%, #c36a8e);
+        --chip-active-ink: #ffffff;
+        --glass-btn-bg: rgba(255, 255, 255, 0.55);
+        --glass-btn-border: rgba(98, 92, 136, 0.35);
+        --glow: 0 14px 36px rgba(71, 57, 113, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.74);
+      }
+      .suite-bar--metallic {
+        height: var(--h);
+        min-height: var(--h);
+        max-width: 1160px;
+        margin: 12px auto;
+        border-radius: 20px;
+        border: 1px solid var(--edge);
+        background: var(--bg);
+        box-shadow: var(--glow);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 0 14px;
+        box-sizing: border-box;
+        color: var(--ink);
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+      .sb6__brand {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        text-decoration: none;
+        color: inherit;
+        min-width: 210px;
+        flex: 0 0 auto;
+        overflow: hidden;
+      }
+      .sb6__logo {
+        width: min(520px, 56vw);
+        height: calc(var(--h) - 20px);
+        display: block;
+        margin-left: -12px;
+      }
+      .sb6__nav {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+      .sb6__chip {
+        text-decoration: none;
+        font-size: 0.78rem;
+        color: var(--muted);
+        border: 1px solid var(--chip-border);
+        background: var(--chip-bg);
+        border-radius: 999px;
+        padding: 4px 10px;
+        transition: transform 0.1s ease, box-shadow 0.12s ease, color 0.12s ease;
+      }
+      .sb6__chip:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 14px rgba(63, 54, 97, 0.18);
+        color: #312d57;
+      }
+      .sb6__chip--active {
+        background: var(--chip-active-bg);
+        color: var(--chip-active-ink);
+        border-color: transparent;
+        font-weight: 600;
+      }
+      .sb6__spacer { flex: 1; }
+      .sb6__right {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .sb6__glass-btn {
+        border-radius: 999px;
+        border: 1px solid var(--glass-btn-border);
+        background: var(--glass-btn-bg);
+        color: #413b69;
+        font-size: 0.76rem;
+        padding: 5px 10px;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        backdrop-filter: blur(8px);
+        cursor: pointer;
+      }
+      .sb6__glass-btn:hover {
+        box-shadow: 0 8px 14px rgba(77, 69, 113, 0.2);
+      }
+      .sb6__signin {
+        background: linear-gradient(135deg, #ffffff, #f2eefb);
+        border-color: rgba(84, 78, 120, 0.42);
+        font-weight: 600;
+      }
+      @media (max-width: 980px) {
+        .suite-bar--metallic {
+          height: auto;
+          min-height: 82px;
+          padding: 10px 12px;
+          flex-wrap: wrap;
+          border-radius: 14px;
+        }
+        .sb6__brand { min-width: auto; }
+        .sb6__logo {
+          width: min(64vw, 360px);
+          height: 56px;
+        }
+      }
+    </style>
+    <header class="suite-bar--metallic" aria-label="PropArt suite navigation (Style 6)">
+      <a href="https://propart.app/" class="sb6__brand" aria-label="PropArt suite — Directory of Applications">
+        <img src="./PropArt-Full-cropped.svg" alt="PropArt™ full logo" class="sb6__logo">
+      </a>
+
+      <nav class="sb6__nav" aria-label="Switch PropArt applications">
+        <a href="https://propart.app/Hub" class="sb6__chip sb6__chip--active">Hub</a>
+        <a href="https://propart.app/Studio" class="sb6__chip">Studio</a>
+        <a href="https://propart.app/CropperTool" class="sb6__chip">Cropper</a>
+        <a href="https://propart.app/BlendVisualizer" class="sb6__chip">Color Blend</a>
+        <a href="https://propart.app/CaneDesigner" class="sb6__chip">Cane</a>
+        <a href="https://propart.app/POD" class="sb6__chip">POD</a>
+      </nav>
+
+      <div class="sb6__spacer"></div>
+
+      <div class="sb6__right">
+        <button type="button" class="sb6__glass-btn" title="Switch Studio Light / Kiln Dark">
+          <span aria-hidden="true">☀</span><span>Theme</span>
+        </button>
+        <button type="button" class="sb6__glass-btn sb6__signin" title="Sign in to your PropArt account">
+          <span aria-hidden="true">👤</span><span>Sign in</span>
+        </button>
+      </div>
+    </header>
+  </section>
+
+  <!-- Style 7 demo: PropArt-Full2 green -> eggplant metallic card with glass buttons -->
+  <section aria-labelledby="suite-style-7">
+    <h2 id="suite-style-7">Suite bar - Style 7: Full2 green/eggplant + glass controls</h2>
+    <style>
+      .suite-bar--full2-glass {
+        --h: 92px;
+        --bg: linear-gradient(
+          110deg,
+          rgba(255, 255, 255, 0.92) 0%,
+          rgba(241, 236, 251, 0.9) 22%,
+          rgba(233, 244, 244, 0.9) 43%,
+          rgba(247, 236, 242, 0.92) 66%,
+          rgba(255, 255, 255, 0.94) 100%
+        );
+        --ink: #2f2953;
+        --muted: #5d5876;
+        --edge: rgba(89, 81, 126, 0.34);
+        --chip-bg: rgba(255, 255, 255, 0.64);
+        --chip-border: rgba(101, 95, 145, 0.34);
+        --chip-active-bg: linear-gradient(92deg, #79bfd8 0%, #8b8fd0 56%, #b67aaa 100%);
+        --chip-active-ink: #f7f6fb;
+        --glass-btn-bg: linear-gradient(92deg, rgba(121, 191, 216, 0.32) 0%, rgba(139, 143, 208, 0.26) 56%, rgba(182, 122, 170, 0.3) 100%);
+        --glass-btn-border: rgba(101, 89, 150, 0.4);
+        min-height: var(--h);
+        max-width: 1160px;
+        margin: 12px auto;
+        border-radius: 20px;
+        border: 1px solid var(--edge);
+        background: var(--bg);
+        color: var(--ink);
+        box-shadow: 0 16px 34px rgba(62, 54, 96, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.68);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 0 14px;
+        box-sizing: border-box;
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+      .sb7__brand {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        text-decoration: none;
+        color: inherit;
+        min-width: 210px;
+        flex: 0 0 auto;
+        overflow: hidden;
+      }
+      .sb7__logo {
+        width: min(520px, 56vw);
+        height: calc(var(--h) - 20px);
+        object-fit: contain;
+        object-position: left center;
+        display: block;
+        margin-left: 0;
+      }
+      .sb7__nav { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+      .sb7__chip {
+        text-decoration: none; font-size: 0.78rem; color: var(--muted);
+        border: 1px solid var(--chip-border); background: var(--chip-bg); padding: 4px 10px;
+        border-radius: 999px; backdrop-filter: blur(8px);
+        transition: transform 0.1s ease, box-shadow 0.12s ease, color 0.12s ease;
+      }
+      .sb7__chip:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 14px rgba(63, 54, 97, 0.18);
+        color: #312d57;
+      }
+      .sb7__chip--active { background: var(--chip-active-bg); color: var(--chip-active-ink); border-color: transparent; font-weight: 600; }
+      .sb7__spacer { flex: 1; }
+      .sb7__right { display: flex; align-items: center; gap: 8px; }
+      .sb7__glass-btn {
+        border-radius: 999px; border: 1px solid rgba(108, 97, 156, 0.45); background: linear-gradient(92deg, #79bfd8 0%, #8b8fd0 56%, #b67aaa 100%);
+        color: #fdfcff; font-size: 0.76rem; padding: 5px 10px; display: inline-flex; align-items: center; gap: 5px;
+        backdrop-filter: blur(8px); cursor: pointer;
+        font-weight: 700;
+      }
+      .sb7__glass-btn:hover { box-shadow: 0 8px 14px rgba(77, 69, 113, 0.2); }
+      .sb7__signin {
+        background: linear-gradient(92deg, #86c7de 0%, #9b9ad9 56%, #c186b3 100%);
+        border-color: rgba(100, 88, 151, 0.56);
+        color: #ffffff;
+        font-weight: 700;
+      }
+      @media (max-width: 980px) {
+        .suite-bar--full2-glass { height: auto; min-height: 82px; padding: 10px 12px; flex-wrap: wrap; border-radius: 14px; }
+        .sb7__brand { min-width: auto; }
+        .sb7__logo { width: min(64vw, 360px); height: 56px; margin-left: 0; }
+      }
+    </style>
+    <header class="suite-bar--full2-glass" aria-label="PropArt suite navigation (Style 7)">
+      <a href="https://propart.app/" class="sb7__brand" aria-label="PropArt suite - Directory of Applications">
+        <img src="./PropArt-May.svg" alt="PropArt full logo (style 7)" class="sb7__logo">
+      </a>
+      <nav class="sb7__nav" aria-label="Switch PropArt applications">
+        <a href="https://propart.app/Hub" class="sb7__chip sb7__chip--active">Hub</a>
+        <a href="https://propart.app/Studio" class="sb7__chip">Studio</a>
+        <a href="https://propart.app/CropperTool" class="sb7__chip">Cropper</a>
+        <a href="https://propart.app/BlendVisualizer" class="sb7__chip">Color Blend</a>
+        <a href="https://propart.app/CaneDesigner" class="sb7__chip">Cane</a>
+        <a href="https://propart.app/POD" class="sb7__chip">POD</a>
+      </nav>
+      <div class="sb7__spacer"></div>
+      <div class="sb7__right">
+        <button type="button" class="sb7__glass-btn" title="Switch Studio Light / Kiln Dark"><span aria-hidden="true">☀</span><span>Theme</span></button>
+        <button type="button" class="sb7__glass-btn sb7__signin" title="Sign in to your PropArt account"><span aria-hidden="true">👤</span><span>Sign in</span></button>
+      </div>
+    </header>
+  </section>
+
+  <!-- Style 8 demo: PropArt-Full2 compact text links with pink underline -->
+  <section aria-labelledby="suite-style-8">
+    <h2 id="suite-style-8">Suite bar - Style 8: Full2 green/eggplant + compact underline links</h2>
+    <style>
+      .suite-bar--full2-compact {
+        --h: 80px;
+        --bg: linear-gradient(
+          110deg,
+          rgba(255, 255, 255, 0.92) 0%,
+          rgba(241, 236, 251, 0.9) 22%,
+          rgba(233, 244, 244, 0.9) 43%,
+          rgba(247, 236, 242, 0.92) 66%,
+          rgba(255, 255, 255, 0.94) 100%
+        );
+        --ink: #312a56;
+        --muted: #5f5a7d;
+        --edge: rgba(90, 83, 128, 0.3);
+        --underline: #dc7ea9;
+        min-height: var(--h);
+        max-width: 1160px;
+        margin: 12px auto;
+        border-radius: 18px;
+        border: 1px solid var(--edge);
+        background: var(--bg);
+        color: var(--ink);
+        box-shadow: 0 12px 26px rgba(62, 54, 96, 0.17), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 10px 16px;
+        box-sizing: border-box;
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+      .sb8__brand {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        text-decoration: none;
+        color: inherit;
+        min-width: 210px;
+        flex: 0 0 auto;
+        overflow: hidden;
+      }
+      .sb8__logo {
+        width: min(520px, 52vw);
+        height: calc(var(--h) - 20px);
+        object-fit: contain;
+        object-position: left center;
+        display: block;
+        margin-left: 0;
+      }
+      .sb8__nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+      .sb8__link {
+        position: relative; text-decoration: none; color: var(--muted);
+        font-size: 0.82rem; font-weight: 600; letter-spacing: 0.01em; padding: 4px 0;
+      }
+      .sb8__link::after {
+        content: ""; position: absolute; left: 0; right: 0; bottom: -1px;
+        height: 2px; background: transparent; border-radius: 999px; transition: background-color 120ms ease;
+      }
+      .sb8__link:hover,
+      .sb8__link:focus-visible { color: #3c3366; }
+      .sb8__link:hover::after,
+      .sb8__link:focus-visible::after { background: #e9a3c2; }
+      .sb8__link--active { color: #32295e; }
+      .sb8__link--active::after { background: var(--underline); }
+      .sb8__spacer { flex: 1; }
+      .sb8__utility {
+        background: transparent; border: 0; color: #4f4975; font-size: 0.78rem; font-weight: 600; cursor: pointer;
+        padding: 5px 0; position: relative;
+      }
+      .sb8__utility::after {
+        content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
+        background: transparent; border-radius: 999px;
+      }
+      .sb8__utility:hover::after { background: #e9a3c2; }
+      @media (max-width: 980px) {
+        .suite-bar--full2-compact { height: auto; min-height: 78px; padding: 10px 12px; flex-wrap: wrap; border-radius: 14px; }
+        .sb8__brand { min-width: auto; }
+        .sb8__logo { width: min(64vw, 360px); height: 50px; margin-left: 0; }
+      }
+    </style>
+    <header class="suite-bar--full2-compact" aria-label="PropArt suite navigation (Style 8)">
+      <a href="https://propart.app/" class="sb8__brand" aria-label="PropArt suite - Directory of Applications">
+        <img src="./PropArt-May.svg" alt="PropArt full logo (style 8)" class="sb8__logo">
+      </a>
+      <nav class="sb8__nav" aria-label="Switch PropArt applications">
+        <a href="https://propart.app/Hub" class="sb8__link sb8__link--active">Hub</a>
+        <a href="https://propart.app/Studio" class="sb8__link">Studio</a>
+        <a href="https://propart.app/CropperTool" class="sb8__link">Cropper</a>
+        <a href="https://propart.app/BlendVisualizer" class="sb8__link">Color Blend</a>
+        <a href="https://propart.app/CaneDesigner" class="sb8__link">Cane</a>
+        <a href="https://propart.app/POD" class="sb8__link">POD</a>
+      </nav>
+      <div class="sb8__spacer"></div>
+      <button type="button" class="sb8__utility" title="Switch Studio Light / Kiln Dark">Theme</button>
+      <button type="button" class="sb8__utility" title="Sign in to your PropArt account">Sign in</button>
+    </header>
+  </section>
+
+  <!-- Directory hub — Whitepaper §4 -->
+  <section class="hub" aria-labelledby="hub-title">
+    <h1 id="hub-title" class="hub__title">Directory of Applications</h1>
+    <p class="hub__lede">
+      Strategic UI/UX standardization (Whitepaper V1.0): responsive hub cards with header, body, footer, and launch + status.
+      Seamless handoff between tools remains a Phase&nbsp;3 integration target.
+    </p>
+    <div class="hub__grid">
+      <article class="hub-card">
+        <div class="hub-card__head">
+          <span class="hub-card__icon hub-card__icon--violet" aria-hidden="true">H</span>
+          <h2 class="hub-card__name">PropArt™ Creator Space</h2>
+        </div>
+        <p class="hub-card__body">Shop, community, courses, and account — the main hub for artists across the suite.</p>
+        <div class="hub-card__foot">
+          <a class="hub-card__launch" href="https://propart-creator.web.app/">Launch</a>
+          <span class="hub-card__tag hub-card__tag--stable">Stable</span>
+        </div>
+      </article>
+      <article class="hub-card">
+        <div class="hub-card__head">
+          <span class="hub-card__icon hub-card__icon--teal" aria-hidden="true">C</span>
+          <h2 class="hub-card__name">PropArt™ Cropper Tool</h2>
+        </div>
+        <p class="hub-card__body">Slice sheets, pack exports, and keep cropper-native projects ready for Studio.</p>
+        <div class="hub-card__foot">
+          <a class="hub-card__launch" href="#">Launch</a>
+          <span class="hub-card__tag hub-card__tag--stable">Stable</span>
+        </div>
+      </article>
+      <article class="hub-card">
+        <div class="hub-card__head">
+          <span class="hub-card__icon hub-card__icon--slate" aria-hidden="true">S</span>
+          <h2 class="hub-card__name">PropArt™ Studio</h2>
+        </div>
+        <p class="hub-card__body">Palette planning, inventory, and slab workflow — paired with cane design flows.</p>
+        <div class="hub-card__foot">
+          <a class="hub-card__launch" href="#">Launch</a>
+          <span class="hub-card__tag hub-card__tag--beta">Beta</span>
+        </div>
+      </article>
+      <article class="hub-card">
+        <div class="hub-card__head">
+          <span class="hub-card__icon hub-card__icon--rose" aria-hidden="true">B</span>
+          <h2 class="hub-card__name">Color Blend Visualizer</h2>
+        </div>
+        <p class="hub-card__body">Fast palettes and clay blend recipes — built for cane and surface work.</p>
+        <div class="hub-card__foot">
+          <a class="hub-card__launch" href="#">Launch</a>
+          <span class="hub-card__tag hub-card__tag--stable">Stable</span>
+        </div>
+      </article>
+      <article class="hub-card">
+        <div class="hub-card__head">
+          <span class="hub-card__icon hub-card__icon--orchid" aria-hidden="true">K</span>
+          <h2 class="hub-card__name">Cane Design Studio</h2>
+        </div>
+        <p class="hub-card__body">Cane builder and shared-project flows — return to Studio anytime.</p>
+        <div class="hub-card__foot">
+          <a class="hub-card__launch" href="#">Launch</a>
+          <span class="hub-card__tag hub-card__tag--premium">Premium</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Simulated tool canvas -->
+  <section class="app-canvas" aria-labelledby="canvas-title">
+    <div class="app-canvas__panel">
+      <h2 id="canvas-title">Sample tool surface</h2>
+      <p>
+        This panel uses frosted glass over the page gradient. Production apps would wrap content in a shared layout
+        (<code>PropArtProvider</code> / <code>Layout</code> per Whitepaper §5). USB height is fixed at <strong>60px</strong> with
+        <code>backdrop-filter: blur(10px)</code> and a pearlescent bottom edge.
+      </p>
+      <h3 class="app-canvas__subhead">Universal toolbar controls</h3>
+      <p class="app-canvas__note">
+        Classes from <code>propart-generic-theme.css</code> mirror the
+        <a href="https://propart-color-blend.web.app/" rel="noopener noreferrer">Color Blend Visualizer</a> top bar:
+        <code>.propart-toolbar</code>, <code>.propart-btn-tb</code>, <code>--icon</code>, <code>--pill</code>, <code>--muted</code>.
+      </p>
+      <div class="app-canvas__toolbar-wrap">
+        <div class="propart-toolbar propart-toolbar--inline" role="toolbar" aria-label="Example tool actions">
+          <button type="button" class="propart-btn-tb propart-btn-tb--icon" title="Undo (example)">
+            <img class="propart-btn-tb__icon" src="./undo-circle.svg" alt="" width="20" height="20" decoding="async" />
+          </button>
+          <button type="button" class="propart-btn-tb propart-btn-tb--icon" disabled title="Redo (disabled example)">
+            <img class="propart-btn-tb__icon" src="./redo-circle.svg" alt="" width="20" height="20" decoding="async" />
+          </button>
+          <span class="propart-toolbar__divider" aria-hidden="true"></span>
+          <button type="button" class="propart-btn-tb propart-btn-tb--icon" title="Save (example)">
+            <img class="propart-btn-tb__icon" src="./device-floppy.svg" alt="" width="20" height="20" decoding="async" />
+          </button>
+          <button type="button" class="propart-btn-tb propart-btn-tb--icon" title="Tool (example)">
+            <img class="propart-btn-tb__icon" src="./palette.svg" alt="" width="20" height="20" decoding="async" />
+          </button>
+          <button type="button" class="propart-btn-tb propart-btn-tb--icon" title="Upload (example)">
+            <img class="propart-btn-tb__icon" src="./upload.svg" alt="" width="20" height="20" decoding="async" />
+          </button>
+          <button type="button" class="propart-btn-tb propart-btn-tb--icon" title="Help (example)">?</button>
+          <span class="propart-toolbar__divider" aria-hidden="true"></span>
+          <button type="button" class="propart-btn-tb propart-btn-tb--pill" title="Export (example)">
+            <img class="propart-btn-tb__icon" src="./writing.svg" alt="" width="20" height="20" decoding="async" />
+            Export
+          </button>
+          <button type="button" class="propart-btn-tb propart-btn-tb--pill propart-btn-tb--muted" title="PDF (muted pill example)">
+            <img class="propart-btn-tb__icon" src="./download.svg" alt="" width="20" height="20" decoding="async" />
+            PDF
+          </button>
+        </div>
+      </div>
+      <div class="app-canvas__stage" role="presentation" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var btn = document.getElementById("usbThemeToggle");
+      var icon = document.getElementById("usbThemeIcon");
+      var label = document.getElementById("usbThemeLabel");
+      if (!btn || !icon || !label) return;
+
+      function sync() {
+        var dark = root.getAttribute("data-theme") === "kiln-dark";
+        btn.setAttribute("aria-pressed", dark ? "true" : "false");
+        if (dark) {
+          icon.textContent = "◐";
+          label.textContent = "Kiln Dark";
+        } else {
+          icon.textContent = "☀";
+          label.textContent = "Studio Light";
+        }
+      }
+
+      btn.addEventListener("click", function () {
+        var next = root.getAttribute("data-theme") === "kiln-dark" ? "studio-light" : "kiln-dark";
+        root.setAttribute("data-theme", next);
+        sync();
+      });
+      sync();
+    })();
+  </script>
+</body>
+</html>

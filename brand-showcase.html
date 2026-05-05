@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="PropArt™ brand kit — Final SVG lockups, optional wordmark, carousel script, color tokens, typography, and UI patterns for the directory.">
+  <meta name="description" content="PropArt™ brand kit — logos, favicon, color tokens, typography, and UI patterns.">
   <title>PropArt™ Brand showcase</title>
-  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="./favicon.svg">
+  <link rel="icon" href="https://pegasussuite.github.io/PropArt-Directory/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./propart-generic-theme.css">
   <style>
     * { box-sizing: border-box; }
@@ -33,11 +32,6 @@
       padding: 10px 14px;
       background: var(--propart-purple);
       color: #fff;
-      text-shadow:
-        -1px -1px 0 var(--propart-eggplant), 1px -1px 0 var(--propart-eggplant),
-        -1px 1px 0 var(--propart-eggplant), 1px 1px 0 var(--propart-eggplant),
-        0 -1px 0 var(--propart-eggplant), 0 1px 0 var(--propart-eggplant),
-        -1px 0 0 var(--propart-eggplant), 1px 0 0 var(--propart-eggplant);
       border-radius: 10px;
       z-index: 10000;
       text-decoration: none;
@@ -73,6 +67,29 @@
       flex-wrap: wrap;
       gap: 10px 16px;
       align-items: center;
+    }
+    .nav-page-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .nav-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      border: 1px solid rgba(93, 80, 198, 0.25);
+      background: rgba(255, 255, 255, 0.82);
+      color: var(--propart-purple-deep);
+    }
+    .nav-pill:hover {
+      box-shadow: 0 6px 18px rgba(93, 80, 198, 0.16);
     }
     .lockup-card {
       max-width: 560px;
@@ -170,7 +187,6 @@
     .favicon-hero {
       width: 96px;
       height: 96px;
-      object-fit: contain;
       border-radius: 22px;
       box-shadow: 0 8px 24px rgba(60, 40, 90, 0.15);
     }
@@ -278,17 +294,18 @@
       <span class="propart-accent-strip" aria-hidden="true"></span>
       <div class="panel__inner">
         <div class="nav-top">
-          <div class="nav-code-links" style="gap:12px 18px">
-            <a class="propart-link" href="./index.html">← Directory of Applications</a>
-            <a class="propart-link" href="./login-modal-splash.html">Login modal splash</a>
-          </div>
+          <a class="propart-link" href="./index.html">← Directory of Applications</a>
           <div class="nav-code-links">
+            <div class="nav-page-links">
+              <a class="nav-pill" href="./propart-universal-banner-mockup.html">Open suite banner mockup</a>
+              <a class="nav-pill" href="./brand-showcase.html" aria-current="page">Brand showcase</a>
+            </div>
             <a class="propart-link" href="./propart-generic-theme.css">propart-generic-theme.css</a>
             <a class="propart-link" href="./suite-carousel.js">suite-carousel.js</a>
           </div>
         </div>
         <h1 class="propart-text-gradient-display">PropArt™ Brand showcase</h1>
-        <p class="subtitle">Logos, wordmark, horizontal lockup, tab icon, CSS tokens, carousel script, and patterns shipped with this directory. Use as an internal reference; deploy the site separately (see <a class="propart-link" href="#sec-publish">Publishing</a>).</p>
+        <p class="subtitle">Logos, favicon, CSS tokens, and reusable patterns shipped with this directory. Use this page as an internal reference or specimen layout.</p>
       </div>
     </header>
 
@@ -310,19 +327,14 @@
               <strong>Combined mark</strong> — icon from <code>PropArtLogo-Final.svg</code> (logo only); “PropArt” uses the same gradient stops as the directory page (<code>.suite-brand-row__name</code>).
             </figcaption>
           </figure>
-          <p class="subtitle" style="margin:18px 0 10px">Masthead image on <a class="propart-link" href="./index.html"><code>index.html</code></a> (butterfly + wordmark + product tagline in one SVG):</p>
+          <p class="subtitle" style="margin:18px 0 10px">Shipped Final lockups (same family as <code>PropArt-Directory/</code>):</p>
           <figure class="asset-card" style="max-width:100%;overflow:auto">
-            <img src="./PropArtTextLogoTagline-Final.svg" alt="PropArt horizontal lockup: butterfly, PropArt™ wordmark, and tagline" width="820" height="300" decoding="async" style="max-width:min(720px,100%);height:auto;display:block;margin:0 auto">
-            <figcaption>
-              <strong>Text + logo + tagline</strong> — <code>PropArtTextLogoTagline-Final.svg</code>. Canonical masthead asset; scales with <code>width=&quot;820&quot;</code> and <code>height: auto</code> via <code>.suite-lockup-img</code>. Mirror in monorepo: <code>Assets/PropArtTextLogoTagline-Final.svg</code> (and synced <code>Assets/propart-lockup-horizontal.svg</code>).
-            </figcaption>
+            <img src="./PropArtTextLogoTagline-Final.svg" alt="PropArt butterfly, wordmark, and product tagline" width="820" height="300" decoding="async" style="max-width:min(720px,100%);height:auto;display:block;margin:0 auto">
+            <figcaption><strong>Text + logo + tagline</strong> — <code>PropArtTextLogoTagline-Final.svg</code> (masthead).</figcaption>
           </figure>
-          <p class="subtitle" style="margin:18px 0 10px">Text + logo (no “Tools for polymer clay artists” line inside the SVG) — e.g. login splash brand row:</p>
-          <figure class="asset-card" style="max-width:100%;overflow:auto">
-            <img src="./PropArtTextLogo-Final.svg" alt="PropArt butterfly with PropArt™ wordmark" width="820" height="300" decoding="async" style="max-width:min(720px,100%);height:auto;display:block;margin:0 auto">
-            <figcaption>
-              <strong>Text + logo</strong> — <code>PropArtTextLogo-Final.svg</code>. Used on <a class="propart-link" href="./login-modal-splash.html"><code>login-modal-splash.html</code></a>.
-            </figcaption>
+          <figure class="asset-card" style="max-width:100%;overflow:auto;margin-top:14px">
+            <img src="./PropArtTextLogo-Final.svg" alt="PropArt butterfly and wordmark" width="820" height="300" decoding="async" style="max-width:min(720px,100%);height:auto;display:block;margin:0 auto">
+            <figcaption><strong>Text + logo</strong> — <code>PropArtTextLogo-Final.svg</code> (e.g. login).</figcaption>
           </figure>
         </section>
 
@@ -335,21 +347,13 @@
                 <img src="./PropArtLogo-Final.svg" alt="" width="64" height="94" decoding="async" aria-hidden="true">
               </div>
               <figcaption>
-                <strong>Logo only</strong> — <code>PropArtLogo-Final.svg</code>. Butterfly mark; pair with live text or <code>PropArtTextLogo-Final.svg</code> where you need both in one asset.
+                <strong>Logo only</strong> — <code>PropArtLogo-Final.svg</code>. Alias: <code>propart-logo.svg</code> when synced.
               </figcaption>
             </figure>
             <figure class="asset-card">
-              <img class="favicon-hero" src="./favicon.svg" alt="PropArt suite favicon: purple rounded square with white mark" width="96" height="96" decoding="async">
+              <img class="favicon-hero" src="./favicon.svg" alt="PropArt favicon: purple rounded square with white mark" width="96" height="96" decoding="async">
               <figcaption>
-                <strong>App / tab icon</strong> — canonical <code>favicon.svg</code> on the <a href="https://pegasussuite.github.io/PropArt-Directory/">live directory</a>; all suite pages link the same asset via <code>rel=&quot;icon&quot;</code>.
-              </figcaption>
-            </figure>
-            <figure class="asset-card">
-              <div class="logo-row">
-                <img src="./propart-wordmark-textmark.svg" alt="PropArt™ outlined wordmark with trademark" width="212" height="36" decoding="async" style="max-width:min(320px,100%);height:auto">
-              </div>
-              <figcaption>
-                <strong>Wordmark + ™</strong> (optional) — <code>propart-wordmark-textmark.svg</code>. Georgia outlines + superscript ™; kept for small wordmark-only layouts. Full brand row on login uses <code>PropArtTextLogo-Final.svg</code>.
+                <strong>App / tab icon</strong> — <code>favicon.svg</code>. Linked in every HTML head as <code>rel=&quot;icon&quot;</code>.
               </figcaption>
             </figure>
           </div>
@@ -385,14 +389,45 @@
 
         <section aria-labelledby="sec-patterns">
           <h2 id="sec-patterns">Patterns</h2>
-          <p class="subtitle" style="margin-bottom:14px"><strong>Accent strip</strong> — <code>.propart-accent-strip</code> (4px gradient bar) on panel headers such as this showcase. The live directory <strong>shell</strong> (<code>.wrap</code> on <code>index.html</code>) uses a <strong>breathing inset frame</strong> (<code>suite-frame-breathe</code>) instead of the strip. <a class="propart-link" href="./login-modal-splash.html">Login modal splash</a> uses the same idea on the dialog (<code>login-modal-breathe</code>), not the accent strip.</p>
+          <p class="subtitle" style="margin-bottom:14px">Accent bar (page chrome) and full-width gradient strip.</p>
           <div class="pattern-row">
             <div class="strip-demo" role="img" aria-label="Purple to teal to pink gradient"></div>
           </div>
-          <p style="margin:18px 0 12px;font-size:0.88rem;color:var(--propart-muted)">Primary button and text link (utilities from <code>propart-generic-theme.css</code>). Card CTAs on the directory use <strong>sentence case</strong> (e.g. “Open cropper”).</p>
+          <p style="margin:18px 0 12px;font-size:0.88rem;color:var(--propart-muted)">Primary button and text link (utilities from <code>propart-generic-theme.css</code>):</p>
           <div class="pattern-row">
             <a class="propart-btn-primary" href="./index.html">Example primary CTA</a>
             <a class="propart-link" href="./index.html">Example text link</a>
+          </div>
+          <p style="margin:18px 0 10px;font-size:0.88rem;color:var(--propart-muted)">Toolbar / icon buttons (parity with <a href="https://propart-color-blend.web.app/">Color Blend Visualizer</a>): <code>.propart-toolbar</code>, <code>.propart-btn-tb</code>, modifiers <code>--icon</code>, <code>--pill</code>, <code>--muted</code>.</p>
+          <div class="propart-toolbar propart-toolbar--inline" role="toolbar" aria-label="Toolbar pattern sample" style="max-width:100%;overflow-x:auto">
+            <button type="button" class="propart-btn-tb propart-btn-tb--icon" title="Undo"><img class="propart-btn-tb__icon" src="./undo-circle.svg" alt="" width="20" height="20" decoding="async" /></button>
+            <button type="button" class="propart-btn-tb propart-btn-tb--icon" disabled title="Redo disabled"><img class="propart-btn-tb__icon" src="./redo-circle.svg" alt="" width="20" height="20" decoding="async" /></button>
+            <span class="propart-toolbar__divider" aria-hidden="true"></span>
+            <button type="button" class="propart-btn-tb propart-btn-tb--pill" title="Export"><img class="propart-btn-tb__icon" src="./writing.svg" alt="" width="20" height="20" decoding="async" />Export</button>
+            <button type="button" class="propart-btn-tb propart-btn-tb--pill propart-btn-tb--muted" title="PDF muted"><img class="propart-btn-tb__icon" src="./download.svg" alt="" width="20" height="20" decoding="async" />PDF</button>
+          </div>
+        </section>
+
+        <section aria-labelledby="sec-suite-bars">
+          <h2 id="sec-suite-bars">Suite bar mockup updates</h2>
+          <p class="subtitle" style="margin-bottom:14px">
+            Latest work lives in
+            <a class="propart-link" href="./propart-universal-banner-mockup.html"><code>propart-universal-banner-mockup.html</code></a>:
+            Styles 1-8 are present, with updated Style 7/8 logo treatment using <code>PropArt-May.svg</code> (web-ready header crop), and Style 7 button gradients tuned to the blue-violet-pink blend.
+          </p>
+          <div class="asset-grid">
+            <figure class="asset-card">
+              <img src="./PropArt-May.svg" alt="PropArt May logo source asset" width="520" height="240" decoding="async" style="max-width:100%;height:auto;display:block">
+              <figcaption>
+                <strong>Suite-bar logo source</strong> - <code>PropArt-May.svg</code> is the header-ready crop used in style 7/8.
+              </figcaption>
+            </figure>
+            <figure class="asset-card">
+              <div style="height:64px;border-radius:14px;border:1px solid rgba(109,102,146,0.32);background:linear-gradient(110deg, rgba(255, 255, 255, 0.92) 0%, rgba(241, 236, 251, 0.9) 22%, rgba(233, 244, 244, 0.9) 43%, rgba(247, 236, 242, 0.92) 66%, rgba(255, 255, 255, 0.94) 100%);box-shadow:0 8px 20px rgba(71,57,113,0.18), inset 0 1px 0 rgba(255,255,255,0.74)"></div>
+              <figcaption>
+                <strong>Shared card background</strong> - style 6 gradient is now mirrored into style 7/8 for consistency.
+              </figcaption>
+            </figure>
           </div>
         </section>
 
@@ -418,21 +453,14 @@
         <section aria-labelledby="sec-carousel">
           <h2 id="sec-carousel">Directory carousel (JavaScript)</h2>
           <p class="subtitle" style="margin-bottom:8px">
-            <a class="propart-link" href="./index.html">Directory home</a> uses a <strong>3D coverflow</strong> for application cards: prev/next, dots, swipe, keyboard, autoplay (5s), and reduced-motion fallbacks. Logic lives in
-            <a class="propart-link" href="./suite-carousel.js"><code>suite-carousel.js</code></a>
-            (<code>&lt;script src=&quot;./suite-carousel.js&quot; defer&gt;&lt;/script&gt;</code>). Pair with the <code>.suite-carousel-*</code> and <code>.suite-coverflow-shell</code> rules in <code>index.html</code> (perspective, <code>rotateY(±20deg)</code> on side slides, tighter angles under 520px).
-          </p>
-        </section>
-
-        <section aria-labelledby="sec-publish">
-          <h2 id="sec-publish">Publishing &amp; live site</h2>
-          <p class="subtitle" style="margin-bottom:0">
-            Pushing to GitHub does <strong>not</strong> update <a class="propart-link" href="https://www.propart.app/">https://www.propart.app/</a> by itself. The custom domain is served by <strong>Firebase Hosting</strong> (site <code>propart-directory</code>). From this repo folder, run <code>firebase deploy --only hosting</code> (see <code>README-SUITE-URLS.md</code>). Verify on <a class="propart-link" href="https://propart-directory.web.app/">propart-directory.web.app</a> after deploy. Optional mirror: <a class="propart-link" href="https://pegasussuite.github.io/PropArt-Directory/">GitHub Pages</a> if enabled on the repo.
+            Coverflow-style slides, dots, arrows, swipe, keyboard, autoplay (5s), and reduced-motion handling live in
+            <a class="propart-link" href="./suite-carousel.js"><code>suite-carousel.js</code></a>.
+            The directory page loads it with <code>&lt;script src=&quot;./suite-carousel.js&quot; defer&gt;&lt;/script&gt;</code>; pair with the carousel rules in <code>index.html</code>’s <code>&lt;style&gt;</code> block.
           </p>
         </section>
 
         <footer>
-          PropArt™ appears as the product mark; Pegasus Suite LLC is shown without ™. <strong>Key SVGs:</strong> <code>PropArtTextLogoTagline-Final.svg</code> (masthead), <code>PropArtTextLogo-Final.svg</code> (text + logo), <code>PropArtLogo-Final.svg</code> (logo). <strong>Tab icon:</strong> <code>favicon.svg</code> (canonical on the live directory). <strong>Also:</strong> <code>propart-wordmark-textmark.svg</code> (optional wordmark). <strong>Key pages:</strong> <code>index.html</code>, <code>brand-showcase.html</code>, <code>login-modal-splash.html</code>, <code>propart-generic-theme.css</code>, <code>suite-carousel.js</code>, <code>firebase.json</code>.
+          PropArt™ appears as the product mark; Pegasus Suite LLC is shown without ™. Key SVGs: <code>PropArtTextLogoTagline-Final.svg</code>, <code>PropArtTextLogo-Final.svg</code>, <code>PropArtLogo-Final.svg</code>, <code>favicon.svg</code>. Also: <code>propart-generic-theme.css</code>, <code>suite-carousel.js</code>, <code>index.html</code>, <code>brand-showcase.html</code>.
         </footer>
       </div>
     </main>
