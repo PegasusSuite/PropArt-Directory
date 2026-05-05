@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Official hub for PropArt™ Tools for Polymer Clay Artists — suite directory on propart.app; Creator Space, Cropper, Studio, Color Blend, Cane Design. Pegasus Suite LLC.">
+  <meta name="description" content="Official hub for PropArt™ Tools for Polymer Clay Artists — suite directory on propart.app; Creator Space, Cropper, Studio, Color Blend, Cane Design, POD CardArt. Pegasus Suite LLC.">
   <meta name="author" content="Pegasus Suite LLC">
   <meta name="copyright" content="© 2026 Pegasus Suite LLC. PropArt™ is a trademark of Pegasus Suite LLC.">
   <meta name="robots" content="index, follow">
@@ -14,7 +14,15 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@graph":[
     {"@type":"WebApplication","name":"PropArt™ Directory of Applications","alternateName":"PropArt™ Tools for Polymer Clay Artists — Suite Hub","applicationCategory":"DesignApplication","operatingSystem":"Any","url":"https://www.propart.app/","description":"Official directory hub listing PropArt™ web applications for polymer clay artists.","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Pegasus Suite LLC","url":"https://www.propart.app/"},"author":{"@type":"Organization","name":"Pegasus Suite LLC","sameAs":["https://github.com/PegasusSuite"]},"copyrightHolder":{"@type":"Organization","name":"Pegasus Suite LLC"},"copyrightYear":2026,"codeRepository":"https://github.com/PegasusSuite/PropArt-Directory"},
-    {"@type":"Organization","name":"Pegasus Suite LLC","url":"https://www.propart.app/","email":"support@propart.app","brand":{"@type":"Brand","name":"PropArt™","description":"Tools for polymer clay artists"},"sameAs":["https://github.com/PegasusSuite"],"contactPoint":[{"@type":"ContactPoint","contactType":"customer support","email":"support@propart.app","availableLanguage":["en"]}]}
+    {"@type":"Organization","name":"Pegasus Suite LLC","url":"https://www.propart.app/","email":"support@propart.app","brand":{"@type":"Brand","name":"PropArt™","description":"Tools for polymer clay artists"},"sameAs":["https://github.com/PegasusSuite"],"contactPoint":[{"@type":"ContactPoint","contactType":"customer support","email":"support@propart.app","availableLanguage":["en"]}]},
+    {"@type":"ItemList","name":"PropArt™ suite applications","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"PropArt™ Creator Space","url":"https://propart-creator.web.app/"},
+      {"@type":"ListItem","position":2,"name":"PropArt™ Cropper Tool","url":"https://propart-cropper.web.app/"},
+      {"@type":"ListItem","position":3,"name":"PropArt™ Studio","url":"https://propart-studio.web.app/"},
+      {"@type":"ListItem","position":4,"name":"PropArt™ Color Blend Visualizer","url":"https://propart-color-blend.web.app/"},
+      {"@type":"ListItem","position":5,"name":"PropArt™ Cane Design Studio","url":"https://propart-cane.web.app/"},
+      {"@type":"ListItem","position":6,"name":"PropArt™ POD — CardArt","url":"https://propart-pod.web.app/"}
+    ]}
   ]}
   </script>
   <link rel="stylesheet" href="./propart-generic-theme.css">
@@ -579,6 +587,34 @@
           inset 0 0 0 clamp(3px, 0.78vw, 4.5px) rgba(93, 80, 198, 0.48);
       }
     }
+
+    /* Static grid — same apps as carousel (incl. POD CardArt), for scanability & no-JS fallbacks */
+    .directory-all-apps {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(225, 120, 151, 0.22);
+      flex-shrink: 0;
+    }
+    .directory-all-apps-heading {
+      margin: 0 0 10px;
+      font-size: clamp(0.72rem, 1.6vw, 0.82rem);
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: center;
+      color: var(--suite-muted);
+    }
+    .directory-app-grid {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 12px;
+    }
+    .directory-app-grid .tool {
+      min-height: 8.5rem;
+    }
   </style>
 </head>
 <body>
@@ -664,6 +700,66 @@
         <button type="button" class="suite-carousel-btn suite-carousel-next" aria-label="Next application">❯</button>
       </div>
       <div class="suite-carousel-dots" role="tablist" aria-label="Choose application slide"></div>
+    </section>
+
+    <section class="directory-all-apps" aria-labelledby="all-apps-grid-heading">
+      <h2 id="all-apps-grid-heading" class="directory-all-apps-heading">All applications</h2>
+      <ul class="directory-app-grid">
+        <li>
+          <article class="tool">
+            <h2>PropArt™ Creator Space</h2>
+            <small>Main hub: shop, community, courses, account &amp; settings.</small>
+            <div class="tool-actions">
+              <a class="cta-main" href="https://propart-creator.web.app/">Open hub</a>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="tool">
+            <h2>PropArt™ Cropper Tool</h2>
+            <small>Slice sheets, pack exports, and keep cropper-native projects ready for Studio.</small>
+            <div class="tool-actions">
+              <a class="cta-main" href="https://propart-cropper.web.app/">Open cropper</a>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="tool">
+            <h2>PropArt™ Studio</h2>
+            <small>Palette planning, inventory, and slab workflow — paired with cane design flows.</small>
+            <div class="tool-actions">
+              <a class="cta-main" href="https://propart-studio.web.app/">Open studio</a>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="tool">
+            <h2>PropArt™ Color Blend Visualizer</h2>
+            <small>Fast palettes and clay blend recipes — built for cane and surface work.</small>
+            <div class="tool-actions">
+              <a class="cta-main" href="https://propart-color-blend.web.app/">Open blend visualizer</a>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="tool">
+            <h2>PropArt™ Cane Design Studio</h2>
+            <small>Cane builder and shared-project flows — return to PropArt™ Studio anytime.</small>
+            <div class="tool-actions">
+              <a class="cta-main" href="https://propart-cane.web.app/">Open cane studio</a>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="tool">
+            <h2>PropArt™ POD — CardArt</h2>
+            <small>Affirmation card decks, POD presets (Printify / Printful), export &amp; Firebase sync.</small>
+            <div class="tool-actions">
+              <a class="cta-main" href="https://propart-pod.web.app/">Open CardArt / POD</a>
+            </div>
+          </article>
+        </li>
+      </ul>
     </section>
 
     <footer class="site-footer">
