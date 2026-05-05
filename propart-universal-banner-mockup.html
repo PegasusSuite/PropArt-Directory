@@ -641,7 +641,7 @@
         display: flex;
         gap: 4px;
         margin-left: 12px;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
       }
       .sb5__pill {
         padding: 5px 11px;
@@ -662,39 +662,39 @@
       .sb5__right {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 4px;
+        flex-wrap: nowrap;
       }
       .sb5__glass-btn {
         border-radius: 999px;
-        border: 1px solid rgba(108, 97, 156, 0.45);
-        background: linear-gradient(92deg, #79bfd8 0%, #8b8fd0 56%, #b67aaa 100%);
-        color: #fdfcff;
-        font-size: 0.76rem;
-        padding: 5px 10px;
+        border: 1px solid rgba(148,163,184,0.5);
+        background: #f9fafb;
+        color: var(--muted);
+        font-size: 0.78rem;
+        padding: 5px 11px;
         display: inline-flex;
         align-items: center;
         gap: 5px;
-        backdrop-filter: blur(8px);
+        min-height: 28px;
         cursor: pointer;
-        font-weight: 700;
+        font-weight: 500;
       }
-      .sb5__glass-btn:hover { box-shadow: 0 8px 14px rgba(77, 69, 113, 0.2); }
-      .sb5__signin {
-        background: linear-gradient(92deg, #86c7de 0%, #9b9ad9 56%, #c186b3 100%);
-        border-color: rgba(100, 88, 151, 0.56);
-        color: #ffffff;
+      .sb5__glass-btn:hover {
+        background: #ffffff;
+        color: #0f172a;
       }
       @media (max-width: 900px) {
         .suite-bar--card { border-radius: 16px; }
         .sb5__tagline { display: none; }
         .sb5__brand { min-width: auto; }
         .sb5__logo { width: min(64vw, 360px); height: 50px; }
+        .sb5__nav,
+        .sb5__right { flex-wrap: wrap; }
       }
     </style>
     <header class="suite-bar--card" aria-label="PropArt suite navigation (Style 5)">
       <a href="https://propart.app/Hub" class="sb5__brand" aria-label="PropArt suite — Hub">
         <img src="./PropArt-May2.svg" alt="PropArt™" class="sb5__logo">
-        <span class="sb5__tagline">Tools for polymer clay artists</span>
       </a>
       <nav class="sb5__nav" aria-label="Switch PropArt applications">
         <a href="https://propart.app/Hub" class="sb5__pill sb5__pill--active">Hub</a>
@@ -706,8 +706,8 @@
       </nav>
       <div class="sb5__spacer"></div>
       <div class="sb5__right">
-        <button type="button" class="sb5__glass-btn" title="Switch Studio Light / Kiln Dark"><span aria-hidden="true">☀</span><span>Theme</span></button>
-        <button type="button" class="sb5__glass-btn sb5__signin" title="Sign in to your PropArt account"><span aria-hidden="true">👤</span><span>Sign in</span></button>
+        <button type="button" class="sb5__glass-btn" title="Switch Studio Light / Kiln Dark">Theme</button>
+        <button type="button" class="sb5__glass-btn" title="Sign in to your PropArt account">Sign in</button>
       </div>
     </header>
   </section>
