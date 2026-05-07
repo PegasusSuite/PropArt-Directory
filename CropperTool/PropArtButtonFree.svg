@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="PropArtButtonFree.svg"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.76167929"
+     inkscape:cx="397.14878"
+     inkscape:cy="561.25984"
+     inkscape:window-width="1920"
+     inkscape:window-height="1057"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient216"
+       id="linearGradient37"
+       gradientUnits="userSpaceOnUse"
+       x1="498.13068"
+       y1="143.69153"
+       x2="536.44843"
+       y2="143.69153"
+       gradientTransform="translate(-462.74111,-81.561708)" />
+    <linearGradient
+       id="linearGradient216"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#7289d0;stop-opacity:1;"
+         offset="0"
+         id="stop215" />
+      <stop
+         style="stop-color:#be98c3;stop-opacity:1;"
+         offset="1"
+         id="stop216" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient17"
+       id="linearGradient38"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.66949121,0,0,0.67434165,253.79051,104.22509)"
+       x1="162.29706"
+       y1="225.75398"
+       x2="199.21301"
+       y2="189.62767" />
+    <linearGradient
+       id="linearGradient17"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#d0e5f8;stop-opacity:1;"
+         offset="0"
+         id="stop17" />
+      <stop
+         style="stop-color:#bb89b9;stop-opacity:1;"
+         offset="1"
+         id="stop18" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient17"
+       id="linearGradient39"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.0006171,0,0,0.72732178,194.83745,120.24388)"
+       x1="162.29706"
+       y1="225.75398"
+       x2="197.59404"
+       y2="190.84546" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:url(#linearGradient37);fill-opacity:1;stroke:#5d50c6;stroke-width:0.4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect30-7"
+       width="38.317741"
+       height="13.263834"
+       x="35.389572"
+       y="55.497917"
+       ry="5.7216539" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.05556px;font-family:Georgia;-inkscape-font-specification:'Georgia, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:#4c3178;stroke-width:0.06;stroke-dasharray:none;stroke-opacity:1"
+       x="48.801365"
+       y="64.024178"
+       id="text37"><tspan
+         sodipodi:role="line"
+         id="tspan37"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.05556px;font-family:Georgia;-inkscape-font-specification:'Georgia, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;fill-opacity:1;stroke:#4c3178;stroke-width:0.06;stroke-dasharray:none;stroke-opacity:1"
+         x="48.801365"
+         y="64.024178">Free</tspan></text>
+    <g
+       id="g37-1"
+       transform="matrix(0.17676592,0,0,0.13835386,-25.12115,26.174071)">
+      <ellipse
+         style="fill:url(#linearGradient38);fill-opacity:1;stroke:#564286;stroke-width:0.177776;stroke-opacity:1"
+         id="path14-5-4-6"
+         cx="374.3974"
+         cy="244.27966"
+         rx="12.415584"
+         ry="12.505533" />
+      <ellipse
+         style="fill:url(#linearGradient39);fill-opacity:1;stroke:#564286;stroke-width:0.225714;stroke-opacity:1"
+         id="path14-4-7-5"
+         ry="13.488039"
+         rx="18.556248"
+         cy="271.30191"
+         cx="375.0957" />
+    </g>
+  </g>
+</svg>

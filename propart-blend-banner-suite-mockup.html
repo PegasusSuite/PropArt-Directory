@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="PropArt™ suite banners — Blend Visualizer style with suite rail left and tool rail right (mockup)." />
+  <title>PropArt™ — Blend-style suite banners (mockup)</title>
+  <link rel="icon" href="https://pegasussuite.github.io/PropArt-Directory/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      /* ~50% lighter than prior lavender→mint stops (each RGB mixed halfway toward white) */
+      --banner-gradient: linear-gradient(
+        135deg,
+        rgb(234 230 244 / 0.92) 0%,
+        rgb(244 240 250 / 0.92) 50%,
+        rgb(244 252 250 / 0.92) 100%
+      );
+      --shadow-card: 0 2px 4px rgba(93, 80, 198, 0.16);
+      --shadow-pill: 0 2px 4px rgba(71, 57, 113, 0.14);
+      --shadow-btn: 0 1px 4px rgba(93, 80, 198, 0.18);
+      --border-soft: rgba(109, 102, 146, 0.28);
+      /* Darkest type = brand eggplant only (matches propart-generic-theme --propart-eggplant) */
+      --eggplant: #3d3366;
+      --eggplant-muted: #5c4d85;
+      --text-deep: var(--eggplant);
+      --text-mid: var(--eggplant-muted);
+      /* Pink pulls from PropArt-May2.svg wordmark stops (#c96b8a, #bf6991, #c46a8d) */
+      --logo-pink-mid: #c96b8a;
+      --logo-pink-deep: #c46a8d;
+      --logo-pink-light: #e17897;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px 16px 48px;
+      font-family: "Quicksand", system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #f7f4fc 0%, #eef8f6 100%);
+      color: var(--text-mid);
+    }
+
+    .page {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin: 0 0 0.35rem;
+      font-size: 1.55rem;
+      font-weight: 700;
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing: -0.025em;
+      line-height: 1.12;
+      background: linear-gradient(
+        118deg,
+        var(--eggplant) 0%,
+        #5d50c6 40%,
+        var(--logo-pink-mid) 76%,
+        var(--logo-pink-light) 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    @supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+      h1 {
+        color: var(--eggplant);
+        background: none;
+      }
+    }
+
+    .lede {
+      margin: 0 0 1.25rem;
+      max-width: 72ch;
+      line-height: 1.45;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .mockup-page-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .mockup-page-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      border: 1px solid rgba(109, 102, 146, 0.34);
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--eggplant);
+      box-shadow: 0 2px 4px rgba(71, 57, 113, 0.12);
+    }
+
+    .mockup-page-link[aria-current="page"] {
+      border-color: rgba(109, 213, 195, 0.65);
+      box-shadow: 0 2px 4px rgba(109, 213, 195, 0.22);
+    }
+
+    .demo-block {
+      margin-bottom: 2.25rem;
+    }
+
+    .demo-label {
+      margin: 0 0 0.5rem;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--eggplant-muted);
+    }
+
+    .demo-url {
+      margin: 0 0 0.65rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .demo-url a {
+      color: #5d50c6;
+    }
+
+    /* Gradient banner card */
+    .suite-banner-card {
+      border-radius: 24px;
+      border: 1px solid var(--border-soft);
+      padding: 1rem 1.15rem 1.05rem;
+      background: var(--banner-gradient);
+      box-shadow: var(--shadow-card);
+    }
+
+    .suite-banner-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .suite-banner-brand {
+      flex-shrink: 0;
+    }
+
+    .suite-banner-brand img {
+      display: block;
+      height: auto;
+      width: auto;
+      /* Taller than the tool title (h2) so May2 reads as the dominant lockup */
+      max-width: min(100%, 440px);
+      max-height: clamp(3.6rem, 9vw, 5.5rem);
+    }
+
+    .suite-banner-meta {
+      flex: 1 1 200px;
+      min-width: 0;
+    }
+
+    .suite-banner-utils {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: flex-start;
+      flex-shrink: 0;
+    }
+
+    .suite-banner-utils button {
+      font-family: inherit;
+      border-radius: 999px;
+      border: 1px solid rgba(61, 51, 102, 0.22);
+      background: rgba(255, 255, 255, 0.82);
+      padding: 8px 14px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--eggplant);
+      cursor: default;
+      box-shadow: 0 2px 4px rgba(61, 51, 102, 0.1);
+    }
+
+    .suite-banner-utils button:hover {
+      transform: none;
+    }
+
+    .suite-banner-meta h2 {
+      margin: 0;
+      font-size: 1.28rem;
+      font-weight: 700;
+      line-height: 1.15;
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing: -0.02em;
+      background: linear-gradient(
+        118deg,
+        var(--eggplant) 0%,
+        #5d50c6 42%,
+        var(--logo-pink-mid) 78%,
+        var(--logo-pink-light) 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    @supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+      .suite-banner-meta h2 {
+        color: var(--eggplant);
+        background: none;
+      }
+    }
+
+    .suite-banner-meta p {
+      margin: 0.35rem 0 0;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--eggplant-muted);
+      max-width: 46ch;
+      line-height: 1.35;
+    }
+
+    /* White pill: suite (left) | tools (right) */
+    .suite-banner-pill {
+      margin-top: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 999px;
+      padding: 0.42rem 0.62rem;
+      border: 1px solid rgba(109, 102, 146, 0.22);
+      box-shadow: var(--shadow-pill);
+    }
+
+    .suite-banner-pill__suite,
+    .suite-banner-pill__tools {
+      display: flex;
+      align-items: center;
+      gap: 0.42rem;
+      flex-wrap: wrap;
+    }
+
+    .suite-banner-pill__suite {
+      min-width: min(100%, 280px);
+    }
+
+    .suite-banner-pill__tools {
+      margin-left: auto;
+    }
+
+    .pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #c8c4d6;
+      flex-shrink: 0;
+      margin-right: 0.1rem;
+    }
+
+    .suite-banner-pill__divider {
+      width: 1px;
+      align-self: stretch;
+      min-height: 38px;
+      background: rgba(109, 102, 146, 0.18);
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 620px) {
+      .suite-banner-pill__divider {
+        display: none;
+      }
+
+      .suite-banner-pill__tools {
+        margin-left: 0;
+        width: 100%;
+        padding-left: 1.5rem;
+        border-top: 1px solid rgba(109, 102, 146, 0.12);
+        padding-top: 0.45rem;
+      }
+    }
+
+    .btn-suite {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      border: 1px solid rgba(109, 102, 146, 0.22);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.68rem;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      color: var(--eggplant);
+      background: linear-gradient(145deg, #ebe4f6 0%, #e3f3ef 100%);
+      box-shadow: var(--shadow-btn);
+    }
+
+    .btn-suite:hover {
+      filter: brightness(1.03);
+    }
+
+    .btn-suite.is-current {
+      background: linear-gradient(145deg, #74abff 0%, #6dd5c3 100%);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.45);
+      box-shadow: var(--shadow-btn);
+    }
+
+    .btn-tool {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      border: 1px solid rgba(109, 102, 146, 0.24);
+      background: linear-gradient(145deg, #ede8f7 0%, #e8f6f2 100%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      line-height: 1;
+      cursor: default;
+      box-shadow: var(--shadow-btn);
+    }
+
+    .btn-tool--accent {
+      background: linear-gradient(145deg, #7eb3ff 0%, #7bd9c8 100%);
+      border-color: rgba(255, 255, 255, 0.42);
+    }
+
+    .badge-tier {
+      border-radius: 999px;
+      padding: 0.28rem 0.55rem;
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      background: #d4f4ef;
+      color: var(--eggplant);
+      box-shadow: 0 1px 4px rgba(61, 51, 102, 0.12);
+    }
+
+    .badge-tier--pro {
+      background: linear-gradient(145deg, #e8ddff 0%, #d9f5ff 100%);
+      color: var(--eggplant);
+    }
+
+    .note-footer {
+      margin-top: 2rem;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px dashed rgba(109, 102, 146, 0.35);
+      background: rgba(255, 255, 255, 0.65);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--eggplant-muted);
+      max-width: 72ch;
+      line-height: 1.4;
+    }
+
+    .lede code,
+    .note-footer code {
+      font-size: 0.88em;
+      color: var(--eggplant);
+      background: rgba(61, 51, 102, 0.08);
+      padding: 0.12em 0.35em;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="mockup-page-links" aria-label="Page navigation">
+      <a class="mockup-page-link" href="./brand-showcase.html">Brand showcase</a>
+      <a class="mockup-page-link" href="./propart-universal-banner-mockup.html">USB / ribbon mockup</a>
+      <a class="mockup-page-link" href="./propart-blend-banner-suite-mockup.html" aria-current="page">Blend-style banners</a>
+    </nav>
+
+    <h1>Blend Visualizer–style suite banners</h1>
+    <p class="lede">
+      Mock headers for each live surface: <strong>lightened</strong> lavender→mint gradient card (~50% lighter stops),
+      <code>PropArt-May2.svg</code> lockup (tagline lives in the art—no duplicate line type),
+      tool title + subtitle row, <strong>Theme</strong> and <strong>Sign in</strong> on the top-right of the gradient card (static placeholders),
+      then a white pill strip with <strong>suite jumps on the left</strong> and <strong>contextual tool icons on the right</strong>.
+      Strongest type color is brand eggplant <code>#3d3366</code>—no pure black.
+      Shadows stay tight (~4px) per Hub polish.
+    </p>
+
+    <!-- Shared suite destinations -->
+    <!-- ⌂ Directory · Cs Creator · St Studio · Cr Cropper · B Blend · K Cane · P POD -->
+
+    <section class="demo-block" aria-labelledby="lbl-creator">
+      <p id="lbl-creator" class="demo-label">Creator Space</p>
+      <p class="demo-url"><a href="https://propart-creator.web.app/">https://propart-creator.web.app/</a></p>
+      <div class="suite-banner-card">
+          <div class="suite-banner-top">
+            <div class="suite-banner-brand">
+              <img src="./PropArt-May2.svg" width="320" height="96" alt="PropArt™" />
+            </div>
+            <div class="suite-banner-meta">
+              <h2>Creator Space</h2>
+              <p>Craft In Ardor Suite · Shop fronts, gallery browsing, and community entry points</p>
+            </div>
+            <div class="suite-banner-utils">
+              <button type="button" title="Static placeholder">Theme</button>
+              <button type="button" title="Static placeholder">Sign in</button>
+            </div>
+          </div>
+          <div class="suite-banner-pill">
+            <div class="suite-banner-pill__suite">
+              <span class="pill-dot" aria-hidden="true"></span>
+              <a class="btn-suite" href="https://pegasussuite.github.io/PropArt-Directory/" title="Directory">⌂</a>
+              <a class="btn-suite is-current" href="https://propart-creator.web.app/" title="Creator Space">Cs</a>
+              <a class="btn-suite" href="https://propart.app/Studio" title="Studio">St</a>
+              <a class="btn-suite" href="https://propart.app/CropperTool" title="Cropper">Cr</a>
+              <a class="btn-suite" href="https://propart.app/BlendVisualizer" title="Blend">B</a>
+              <a class="btn-suite" href="https://propart.app/CaneDesigner" title="Cane">K</a>
+              <a class="btn-suite" href="https://propart.app/POD" title="POD">P</a>
+            </div>
+            <div class="suite-banner-pill__divider" aria-hidden="true"></div>
+            <div class="suite-banner-pill__tools">
+              <span class="btn-tool btn-tool--accent" title="Cart">🛒</span>
+              <span class="btn-tool" title="Gallery">🖼️</span>
+              <span class="btn-tool" title="Search">🔎</span>
+              <span class="badge-tier">FREE</span>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section class="demo-block" aria-labelledby="lbl-studio">
+      <p id="lbl-studio" class="demo-label">PropArt Studio</p>
+      <p class="demo-url"><a href="https://propart.app/Studio">https://propart.app/Studio</a></p>
+      <div class="suite-banner-card">
+          <div class="suite-banner-top">
+            <div class="suite-banner-brand">
+              <img src="./PropArt-May2.svg" width="320" height="96" alt="PropArt™" />
+            </div>
+            <div class="suite-banner-meta">
+              <h2>Studio Toolkit</h2>
+              <p>Craft In Ardor Suite · Planning utilities, exports, and kiln-side workflows</p>
+            </div>
+            <div class="suite-banner-utils">
+              <button type="button" title="Static placeholder">Theme</button>
+              <button type="button" title="Static placeholder">Sign in</button>
+            </div>
+          </div>
+          <div class="suite-banner-pill">
+            <div class="suite-banner-pill__suite">
+              <span class="pill-dot" aria-hidden="true"></span>
+              <a class="btn-suite" href="https://pegasussuite.github.io/PropArt-Directory/" title="Directory">⌂</a>
+              <a class="btn-suite" href="https://propart-creator.web.app/" title="Creator Space">Cs</a>
+              <a class="btn-suite is-current" href="https://propart.app/Studio" title="Studio">St</a>
+              <a class="btn-suite" href="https://propart.app/CropperTool" title="Cropper">Cr</a>
+              <a class="btn-suite" href="https://propart.app/BlendVisualizer" title="Blend">B</a>
+              <a class="btn-suite" href="https://propart.app/CaneDesigner" title="Cane">K</a>
+              <a class="btn-suite" href="https://propart.app/POD" title="POD">P</a>
+            </div>
+            <div class="suite-banner-pill__divider" aria-hidden="true"></div>
+            <div class="suite-banner-pill__tools">
+              <span class="btn-tool btn-tool--accent" title="Save session">💾</span>
+              <span class="btn-tool" title="Export">📤</span>
+              <span class="btn-tool" title="Settings">⚙️</span>
+              <span class="badge-tier badge-tier--pro">PRO</span>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section class="demo-block" aria-labelledby="lbl-blend">
+      <p id="lbl-blend" class="demo-label">Color Blend Visualizer</p>
+      <p class="demo-url"><a href="https://propart.app/BlendVisualizer">https://propart.app/BlendVisualizer</a></p>
+      <div class="suite-banner-card">
+          <div class="suite-banner-top">
+            <div class="suite-banner-brand">
+              <img src="./PropArt-May2.svg" width="320" height="96" alt="PropArt™" />
+            </div>
+            <div class="suite-banner-meta">
+              <h2>Color Blend Visualizer</h2>
+              <p>Craft In Ardor Suite · Clay blend planning, recipe support, and gradient workflows</p>
+            </div>
+            <div class="suite-banner-utils">
+              <button type="button" title="Static placeholder">Theme</button>
+              <button type="button" title="Static placeholder">Sign in</button>
+            </div>
+          </div>
+          <div class="suite-banner-pill">
+            <div class="suite-banner-pill__suite">
+              <span class="pill-dot" aria-hidden="true"></span>
+              <a class="btn-suite" href="https://pegasussuite.github.io/PropArt-Directory/" title="Directory">⌂</a>
+              <a class="btn-suite" href="https://propart-creator.web.app/" title="Creator Space">Cs</a>
+              <a class="btn-suite" href="https://propart.app/Studio" title="Studio">St</a>
+              <a class="btn-suite" href="https://propart.app/CropperTool" title="Cropper">Cr</a>
+              <a class="btn-suite is-current" href="https://propart.app/BlendVisualizer" title="Blend">B</a>
+              <a class="btn-suite" href="https://propart.app/CaneDesigner" title="Cane">K</a>
+              <a class="btn-suite" href="https://propart.app/POD" title="POD">P</a>
+            </div>
+            <div class="suite-banner-pill__divider" aria-hidden="true"></div>
+            <div class="suite-banner-pill__tools">
+              <span class="btn-tool btn-tool--accent" title="Cloud save">💾</span>
+              <span class="btn-tool" title="Cloud load">⬇️</span>
+              <span class="btn-tool btn-tool--accent" title="Account">⭐</span>
+              <span class="badge-tier">FREE</span>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section class="demo-block" aria-labelledby="lbl-cropper">
+      <p id="lbl-cropper" class="demo-label">Cropper Tool</p>
+      <p class="demo-url"><a href="https://propart.app/CropperTool">https://propart.app/CropperTool</a></p>
+      <div class="suite-banner-card">
+          <div class="suite-banner-top">
+            <div class="suite-banner-brand">
+              <img src="./PropArt-May2.svg" width="320" height="96" alt="PropArt™" />
+            </div>
+            <div class="suite-banner-meta">
+              <h2>Cropper Tool</h2>
+              <p>Craft In Ardor Suite · Reference cropping, aspect locks, and export-ready frames</p>
+            </div>
+            <div class="suite-banner-utils">
+              <button type="button" title="Static placeholder">Theme</button>
+              <button type="button" title="Static placeholder">Sign in</button>
+            </div>
+          </div>
+          <div class="suite-banner-pill">
+            <div class="suite-banner-pill__suite">
+              <span class="pill-dot" aria-hidden="true"></span>
+              <a class="btn-suite" href="https://pegasussuite.github.io/PropArt-Directory/" title="Directory">⌂</a>
+              <a class="btn-suite" href="https://propart-creator.web.app/" title="Creator Space">Cs</a>
+              <a class="btn-suite" href="https://propart.app/Studio" title="Studio">St</a>
+              <a class="btn-suite is-current" href="https://propart.app/CropperTool" title="Cropper">Cr</a>
+              <a class="btn-suite" href="https://propart.app/BlendVisualizer" title="Blend">B</a>
+              <a class="btn-suite" href="https://propart.app/CaneDesigner" title="Cane">K</a>
+              <a class="btn-suite" href="https://propart.app/POD" title="POD">P</a>
+            </div>
+            <div class="suite-banner-pill__divider" aria-hidden="true"></div>
+            <div class="suite-banner-pill__tools">
+              <span class="btn-tool btn-tool--accent" title="Upload">📁</span>
+              <span class="btn-tool" title="Crop">✂️</span>
+              <span class="btn-tool" title="Download">💾</span>
+              <span class="badge-tier">FREE</span>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section class="demo-block" aria-labelledby="lbl-cane">
+      <p id="lbl-cane" class="demo-label">Cane Designer</p>
+      <p class="demo-url"><a href="https://propart.app/CaneDesigner">https://propart.app/CaneDesigner</a></p>
+      <div class="suite-banner-card">
+          <div class="suite-banner-top">
+            <div class="suite-banner-brand">
+              <img src="./PropArt-May2.svg" width="320" height="96" alt="PropArt™" />
+            </div>
+            <div class="suite-banner-meta">
+              <h2>Cane Designer</h2>
+              <p>Craft In Ardor Suite · Cross-section planning, packs, and cane-ready diagrams</p>
+            </div>
+            <div class="suite-banner-utils">
+              <button type="button" title="Static placeholder">Theme</button>
+              <button type="button" title="Static placeholder">Sign in</button>
+            </div>
+          </div>
+          <div class="suite-banner-pill">
+            <div class="suite-banner-pill__suite">
+              <span class="pill-dot" aria-hidden="true"></span>
+              <a class="btn-suite" href="https://pegasussuite.github.io/PropArt-Directory/" title="Directory">⌂</a>
+              <a class="btn-suite" href="https://propart-creator.web.app/" title="Creator Space">Cs</a>
+              <a class="btn-suite" href="https://propart.app/Studio" title="Studio">St</a>
+              <a class="btn-suite" href="https://propart.app/CropperTool" title="Cropper">Cr</a>
+              <a class="btn-suite" href="https://propart.app/BlendVisualizer" title="Blend">B</a>
+              <a class="btn-suite is-current" href="https://propart.app/CaneDesigner" title="Cane">K</a>
+              <a class="btn-suite" href="https://propart.app/POD" title="POD">P</a>
+            </div>
+            <div class="suite-banner-pill__divider" aria-hidden="true"></div>
+            <div class="suite-banner-pill__tools">
+              <span class="btn-tool btn-tool--accent" title="New layout">➕</span>
+              <span class="btn-tool" title="Save">💾</span>
+              <span class="btn-tool" title="Measure / grid">📐</span>
+              <span class="badge-tier">FREE</span>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section class="demo-block" aria-labelledby="lbl-pod">
+      <p id="lbl-pod" class="demo-label">POD</p>
+      <p class="demo-url"><a href="https://propart.app/POD">https://propart.app/POD</a></p>
+      <div class="suite-banner-card">
+          <div class="suite-banner-top">
+            <div class="suite-banner-brand">
+              <img src="./PropArt-May2.svg" width="320" height="96" alt="PropArt™" />
+            </div>
+            <div class="suite-banner-meta">
+              <h2>Print-on-demand lab</h2>
+              <p>Craft In Ardor Suite · Mockups, garment previews, and listing-ready exports</p>
+            </div>
+            <div class="suite-banner-utils">
+              <button type="button" title="Static placeholder">Theme</button>
+              <button type="button" title="Static placeholder">Sign in</button>
+            </div>
+          </div>
+          <div class="suite-banner-pill">
+            <div class="suite-banner-pill__suite">
+              <span class="pill-dot" aria-hidden="true"></span>
+              <a class="btn-suite" href="https://pegasussuite.github.io/PropArt-Directory/" title="Directory">⌂</a>
+              <a class="btn-suite" href="https://propart-creator.web.app/" title="Creator Space">Cs</a>
+              <a class="btn-suite" href="https://propart.app/Studio" title="Studio">St</a>
+              <a class="btn-suite" href="https://propart.app/CropperTool" title="Cropper">Cr</a>
+              <a class="btn-suite" href="https://propart.app/BlendVisualizer" title="Blend">B</a>
+              <a class="btn-suite" href="https://propart.app/CaneDesigner" title="Cane">K</a>
+              <a class="btn-suite is-current" href="https://propart.app/POD" title="POD">P</a>
+            </div>
+            <div class="suite-banner-pill__divider" aria-hidden="true"></div>
+            <div class="suite-banner-pill__tools">
+              <span class="btn-tool btn-tool--accent" title="Upload art">📤</span>
+              <span class="btn-tool" title="Preview mockup">👕</span>
+              <span class="btn-tool" title="Checkout / cart">🛒</span>
+              <span class="badge-tier">FREE</span>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section class="demo-block" aria-labelledby="lbl-directory">
+      <p id="lbl-directory" class="demo-label">Suite directory (GitHub Pages)</p>
+      <p class="demo-url"><a href="https://pegasussuite.github.io/PropArt-Directory/">https://pegasussuite.github.io/PropArt-Directory/</a></p>
+      <div class="suite-banner-card">
+          <div class="suite-banner-top">
+            <div class="suite-banner-brand">
+              <img src="./PropArt-May2.svg" width="320" height="96" alt="PropArt™" />
+            </div>
+            <div class="suite-banner-meta">
+              <h2>PropArt directory</h2>
+              <p>Craft In Ardor Suite · Launchpad for apps, updates, and suite-wide navigation</p>
+            </div>
+            <div class="suite-banner-utils">
+              <button type="button" title="Static placeholder">Theme</button>
+              <button type="button" title="Static placeholder">Sign in</button>
+            </div>
+          </div>
+          <div class="suite-banner-pill">
+            <div class="suite-banner-pill__suite">
+              <span class="pill-dot" aria-hidden="true"></span>
+              <a class="btn-suite is-current" href="https://pegasussuite.github.io/PropArt-Directory/" title="Directory">⌂</a>
+              <a class="btn-suite" href="https://propart-creator.web.app/" title="Creator Space">Cs</a>
+              <a class="btn-suite" href="https://propart.app/Studio" title="Studio">St</a>
+              <a class="btn-suite" href="https://propart.app/CropperTool" title="Cropper">Cr</a>
+              <a class="btn-suite" href="https://propart.app/BlendVisualizer" title="Blend">B</a>
+              <a class="btn-suite" href="https://propart.app/CaneDesigner" title="Cane">K</a>
+              <a class="btn-suite" href="https://propart.app/POD" title="POD">P</a>
+            </div>
+            <div class="suite-banner-pill__divider" aria-hidden="true"></div>
+            <div class="suite-banner-pill__tools">
+              <span class="btn-tool btn-tool--accent" title="Search apps">🔎</span>
+              <span class="btn-tool" title="What’s new">✨</span>
+              <span class="btn-tool" title="Bookmark / pin">📌</span>
+              <span class="badge-tier">FREE</span>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <p class="note-footer">
+      Review note: lockup is <code>PropArt-May2.svg</code> (tagline embedded—do not repeat under the mark). Suite squares use compact codes for density; production can swap in butterfly / suite glyphs and real SVG tool icons.
+      Replace initials with shared icon components when this graduates out of mockup.
+    </p>
+  </div>
+</body>
+</html>

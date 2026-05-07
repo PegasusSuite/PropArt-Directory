@@ -11,6 +11,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="clay-premium-tools.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <meta name="theme-color" content="#FAD0DF">
     <style>
         :root {
@@ -794,6 +797,150 @@
 
                 <!-- Tools -->
                 <div id="tab-content-tools" class="tab-content">
+                    <section id="clay-premium-tools" class="bg-white p-4 rounded-xl shadow-lg mb-4" aria-labelledby="clay-premium-h">
+                        <div class="premium-tools-inner">
+                            <div class="premium-header">
+                                <span class="premium-badge">Clay toolkit</span>
+                                <h2 id="clay-premium-h">Polymer Clay Pro Toolkit</h2>
+                                <p class="text-sm text-gray-600 max-w-xl mx-auto">Calculators and exports previously on Creator Space — open <strong>Studio Tools</strong> whenever you need costing, color mixes, bake temps, or PDFs while you work.</p>
+                            </div>
+                            <div class="tools-grid">
+                                <div class="tool-widget" id="costCalculator">
+                                    <span class="tier-badge">Free</span>
+                                    <div class="tool-header">
+                                        <i class="fas fa-calculator tool-icon"></i>
+                                        <h3 class="tool-title">Clay Cost Calculator</h3>
+                                    </div>
+                                    <div class="tool-body">
+                                        <div class="calc-input-group">
+                                            <label for="clayPrice">Price per Ounce ($)</label>
+                                            <input type="number" id="clayPrice" step="0.01" placeholder="e.g., 2.50">
+                                        </div>
+                                        <div class="calc-input-group">
+                                            <label for="clayOz">Ounces Needed</label>
+                                            <input type="number" id="clayOz" step="0.1" placeholder="e.g., 3.5">
+                                        </div>
+                                        <button type="button" class="calc-button" onclick="calculateClayCost()">Calculate Cost</button>
+                                        <div class="calc-result" id="costResult" style="display: none;"></div>
+                                    </div>
+                                </div>
+                                <div class="tool-widget" id="colorMixer">
+                                    <span class="tier-badge">Pro</span>
+                                    <div class="tool-header">
+                                        <i class="fas fa-palette tool-icon"></i>
+                                        <h3 class="tool-title">Color Mixer</h3>
+                                    </div>
+                                    <div class="tool-body">
+                                        <div class="calc-input-group">
+                                            <label for="color1">Color 1</label>
+                                            <input type="color" id="color1" value="#ff6b6b" style="height: 50px;">
+                                        </div>
+                                        <div class="calc-input-group">
+                                            <label for="color2">Color 2</label>
+                                            <input type="color" id="color2" value="#4ecdc4" style="height: 50px;">
+                                        </div>
+                                        <button type="button" class="calc-button" onclick="mixColors()">Mix Colors</button>
+                                        <div class="color-swatch" id="mixedColor"></div>
+                                        <button type="button" class="calc-button pdf-btn" onclick="saveColorRecipePDF()"><i class="fas fa-file-pdf"></i> Save as PDF</button>
+                                    </div>
+                                </div>
+                                <div class="tool-widget" id="projectTimer">
+                                    <span class="tier-badge">Free</span>
+                                    <div class="tool-header">
+                                        <i class="fas fa-stopwatch tool-icon"></i>
+                                        <h3 class="tool-title">Project Timer</h3>
+                                    </div>
+                                    <div class="tool-body">
+                                        <div class="timer-display" id="timerDisplay">00:00:00</div>
+                                        <div class="timer-controls">
+                                            <button type="button" class="timer-btn" onclick="startTimer()"><i class="fas fa-play"></i> Start</button>
+                                            <button type="button" class="timer-btn" onclick="pauseTimer()"><i class="fas fa-pause"></i> Pause</button>
+                                            <button type="button" class="timer-btn" onclick="resetTimer()"><i class="fas fa-redo"></i> Reset</button>
+                                        </div>
+                                        <div class="calc-input-group" style="margin-top: 15px;">
+                                            <label for="timerNote">Project Note</label>
+                                            <input type="text" id="timerNote" placeholder="What are you working on?">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tool-widget" id="tempConverter">
+                                    <span class="tier-badge">Free</span>
+                                    <div class="tool-header">
+                                        <i class="fas fa-thermometer-half tool-icon"></i>
+                                        <h3 class="tool-title">Baking Temp Converter</h3>
+                                    </div>
+                                    <div class="tool-body">
+                                        <div class="calc-input-group">
+                                            <label for="tempInput">Temperature</label>
+                                            <input type="number" id="tempInput" placeholder="e.g., 275">
+                                        </div>
+                                        <div class="calc-input-group">
+                                            <label for="tempFrom">Convert From</label>
+                                            <select id="tempFrom">
+                                                <option value="f">Fahrenheit</option>
+                                                <option value="c">Celsius</option>
+                                            </select>
+                                        </div>
+                                        <button type="button" class="calc-button" onclick="convertTemp()">Convert</button>
+                                        <div class="calc-result" id="tempResult" style="display: none;"></div>
+                                    </div>
+                                </div>
+                                <div class="tool-widget" id="materialTracker">
+                                    <span class="tier-badge">Pro</span>
+                                    <div class="tool-header">
+                                        <i class="fas fa-clipboard-list tool-icon"></i>
+                                        <h3 class="tool-title">Material Cost Tracker</h3>
+                                    </div>
+                                    <div class="tool-body">
+                                        <div class="calc-input-group">
+                                            <label for="materialName">Material</label>
+                                            <input type="text" id="materialName" placeholder="e.g., Sculpey Clay">
+                                        </div>
+                                        <div class="calc-input-group">
+                                            <label for="materialCost">Cost ($)</label>
+                                            <input type="number" id="materialCost" step="0.01" placeholder="e.g., 12.99">
+                                        </div>
+                                        <button type="button" class="calc-button" onclick="addMaterial()">Add Material</button>
+                                        <div class="calc-result" id="materialTotal" style="display: none;"></div>
+                                        <div id="materialList" style="margin-top: 15px; font-size: 0.9rem;"></div>
+                                        <button type="button" class="calc-button pdf-btn" onclick="saveMaterialsPDF()"><i class="fas fa-file-pdf"></i> Export Materials PDF</button>
+                                    </div>
+                                </div>
+                                <div class="tool-widget" id="profitCalc">
+                                    <span class="tier-badge">Enterprise</span>
+                                    <div class="tool-header">
+                                        <i class="fas fa-dollar-sign tool-icon"></i>
+                                        <h3 class="tool-title">Profit Calculator</h3>
+                                    </div>
+                                    <div class="tool-body">
+                                        <div class="calc-input-group">
+                                            <label for="materialCostProfit">Material Cost ($)</label>
+                                            <input type="number" id="materialCostProfit" step="0.01" placeholder="e.g., 8.50">
+                                        </div>
+                                        <div class="calc-input-group">
+                                            <label for="laborHours">Labor Hours</label>
+                                            <input type="number" id="laborHours" step="0.1" placeholder="e.g., 2.5">
+                                        </div>
+                                        <div class="calc-input-group">
+                                            <label for="hourlyRate">Hourly Rate ($)</label>
+                                            <input type="number" id="hourlyRate" step="1" placeholder="e.g., 15" value="15">
+                                        </div>
+                                        <button type="button" class="calc-button" onclick="calculateProfit()">Calculate Price</button>
+                                        <div class="calc-result" id="profitResult" style="display: none;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <details class="earn-roadmap">
+                                <summary class="font-semibold cursor-pointer text-pink-800">Earn Together roadmap (planned)</summary>
+                                <p class="mt-2 mb-0 text-sm">Affiliate dashboards, revenue splits, escrow, and group-buy tools are roadmap items—not live here. Checkout and memberships stay on <strong>Creator Space</strong> when connected.</p>
+                            </details>
+                            <div class="upgrade-strip">
+                                <div class="font-semibold text-gray-900">Membership &amp; checkout</div>
+                                <p class="text-sm text-gray-800 mt-1 mb-0">Stripe tiers and the storefront hub live on PropArt™ Creator Space.</p>
+                                <a href="https://propart-creator.web.app" rel="noopener noreferrer">Open Creator Space</a>
+                            </div>
+                        </div>
+                    </section>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="bg-white p-4 rounded-xl shadow-lg">
                             <h2 class="text-xl font-semibold mb-2 text-center text-pink-800">Studio Checklist</h2>
@@ -1031,6 +1178,8 @@
         </div>
     </div>
 
+<div id="clay-tools-toast" role="status" aria-live="polite"></div>
+<script src="clay-premium-tools.js"></script>
 <script type="module" src="app.js"></script>
 </body>
 </html>

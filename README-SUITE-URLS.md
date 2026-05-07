@@ -38,3 +38,7 @@ Change **`PUBLIC`** in each copy when you use Firebase Hosting or a custom domai
 
 1. **Primary:** from this repo, `firebase deploy --only hosting` (project `ps---propartsuite`, site `propart-directory`). Confirm `https://propart-directory.web.app/` and your custom domain (`https://www.propart.app/`).
 2. **Optional mirror:** GitHub → **Settings → Pages** → deploy from `master` / root so `https://pegasussuite.github.io/PropArt-Directory/` stays available for bookmarks.
+
+## Support PropArt™
+
+Tips and ongoing support for the suite: **[Ko-fi — PropArt Suite](https://ko-fi.com/propartsuite)**.

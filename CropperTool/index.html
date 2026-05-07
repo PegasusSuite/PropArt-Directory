@@ -4,6 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <base href="/CropperTool/">
+  <script>
+    (function () {
+      try {
+        if (window.location.protocol !== 'file:') return;
+        var b = document.querySelector('base');
+        if (b) b.setAttribute('href', './');
+      } catch (e) {}
+    })();
+  </script>
   <title>PropArt™ Cropper Tool - Multi-Piece Project Management</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" href="https://pegasussuite.github.io/PropArt-Directory/favicon.svg" type="image/svg+xml" sizes="any">
@@ -387,12 +396,12 @@
     .nav-brand .prop-art-brand-mark--nav {
       flex: 0 0 auto;
       display: block;
-      height: clamp(4rem, 22vmin, 136px);
+      height: clamp(2rem, 12vmin, 3.35rem);
       width: auto;
-      max-width: min(200px, 48vw);
+      max-width: min(280px, 52vw);
       object-fit: contain;
       object-position: center;
-      aspect-ratio: 480 / 705.31238;
+      aspect-ratio: 600 / 297;
       filter: drop-shadow(0 2px 4px rgba(45, 31, 61, 0.2)) drop-shadow(0 1px 0 rgba(255, 255, 255, 0.5));
       -webkit-filter: drop-shadow(0 2px 4px rgba(45, 31, 61, 0.2))
         drop-shadow(0 1px 0 rgba(255, 255, 255, 0.5));
@@ -414,12 +423,14 @@
     }
 
     .header.header--compact h1 .prop-art-brand-mark--header {
-      flex: 0 0 auto;
-      height: clamp(2.4rem, 8vmin, 3.25rem);
+      flex: 0 1 auto;
+      display: block;
+      height: clamp(2.75rem, 12vmin, 5rem);
       width: auto;
-      max-width: min(120px, 32vw);
-      aspect-ratio: 480 / 705.31238;
+      max-width: min(520px, 92vw);
+      aspect-ratio: 600 / 297;
       object-fit: contain;
+      object-position: left center;
       filter: drop-shadow(1px 2px 8px rgba(0, 0, 0, 0.25));
       -webkit-filter: drop-shadow(1px 2px 8px rgba(0, 0, 0, 0.25));
     }
@@ -1415,6 +1426,556 @@
       overflow: hidden;
     }
 
+    /* --- Cropper “mock banner” hero + orbit controls --- */
+    .header.header--cropper-banner {
+      background: transparent;
+      box-shadow: none;
+      padding: 10px clamp(12px, 2.5vw, 18px) 8px;
+      color: var(--text-primary);
+      border-top-left-radius: 22px;
+    }
+
+    .header.header--cropper-banner .header-top-row {
+      width: 100%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+    }
+
+    .cropper-banner-card {
+      border-radius: 22px;
+      padding: clamp(14px, 2.5vw, 20px) clamp(16px, 3vw, 22px) 12px;
+      background: linear-gradient(
+        125deg,
+        rgb(237 232 252 / 0.92) 0%,
+        rgb(248 246 255 / 0.96) 45%,
+        rgb(255 255 255 / 0.99) 100%
+      );
+      border: 1px solid rgba(109, 102, 146, 0.14);
+      box-shadow: 0 2px 4px rgba(61, 51, 102, 0.08);
+    }
+
+    body.dark-mode .cropper-banner-card {
+      background: linear-gradient(
+        125deg,
+        rgb(52 62 78 / 0.94) 0%,
+        rgb(44 54 68 / 0.96) 55%,
+        rgb(38 46 58 / 0.98) 100%
+      );
+      border-color: rgba(255, 255, 255, 0.06);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .cropper-banner-hero {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px 14px;
+      min-height: 50px;
+      height: 50px;
+    }
+
+    .cropper-banner-logo-wrap {
+      flex: 0 0 auto;
+      text-decoration: none;
+      line-height: 0;
+    }
+
+    .cropper-banner-butterfly {
+      display: block;
+      height: clamp(3.6rem, 11vmin, 4.9rem);
+      width: auto;
+      max-width: min(350px, 74vw);
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(61, 51, 102, 0.14));
+    }
+
+    body.dark-mode .cropper-banner-butterfly {
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
+    }
+
+    .cropper-banner-center {
+      flex: 1 1 auto;
+      min-width: 0;
+      text-align: left;
+    }
+
+    .cropper-banner-center.cropper-banner-center--asset {
+      flex: 1 1 auto;
+    }
+
+    .cropper-banner-final-lockup {
+      display: block;
+      width: auto;
+      max-width: min(100%, 680px);
+      height: 42px;
+      max-height: 42px;
+      margin: 0;
+      object-fit: contain;
+      object-position: left center;
+      filter: drop-shadow(0 2px 4px rgba(61, 51, 102, 0.14));
+    }
+
+    body.dark-mode .cropper-banner-final-lockup {
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
+    }
+
+    .header.header--cropper-banner h1.cropper-banner-wordmark {
+      margin: 0;
+      padding: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 700;
+      font-size: clamp(1.85rem, 5vw, 2.35rem);
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      border: none;
+      background: none;
+      text-shadow: none;
+    }
+
+    .cropper-banner-wordmark-inner {
+      background: linear-gradient(118deg, #3d3366 0%, #5d50c6 42%, #c96b8a 78%, #e17897 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .cropper-banner-tag {
+      margin: 8px auto 0;
+      max-width: 36rem;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-size: clamp(0.82rem, 2vw, 0.95rem);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .cropper-banner-tag-strong {
+      color: #3d3366;
+    }
+
+    body.dark-mode .cropper-banner-tag-strong {
+      color: #e8e0ff;
+    }
+
+    .cropper-banner-tag-muted {
+      color: #a07694;
+      font-weight: 600;
+    }
+
+    body.dark-mode .cropper-banner-tag-muted {
+      color: rgba(255, 220, 235, 0.82);
+    }
+
+    .cropper-banner-quick {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 6px 10px;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .cropper-banner-quick button {
+      background: none;
+      border: none;
+      padding: 4px 6px;
+      margin: 0;
+      font: inherit;
+      font-weight: 700;
+      color: #3d3366;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    .cropper-banner-quick button:hover,
+    .cropper-banner-quick button:focus-visible {
+      color: #5d50c6;
+      outline: 2px solid rgba(109, 213, 195, 0.65);
+      outline-offset: 2px;
+    }
+
+    body.dark-mode .cropper-banner-quick button {
+      color: #f0e8ff;
+    }
+
+    body.dark-mode .cropper-banner-quick button:hover,
+    body.dark-mode .cropper-banner-quick button:focus-visible {
+      color: #fff;
+    }
+
+    .header.header--cropper-banner p.cropper-banner-tier-line {
+      margin: 10px 0 0;
+      font-size: 11px;
+      line-height: 1.35;
+      color: var(--text-secondary);
+      opacity: 1;
+      text-shadow: none;
+      font-weight: 500;
+    }
+
+    body.dark-mode .header.header--cropper-banner p.cropper-banner-tier-line {
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .cropper-banner-tier-line #tier-header-line {
+      color: inherit;
+    }
+
+    .header.header--cropper-banner p.cropper-banner-tag {
+      opacity: 1;
+      text-shadow: none;
+      font-weight: 600;
+    }
+
+    .cropper-banner-aside {
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 8px;
+      margin-left: auto;
+      margin-top: 2px;
+    }
+
+    .cropper-banner-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      flex-wrap: nowrap;
+    }
+
+    .cropper-banner-signin.prop-art-nav-signin-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      width: 96px;
+      height: 36px;
+      padding: 0;
+      border-radius: 999px;
+      border: 1px solid rgba(93, 80, 198, 0.55);
+      background-image: url('./PropArtSignIn.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100% 100%;
+      color: #3d3366 !important;
+      font-weight: 700;
+      font-size: 0.76rem;
+      box-shadow: 0 2px 4px rgba(61, 51, 102, 0.16);
+      text-shadow: none;
+    }
+
+    .cropper-banner-signin-icon {
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+
+    body.dark-mode .cropper-banner-signin.prop-art-nav-signin-btn {
+      color: #ede7ff !important;
+      border-color: rgba(255, 255, 255, 0.12);
+      background-image: url('./PropArtSignIn.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .cropper-banner-signin.prop-art-nav-signin-btn:hover,
+    .cropper-banner-signin.prop-art-nav-signin-btn:focus-visible {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(61, 51, 102, 0.22);
+    }
+
+    .header.header--cropper-banner .cropper-banner-actions .nav-tier-trigger.header-chrome-soft {
+      width: 92px;
+      height: 34px;
+      min-width: 92px;
+      border-radius: 999px;
+      border: 1px solid rgba(61, 51, 102, 0.2);
+      background-image: url('./PropArtButtonStandard.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100% 100%;
+      color: #3d3366;
+      text-shadow: none;
+      box-shadow: 0 2px 4px rgba(61, 51, 102, 0.14);
+      padding: 0;
+      justify-content: center;
+    }
+
+    .header.header--cropper-banner #nav-tier-trigger-label { display: none; }
+    .header.header--cropper-banner .nav-tier-trigger-caret { display: none; }
+
+    body.dark-mode .header.header--cropper-banner .cropper-banner-actions .nav-tier-trigger.header-chrome-soft {
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      border-color: rgba(255, 255, 255, 0.12);
+      color: #ede7ff;
+    }
+
+    .cropper-banner-actions .nav-bell-btn,
+    .cropper-banner-actions .nav-profile-btn {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(93, 80, 198, 0.55);
+      background-image: url('./PropArtButton.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      color: #3d3366;
+      box-shadow: 0 2px 4px rgba(61, 51, 102, 0.14);
+    }
+
+    .cropper-banner-actions .nav-notification-wrap {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    body.dark-mode .cropper-banner-actions .nav-bell-btn,
+    body.dark-mode .cropper-banner-actions .nav-profile-btn {
+      border-color: rgba(255, 255, 255, 0.12);
+      background-image: url('./PropArtButton.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      color: #ede7ff;
+    }
+
+    .cropper-banner-controls-pill {
+      margin: 15px auto 0;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(109, 102, 146, 0.18);
+      border-radius: 999px;
+      padding: 8px 10px;
+      box-shadow: 0 2px 4px rgba(61, 51, 102, 0.08);
+      width: fit-content;
+      max-width: min(100%, 980px);
+    }
+
+    body.dark-mode .cropper-banner-controls-pill {
+      background: rgba(40, 50, 64, 0.8);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .cropper-banner-orbit {
+      margin-top: 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .cropper-orbit-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.95rem;
+      color: #3d3366;
+      background-image: url('./PropArtButton.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      box-shadow: 0 2px 4px rgba(61, 51, 102, 0.14);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+    }
+
+    .cropper-orbit-btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.04);
+      box-shadow: 0 4px 8px rgba(61, 51, 102, 0.18);
+    }
+
+    .cropper-orbit-btn:focus-visible {
+      outline: 2px solid rgba(109, 213, 195, 0.85);
+      outline-offset: 2px;
+    }
+
+    body.dark-mode .cropper-orbit-btn {
+      color: #ede7ff;
+      border-color: rgba(255, 255, 255, 0.12);
+      background-image: url('./PropArtButton.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    }
+
+    .cropper-orbit-btn .shape-icon--rect {
+      border-color: rgba(61, 51, 102, 0.5);
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+    }
+
+    body.dark-mode .cropper-orbit-btn .shape-icon--rect {
+      border-color: rgba(255, 255, 255, 0.55);
+      background: rgba(30, 38, 52, 0.65);
+    }
+
+    .cropper-banner-orbit .toolbar-chip.toolbar-chip--slice-setup.cropper-orbit-autoslices {
+      flex-wrap: nowrap;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: center;
+      max-width: 7.85rem;
+      min-width: 0;
+      gap: 4px;
+      padding: 6px 10px;
+      margin: 0;
+      flex: 0 0 auto;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(109, 102, 146, 0.2);
+      border-radius: 18px;
+      box-shadow: 0 2px 4px rgba(61, 51, 102, 0.08);
+    }
+
+    body.dark-mode .cropper-banner-orbit .toolbar-chip.toolbar-chip--slice-setup.cropper-orbit-autoslices {
+      background: rgba(40, 50, 64, 0.82);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .cropper-orbit-autoslices .cropper-orbit-autoslices-label.toolbar-chip-label-pill {
+      width: 100%;
+      flex-basis: auto;
+      text-align: center;
+      font-size: 7px;
+      margin: 0;
+    }
+
+    .cropper-orbit-workflow-btn {
+      align-self: center;
+      flex: 0 0 auto;
+      width: 46px;
+      height: 46px;
+      padding: 0;
+      margin: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.95rem;
+      color: #3d3366;
+      background: url('./PropArtButton.svg') center / cover no-repeat;
+      box-shadow: 0 2px 4px rgba(61, 51, 102, 0.14);
+    }
+
+    .cropper-orbit-workflow-btn:disabled {
+      opacity: 0.42;
+      cursor: not-allowed;
+    }
+
+    body.dark-mode .cropper-orbit-workflow-btn {
+      color: #ede7ff;
+      border-color: rgba(255, 255, 255, 0.12);
+      background: url('./PropArtButton.svg') center / cover no-repeat;
+    }
+
+    .cropper-orbit-snap {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      min-height: 46px;
+      border-radius: 999px;
+      border: 1px solid rgba(109, 102, 146, 0.22);
+      background: rgba(255, 255, 255, 0.9);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #3d3366;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(61, 51, 102, 0.08);
+      flex: 0 0 auto;
+    }
+
+    body.dark-mode .cropper-orbit-snap {
+      background: rgba(40, 50, 64, 0.85);
+      border-color: rgba(255, 255, 255, 0.1);
+      color: #ede7ff;
+    }
+
+    .cropper-orbit-zoom-readout {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 42px;
+      min-height: 46px;
+      padding: 0 8px;
+      font-variant-numeric: tabular-nums;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #5c4d85;
+      flex: 0 0 auto;
+    }
+
+    body.dark-mode .cropper-orbit-zoom-readout {
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .cropper-orbit-btn--danger {
+      color: #6b2f3f;
+      background: linear-gradient(148deg, #ffd6e3 0%, #f5b8c8 52%, #e890a8 100%);
+      border-color: rgba(232, 112, 128, 0.45);
+    }
+
+    body.dark-mode .cropper-orbit-btn--danger {
+      color: #fde8ee;
+      background: linear-gradient(148deg, #88445a 0%, #66324a 52%, #4a2838 100%);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .cropper-orbit-btn--danger-strong {
+      color: #fff;
+      background: linear-gradient(148deg, #ef476f 0%, #d62839 55%, #9d0208 100%);
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .cropper-toolbar-ghost {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 1px, 1px);
+      clip-path: inset(50%);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .cropper-toolbar-status-line {
+      min-height: 1.25rem;
+      padding: 4px 8px 0;
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--muted-text);
+    }
+
+    body.dark-mode .cropper-toolbar-status-line {
+      color: rgba(255, 255, 255, 0.75);
+    }
+
     .header {
       background: linear-gradient(135deg, var(--header-gradient-start) 0%, var(--header-gradient-end) 100%);
       color: white;
@@ -1744,8 +2305,13 @@
     }
 
     .turner-help-title-row .prop-art-brand-mark--help {
-      height: clamp(60px, 12vw, 84px);
+      height: auto;
       width: auto;
+      max-height: clamp(52px, 14vw, 92px);
+      max-width: min(380px, 90vw);
+      aspect-ratio: 600 / 297;
+      object-fit: contain;
+      object-position: left bottom;
     }
 
     .turner-help-title-row .turner-modal-title {
@@ -3439,108 +4005,141 @@
   <div class="turner-page-wrap">
   <div class="container" id="main-content">
     <div class="main-area">
-      <div class="header header--compact header--with-chrome">
+      <div class="header header--compact header--with-chrome header--cropper-banner">
         <div class="header-top-row">
-          <div class="header-brand-block">
-            <h1>
-              <img
-                src="PropArtTM-CropperTool-PalePinkyFinal.svg"
-                width="480"
-                height="705"
-                class="prop-art-brand-mark prop-art-brand-mark--header"
-                alt=""
-                aria-hidden="true"
-                decoding="sync"
-                fetchpriority="high"
-                loading="eager"
-              />
-              PropArt™ Cropper Tool
-            </h1>
-            <p><span id="tier-header-line"></span></p>
-            <p class="header-subtle"><button type="button" class="header-help-link" onclick="openHelpModal()" title="Opens the guide">Help</button> · toolbar below</p>
-          </div>
-          <div class="header-chrome-shell">
-            <div class="nav-actions header-chrome" id="header-chrome-signed-out" aria-label="Site tools">
-              <div class="header-tier-quick-row">
-              <div id="header-tier-slot">
-                <div class="nav-tier-wrap" id="nav-tier-wrap">
-                  <label for="nav-tier-select" class="sr-only">Access tier</label>
-                  <div class="nav-tier-custom" id="nav-tier-custom">
-                    <button
-                      type="button"
-                      id="nav-tier-trigger"
-                      class="nav-tier-trigger header-chrome-soft"
-                      aria-haspopup="listbox"
-                      aria-expanded="false"
-                      aria-controls="nav-tier-menu"
-                    >
-                      <span id="nav-tier-trigger-label">Community</span>
-                      <span class="nav-tier-trigger-caret" aria-hidden="true">▾</span>
+          <div class="cropper-banner-card">
+            <div class="cropper-banner-hero">
+              <div class="cropper-banner-center cropper-banner-center--asset">
+                <h1 class="sr-only">PropArt Cropper Tool</h1>
+                <a class="cropper-banner-logo-wrap" href="https://pegasussuite.github.io/PropArt-Directory/" target="_blank" rel="noopener noreferrer" title="Open PropArt Directory">
+                  <img
+                    src="./PropArt-MayCropperFinal.svg?v=9"
+                    width="600"
+                    height="297"
+                    class="cropper-banner-final-lockup"
+                    alt="PropArt Cropper Tool | Reference cropping, aspect locks, and export-ready frames"
+                    onerror="this.onerror=null;this.src='./PropArt-MayCropper.svg?v=9';this.alt='';"
+                    decoding="async"
+                    fetchpriority="high"
+                    loading="eager"
+                  />
+                </a>
+                <nav class="cropper-banner-quick" aria-label="Quick links">
+                  <button type="button" onclick="openQuickStartModal()">Quick Start</button>
+                  <span aria-hidden="true">·</span>
+                  <button type="button" onclick="var f=document.getElementById('file-upload'); if(f) f.click();">Upload</button>
+                  <span aria-hidden="true">·</span>
+                  <button type="button" onclick="openHelpModal()">Guide</button>
+                </nav>
+                <p class="sr-only"><span id="tier-header-line"></span></p>
+                <div class="cropper-banner-controls-pill">
+                  <div class="cropper-banner-orbit" role="toolbar" aria-label="Primary cropper controls">
+                    <button type="button" class="cropper-orbit-btn" title="Upload an image" aria-label="Upload an image" onclick="cropperOrbitAct('upload')"><i class="fas fa-upload" aria-hidden="true"></i></button>
+                    <button type="button" class="cropper-orbit-btn" title="Open saved project JSON" aria-label="Open saved project JSON" onclick="cropperOrbitAct('project')"><i class="fas fa-folder-open" aria-hidden="true"></i></button>
+                    <div class="toolbar-chip toolbar-chip--slice-setup cropper-orbit-autoslices" role="group" aria-labelledby="toolbar-slice-setup-lbl">
+                      <span id="toolbar-slice-setup-lbl" class="toolbar-chip-label-pill cropper-orbit-autoslices-label">AUTO SLICES • STANDARD+</span>
+                      <button
+                        type="button"
+                        id="prop-art-workflow-toolbar-btn"
+                        class="cropper-orbit-workflow-btn"
+                        onclick="propArtOpenWorkflowModal({ deferAutocrop: false });"
+                        disabled
+                        title="Cutout workflow — presets, palette, shadows / metal, whole objects, Run Auto-crop"
+                      >
+                        <i class="fas fa-sliders" aria-hidden="true"></i>
+                        <span class="sr-only">Workflow</span>
+                      </button>
+                    </div>
+                    <label class="cropper-orbit-snap" title="Hold slices to pixel grid · sheet edges · nearby slices (Move tool)">
+                      <input type="checkbox" id="prop-art-snap-move" style="margin:0;" onchange="propArtSnapCheckboxChanged();">
+                      <span>Snap</span>
+                    </label>
+                    <button type="button" class="cropper-orbit-btn" title="Rectangle crop" aria-label="Rectangle crop" onclick="cropperOrbitAct('rect')"><span class="shape-icon--rect" aria-hidden="true"></span></button>
+                    <button type="button" class="cropper-orbit-btn" title="Oval crop" aria-label="Oval crop" onclick="cropperOrbitAct('circle')"><i class="far fa-circle" aria-hidden="true"></i></button>
+                    <button type="button" class="cropper-orbit-btn" title="Custom outline crop" aria-label="Custom outline crop" onclick="cropperOrbitAct('custom')"><i class="fas fa-draw-polygon" aria-hidden="true"></i></button>
+                    <button type="button" class="cropper-orbit-btn" title="Adjust slices" aria-label="Adjust slices" onclick="cropperOrbitAct('move')"><i class="fas fa-arrows-up-down-left-right" aria-hidden="true"></i></button>
+                    <button type="button" class="cropper-orbit-btn" title="Zoom in" aria-label="Zoom in" onclick="cropperOrbitAct('zoom-in')"><i class="fas fa-magnifying-glass-plus" aria-hidden="true"></i></button>
+                    <button type="button" class="cropper-orbit-btn" title="Zoom out" aria-label="Zoom out" onclick="cropperOrbitAct('zoom-out')"><i class="fas fa-magnifying-glass-minus" aria-hidden="true"></i></button>
+                    <button type="button" class="cropper-orbit-btn" title="Reset zoom to 100%" aria-label="Reset zoom to 100 percent" onclick="cropperOrbitAct('zoom-reset')"><i class="fas fa-compress" aria-hidden="true"></i></button>
+                    <span id="zoom-level" class="cropper-orbit-zoom-readout" aria-live="polite">100%</span>
+                    <button type="button" class="cropper-orbit-btn" title="Palette from slices" aria-label="Palette from slices" onclick="cropperOrbitAct('palette')"><i class="fas fa-palette" aria-hidden="true"></i></button>
+                    <button type="button" class="cropper-orbit-btn" title="Download all slices" aria-label="Download all slices" onclick="cropperOrbitAct('download')"><i class="fas fa-download" aria-hidden="true"></i></button>
+                    <button type="button" class="cropper-orbit-btn" title="Undo" aria-label="Undo" onclick="cropperOrbitAct('undo')"><i class="fas fa-rotate-left" aria-hidden="true"></i></button>
+                    <button type="button" class="cropper-orbit-btn" title="Redo" aria-label="Redo" onclick="cropperOrbitAct('redo')"><i class="fas fa-rotate-right" aria-hidden="true"></i></button>
+                    <button type="button" class="cropper-orbit-btn cropper-orbit-btn--danger" title="Clear all crop rectangles" aria-label="Clear crops" onclick="cropperOrbitAct('clear')"><i class="fas fa-trash-can" aria-hidden="true"></i></button>
+                    <button type="button" class="cropper-orbit-btn cropper-orbit-btn--danger-strong" title="Remove image and start over" aria-label="Reset all" onclick="cropperOrbitAct('reset')"><i class="fas fa-arrow-rotate-left" aria-hidden="true"></i></button>
+                  </div>
+                </div>
+              </div>
+              <aside class="cropper-banner-aside" aria-label="Account">
+                <div class="nav-actions header-chrome cropper-banner-actions" id="header-chrome-signed-out" aria-label="Site tools">
+                  <div id="header-tier-slot">
+                    <div class="nav-tier-wrap" id="nav-tier-wrap">
+                      <label for="nav-tier-select" class="sr-only">Access tier</label>
+                      <div class="nav-tier-custom" id="nav-tier-custom">
+                        <button
+                          type="button"
+                          id="nav-tier-trigger"
+                          class="nav-tier-trigger header-chrome-soft"
+                          aria-haspopup="listbox"
+                          aria-expanded="false"
+                          aria-controls="nav-tier-menu"
+                          title="Access tier"
+                        >
+                          <span id="nav-tier-trigger-label">Std</span>
+                          <span class="nav-tier-trigger-caret" aria-hidden="true">▾</span>
+                        </button>
+                        <div class="nav-tier-menu" id="nav-tier-menu" role="listbox" aria-labelledby="nav-tier-trigger" hidden></div>
+                      </div>
+                      <select id="nav-tier-select" class="sr-only" tabindex="-1" aria-label="Access tier"></select>
+                    </div>
+                  </div>
+                  <div class="nav-notification-wrap" id="prop-art-notification-wrap">
+                    <button type="button" class="nav-bell-btn header-chrome-soft" id="prop-art-notify-bell" aria-expanded="false" aria-controls="prop-art-notify-panel" aria-label="Notifications">
+                      <i class="fas fa-bell" aria-hidden="true"></i>
+                      <span id="prop-art-notify-badge" class="nav-bell-badge" hidden>0</span>
                     </button>
-                    <div class="nav-tier-menu" id="nav-tier-menu" role="listbox" aria-labelledby="nav-tier-trigger" hidden></div>
+                    <div id="prop-art-notify-panel" class="nav-notify-panel" role="region" aria-labelledby="prop-art-notify-title" hidden>
+                      <div
+                        class="nav-notify-panel-head"
+                        title="Drag heading to move · double-click heading to dock under bell"
+                      >
+                        <span id="prop-art-notify-title">Notifications</span>
+                        <button type="button" class="nav-notify-clear" id="prop-art-notify-clear">Clear</button>
+                      </div>
+                      <div id="prop-art-notify-list" class="nav-notify-list" aria-live="polite"></div>
+                    </div>
+                    <span id="prop-art-announce" class="sr-only" aria-live="polite" aria-atomic="true"></span>
                   </div>
-                  <select id="nav-tier-select" class="sr-only" tabindex="-1" aria-label="Access tier"></select>
-                </div>
-              </div>
-              <a
-                id="prop-art-suite-directory-link"
-                data-propart-suite-directory
-                href="https://pegasussuite.github.io/PropArt-Directory/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="header-quick-start-btn"
-                title="PropArt™ Directory — switch tools across the suite"
-              >
-                <i class="fas fa-compass" aria-hidden="true"></i>
-                <span class="header-quick-start-label">Suite</span>
-              </a>
-              <script src="./js/propart-suite-directory.js"></script>
-              <button type="button" class="header-quick-start-btn" onclick="openQuickStartModal()" title="Three steps to start cropping"><i class="fas fa-seedling" aria-hidden="true"></i><span class="header-quick-start-label">Quick start</span></button>
-              </div>
-              <div class="nav-auth" id="prop-art-nav-auth" aria-live="polite">
-                <button type="button" class="prop-art-nav-signin-btn" id="prop-art-btn-sign-in" onclick="propArtOpenAuthModal()">Sign in</button>
-              </div>
-              <div class="nav-notification-wrap" id="prop-art-notification-wrap">
-                <button type="button" class="nav-bell-btn header-chrome-soft" id="prop-art-notify-bell" aria-expanded="false" aria-controls="prop-art-notify-panel" aria-label="Notifications">
-                  <i class="fas fa-bell" aria-hidden="true"></i>
-                  <span id="prop-art-notify-badge" class="nav-bell-badge" hidden>0</span>
-                </button>
-                <div id="prop-art-notify-panel" class="nav-notify-panel" role="region" aria-labelledby="prop-art-notify-title" hidden>
-                  <div
-                    class="nav-notify-panel-head"
-                    title="Drag heading to move · double-click heading to dock under bell"
-                  >
-                    <span id="prop-art-notify-title">Notifications</span>
-                    <button type="button" class="nav-notify-clear" id="prop-art-notify-clear">Clear</button>
+                  <div class="nav-auth" id="prop-art-nav-auth" aria-live="polite">
+                    <button type="button" class="prop-art-nav-signin-btn cropper-banner-signin" id="prop-art-btn-sign-in" onclick="propArtOpenAuthModal()" title="Sign in">
+                      <img src="PropArtSignIn.svg" class="cropper-banner-signin-icon" alt="" aria-hidden="true" decoding="async" />
+                      <span class="sr-only">Sign in</span>
+                    </button>
                   </div>
-                  <div id="prop-art-notify-list" class="nav-notify-list" aria-live="polite"></div>
                 </div>
-                <span id="prop-art-announce" class="sr-only" aria-live="polite" aria-atomic="true"></span>
-              </div>
-              <a href="#" onclick="event.preventDefault(); openHelpModal();" class="header-help-ico-btn" title="Open the beginner guide" aria-label="Open guide">
-                <i class="fas fa-circle-question" aria-hidden="true"></i>
-              </a>
-            </div>
-            <div class="header-chrome header-chrome-signed-in" id="header-chrome-signed-in" hidden>
-              <button type="button" class="nav-profile-btn header-chrome-soft" onclick="openQuickStartModal()" title="Quick start" aria-label="Quick start">
-                <i class="fas fa-seedling" aria-hidden="true"></i>
-              </button>
-              <button type="button" class="nav-profile-btn header-vault-btn" id="prop-art-vault-open" onclick="propArtOpenVaultModal()" aria-haspopup="dialog" aria-expanded="false" aria-label="Project vault · Craft cloud saves" title="Saved projects &amp; crops (Craft cloud)">
-                <i class="fas fa-box-archive" aria-hidden="true"></i>
-              </button>
-              <button type="button" class="nav-profile-btn" id="prop-art-profile-open" onclick="propArtOpenProfilePanel()" aria-haspopup="dialog" aria-expanded="false" aria-controls="prop-art-profile-panel" title="Profile and settings">
-                <i class="fas fa-circle-user" aria-hidden="true"></i>
-                <span class="sr-only">Profile and settings</span>
-              </button>
+                <div class="header-chrome header-chrome-signed-in cropper-banner-actions" id="header-chrome-signed-in" hidden>
+                  <button type="button" class="nav-profile-btn header-chrome-soft" onclick="openQuickStartModal()" title="Quick start" aria-label="Quick start">
+                    <i class="fas fa-seedling" aria-hidden="true"></i>
+                  </button>
+                  <button type="button" class="nav-profile-btn header-vault-btn" id="prop-art-vault-open" onclick="propArtOpenVaultModal()" aria-haspopup="dialog" aria-expanded="false" aria-label="Project vault · Craft cloud saves" title="Saved projects &amp; crops (Craft cloud)">
+                    <i class="fas fa-box-archive" aria-hidden="true"></i>
+                  </button>
+                  <button type="button" class="nav-profile-btn" id="prop-art-profile-open" onclick="propArtOpenProfilePanel()" aria-haspopup="dialog" aria-expanded="false" aria-controls="prop-art-profile-panel" title="Profile and settings">
+                    <i class="fas fa-circle-user" aria-hidden="true"></i>
+                    <span class="sr-only">Profile and settings</span>
+                  </button>
+                </div>
+              </aside>
             </div>
           </div>
         </div>
       </div>
       
-      <div class="toolbar toolbar--compact" role="toolbar" aria-label="Cropper tools">
-        <div class="toolbar-band toolbar-band--spread toolbar-band--single">
+      <div class="toolbar toolbar--compact" role="region" aria-label="Cropper panels and advanced tools">
+        <!-- Screen-reader / script targets: clipped; orbit row drives real interaction -->
+        <div class="cropper-toolbar-ghost" aria-hidden="true">
           <div class="toolbar-chip" role="group" aria-label="Files">
-            <span class="sr-only">Files</span>
             <div class="file-input-wrapper">
               <label for="file-upload" class="btn btn-primary btn--icon" title="Upload an image">
                 <i class="fas fa-upload" aria-hidden="true"></i>
@@ -3556,93 +4155,57 @@
               <input id="project-upload" type="file" accept="application/json,.json">
             </div>
           </div>
-
-          <div class="toolbar-chip toolbar-chip--slice-setup" role="group" aria-labelledby="toolbar-slice-setup-lbl">
-            <span id="toolbar-slice-setup-lbl" class="toolbar-chip-label-pill">Auto slices · Standard+</span>
-            <button
-              type="button"
-              id="prop-art-workflow-toolbar-btn"
-              class="btn btn-secondary btn--icon"
-              onclick="propArtOpenWorkflowModal({ deferAutocrop: false });"
-              disabled
-              title="Cutout workflow — presets, palette, shadows / metal, whole objects, Run Auto-crop"
-            >
-              <i class="fas fa-sliders" aria-hidden="true"></i>
-              <span class="sr-only">Workflow</span>
+          <div class="shape-tools">
+            <button type="button" id="rect-tool" class="btn btn-secondary btn--icon active" onclick="setTool('rectangle')" title="Rectangle crop (drag on image) · key 1" aria-pressed="true">
+              <span class="shape-icon--rect" aria-hidden="true"></span>
+              <span class="sr-only">Rectangle</span>
+            </button>
+            <button type="button" id="circle-tool" class="btn btn-secondary btn--icon" onclick="setTool('circle')" title="Oval crop (drag on image) · key 2" aria-pressed="false">
+              <i class="far fa-circle" aria-hidden="true"></i>
+              <span class="sr-only">Oval</span>
+            </button>
+            <button type="button" id="custom-tool" class="btn btn-secondary btn--icon" onclick="setTool('custom')" title="Custom outline — click corners, then click first point or right-click to finish · key 3" aria-pressed="false">
+              <i class="fas fa-draw-polygon" aria-hidden="true"></i>
+              <span class="sr-only">Custom outline</span>
+            </button>
+            <button type="button" id="move-tool" class="btn btn-secondary btn--icon" onclick="setTool('move')" title="Adjust slices · hover: left-click deletes · right-click for menu (duplicate, pattern, PNG) · drag to move · key 5" aria-pressed="false">
+              <i class="fas fa-arrows-up-down-left-right" aria-hidden="true"></i>
+              <span class="sr-only">Adjust slices</span>
             </button>
           </div>
-
-          <div class="toolbar-chip" role="group" aria-label="Crop shape">
-            <span class="sr-only">Draw</span>
-            <div class="shape-tools">
-              <button type="button" id="rect-tool" class="btn btn-secondary btn--icon active" onclick="setTool('rectangle')" title="Rectangle crop (drag on image) · key 1" aria-pressed="true">
-                <span class="shape-icon--rect" aria-hidden="true"></span>
-                <span class="sr-only">Rectangle</span>
-              </button>
-              <button type="button" id="circle-tool" class="btn btn-secondary btn--icon" onclick="setTool('circle')" title="Oval crop (drag on image) · key 2" aria-pressed="false">
-                <i class="far fa-circle" aria-hidden="true"></i>
-                <span class="sr-only">Oval</span>
-              </button>
-              <button type="button" id="custom-tool" class="btn btn-secondary btn--icon" onclick="setTool('custom')" title="Custom outline — click corners, then click first point or right-click to finish · key 3" aria-pressed="false">
-                <i class="fas fa-draw-polygon" aria-hidden="true"></i>
-                <span class="sr-only">Custom outline</span>
-              </button>
-              <button type="button" id="move-tool" class="btn btn-secondary btn--icon" onclick="setTool('move')" title="Adjust slices · hover: left-click deletes · right-click for menu (duplicate, pattern, PNG) · drag to move · key 5" aria-pressed="false">
-                <i class="fas fa-arrows-up-down-left-right" aria-hidden="true"></i>
-                <span class="sr-only">Adjust slices</span>
-              </button>
-              <label class="text-muted text-sm snap-move-opt" title="Hold slices to pixel grid · sheet edges · nearby slices (Move tool)"
-                style="display:flex;align-items:center;gap:6px;margin:0 4px 0 2px;padding:6px 8px;border-radius:10px;border:1px solid rgba(200,182,219,0.4);cursor:pointer;white-space:nowrap;">
-                <input type="checkbox" id="prop-art-snap-move" style="margin:0;" onchange="propArtSnapCheckboxChanged();">
-                <span>Snap</span>
-              </label>
-            </div>
-          </div>
-
-          <div class="toolbar-chip" role="group" aria-label="Zoom">
-            <span class="sr-only">View</span>
-            <button type="button" onclick="zoomIn()" class="btn btn-secondary btn--icon" title="Zoom in (Ctrl +)"><i class="fas fa-magnifying-glass-plus" aria-hidden="true"></i><span class="sr-only">Zoom in</span></button>
-            <button type="button" onclick="zoomOut()" class="btn btn-secondary btn--icon" title="Zoom out (Ctrl −)"><i class="fas fa-magnifying-glass-minus" aria-hidden="true"></i><span class="sr-only">Zoom out</span></button>
-            <button type="button" onclick="resetZoom()" class="btn btn-secondary btn--icon" title="Reset zoom to 100% (1:1)"><i class="fas fa-compress" aria-hidden="true"></i><span class="sr-only">Reset zoom 100 percent</span></button>
-            <span id="zoom-level" class="text-muted text-sm" style="min-width:38px;font-variant-numeric:tabular-nums;" aria-live="polite">100%</span>
-          </div>
-
+          <button type="button" onclick="zoomIn()" class="btn btn-secondary btn--icon" title="Zoom in (Ctrl +)"><i class="fas fa-magnifying-glass-plus" aria-hidden="true"></i><span class="sr-only">Zoom in</span></button>
+          <button type="button" onclick="zoomOut()" class="btn btn-secondary btn--icon" title="Zoom out (Ctrl −)"><i class="fas fa-magnifying-glass-minus" aria-hidden="true"></i><span class="sr-only">Zoom out</span></button>
+          <button type="button" onclick="resetZoom()" class="btn btn-secondary btn--icon" title="Reset zoom to 100% (1:1)"><i class="fas fa-compress" aria-hidden="true"></i><span class="sr-only">Reset zoom 100 percent</span></button>
           <button type="button" class="btn btn-help-outline btn--icon" onclick="openHelpModal()" title="Guide">
             <i class="fas fa-circle-question" aria-hidden="true"></i>
             <span class="sr-only">Help</span>
           </button>
-
-          <div class="toolbar-chip" role="group" aria-label="Export">
-            <span class="sr-only">Export</span>
-            <button type="button" id="palette-btn" class="btn btn-secondary btn--icon" onclick="extractColorPalette()" disabled title="Dominant colors from current slices · Standard+" aria-pressed="false">
-              <i class="fas fa-palette" aria-hidden="true"></i>
-              <span class="sr-only">Palette from slices</span>
-            </button>
-            <button type="button" class="btn btn-success btn--icon" onclick="downloadAll()" id="download-all-btn" disabled title="Download all slices (ZIP when there are more than 3; otherwise PNGs)">
-              <i class="fas fa-download" aria-hidden="true"></i>
-              <span class="sr-only">Download all</span>
-            </button>
-          </div>
-          <div class="toolbar-chip" role="group" aria-label="Edit session">
-            <span class="sr-only">Edit</span>
-            <button type="button" class="btn btn-secondary btn--icon" onclick="undoCropChanges()" id="crop-undo-btn" disabled title="Undo (Ctrl+Z)">
-              <i class="fas fa-rotate-left" aria-hidden="true"></i>
-              <span class="sr-only">Undo</span>
-            </button>
-            <button type="button" class="btn btn-secondary btn--icon" onclick="redoCropChanges()" id="crop-redo-btn" disabled title="Redo (Ctrl+Y or Ctrl+Shift+Z)">
-              <i class="fas fa-rotate-right" aria-hidden="true"></i>
-              <span class="sr-only">Redo</span>
-            </button>
-            <button type="button" class="btn btn-danger btn--icon" onclick="clearCrops()" id="clear-btn" disabled title="Clear all crop rectangles">
-              <i class="fas fa-trash-can" aria-hidden="true"></i>
-              <span class="sr-only">Clear crops</span>
-            </button>
-            <button type="button" class="btn btn-danger btn--icon" onclick="resetEverything()" id="reset-btn" disabled title="Remove image and start over" style="background: #dc2626;">
-              <i class="fas fa-arrow-rotate-left" aria-hidden="true"></i>
-              <span class="sr-only">Reset all</span>
-            </button>
-          </div>
-
+          <button type="button" id="palette-btn" class="btn btn-secondary btn--icon" onclick="extractColorPalette()" disabled title="Dominant colors from current slices · Standard+" aria-pressed="false">
+            <i class="fas fa-palette" aria-hidden="true"></i>
+            <span class="sr-only">Palette from slices</span>
+          </button>
+          <button type="button" class="btn btn-success btn--icon" onclick="downloadAll()" id="download-all-btn" disabled title="Download all slices (ZIP when there are more than 3; otherwise PNGs)">
+            <i class="fas fa-download" aria-hidden="true"></i>
+            <span class="sr-only">Download all</span>
+          </button>
+          <button type="button" class="btn btn-secondary btn--icon" onclick="undoCropChanges()" id="crop-undo-btn" disabled title="Undo (Ctrl+Z)">
+            <i class="fas fa-rotate-left" aria-hidden="true"></i>
+            <span class="sr-only">Undo</span>
+          </button>
+          <button type="button" class="btn btn-secondary btn--icon" onclick="redoCropChanges()" id="crop-redo-btn" disabled title="Redo (Ctrl+Y or Ctrl+Shift+Z)">
+            <i class="fas fa-rotate-right" aria-hidden="true"></i>
+            <span class="sr-only">Redo</span>
+          </button>
+          <button type="button" class="btn btn-danger btn--icon" onclick="clearCrops()" id="clear-btn" disabled title="Clear all crop rectangles">
+            <i class="fas fa-trash-can" aria-hidden="true"></i>
+            <span class="sr-only">Clear crops</span>
+          </button>
+          <button type="button" class="btn btn-danger btn--icon" onclick="resetEverything()" id="reset-btn" disabled title="Remove image and start over" style="background: #dc2626;">
+            <i class="fas fa-arrow-rotate-left" aria-hidden="true"></i>
+            <span class="sr-only">Reset all</span>
+          </button>
+        </div>
+        <div class="cropper-toolbar-status-line">
           <span class="status" id="status" role="status" aria-live="polite"></span>
         </div>
 
@@ -4019,9 +4582,9 @@
     <div class="turner-modal-panel help-modal-panel-wide">
       <div class="turner-help-title-row">
         <img
-          src="PropArtTM-CropperTool-PalePinkyFinal.svg"
-          width="480"
-          height="705"
+          src="PropArt-MayCropper.svg"
+          width="600"
+          height="297"
           class="prop-art-brand-mark prop-art-brand-mark--help"
           alt=""
           aria-hidden="true"
@@ -5389,6 +5952,113 @@
       if (sw) sw.style.display = 'block';
     }
 
+    /** Banner orbit strip — forwards to ghost toolbar widgets (same IDs as before toolbar-band removal). */
+    function cropperOrbitAct(kind) {
+      try {
+        switch (kind) {
+          case 'upload':
+            document.getElementById('file-upload')?.click();
+            break;
+          case 'project':
+            document.getElementById('project-upload')?.click();
+            break;
+          case 'workflow':
+            document.getElementById('prop-art-workflow-toolbar-btn')?.click();
+            break;
+          case 'rect':
+            document.getElementById('rect-tool')?.click();
+            break;
+          case 'circle':
+            document.getElementById('circle-tool')?.click();
+            break;
+          case 'custom':
+            document.getElementById('custom-tool')?.click();
+            break;
+          case 'move':
+            document.getElementById('move-tool')?.click();
+            break;
+          case 'zoom-in':
+            if (typeof zoomIn === 'function') zoomIn();
+            break;
+          case 'zoom-out':
+            if (typeof zoomOut === 'function') zoomOut();
+            break;
+          case 'zoom-reset':
+            if (typeof resetZoom === 'function') resetZoom();
+            break;
+          case 'help':
+            if (typeof openHelpModal === 'function') openHelpModal();
+            break;
+          case 'palette':
+            document.getElementById('palette-btn')?.click();
+            break;
+          case 'download':
+            document.getElementById('download-all-btn')?.click();
+            break;
+          case 'undo':
+            document.getElementById('crop-undo-btn')?.click();
+            break;
+          case 'redo':
+            document.getElementById('crop-redo-btn')?.click();
+            break;
+          case 'clear':
+            document.getElementById('clear-btn')?.click();
+            break;
+          case 'reset':
+            document.getElementById('reset-btn')?.click();
+            break;
+          default:
+            break;
+        }
+      } catch (e) {
+        console.warn('[PropArt] cropperOrbitAct', kind, e);
+      }
+    }
+
+    /**
+     * Local file:// preview fix:
+     * index.html uses <base href="/CropperTool/"> for hosted routing, which can break local asset URLs.
+     * When opened from disk, rewrite banner asset URLs relative to the current document location.
+     */
+    (function propArtFixLocalBannerAssetUrls() {
+      try {
+        if (window.location.protocol !== 'file:') return;
+        var here = window.location.href;
+        var resolveFromHere = function (name) {
+          return new URL(name, here).href;
+        };
+
+        var lockup = document.querySelector('.cropper-banner-final-lockup');
+        if (lockup) {
+          lockup.src = resolveFromHere('PropArt-MayCropperFinal.svg?v=9');
+          lockup.onerror = function () {
+            this.onerror = null;
+            this.src = resolveFromHere('PropArt-MayCropper.svg?v=9');
+            this.alt = '';
+          };
+        }
+
+        var signInIcon = document.querySelector('.cropper-banner-signin-icon');
+        if (signInIcon) signInIcon.src = resolveFromHere('PropArtSignIn.svg?v=4');
+
+        var styleTag = document.createElement('style');
+        styleTag.setAttribute('data-propart-local-assets', 'true');
+        styleTag.textContent =
+          ".cropper-orbit-btn,.cropper-banner-actions .nav-bell-btn,.cropper-banner-actions .nav-profile-btn{background-image:url('" +
+          resolveFromHere('PropArtButton.svg?v=6') +
+          "') !important;background-repeat:no-repeat !important;background-position:center !important;background-size:cover !important}" +
+          ".cropper-banner-signin{background-image:url('" +
+          resolveFromHere('PropArtSignIn.svg?v=6') +
+          "') !important;background-repeat:no-repeat !important;background-position:center !important;background-size:100% 100% !important}" +
+          ".cropper-banner-actions .nav-tier-trigger{background-image:url('" +
+          resolveFromHere('PropArtButtonStandard.svg?v=6') +
+          "') !important;background-repeat:no-repeat !important;background-position:center !important;background-size:100% 100% !important}";
+        document.head.appendChild(styleTag);
+      } catch (e) {
+        console.warn('[PropArt] local banner asset URL fix skipped', e);
+      }
+    })();
+
     function propArtSyncNavAuth() {
       var btnIn = document.getElementById('prop-art-btn-sign-in');
       var btnOut = document.getElementById('prop-art-btn-sign-out');
@@ -6748,6 +7418,18 @@
       var t = getTier();
       var lab = document.getElementById('nav-tier-trigger-label');
       if (lab) lab.textContent = propArtTierTriggerLabel(t);
+      var trigger = document.getElementById('nav-tier-trigger');
+      if (trigger) {
+        var bg = './PropArtButtonFree.svg';
+        if (t === 'standard') bg = './PropArtButtonStandard.svg';
+        else if (t === 'premium') bg = './PropArtButtonPro.svg';
+        if (window.location.protocol === 'file:') {
+          try {
+            bg = new URL(bg.replace(/^\.\//, ''), window.location.href).href;
+          } catch (eTierBg) {}
+        }
+        trigger.style.backgroundImage = "url('" + bg + "')";
+      }
       document.querySelectorAll('.nav-tier-item').forEach(function (btn) {
         btn.setAttribute('aria-current', btn.dataset.value === t ? 'true' : 'false');
       });

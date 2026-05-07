@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cropper Header Only Mockup</title>
+  <style>
+    :root {
+      --page-bg: #f0f0f0;
+      --panel-bg: #d9d6e6;
+      --ink: #4f45b8;
+      --top-bar-height: 75px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: var(--page-bg);
+      color: var(--ink);
+    }
+
+    .header-shell {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: var(--panel-bg);
+      border-radius: 28px;
+      padding: 14px 20px 18px;
+      position: relative;
+    }
+
+    .top-bar {
+      min-height: var(--top-bar-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .logo-wrap {
+      line-height: 0;
+      flex: 0 1 auto;
+      min-width: 0;
+    }
+
+    .logo-wrap img {
+      display: block;
+      height: 58px;
+      width: auto;
+      max-width: min(100%, 520px);
+      object-fit: contain;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 0 0 auto;
+    }
+
+    .tier-pill {
+      width: 118px;
+      height: 34px;
+      border: 0;
+      border-radius: 999px;
+      background: url("./PropArtButtonStandard.svg") center/100% 100% no-repeat;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tier-pill .online-dot {
+      position: absolute;
+      left: 7px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #6cf2b8;
+      box-shadow: 0 0 8px rgba(108, 242, 184, 0.9);
+    }
+
+    .ghost-pill {
+      width: 96px;
+      height: 34px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+    }
+
+    .circle-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 0;
+      background: url("./PropArtButton.svg") center/100% 100% no-repeat;
+      color: #4c429c;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1;
+      cursor: default;
+    }
+
+    .signin-btn {
+      width: 88px;
+      height: 34px;
+      border-radius: 999px;
+      border: 0;
+      background: url("./PropArtSignIn.svg") center/100% 100% no-repeat;
+      cursor: default;
+    }
+
+    .quick-links {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 1.95rem;
+      font-weight: 700;
+      color: #4d44b7;
+    }
+
+    .quick-links .sep {
+      font-size: 1.2rem;
+      opacity: 0.7;
+      margin-left: -9px;
+      margin-right: -9px;
+    }
+
+    .controls-pill {
+      margin-top: 14px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      border-radius: 999px;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .controls-pill .tiny-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #bdb5d8;
+      margin-right: 4px;
+    }
+
+    .floating-autoslices {
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-10%);
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 0;
+      background: url("./PropArtButton.svg") center/100% 100% no-repeat;
+      color: #4d44b7;
+      font-size: 0.74rem;
+      font-weight: 800;
+      line-height: 1;
+      text-align: center;
+      padding-top: 2px;
+      cursor: default;
+    }
+
+    .floating-autoslices span {
+      display: block;
+      transform: scale(0.78);
+      transform-origin: center;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <section class="header-shell" aria-label="Cropper header mockup only">
+    <div class="top-bar">
+      <div class="logo-wrap">
+        <img src="./PropArt-MayCropperFinal.svg" alt="PropArt Cropper Tool" />
+      </div>
+      <div class="top-actions">
+        <button class="tier-pill" type="button" title="Standard tier">
+          <span class="online-dot" aria-hidden="true"></span>
+        </button>
+        <div class="ghost-pill" aria-hidden="true"></div>
+        <button class="circle-btn" type="button" title="Notifications">🔔</button>
+        <button class="signin-btn" type="button" title="Sign in"></button>
+      </div>
+    </div>
+
+    <nav class="quick-links" aria-label="Quick links">
+      <span>Quick Start</span><span class="sep">·</span>
+      <span>Upload</span><span class="sep">·</span>
+      <span>Guide</span>
+    </nav>
+
+    <div class="controls-pill" aria-label="Control row">
+      <span class="tiny-dot" aria-hidden="true"></span>
+      <button class="circle-btn" type="button"></button>
+      <button class="circle-btn" type="button"></button>
+      <button class="circle-btn" type="button"></button>
+      <button class="circle-btn" type="button"></button>
+      <button class="circle-btn" type="button"></button>
+      <button class="circle-btn" type="button"></button>
+      <button class="circle-btn" type="button"></button>
+      <button class="circle-btn" type="button"></button>
+      <button class="circle-btn" type="button"></button>
+      <button class="circle-btn" type="button"></button>
+      <button class="circle-btn" type="button"></button>
+      <button class="circle-btn" type="button"></button>
+      <button class="circle-btn" type="button"></button>
+    </div>
+
+    <button class="floating-autoslices" type="button" title="Auto slices">
+      <span>AUTO</span>
+      <span>SLICES</span>
+    </button>
+  </section>
+</body>
+</html>
