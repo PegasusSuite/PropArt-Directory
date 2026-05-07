@@ -41,6 +41,7 @@ Use **[`CropperTool/cropper-header-only-mockup.html`](CropperTool/cropper-header
 
 ## Related files
 
+- **Private design sources:** canonical SVG / mock working tree — [github.com/PegasusSuite/PropArt-Assets](https://github.com/PegasusSuite/PropArt-Assets) (copy updates from there into this repo for hosting).
 - Older USB / ribbon explorations: [`propart-universal-banner-mockup.html`](propart-universal-banner-mockup.html)
 - Blend-style suite strips: [`propart-blend-banner-suite-mockup.html`](propart-blend-banner-suite-mockup.html)
 - Brand specimen page: [`brand-showcase.html`](brand-showcase.html)
