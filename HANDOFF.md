@@ -41,7 +41,9 @@ Use **[`CropperTool/cropper-header-only-mockup.html`](CropperTool/cropper-header
 
 ## Related files
 
+- **Owner-only backlog / withdrawn public copy:** [`PropArt-Assets/OWNER-NOTES-WITHDRAWN-FROM-PUBLIC.md`](https://github.com/PegasusSuite/PropArt-Assets/blob/main/OWNER-NOTES-WITHDRAWN-FROM-PUBLIC.md) (private repo). Maintain that file when removing internal reminders from public HTML.
 - **Private design sources:** canonical SVG / mock working tree — [github.com/PegasusSuite/PropArt-Assets](https://github.com/PegasusSuite/PropArt-Assets) (copy updates from there into this repo for hosting).
+- **Local snapshot folder:** `Office Bitch/` (under this repo) is **gitignored** — personal consolidation only; not pushed.
 - Older USB / ribbon explorations: [`propart-universal-banner-mockup.html`](propart-universal-banner-mockup.html)
 - Blend-style suite strips: [`propart-blend-banner-suite-mockup.html`](propart-blend-banner-suite-mockup.html)
 - Brand specimen page: [`brand-showcase.html`](brand-showcase.html)
