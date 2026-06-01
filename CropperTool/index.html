@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+    <meta name="robots" content="index, follow, noai, noimageai">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <base href="/CropperTool/">
   <script>
@@ -13,7 +14,7 @@
       } catch (e) {}
     })();
   </script>
-  <title>PropArt™ Cropper Tool - Multi-Piece Project Management</title>
+  <title>PropArtâ„¢ Cropper Tool - Multi-Piece Project Management</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" href="https://pegasussuite.github.io/PropArt-Directory/favicon.svg" type="image/svg+xml" sizes="any">
   <link rel="apple-touch-icon" href="PropArtTM-CropperTool-PalePinkyFinal.svg" sizes="180x180">
@@ -683,7 +684,7 @@
       min-height: 0;
     }
 
-    /** Quick tools strip — below canvas so it never overlays the image */
+    /** Quick tools strip â€” below canvas so it never overlays the image */
     .canvas-quick-controls-wrap {
       flex: 0 0 auto;
       justify-content: center;
@@ -820,7 +821,7 @@
       box-shadow: 0 8px 20px var(--clay-shadow);
     }
 
-    /** Full slice pixels scaled to tile width — letterboxed, not cropped (“preview crop”) */
+    /** Full slice pixels scaled to tile width â€” letterboxed, not cropped (â€œpreview cropâ€) */
     .gallery-tile img {
       display: block;
       width: 100%;
@@ -1120,7 +1121,7 @@
       color: #f0f0f0;
     }
 
-    /** Match Sign-in / bell pills on purple bar — tier trigger uses darker chip for readability (see below). */
+    /** Match Sign-in / bell pills on purple bar â€” tier trigger uses darker chip for readability (see below). */
     .header .prop-art-nav-signin-btn,
     .header .nav-bell-btn.header-chrome-soft,
     .header a.header-help-ico-btn {
@@ -1145,7 +1146,7 @@
       color: #f0f0f0;
     }
 
-    /** Access tier dropdown on purple hero — high-contrast, legible labels */
+    /** Access tier dropdown on purple hero â€” high-contrast, legible labels */
     .header .nav-tier-trigger {
       border: 1px solid rgba(255, 255, 255, 0.45);
       background: rgba(16, 10, 28, 0.58);
@@ -1314,7 +1315,7 @@
       margin-bottom: 14px;
     }
 
-    /** Fixed tip jar — icon only */
+    /** Fixed tip jar â€” icon only */
     #prop-art-kofi-link.prop-art-kofi-fab {
       position: fixed;
       bottom: 22px;
@@ -1346,7 +1347,7 @@
       color: #f0f0f0;
     }
 
-    /** Slice workflow replay — avoids hunting after upload modal closed */
+    /** Slice workflow replay â€” avoids hunting after upload modal closed */
     #prop-art-workflow-fab.prop-art-workflow-fab {
       position: fixed;
       bottom: 22px;
@@ -1426,7 +1427,7 @@
       overflow: hidden;
     }
 
-    /* --- Cropper “mock banner” hero + orbit controls --- */
+    /* --- Cropper â€œmock bannerâ€ hero + orbit controls --- */
     .header.header--cropper-banner {
       background: transparent;
       box-shadow: none;
@@ -2050,7 +2051,7 @@
       gap: 10px 12px;
     }
 
-    /* Main tool row — status drops to full width on narrow viewports */
+    /* Main tool row â€” status drops to full width on narrow viewports */
     .toolbar-band--single {
       flex-wrap: wrap;
       align-items: center;
@@ -2145,7 +2146,7 @@
     .toolbar-details > summary::-webkit-details-marker { display: none; }
 
     .toolbar-details > summary::after {
-      content: '▸';
+      content: 'â–¸';
       margin-left: auto;
       opacity: 0.65;
       transition: transform 0.2s;
@@ -2381,7 +2382,7 @@
     .sidebar-details-clay > summary::-webkit-details-marker { display: none; }
 
     .sidebar-details-clay > summary::after {
-      content: '▸';
+      content: 'â–¸';
       float: right;
       opacity: 0.7;
     }
@@ -2535,7 +2536,7 @@
       position: relative;
     }
 
-    /** Empty workspace — file browse only inside dashed drop card (drop-hint), not full container padding */
+    /** Empty workspace â€” file browse only inside dashed drop card (drop-hint), not full container padding */
     .canvas-container.canvas-container--pick {
       cursor: default;
       min-height: clamp(260px, 36vh, 520px);
@@ -2723,7 +2724,7 @@
       cursor: crosshair;
     }
 
-    /** Scale bitmap display to workspace — % height needs bounded flex parents above */
+    /** Scale bitmap display to workspace â€” % height needs bounded flex parents above */
     #canvas-container canvas {
       max-width: 100%;
       max-height: 100%;
@@ -2745,7 +2746,7 @@
       border-color: rgba(255, 255, 255, 0.12);
     }
 
-    /** Auto-crop in progress — full-viewport path so the butterfly flies from off-screen left */
+    /** Auto-crop in progress â€” full-viewport path so the butterfly flies from off-screen left */
     .prop-art-autocrop-progress {
       position: fixed;
       inset: 0;
@@ -2817,7 +2818,7 @@
       display: block;
     }
 
-    /** Author rules like .nav-auth {display:flex} win over UA [hidden] — force hide when scripted. */
+    /** Author rules like .nav-auth {display:flex} win over UA [hidden] â€” force hide when scripted. */
     #prop-art-nav-auth[hidden],
     #prop-art-btn-sign-in[hidden] {
       display: none !important;
@@ -3857,7 +3858,7 @@
       color: rgba(245, 245, 255, 0.78);
     }
 
-    /** `.header { color:white }` would inherit into the dropdown — pin readable ink on panels */
+    /** `.header { color:white }` would inherit into the dropdown â€” pin readable ink on panels */
     .header .nav-notify-panel {
       color: #1e1630 !important;
     }
@@ -3996,7 +3997,7 @@
     class="prop-art-workflow-fab"
     hidden
     aria-label="Open slice workflow presets and palette"
-    title="Cutout workflow — presets, background swatches, whole-object vs grid mode, Go!"
+    title="Cutout workflow â€” presets, background swatches, whole-object vs grid mode, Go!"
     onclick="propArtOpenWorkflowModal({ deferAutocrop: false });"
   >
     <i class="fas fa-sliders" aria-hidden="true"></i>
@@ -4026,9 +4027,9 @@
                 </a>
                 <nav class="cropper-banner-quick" aria-label="Quick links">
                   <button type="button" onclick="openQuickStartModal()">Quick Start</button>
-                  <span aria-hidden="true">·</span>
+                  <span aria-hidden="true">Â·</span>
                   <button type="button" onclick="var f=document.getElementById('file-upload'); if(f) f.click();">Upload</button>
-                  <span aria-hidden="true">·</span>
+                  <span aria-hidden="true">Â·</span>
                   <button type="button" onclick="openHelpModal()">Guide</button>
                 </nav>
                 <p class="sr-only"><span id="tier-header-line"></span></p>
@@ -4037,20 +4038,20 @@
                     <button type="button" class="cropper-orbit-btn" title="Upload an image" aria-label="Upload an image" onclick="cropperOrbitAct('upload')"><i class="fas fa-upload" aria-hidden="true"></i></button>
                     <button type="button" class="cropper-orbit-btn" title="Open saved project JSON" aria-label="Open saved project JSON" onclick="cropperOrbitAct('project')"><i class="fas fa-folder-open" aria-hidden="true"></i></button>
                     <div class="toolbar-chip toolbar-chip--slice-setup cropper-orbit-autoslices" role="group" aria-labelledby="toolbar-slice-setup-lbl">
-                      <span id="toolbar-slice-setup-lbl" class="toolbar-chip-label-pill cropper-orbit-autoslices-label">AUTO SLICES • STANDARD+</span>
+                      <span id="toolbar-slice-setup-lbl" class="toolbar-chip-label-pill cropper-orbit-autoslices-label">AUTO SLICES â€¢ STANDARD+</span>
                       <button
                         type="button"
                         id="prop-art-workflow-toolbar-btn"
                         class="cropper-orbit-workflow-btn"
                         onclick="propArtOpenWorkflowModal({ deferAutocrop: false });"
                         disabled
-                        title="Cutout workflow — presets, palette, shadows / metal, whole objects, Run Auto-crop"
+                        title="Cutout workflow â€” presets, palette, shadows / metal, whole objects, Run Auto-crop"
                       >
                         <i class="fas fa-sliders" aria-hidden="true"></i>
                         <span class="sr-only">Workflow</span>
                       </button>
                     </div>
-                    <label class="cropper-orbit-snap" title="Hold slices to pixel grid · sheet edges · nearby slices (Move tool)">
+                    <label class="cropper-orbit-snap" title="Hold slices to pixel grid Â· sheet edges Â· nearby slices (Move tool)">
                       <input type="checkbox" id="prop-art-snap-move" style="margin:0;" onchange="propArtSnapCheckboxChanged();">
                       <span>Snap</span>
                     </label>
@@ -4087,7 +4088,7 @@
                           title="Access tier"
                         >
                           <span id="nav-tier-trigger-label">Std</span>
-                          <span class="nav-tier-trigger-caret" aria-hidden="true">▾</span>
+                          <span class="nav-tier-trigger-caret" aria-hidden="true">â–¾</span>
                         </button>
                         <div class="nav-tier-menu" id="nav-tier-menu" role="listbox" aria-labelledby="nav-tier-trigger" hidden></div>
                       </div>
@@ -4102,7 +4103,7 @@
                     <div id="prop-art-notify-panel" class="nav-notify-panel" role="region" aria-labelledby="prop-art-notify-title" hidden>
                       <div
                         class="nav-notify-panel-head"
-                        title="Drag heading to move · double-click heading to dock under bell"
+                        title="Drag heading to move Â· double-click heading to dock under bell"
                       >
                         <span id="prop-art-notify-title">Notifications</span>
                         <button type="button" class="nav-notify-clear" id="prop-art-notify-clear">Clear</button>
@@ -4122,7 +4123,7 @@
                   <button type="button" class="nav-profile-btn header-chrome-soft" onclick="openQuickStartModal()" title="Quick start" aria-label="Quick start">
                     <i class="fas fa-seedling" aria-hidden="true"></i>
                   </button>
-                  <button type="button" class="nav-profile-btn header-vault-btn" id="prop-art-vault-open" onclick="propArtOpenVaultModal()" aria-haspopup="dialog" aria-expanded="false" aria-label="Project vault · Craft cloud saves" title="Saved projects &amp; crops (Craft cloud)">
+                  <button type="button" class="nav-profile-btn header-vault-btn" id="prop-art-vault-open" onclick="propArtOpenVaultModal()" aria-haspopup="dialog" aria-expanded="false" aria-label="Project vault Â· Craft cloud saves" title="Saved projects &amp; crops (Craft cloud)">
                     <i class="fas fa-box-archive" aria-hidden="true"></i>
                   </button>
                   <button type="button" class="nav-profile-btn" id="prop-art-profile-open" onclick="propArtOpenProfilePanel()" aria-haspopup="dialog" aria-expanded="false" aria-controls="prop-art-profile-panel" title="Profile and settings">
@@ -4156,31 +4157,31 @@
             </div>
           </div>
           <div class="shape-tools">
-            <button type="button" id="rect-tool" class="btn btn-secondary btn--icon active" onclick="setTool('rectangle')" title="Rectangle crop (drag on image) · key 1" aria-pressed="true">
+            <button type="button" id="rect-tool" class="btn btn-secondary btn--icon active" onclick="setTool('rectangle')" title="Rectangle crop (drag on image) Â· key 1" aria-pressed="true">
               <span class="shape-icon--rect" aria-hidden="true"></span>
               <span class="sr-only">Rectangle</span>
             </button>
-            <button type="button" id="circle-tool" class="btn btn-secondary btn--icon" onclick="setTool('circle')" title="Oval crop (drag on image) · key 2" aria-pressed="false">
+            <button type="button" id="circle-tool" class="btn btn-secondary btn--icon" onclick="setTool('circle')" title="Oval crop (drag on image) Â· key 2" aria-pressed="false">
               <i class="far fa-circle" aria-hidden="true"></i>
               <span class="sr-only">Oval</span>
             </button>
-            <button type="button" id="custom-tool" class="btn btn-secondary btn--icon" onclick="setTool('custom')" title="Custom outline — click corners, then click first point or right-click to finish · key 3" aria-pressed="false">
+            <button type="button" id="custom-tool" class="btn btn-secondary btn--icon" onclick="setTool('custom')" title="Custom outline â€” click corners, then click first point or right-click to finish Â· key 3" aria-pressed="false">
               <i class="fas fa-draw-polygon" aria-hidden="true"></i>
               <span class="sr-only">Custom outline</span>
             </button>
-            <button type="button" id="move-tool" class="btn btn-secondary btn--icon" onclick="setTool('move')" title="Adjust slices · hover: left-click deletes · right-click for menu (duplicate, pattern, PNG) · drag to move · key 5" aria-pressed="false">
+            <button type="button" id="move-tool" class="btn btn-secondary btn--icon" onclick="setTool('move')" title="Adjust slices Â· hover: left-click deletes Â· right-click for menu (duplicate, pattern, PNG) Â· drag to move Â· key 5" aria-pressed="false">
               <i class="fas fa-arrows-up-down-left-right" aria-hidden="true"></i>
               <span class="sr-only">Adjust slices</span>
             </button>
           </div>
           <button type="button" onclick="zoomIn()" class="btn btn-secondary btn--icon" title="Zoom in (Ctrl +)"><i class="fas fa-magnifying-glass-plus" aria-hidden="true"></i><span class="sr-only">Zoom in</span></button>
-          <button type="button" onclick="zoomOut()" class="btn btn-secondary btn--icon" title="Zoom out (Ctrl −)"><i class="fas fa-magnifying-glass-minus" aria-hidden="true"></i><span class="sr-only">Zoom out</span></button>
+          <button type="button" onclick="zoomOut()" class="btn btn-secondary btn--icon" title="Zoom out (Ctrl âˆ’)"><i class="fas fa-magnifying-glass-minus" aria-hidden="true"></i><span class="sr-only">Zoom out</span></button>
           <button type="button" onclick="resetZoom()" class="btn btn-secondary btn--icon" title="Reset zoom to 100% (1:1)"><i class="fas fa-compress" aria-hidden="true"></i><span class="sr-only">Reset zoom 100 percent</span></button>
           <button type="button" class="btn btn-help-outline btn--icon" onclick="openHelpModal()" title="Guide">
             <i class="fas fa-circle-question" aria-hidden="true"></i>
             <span class="sr-only">Help</span>
           </button>
-          <button type="button" id="palette-btn" class="btn btn-secondary btn--icon" onclick="extractColorPalette()" disabled title="Dominant colors from current slices · Standard+" aria-pressed="false">
+          <button type="button" id="palette-btn" class="btn btn-secondary btn--icon" onclick="extractColorPalette()" disabled title="Dominant colors from current slices Â· Standard+" aria-pressed="false">
             <i class="fas fa-palette" aria-hidden="true"></i>
             <span class="sr-only">Palette from slices</span>
           </button>
@@ -4213,9 +4214,9 @@
           <div
             id="color-palette-caption"
             class="toolbar-palette-caption text-muted text-sm"
-            title="Pro users: tap histogram swatches to sample background · others: eyedropper"
+            title="Pro users: tap histogram swatches to sample background Â· others: eyedropper"
           >
-            Sheet colors→BG
+            Sheet colorsâ†’BG
           </div>
           <div id="color-palette-display" class="color-palette-display"></div>
         </div>
@@ -4231,14 +4232,14 @@
           <div class="toolbar-details-body">
             <label class="autocrop-on-upload-opt" style="display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;width:100%;cursor:pointer;font-size:12px;line-height:1.45;">
               <input type="checkbox" id="autocrop-prefer-blocks" style="margin-top:3px;flex-shrink:0;">
-              <span><strong>Prefer solid color blocks</strong> — tighter masks for flat catalogs; patterned cane/beads often scan better <strong>off</strong>. High <strong>Target slices</strong> still relaxes the “solid patch” gate.</span>
+              <span><strong>Prefer solid color blocks</strong> â€” tighter masks for flat catalogs; patterned cane/beads often scan better <strong>off</strong>. High <strong>Target slices</strong> still relaxes the â€œsolid patchâ€ gate.</span>
             </label>
             <label class="autocrop-on-upload-opt" style="display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;width:100%;cursor:pointer;font-size:12px;line-height:1.45;">
               <input type="checkbox" id="autocrop-on-upload" style="margin-top:3px;flex-shrink:0;">
               <span>After upload, guess background &amp; run <strong>Auto-crop</strong> without the workflow modal (Standard+).</span>
             </label>
             <p class="text-muted text-sm" style="margin: 0 0 10px; line-height: 1.4;">
-              The large <strong>Auto-crop</strong> wand sits to the <strong>right of the canvas</strong> once an image is loaded. Below the canvas use <strong>Clear slices</strong> to wipe boxes but keep the photo. Here: background sample &amp; tolerance — hard-refresh the page after updates so you are not seeing a stale script.
+              The large <strong>Auto-crop</strong> wand sits to the <strong>right of the canvas</strong> once an image is loaded. Below the canvas use <strong>Clear slices</strong> to wipe boxes but keep the photo. Here: background sample &amp; tolerance â€” hard-refresh the page after updates so you are not seeing a stale script.
             </p>
             <div class="autocrop-settings">
               <button type="button" id="pick-bg-btn" class="btn btn-secondary btn--icon" onclick="toggleBackgroundPicker()" title="Sample background color (then click image)">
@@ -4254,11 +4255,11 @@
         </details>
 
         <details class="toolbar-details" id="toolbar-extras">
-          <summary>More tools <span class="text-muted text-sm" style="font-weight:500;">export · Suite</span></summary>
+          <summary>More tools <span class="text-muted text-sm" style="font-weight:500;">export Â· Suite</span></summary>
           <div class="toolbar-details-body toolbar-tier-groups">
             <div class="toolbar-chip" id="tier-pack-standard" style="flex-wrap:wrap;width:100%;">
               <span class="toolbar-chip-label" style="font-size:9px;">Std+</span>
-              <button type="button" class="btn btn-secondary btn-clay-feature btn--icon" onclick="showMultiExportMenu()" id="multi-export-btn" disabled title="Multi-format export · PDF catalog">
+              <button type="button" class="btn btn-secondary btn-clay-feature btn--icon" onclick="showMultiExportMenu()" id="multi-export-btn" disabled title="Multi-format export Â· PDF catalog">
                 <i class="fas fa-file-export" aria-hidden="true"></i>
                 <span class="sr-only">Multi-export</span>
               </button>
@@ -4301,7 +4302,7 @@
         <div class="workspace-tabs-row" id="workspace-tabs-row" style="display: none;">
           <nav class="workspace-tabs" role="tablist" aria-label="Workspace panels">
             <button type="button" role="tab" id="tab-canvas-btn" class="workspace-tab workspace-tab--active" aria-selected="true" onclick="propArtWorkspaceTab('canvas')">Canvas</button>
-            <button type="button" role="tab" id="tab-gallery-btn" class="workspace-tab" aria-selected="false" onclick="propArtWorkspaceTab('gallery')" title="All slices grid — use Adjust slices (Move) tool for hover · left deletes · right opens menu">
+            <button type="button" role="tab" id="tab-gallery-btn" class="workspace-tab" aria-selected="false" onclick="propArtWorkspaceTab('gallery')" title="All slices grid â€” use Adjust slices (Move) tool for hover Â· left deletes Â· right opens menu">
               All slices<span class="workspace-tab-badge" id="crop-count" aria-label="slice count">0</span></button>
           </nav>
         </div>
@@ -4311,10 +4312,10 @@
             <div class="canvas-container" id="canvas-container">
               <div class="drop-zone-visual" id="drop-hint">
                 <div class="drop-zone-visual-inner">
-                  <div class="drop-zone-icon-stack" aria-hidden="true">✨🖼️📐</div>
+                  <div class="drop-zone-icon-stack" aria-hidden="true">âœ¨ðŸ–¼ï¸ðŸ“</div>
                   <div class="drop-zone-title">Drop your sheet image here</div>
                   <div class="drop-zone-sub">
-                    JPG, PNG or WebP — or click this dashed frame to browse. One photo becomes many slice crops.
+                    JPG, PNG or WebP â€” or click this dashed frame to browse. One photo becomes many slice crops.
                   </div>
                   <div style="margin-top:16px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;">
                     <button type="button" class="btn btn-secondary" style="font-size:13px;padding:10px 16px;"
@@ -4370,10 +4371,10 @@
                 <button type="button" class="canvas-quick-btn canvas-quick-btn--icon" data-tool="custom" onclick="event.stopPropagation();setTool('custom');" title="Outline slice">
                   <i class="fas fa-draw-polygon" aria-hidden="true"></i>
                 </button>
-                <button type="button" class="canvas-quick-btn canvas-quick-clear" onclick="event.stopPropagation();void clearCrops();" id="canvas-quick-clear-btn" disabled title="Remove all slices but keep this image · Undo restores">
+                <button type="button" class="canvas-quick-btn canvas-quick-clear" onclick="event.stopPropagation();void clearCrops();" id="canvas-quick-clear-btn" disabled title="Remove all slices but keep this image Â· Undo restores">
                   <i class="fas fa-eraser" aria-hidden="true" style="margin-right:6px;"></i>Clear slices
                 </button>
-                <button type="button" class="canvas-quick-btn" onclick="event.stopPropagation();autoCrop();" title="Run auto-crop (same as large wand →)">
+                <button type="button" class="canvas-quick-btn" onclick="event.stopPropagation();autoCrop();" title="Run auto-crop (same as large wand â†’)">
                   Auto
                 </button>
               </div>
@@ -4384,13 +4385,13 @@
               <span class="text-muted text-sm" style="font-size: 11px; line-height: 1.4; flex: 1; min-width: 140px;">
                 Thumbnails match Canvas and PNG export (Pro Edit filters included; letterboxed, not center-cropped).
               </span>
-              <label class="gallery-images-only-opt" title="Hides #1 #2… on Canvas plus slice numbers and Notes on tiles">
+              <label class="gallery-images-only-opt" title="Hides #1 #2â€¦ on Canvas plus slice numbers and Notes on tiles">
                 <input type="checkbox" id="prop-art-gallery-images-only" />
                 <span>Hide labels</span>
               </label>
             </div>
             <p class="text-muted text-sm" style="margin-bottom:10px;line-height:1.45;">
-              Choose <strong>Adjust slices</strong> in the shape row. <strong>Hover</strong> a thumbnail for the lavender outline; <strong>left-click</strong> deletes · <strong>right-click</strong> opens duplicate, pattern save, or PNG · <strong>double-click</strong> opens it on Canvas. Drag slices only on Canvas. Dominant colors: <strong>Color palette</strong> (palette icon) below the zoom tools.</p>
+              Choose <strong>Adjust slices</strong> in the shape row. <strong>Hover</strong> a thumbnail for the lavender outline; <strong>left-click</strong> deletes Â· <strong>right-click</strong> opens duplicate, pattern save, or PNG Â· <strong>double-click</strong> opens it on Canvas. Drag slices only on Canvas. Dominant colors: <strong>Color palette</strong> (palette icon) below the zoom tools.</p>
             <div class="gallery-grid" id="gallery-grid"></div>
           </div>
         </div>
@@ -4402,9 +4403,9 @@
   </div>
 
   <div id="prop-art-slice-ctx-menu" role="menu" aria-label="Slice actions" aria-hidden="true">
-    <button type="button" class="btn btn-secondary" id="prop-art-ctx-duplicate" role="menuitem">⎘ Duplicate slice</button>
-    <button type="button" class="btn btn-secondary" id="prop-art-ctx-pattern" role="menuitem">📚 Save to pattern library</button>
-    <button type="button" class="btn btn-secondary" id="prop-art-ctx-download" role="menuitem">⬇ Download PNG</button>
+    <button type="button" class="btn btn-secondary" id="prop-art-ctx-duplicate" role="menuitem">âŽ˜ Duplicate slice</button>
+    <button type="button" class="btn btn-secondary" id="prop-art-ctx-pattern" role="menuitem">ðŸ“š Save to pattern library</button>
+    <button type="button" class="btn btn-secondary" id="prop-art-ctx-download" role="menuitem">â¬‡ Download PNG</button>
   </div>
 
   <footer class="prop-art-quotes-strip" aria-label="Favorite quote">
@@ -4420,12 +4421,12 @@
       <h3 class="turner-modal-title" id="quick-start-modal-title" style="display:flex;align-items:center;gap:8px;">
         <i class="fas fa-seedling" aria-hidden="true"></i> Quick start
       </h3>
-      <p class="text-muted text-sm" style="margin-bottom:12px;line-height:1.45;">Three steps — then open the full guide anytime from <strong>Help</strong>.</p>
+      <p class="text-muted text-sm" style="margin-bottom:12px;line-height:1.45;">Three steps â€” then open the full guide anytime from <strong>Help</strong>.</p>
       <ol class="sidebar-help-steps" style="margin-top:0;">
-        <li><strong>Add a photo</strong> — <em>Upload</em>, click the dashed drop frame, or <button type="button" class="btn btn-secondary" style="font-size:11px;padding:4px 8px;display:inline-block;vertical-align:middle;"
+        <li><strong>Add a photo</strong> â€” <em>Upload</em>, click the dashed drop frame, or <button type="button" class="btn btn-secondary" style="font-size:11px;padding:4px 8px;display:inline-block;vertical-align:middle;"
           onclick="propArtLoadDemoProject();">Try demo project</button> for an instant cane-style sheet.</li>
         <li><strong>Pick Rect, Oval, or Outline</strong>, then <strong>drag</strong> (or click corners for outline) on the image for each piece.</li>
-        <li><strong>Manage slices:</strong> <strong>All slices</strong> tab for thumbnails (notes collapse under each tile); <strong>Adjust slices</strong> · drag slices · arrow keys nudge · optional <strong>Snap</strong> (grid · sheet edges · other slices); left-click deletes · right-click duplicates / saves to pattern / PNG · <strong>More tools → Pattern library</strong> saves shapes in this browser. <strong>Craft cloud</strong> saves there too (signed in).</li>
+        <li><strong>Manage slices:</strong> <strong>All slices</strong> tab for thumbnails (notes collapse under each tile); <strong>Adjust slices</strong> Â· drag slices Â· arrow keys nudge Â· optional <strong>Snap</strong> (grid Â· sheet edges Â· other slices); left-click deletes Â· right-click duplicates / saves to pattern / PNG Â· <strong>More tools â†’ Pattern library</strong> saves shapes in this browser. <strong>Craft cloud</strong> saves there too (signed in).</li>
       </ol>
       <p id="quick-start-member-hint" class="tier-inline-hint" style="display:none;margin-top:12px;line-height:1.45;">
         Signed in: your <strong>Project details</strong> (name, save, PDF, cloud) live in <strong>Profile</strong>.
@@ -4454,20 +4455,20 @@
       <p class="text-muted text-sm" style="margin: -8px 0 0; line-height: 1.5;">
         A <strong>slice</strong> here is best read as one <strong>object cutout</strong>: grouped regions that actually
         touch in the mask become one outline. Use <strong>Objects on plain backdrop</strong> (or Whole objects ON) when
-        a few solids sit on off-white—not for tight grids where every cane slice must separate.
+        a few solids sit on off-whiteâ€”not for tight grids where every cane slice must separate.
         <strong>Pro:</strong> auto sheet palette (<strong id="prop-art-workflow-palette-count-label">25</strong> swatches
-        max) — tap a swatch to set background. Others: use the <strong>eyedropper</strong> beside tolerance. Browser
-        heuristics only — not OCR.
+        max) â€” tap a swatch to set background. Others: use the <strong>eyedropper</strong> beside tolerance. Browser
+        heuristics only â€” not OCR.
       </p>
       <div class="prop-art-workflow-grid">
         <div class="prop-art-workflow-field prop-art-workflow-field--full">
           <label for="workflow-preset-select">Preset</label>
           <select id="workflow-preset-select">
             <option value="normal">Normal</option>
-            <option value="cutouts">Objects on plain backdrop · contiguous piece = one cutout</option>
+            <option value="cutouts">Objects on plain backdrop Â· contiguous piece = one cutout</option>
             <option value="flat">Flat studio (paper / one tone)</option>
             <option value="busy">Busy pattern (clay, cane)</option>
-            <option value="jewelry">Jewelry / shiny · oval + merges toward 2 (whole-object outline)</option>
+            <option value="jewelry">Jewelry / shiny Â· oval + merges toward 2 (whole-object outline)</option>
             <option value="custom">Custom (use sliders only)</option>
           </select>
         </div>
@@ -4490,15 +4491,15 @@
             min="0"
             max="48"
             value="0"
-            title="0 = off. MORE blobs → merge down toward this count. FEWER blobs → split largest regions up (only when Whole objects is unchecked). Busy preset + rectangles for dense grids."
+            title="0 = off. MORE blobs â†’ merge down toward this count. FEWER blobs â†’ split largest regions up (only when Whole objects is unchecked). Busy preset + rectangles for dense grids."
           />
         </div>
         <div class="prop-art-workflow-field prop-art-workflow-field--full">
-          <label for="workflow-auto-shape">Rough detection shape · each isolated object becomes</label>
+          <label for="workflow-auto-shape">Rough detection shape Â· each isolated object becomes</label>
           <select id="workflow-auto-shape" title="How Auto-crop outlines each detected blob">
-            <option value="smart" selected>Smart — compact blobs → oval, long strips → rectangle</option>
-            <option value="rect">Rectangle — axis-aligned boxes (jewelry trays, multiples)</option>
-            <option value="oval">Oval — circle around each blob (drops, studs, earrings)</option>
+            <option value="smart" selected>Smart â€” compact blobs â†’ oval, long strips â†’ rectangle</option>
+            <option value="rect">Rectangle â€” axis-aligned boxes (jewelry trays, multiples)</option>
+            <option value="oval">Oval â€” circle around each blob (drops, studs, earrings)</option>
           </select>
         </div>
         <div class="prop-art-workflow-field prop-art-workflow-field--full">
@@ -4516,7 +4517,7 @@
         <div class="prop-art-workflow-field prop-art-workflow-field--full">
           <label class="autocrop-on-upload-opt" style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;margin:0;font-weight:600;">
             <input type="checkbox" id="workflow-whole-objects" checked style="margin-top:3px;flex-shrink:0;" />
-            <span><strong>Whole objects</strong> — one contiguous foreground blob → one outline (skip inner splitting)</span>
+            <span><strong>Whole objects</strong> â€” one contiguous foreground blob â†’ one outline (skip inner splitting)</span>
           </label>
           <span class="text-muted text-sm" style="display:block;margin:4px 0 0 28px;line-height:1.45;font-weight:400;">
             Best for earrings, studs, sculptures on paper: avoids breaking one piece into many ovals/rects. Turn off + use
@@ -4529,7 +4530,7 @@
             <span>After Auto-crop, switch to <strong>Adjust slices</strong> (Move on canvas)</span>
           </label>
           <span class="text-muted text-sm" style="display:block;margin:4px 0 0 28px;line-height:1.45;font-weight:400;">
-            Default on — Rectangle / Oval draw tools stay the default until then. Turn off to leave your current draw tool unchanged.
+            Default on â€” Rectangle / Oval draw tools stay the default until then. Turn off to leave your current draw tool unchanged.
           </span>
         </div>
         <div class="prop-art-workflow-field">
@@ -4545,9 +4546,9 @@
       </div>
       <p id="prop-art-workflow-status" class="prop-art-workflow-hint" aria-live="polite"></p>
       <p class="prop-art-workflow-hint prop-art-devtools-issue-hint" style="opacity: 0.88;">
-        <strong>Seeing “Issues” beside the Console?</strong> That count is Chrome’s own panel (cookies, mixed content,
+        <strong>Seeing â€œIssuesâ€ beside the Console?</strong> That count is Chromeâ€™s own panel (cookies, mixed content,
         CSP, autocomplete), not Cropper crashes. Open the <strong>Issues</strong> tab next to <strong>Console</strong> (or
-        the ⋮ menu → <strong>More tools</strong> → <strong>Issues</strong>) to read each item.
+        the â‹® menu â†’ <strong>More tools</strong> â†’ <strong>Issues</strong>) to read each item.
       </p>
       <div class="prop-art-workflow-actions prop-art-workflow-actions--stack" style="margin-top: 16px;">
         <button
@@ -4590,42 +4591,42 @@
           aria-hidden="true"
           decoding="async"
         />
-        <h3 class="turner-modal-title" id="help-modal-title">Welcome to PropArt™ Cropper Tool</h3>
+        <h3 class="turner-modal-title" id="help-modal-title">Welcome to PropArtâ„¢ Cropper Tool</h3>
       </div>
       <p class="text-muted" style="margin-bottom:14px;line-height:1.5;">
-        Crop one photo into many slices. Use <strong>Access tier</strong> in the header: Community (web watermark), Standard via Pegasus Suite LLC newsletter signup, or Pegasus Suite for batch exports, Auto-Facet &amp; the Drawing Lab — hover each option for details.
+        Crop one photo into many slices. Use <strong>Access tier</strong> in the header: Community (web watermark), Standard via Pegasus Suite LLC newsletter signup, or Pegasus Suite for batch exports, Auto-Facet &amp; the Drawing Lab â€” hover each option for details.
       </p>
 
       <h4>Start in five steps</h4>
       <ol>
         <li><strong>Add an image:</strong> use <strong>Upload</strong> or <strong>Open project</strong>, or click the dashed drop frame to browse.</li>
         <li><strong>Choose a crop shape:</strong> <strong>Rect</strong> for tiles and strips; <strong>Oval</strong> for round bits.</li>
-        <li><strong>Draw each crop:</strong> click-drag on <em>your</em> photo. Resize by drawing again — remove extras with <strong>Adjust slices</strong> (hover · left deletes · right for menu).</li>
-        <li><strong>Label &amp; export:</strong> name your project in <strong>Profile → Project details</strong>; describe slices in exported JSON/PDF — then <strong>Download all</strong> or <strong>Save</strong> JSON.</li>
+        <li><strong>Draw each crop:</strong> click-drag on <em>your</em> photo. Resize by drawing again â€” remove extras with <strong>Adjust slices</strong> (hover Â· left deletes Â· right for menu).</li>
+        <li><strong>Label &amp; export:</strong> name your project in <strong>Profile â†’ Project details</strong>; describe slices in exported JSON/PDF â€” then <strong>Download all</strong> or <strong>Save</strong> JSON.</li>
         <li><strong>(Optional)</strong> Flat backgrounds: expand <strong>Background detection &amp; auto-crop</strong>, <strong>Pick BG</strong>, tune <strong>Tolerance</strong>, then <strong>Auto-crop</strong> (large images yield occasionally so the tab stays responsive).</li>
-        <li><strong>Craft cloud &amp; pattern library:</strong> Sign in · <strong>Save online</strong> / vault · duplicate a listing or restore a removed save. Toolbar <strong>More tools → book</strong> opens Pattern library (export/import packs, tags, rename, insert at offset / centre / pointer).</li>
+        <li><strong>Craft cloud &amp; pattern library:</strong> Sign in Â· <strong>Save online</strong> / vault Â· duplicate a listing or restore a removed save. Toolbar <strong>More tools â†’ book</strong> opens Pattern library (export/import packs, tags, rename, insert at offset / centre / pointer).</li>
       </ol>
 
       <h4>Toolbar layout</h4>
       <ul>
-        <li><strong>One row</strong> — <strong>Files</strong>, <strong>Draw</strong>, <strong>View</strong>, Help, <strong>Export</strong>, and <strong>Edit</strong>; scroll sideways if your window is narrow.</li>
-        <li><strong>Expandable sections</strong> — advanced auto-crop tools and batch/AI/export sit in closed panels until you open them.</li>
+        <li><strong>One row</strong> â€” <strong>Files</strong>, <strong>Draw</strong>, <strong>View</strong>, Help, <strong>Export</strong>, and <strong>Edit</strong>; scroll sideways if your window is narrow.</li>
+        <li><strong>Expandable sections</strong> â€” advanced auto-crop tools and batch/AI/export sit in closed panels until you open them.</li>
       </ul>
 
-      <h4>Browser DevTools “Issues” (not Cropper bugs)</h4>
+      <h4>Browser DevTools â€œIssuesâ€ (not Cropper bugs)</h4>
       <p class="text-muted text-sm" style="line-height:1.55;margin-bottom:12px;">
-        If Chrome shows a number like “3 Issues” by the toolbar, expand the <strong>Issues</strong> drawer or tab beside
+        If Chrome shows a number like â€œ3 Issuesâ€ by the toolbar, expand the <strong>Issues</strong> drawer or tab beside
         <strong>Console</strong>. Those listings are warnings from the browser (security, cookies, form fields). PropArt logs
         that start with <code>[PropArt]</code> in the console are ours.
       </p>
 
       <h4>Tips</h4>
       <ul>
-        <li><strong>Slices toolbar:</strong> <kbd>1</kbd>–<kbd>3</kbd> shapes · <kbd>4</kbd> All slices grid · <kbd>5</kbd> Adjust slices (Move). Move: arrows nudge · optional <strong>Snap</strong> (grid · sheet · neighbors) · hover · left deletes · right menu · drag · <kbd>Ctrl</kbd>+<kbd>D</kbd> duplicate · slice recipe <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>E</kbd>. Gallery shows collapsible slice notes.</li>
-        <li>Zoom shortcuts: <kbd>Ctrl</kbd>+<kbd>+</kbd> / <kbd>Ctrl</kbd>+<kbd>−</kbd> / <kbd>Ctrl</kbd><kbd>0</kbd> (⌘ on Mac).</li>
+        <li><strong>Slices toolbar:</strong> <kbd>1</kbd>â€“<kbd>3</kbd> shapes Â· <kbd>4</kbd> All slices grid Â· <kbd>5</kbd> Adjust slices (Move). Move: arrows nudge Â· optional <strong>Snap</strong> (grid Â· sheet Â· neighbors) Â· hover Â· left deletes Â· right menu Â· drag Â· <kbd>Ctrl</kbd>+<kbd>D</kbd> duplicate Â· slice recipe <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>E</kbd>. Gallery shows collapsible slice notes.</li>
+        <li>Zoom shortcuts: <kbd>Ctrl</kbd>+<kbd>+</kbd> / <kbd>Ctrl</kbd>+<kbd>âˆ’</kbd> / <kbd>Ctrl</kbd><kbd>0</kbd> (âŒ˜ on Mac).</li>
         <li>Pan: hold middle mouse button or <kbd>Ctrl</kbd> and drag.</li>
         <li>
-          <strong>Sheet palette (Pro)</strong> — histogram swatches from the photo appear under the main tool row automatically.
+          <strong>Sheet palette (Pro)</strong> â€” histogram swatches from the photo appear under the main tool row automatically.
           <strong>Everyone</strong> can use the <strong>palette</strong> button (colors from slices) and the BG eyedropper.
         </li>
       </ul>
@@ -4637,11 +4638,11 @@
       <p id="prop-art-help-kofi-line" class="text-muted text-sm" style="margin-top: 14px; line-height: 1.55; display: none;">
         <i class="fas fa-mug-hot" aria-hidden="true"></i>
         Optional: <a id="prop-art-help-kofi-link" href="#" target="_blank" rel="noopener noreferrer sponsored">Support on Ko-fi</a>
-        helps keep Cropper evolving — separate from tiers and Craft In Ardor shop checkout.
+        helps keep Cropper evolving â€” separate from tiers and Craft In Ardor shop checkout.
       </p>
 
       <div style="margin-top: 20px; display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;">
-        <button type="button" class="btn btn-primary" onclick="closeHelpModal()">Got it — let&apos;s crop</button>
+        <button type="button" class="btn btn-primary" onclick="closeHelpModal()">Got it â€” let&apos;s crop</button>
       </div>
     </div>
   </div>
@@ -4649,7 +4650,7 @@
   <!-- Pro Edit Modal -->
   <div id="pro-edit-modal" class="turner-modal-overlay" style="display: none;">
     <div class="turner-modal-panel">
-      <h3 class="turner-modal-title">🎨 Pro Edit Controls</h3>
+      <h3 class="turner-modal-title">ðŸŽ¨ Pro Edit Controls</h3>
       
       <div style="margin-bottom: 15px;">
         <label style="display: block; margin-bottom: 5px; font-weight: 600;">Brightness:</label>
@@ -4691,13 +4692,13 @@
   <!-- Multi-Export Modal -->
   <div id="multi-export-modal" class="turner-modal-overlay" style="display: none;">
     <div class="turner-modal-panel">
-      <h3 class="turner-modal-title">📁 Multi-Export Options</h3>
+      <h3 class="turner-modal-title">ðŸ“ Multi-Export Options</h3>
       <p class="text-muted" style="margin-bottom: 20px;">Export all crops in multiple formats:</p>
       
-      <button class="btn btn-primary" onclick="exportAllFormats('png')" style="width: 100%; margin-bottom: 10px; justify-content: center;">📷 PNG (High Quality)</button>
-      <button class="btn btn-primary" onclick="exportAllFormats('jpeg')" style="width: 100%; margin-bottom: 10px; justify-content: center;">🖼️ JPEG (Compressed)</button>
-      <button class="btn btn-primary" onclick="exportAllFormats('webp')" style="width: 100%; margin-bottom: 10px; justify-content: center;">🌐 WebP (Modern)</button>
-      <button class="btn btn-primary" onclick="exportToPDF()" style="width: 100%; margin-bottom: 10px; justify-content: center;">📄 PDF Catalog</button>
+      <button class="btn btn-primary" onclick="exportAllFormats('png')" style="width: 100%; margin-bottom: 10px; justify-content: center;">ðŸ“· PNG (High Quality)</button>
+      <button class="btn btn-primary" onclick="exportAllFormats('jpeg')" style="width: 100%; margin-bottom: 10px; justify-content: center;">ðŸ–¼ï¸ JPEG (Compressed)</button>
+      <button class="btn btn-primary" onclick="exportAllFormats('webp')" style="width: 100%; margin-bottom: 10px; justify-content: center;">ðŸŒ WebP (Modern)</button>
+      <button class="btn btn-primary" onclick="exportToPDF()" style="width: 100%; margin-bottom: 10px; justify-content: center;">ðŸ“„ PDF Catalog</button>
       
       <button type="button" class="btn btn-secondary" onclick="closeMultiExport()" style="width: 100%; margin-top: 10px; justify-content: center;">Close</button>
     </div>
@@ -4709,7 +4710,7 @@
     <div class="turner-modal-panel" onclick="event.stopPropagation();">
       <h3 class="turner-modal-title" id="newsletter-modal-title">Unlock Standard Cropper</h3>
       <p class="text-muted" style="margin-bottom:12px;line-height:1.5;font-size:0.95rem;">
-        Get the full single-image Cropper with clean exports — no watermark — in exchange for joining the Pegasus Suite LLC mailing list (lead magnet).
+        Get the full single-image Cropper with clean exports â€” no watermark â€” in exchange for joining the Pegasus Suite LLC mailing list (lead magnet).
       </p>
       <label style="display:block;margin-bottom:6px;font-size:13px;font-weight:600;">Email</label>
       <input type="email" id="newsletter-email" autocomplete="email" placeholder="you@example.com"
@@ -4743,11 +4744,11 @@
         </button>
         <button type="button" class="btn btn-secondary" style="width:100%;justify-content:center;margin-top:10px;" onclick="closePremiumModal();">Cancel</button>
       </form>
-      <p class="text-muted" style="margin-top:12px;font-size:11px;">Trial code baked into this file: <strong>GROW_DEMO_SUITE</strong> — change SUITE_ALLOWED_CODES before launch.</p>
+      <p class="text-muted" style="margin-top:12px;font-size:11px;">Trial code baked into this file: <strong>GROW_DEMO_SUITE</strong> â€” change SUITE_ALLOWED_CODES before launch.</p>
     </div>
   </div>
 
-  <!-- Craft In Ardor · same Firebase project as www.craftinardor.com -->
+  <!-- Craft In Ardor Â· same Firebase project as www.craftinardor.com -->
   <div id="prop-art-auth-modal" class="turner-modal-overlay" style="display: none; z-index: 1600;" role="dialog" aria-modal="true" aria-labelledby="prop-art-auth-title"
     onclick="if (event.target === this) propArtCloseAuthModal();">
     <div class="turner-modal-panel prop-art-auth-panel" onclick="event.stopPropagation();" style="max-width:min(440px,94vw);">
@@ -4772,7 +4773,7 @@
       </div>
       <div id="prop-art-auth-signup-wrap" style="display:none;">
         <h3 class="turner-modal-title">Create account</h3>
-        <p class="text-muted" style="font-size:13px;margin-bottom:14px;">Join Craft In Ardor — usable here too.</p>
+        <p class="text-muted" style="font-size:13px;margin-bottom:14px;">Join Craft In Ardor â€” usable here too.</p>
         <form id="prop-art-signup-form" autocomplete="on" onsubmit="event.preventDefault(); propArtSignupWithEmail();" aria-label="Create Craft account">
           <label class="text-sm" for="prop-art-signup-name" style="display:block;margin-bottom:6px;font-weight:600;">Display name</label>
           <input type="text" id="prop-art-signup-name" autocomplete="name" class="project-input" style="margin-bottom:10px;">
@@ -4797,7 +4798,7 @@
       <h3 class="turner-modal-title">Load from Craft cloud</h3>
       <p class="text-muted text-sm" style="margin-bottom:12px;">Saved projects for your signed-in account.</p>
       <div id="prop-art-cloud-list" style="min-height:80px;">
-        <p class="text-muted text-sm">Loading…</p>
+        <p class="text-muted text-sm">Loadingâ€¦</p>
       </div>
       <button type="button" class="btn btn-secondary" style="width:100%;justify-content:center;margin-top:16px;" onclick="propArtCloseCloudLoadModal();">Close</button>
     </div>
@@ -4808,7 +4809,7 @@
     <div class="turner-modal-panel" onclick="event.stopPropagation();" style="max-width:min(560px,96vw);max-height:85vh;display:flex;flex-direction:column;">
       <h3 class="turner-modal-title" id="prop-art-vault-title">Project vault</h3>
       <p class="text-muted text-sm" style="margin-bottom:12px;line-height:1.5;">
-        Cloud projects tied to your Craft account — sheet image plus piece crops from <strong>Save online</strong>. Use <strong>Load</strong> to reopen a session here.
+        Cloud projects tied to your Craft account â€” sheet image plus piece crops from <strong>Save online</strong>. Use <strong>Load</strong> to reopen a session here.
       </p>
       <label class="text-muted text-sm" style="display:flex;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;line-height:1.45;">
         <input type="checkbox" id="prop-art-vault-show-deleted" style="flex-shrink:0;" onchange="propArtPersistShowDeletedCheckbox();propArtRefreshVaultModal();">
@@ -4831,7 +4832,7 @@
     <div class="turner-modal-panel" onclick="event.stopPropagation();" style="max-width:min(720px,96vw);max-height:88vh;display:flex;flex-direction:column;">
       <h3 class="turner-modal-title" id="prop-art-pattern-library-title">Pattern library</h3>
       <p class="text-muted text-sm" style="margin-bottom:10px;line-height:1.5;">
-        Saves live in this browser (<code>clayPatterns</code>). Export/import as JSON packs. Assign tags (comma-separated) · rename · reorder · insert on the canvas.
+        Saves live in this browser (<code>clayPatterns</code>). Export/import as JSON packs. Assign tags (comma-separated) Â· rename Â· reorder Â· insert on the canvas.
       </p>
       <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:10px;">
         <label class="text-muted text-sm" style="display:flex;align-items:center;gap:8px;margin:0;">Insert onto sheet
@@ -4842,7 +4843,7 @@
             <option value="pointer">Last canvas pointer</option>
           </select>
         </label>
-        <input type="search" id="prop-art-pattern-search" class="project-input" placeholder="Search name or tags…" autocomplete="off" style="flex:1;min-width:160px;font-size:12px;padding:6px 8px;"
+        <input type="search" id="prop-art-pattern-search" class="project-input" placeholder="Search name or tagsâ€¦" autocomplete="off" style="flex:1;min-width:160px;font-size:12px;padding:6px 8px;"
           oninput="propArtDebouncedPatternRefresh();">
         <button type="button" class="btn btn-secondary" style="font-size:11px;padding:8px 10px;" onclick="propArtPatternLibraryExportJson();">Export JSON</button>
         <button type="button" class="btn btn-secondary" style="font-size:11px;padding:8px 10px;" onclick="propArtTriggerPatternLibraryImport();">Import JSON</button>
@@ -4850,7 +4851,7 @@
       <div id="prop-art-pattern-library-list" style="flex:1;overflow:auto;margin-bottom:4px;min-height:120px;"></div>
       <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;">
         <button type="button" class="btn btn-secondary" style="width:100%;justify-content:center;"
-          onclick="propArtClearPatternLibrary(); propArtRefreshPatternLibraryModal();">Clear all patterns…</button>
+          onclick="propArtClearPatternLibrary(); propArtRefreshPatternLibraryModal();">Clear all patternsâ€¦</button>
         <button type="button" class="btn btn-secondary" style="width:100%;justify-content:center;" onclick="propArtClosePatternLibraryModal();">Close</button>
       </div>
     </div>
@@ -4871,9 +4872,9 @@
         <div class="sidebar-project-block">
           <h3 title="Name your project for organized file exports">Project name</h3>
           <p class="text-muted text-sm" style="margin: -6px 0 10px;line-height: 1.45;">
-            <strong>Craft account:</strong> Same login as <a href="https://www.craftinardor.com/" target="_blank" rel="noopener noreferrer">craftinardor.com</a> — saves follow you between sites.
+            <strong>Craft account:</strong> Same login as <a href="https://www.craftinardor.com/" target="_blank" rel="noopener noreferrer">craftinardor.com</a> â€” saves follow you between sites.
           </p>
-          <input type="text" id="project-name" class="project-input" placeholder="My Project" value="PropArt™ Project 1" title="Enter a name for your project - used in exported filenames" style="width:100%;box-sizing:border-box;">
+          <input type="text" id="project-name" class="project-input" placeholder="My Project" value="PropArtâ„¢ Project 1" title="Enter a name for your project - used in exported filenames" style="width:100%;box-sizing:border-box;">
           <div class="sidebar-project-actions">
             <button class="btn btn-success btn--icon" onclick="saveProjectJSON()" id="save-project-btn" disabled title="Save complete project with image, crops, and descriptions for later editing">
               <i class="fas fa-floppy-disk" aria-hidden="true"></i>
@@ -4914,7 +4915,7 @@
 
       <div class="profile-section-title">Diagnostics</div>
       <p class="text-muted text-sm" style="margin-bottom:8px;line-height:1.45;">
-        For bug reports (host, tier, auth, approximate image size — no secrets pasted).
+        For bug reports (host, tier, auth, approximate image size â€” no secrets pasted).
       </p>
       <button type="button" class="btn btn-secondary" style="width:100%;margin-bottom:14px;justify-content:center;" onclick="propArtCopyDiagnostics()">
         Copy debug info
@@ -4926,10 +4927,10 @@
       </p>
       <label for="prop-art-quote-select" class="sr-only">Choose a favorite quote</label>
       <select id="prop-art-quote-select" class="profile-quote-select">
-        <option value="0">Matisse — creativity &amp; courage</option>
-        <option value="1">Vonnegut — grow your soul</option>
+        <option value="0">Matisse â€” creativity &amp; courage</option>
+        <option value="1">Vonnegut â€” grow your soul</option>
         <option value="2">Earth and &ldquo;art&rdquo; (&ldquo;eh&rdquo;)</option>
-        <option value="custom">My own line…</option>
+        <option value="custom">My own lineâ€¦</option>
       </select>
       <label for="prop-art-quote-custom" class="sr-only">Custom quote text</label>
       <textarea
@@ -4938,7 +4939,7 @@
         rows="3"
         maxlength="420"
         hidden
-        placeholder="Your words (used when &ldquo;My own line…&rdquo; is selected)."
+        placeholder="Your words (used when &ldquo;My own lineâ€¦&rdquo; is selected)."
       ></textarea>
       <button type="button" class="btn btn-primary" id="prop-art-quote-save" style="width:100%;margin-top:8px;justify-content:center;">
         Save quote preference
@@ -5066,7 +5067,7 @@
   </script>
 
   <script>
-    /** Public Ko-fi page for artist tips — paste when ready (e.g. https://ko-fi.com/YourArtistName). Leave empty to hide Ko-fi links. */
+    /** Public Ko-fi page for artist tips â€” paste when ready (e.g. https://ko-fi.com/YourArtistName). Leave empty to hide Ko-fi links. */
     var PROP_ART_KOFI_SUPPORT_URL = '';
 
     var PROP_ART_NOTIFY_VARIANTS = ['info', 'success', 'warn', 'error'];
@@ -5142,11 +5143,11 @@
       if (line) line.style.display = 'block';
     }
 
-    /** False after user opens inbox from the bell (“seen”). */
+    /** False after user opens inbox from the bell (â€œseenâ€). */
     var propArtBellHasUnread = false;
     var PROP_ART_NOTIFY_SESSION_ARCHIVE = 'propArtNotifySessionArchive';
     var PROP_ART_NOTIFY_PANEL_GEOM = 'propArtNotifyPanelGeom';
-    /** While dragging notifications panel — avoid treating outside click as dismiss */
+    /** While dragging notifications panel â€” avoid treating outside click as dismiss */
     var propArtNotifyPanelDragging = false;
 
     function propArtNotifyBellResetPanelDock() {
@@ -5266,7 +5267,7 @@
       propArtNotifyBellSnapPanelToBell();
     }
 
-    /** After window changes — keep custom rect on-screen without resetting to bell */
+    /** After window changes â€” keep custom rect on-screen without resetting to bell */
     function propArtNotifyBellPlacePanelResponsive() {
       var panel = document.getElementById('prop-art-notify-panel');
       if (!panel || panel.hidden) return;
@@ -5305,7 +5306,7 @@
             if (t) parts.push(t);
           }
           chunk.push({
-            message: parts.join(' — '),
+            message: parts.join(' â€” '),
             detail: detEl ? String(detEl.textContent || '').trim() : '',
             time: tmEl ? String(tmEl.textContent || '').trim() : '',
             variant: propArtNotifyItemVariant(art),
@@ -5718,7 +5719,7 @@
 
     const TURNER_HEADER_GRADIENT = 'linear-gradient(135deg, #6b5580, #8b6fa8)';
     const TURNER_SELECTION_STROKE = '#3d2858';
-    /** Outline & labels on canvas — stronger contrast on light photos */
+    /** Outline & labels on canvas â€” stronger contrast on light photos */
     const TURNER_CROP_IDLE_STROKE = '#52356f';
     const TURNER_CROP_OVERLAY_LINE = 2.25;
     const TURNER_CROP_OVERLAY_PREVIEW_LINE = 2;
@@ -5952,7 +5953,7 @@
       if (sw) sw.style.display = 'block';
     }
 
-    /** Banner orbit strip — forwards to ghost toolbar widgets (same IDs as before toolbar-band removal). */
+    /** Banner orbit strip â€” forwards to ghost toolbar widgets (same IDs as before toolbar-band removal). */
     function cropperOrbitAct(kind) {
       try {
         switch (kind) {
@@ -6150,11 +6151,11 @@
 
     async function propArtLoginWithEmail() {
       if (propArtIsFileOrigin()) {
-        propArtNotify('Use a normal web URL (hosted or localhost), not file:// — then sign in.');
+        propArtNotify('Use a normal web URL (hosted or localhost), not file:// â€” then sign in.');
         return;
       }
       if (!propArtFirebaseOk()) {
-        propArtNotify('Firebase is still loading — try again.');
+        propArtNotify('Firebase is still loading â€” try again.');
         return;
       }
       var emailEl = document.getElementById('prop-art-login-email');
@@ -6176,7 +6177,7 @@
         } catch (e3) {}
         propArtSyncNavAuth();
         var st = document.getElementById('status');
-        if (st) st.textContent = 'Signed in · Craft account';
+        if (st) st.textContent = 'Signed in Â· Craft account';
         refreshTierGatedButtons();
         try {
           applyTierUI();
@@ -6193,10 +6194,10 @@
         var code = err && err.code;
         if (code === 'auth/wrong-password' || code === 'auth/invalid-credential')
           propArtNotify('Incorrect email or password.');
-        else if (code === 'auth/user-not-found') propArtNotify('No account for this email yet — switch to Create account.');
+        else if (code === 'auth/user-not-found') propArtNotify('No account for this email yet â€” switch to Create account.');
         else if (code === 'auth/unauthorized-domain') {
           propArtNotify(
-            'Sign-in blocked for this URL. In Firebase Console → Authentication → Settings, add "' +
+            'Sign-in blocked for this URL. In Firebase Console â†’ Authentication â†’ Settings, add "' +
               (typeof location !== 'undefined' ? location.hostname : 'this hostname') +
               '" to Authorized domains (e.g. prop-art-web-cropper.web.app or your custom domain).'
           );
@@ -6253,13 +6254,13 @@
         }, 0);
       } catch (err) {
         if (err.code === 'auth/email-already-in-use') {
-          propArtNotify('That email already has an account — try Sign in.');
+          propArtNotify('That email already has an account â€” try Sign in.');
           propArtShowLoginForm();
         } else if (err.code === 'auth/unauthorized-domain') {
           propArtNotify(
-            'Sign-up blocked for this URL — add "' +
+            'Sign-up blocked for this URL â€” add "' +
               (typeof location !== 'undefined' ? location.hostname : 'this hostname') +
-              '" to Firebase Authentication → Authorized domains.'
+              '" to Firebase Authentication â†’ Authorized domains.'
           );
         } else propArtNotify('Signup failed: ' + (err.message || err));
       }
@@ -6281,7 +6282,7 @@
             propArtCloseAuthModal();
             propArtSyncNavAuth();
             var stPo = document.getElementById('status');
-            if (stPo) stPo.textContent = 'Signed in with Google · Craft account';
+            if (stPo) stPo.textContent = 'Signed in with Google Â· Craft account';
             refreshTierGatedButtons();
             try {
               applyTierUI();
@@ -6312,7 +6313,7 @@
           propArtCloseAuthModal();
           propArtSyncNavAuth();
           var st = document.getElementById('status');
-          if (st) st.textContent = 'Signed in with Google · Craft account';
+          if (st) st.textContent = 'Signed in with Google Â· Craft account';
           refreshTierGatedButtons();
           try {
             applyTierUI();
@@ -6447,7 +6448,7 @@
       propArtHydrateVaultShowDeletedCheckbox();
       var box = document.getElementById('prop-art-vault-list');
       if (!box) return;
-      box.innerHTML = '<p class="text-muted text-sm">Loading…</p>';
+      box.innerHTML = '<p class="text-muted text-sm">Loadingâ€¦</p>';
       if (!firebase.auth().currentUser) {
         box.innerHTML = '<p class="text-muted text-sm">Sign in to see saved projects.</p>';
         return;
@@ -6463,7 +6464,7 @@
         });
         if (!rows.length) {
           box.innerHTML =
-            '<p class="text-muted text-sm">No projects in this view — save online or toggle <strong>Show removed</strong>.</p>';
+            '<p class="text-muted text-sm">No projects in this view â€” save online or toggle <strong>Show removed</strong>.</p>';
           return;
         }
         var thumbs = await Promise.all(rows.map(function (rw) {
@@ -6477,10 +6478,10 @@
           var isDel = d.deleted === true;
           var name = d.name || 'Untitled';
           var dt = d.updatedAt && d.updatedAt.toDate ? d.updatedAt.toDate().toLocaleString() : '';
-          var cc = typeof d.cropCount === 'number' ? String(d.cropCount) : '—';
+          var cc = typeof d.cropCount === 'number' ? String(d.cropCount) : 'â€”';
           var wh =
             typeof d.imageWidth === 'number' && typeof d.imageHeight === 'number'
-              ? d.imageWidth + '×' + d.imageHeight
+              ? d.imageWidth + 'Ã—' + d.imageHeight
               : '';
           var tsrc = thumbs[i] || '';
           var safeSrc = tsrc.replace(/\"/g, '');
@@ -6496,10 +6497,10 @@
             '<div style="flex:1;min-width:0;">' +
             '<div style="font-weight:700;">' +
             escapeHtmlNorm(name) +
-            (isDel ? ' <span class="text-muted text-sm">· removed</span>' : '') +
+            (isDel ? ' <span class="text-muted text-sm">Â· removed</span>' : '') +
             '</div>' +
             '<div class="text-muted text-sm">' +
-            escapeHtmlNorm(dt + ' · ' + cc + ' pieces' + (wh ? ' · ' + wh + ' px sheet' : '')) +
+            escapeHtmlNorm(dt + ' Â· ' + cc + ' pieces' + (wh ? ' Â· ' + wh + ' px sheet' : '')) +
             '</div></div></div>' +
             '<div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;">' +
             '<button type="button" class="btn btn-primary prop-art-vault-load-btn" style="font-size:11px;flex:1;min-width:100px;justify-content:center;" data-save-id="' +
@@ -6548,7 +6549,7 @@
     async function propArtRefreshCloudList() {
       var box = document.getElementById('prop-art-cloud-list');
       if (!box) return;
-      box.innerHTML = '<p class="text-muted text-sm">Loading…</p>';
+      box.innerHTML = '<p class="text-muted text-sm">Loadingâ€¦</p>';
       if (!firebase.auth().currentUser) {
         box.innerHTML = '<p class="text-muted text-sm">Sign in first.</p>';
         return;
@@ -6586,7 +6587,7 @@
             escapeHtmlNorm(name) +
             '</div>' +
             '<div class="text-muted text-sm">' +
-            escapeHtmlNorm(dt + (cc !== '' ? ' · ' + cc + ' pieces' : '')) +
+            escapeHtmlNorm(dt + (cc !== '' ? ' Â· ' + cc + ' pieces' : '')) +
             '</div>' +
             '<div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;">' +
             '<button type="button" class="btn btn-primary prop-art-load-btn" style="flex:1;min-width:120px;font-size:11px;justify-content:center" data-save-id="' +
@@ -6612,7 +6613,7 @@
       } catch (err) {
         console.warn(err);
         box.innerHTML =
-          '<p class="text-muted">Could not load list. Deploy Firestore rules for <code>users/{uid}/propArtSaves</code> — see Turner comment.</p><p class="text-muted text-sm">' +
+          '<p class="text-muted">Could not load list. Deploy Firestore rules for <code>users/{uid}/propArtSaves</code> â€” see Turner comment.</p><p class="text-muted text-sm">' +
           escapeHtmlNorm(err.message || String(err)) +
           '</p>';
       }
@@ -7003,7 +7004,7 @@
           '<li class="text-muted text-sm profile-project-row" style="border:none;padding:10px 0;list-style:none;">Sign in to list Craft cloud saves.</li>';
         return;
       }
-      ul.innerHTML = '<li class="text-muted text-sm" style="list-style:none;padding:10px 0;">Loading…</li>';
+      ul.innerHTML = '<li class="text-muted text-sm" style="list-style:none;padding:10px 0;">Loadingâ€¦</li>';
       try {
         var snapRows = await propArtFetchUserPropArtSaves(40);
         if (!snapRows.length) {
@@ -7030,7 +7031,7 @@
             name +
             '</div><div class="text-muted text-sm">' +
             dt +
-            (cropLine ? ' · ' + cropLine : '') +
+            (cropLine ? ' Â· ' + cropLine : '') +
             '</div>';
           var rowBtn = document.createElement('div');
           rowBtn.style.cssText = 'display:flex;gap:6px;margin-top:6px;width:100%;flex-wrap:wrap;';
@@ -7081,7 +7082,7 @@
       if (!saveId || !propArtFirebaseOk() || !firebase.auth().currentUser) return;
       var ok = await propArtConfirmAsync(
         'Remove this project?',
-        'It will disappear from lists here but stays in Firebase until purged · you can restore it from Vault with “Show removed”.'
+        'It will disappear from lists here but stays in Firebase until purged Â· you can restore it from Vault with â€œShow removedâ€.'
       );
       if (!ok) return;
       var uid = firebase.auth().currentUser.uid;
@@ -7096,7 +7097,7 @@
             deleted: true,
             deletedAt: firebase.firestore.FieldValue.serverTimestamp()
           });
-        propArtNotify('Moved to removed — open Vault + “Show removed” to restore.', 'success');
+        propArtNotify('Moved to removed â€” open Vault + â€œShow removedâ€ to restore.', 'success');
         propArtRefreshProfileProjectsList();
         try {
           propArtRefreshCloudList();
@@ -7109,14 +7110,14 @@
       }
     }
 
-    /** Access tiers · Pegasus Suite commercial strategy */
+    /** Access tiers Â· Pegasus Suite commercial strategy */
     var TIERS = { FREE: 'free', STANDARD: 'standard', PREMIUM: 'premium' };
     var LS_TIER_KEY = 'propArtTier';
     var LS_EMAIL_KEY = 'propArtNewsletterEmail';
     var LS_ADMIN_UNLOCK = 'propArtAdminUnlock';
-    /** Full-toolkit admin (Craft email) — Admin button sets browser flag */
+    /** Full-toolkit admin (Craft email) â€” Admin button sets browser flag */
     var PROP_ART_ADMIN_EMAIL = 'ladavi05@gmail.com';
-    /** Change before shipping — currently demo-only gateway */
+    /** Change before shipping â€” currently demo-only gateway */
     var SUITE_ALLOWED_CODES = ['GROW_DEMO_SUITE', 'PEGASUSSUITE'];
 
     function propArtIsAdminEmail(email) {
@@ -7168,7 +7169,7 @@
       return t === TIERS.STANDARD || t === TIERS.PREMIUM;
     }
 
-    /** Craft cloud save/load/Vault — Standard+ always; Community tier may still use cloud when signed in with Craft */
+    /** Craft cloud save/load/Vault â€” Standard+ always; Community tier may still use cloud when signed in with Craft */
     function tierAllowsCraftCloud() {
       if (tierAllowsStandardToolkit()) return true;
       try {
@@ -7251,7 +7252,7 @@
       }
       setStoredTier(TIERS.PREMIUM);
       closePremiumModal();
-      propArtNotify('Pegasus Suite Pro Cropper is active — batch export, Auto-Facet and Drawing Lab are unlocked.', 'success');
+      propArtNotify('Pegasus Suite Pro Cropper is active â€” batch export, Auto-Facet and Drawing Lab are unlocked.', 'success');
     }
 
     function applyTierUI() {
@@ -7264,11 +7265,11 @@
       var head = document.getElementById('tier-header-line');
       if (head) {
         if (t === TIERS.FREE) {
-          head.innerHTML = '<strong>Web Cropper (Community)</strong> — one image at a time · exports include a <em>Powered by PropArt&trade;</em> badge. <button type="button" class="header-help-link" onclick="openNewsletterModal()">Newsletter tier</button> removes the badge.';
+          head.innerHTML = '<strong>Web Cropper (Community)</strong> â€” one image at a time Â· exports include a <em>Powered by PropArt&trade;</em> badge. <button type="button" class="header-help-link" onclick="openNewsletterModal()">Newsletter tier</button> removes the badge.';
         } else if (t === TIERS.STANDARD) {
-          head.innerHTML = '<strong>Standard Cropper</strong> — thank you for joining the Pegasus Suite LLC list lead magnet. Clean exports + full single-image workflow.';
+          head.innerHTML = '<strong>Standard Cropper</strong> â€” thank you for joining the Pegasus Suite LLC list lead magnet. Clean exports + full single-image workflow.';
         } else {
-          head.innerHTML = '<strong>Pro Cropper · Pegasus Suite</strong> — batch export, Auto-Facet &amp; Drawing Lab enabled.';
+          head.innerHTML = '<strong>Pro Cropper Â· Pegasus Suite</strong> â€” batch export, Auto-Facet &amp; Drawing Lab enabled.';
         }
       }
       var ac = document.getElementById('toolbar-autocrop');
@@ -7369,19 +7370,19 @@
           value: 'free',
           label: 'Community',
           desc:
-            'Community (Web Cropper) — crop one sheet at a time. PNG exports include a small Powered by PropArt™ badge.'
+            'Community (Web Cropper) â€” crop one sheet at a time. PNG exports include a small Powered by PropArtâ„¢ badge.'
         },
         {
           value: 'standard',
           label: 'Standard',
           desc:
-            'Standard — full single-image Cropper via Pegasus Suite LLC newsletter signup (lead magnet). Unlocks clean exports, PDF catalog, saved projects, auto-crop, and palette tools.'
+            'Standard â€” full single-image Cropper via Pegasus Suite LLC newsletter signup (lead magnet). Unlocks clean exports, PDF catalog, saved projects, auto-crop, and palette tools.'
         },
         {
           value: 'premium',
           label: 'Pegasus Suite',
           desc:
-            'Pegasus Suite / Pro Cropper — batch export, Auto-Facet detection, Drawing Lab, and the full premium toolkit.'
+            'Pegasus Suite / Pro Cropper â€” batch export, Auto-Facet detection, Drawing Lab, and the full premium toolkit.'
         }
       ];
       menu.innerHTML = '';
@@ -7515,7 +7516,7 @@
     function propArtAdminUnlockAll() {
       if (typeof propArtFirebaseOk !== 'function' || !propArtFirebaseOk() || !firebase.auth().currentUser) {
         propArtOpenAuthModal();
-        propArtNotify('Sign in first — admin unlock uses your Craft account email.');
+        propArtNotify('Sign in first â€” admin unlock uses your Craft account email.');
         return;
       }
       var em = firebase.auth().currentUser.email;
@@ -7524,7 +7525,7 @@
         localStorage.setItem(LS_ADMIN_UNLOCK, '1');
       } catch (eAd) {}
       setStoredTier(TIERS.PREMIUM);
-      propArtNotify('Admin toolkit enabled — full Cropper features for this browser.', 'success');
+      propArtNotify('Admin toolkit enabled â€” full Cropper features for this browser.', 'success');
     }
 
     function propArtShouldAutocropAfterUpload() {
@@ -7613,7 +7614,7 @@
 
     function propArtImportSafeErrorMessage(err) {
       var m = err && err.message != null ? String(err.message) : String(err);
-      if (m.length > 220) m = m.slice(0, 217) + '…';
+      if (m.length > 220) m = m.slice(0, 217) + 'â€¦';
       return m;
     }
 
@@ -7871,7 +7872,7 @@
       img.src = projectDataSafe.image;
     }
 
-    /** Built-in cane-style swatches (no HTTP fetch) — for onboarding & hosting demos */
+    /** Built-in cane-style swatches (no HTTP fetch) â€” for onboarding & hosting demos */
     function propArtLoadDemoProject() {
       var w = 560,
         h = 340,
@@ -7926,7 +7927,7 @@
           width: a1.w,
           height: a1.h,
           description:
-            'Demo · upper-left violet block.\nUse Rect / Oval · Adjust slices · All slices.'
+            'Demo Â· upper-left violet block.\nUse Rect / Oval Â· Adjust slices Â· All slices.'
         },
         {
           id: ow + 12,
@@ -7935,7 +7936,7 @@
           y: a2.y,
           width: a2.w,
           height: a2.h,
-          description: 'Demo · upper-right magenta block.\nRight-click slices for PNG, duplicate, or pattern library.'
+          description: 'Demo Â· upper-right magenta block.\nRight-click slices for PNG, duplicate, or pattern library.'
         },
         {
           id: ow + 13,
@@ -7944,7 +7945,7 @@
           y: b1.y,
           width: b1.w,
           height: b1.h,
-          description: 'Demo · lower-left aqua block.\nStandard+ · try Auto-crop with white gutters + tolerance.'
+          description: 'Demo Â· lower-left aqua block.\nStandard+ Â· try Auto-crop with white gutters + tolerance.'
         },
         {
           id: ow + 14,
@@ -7954,7 +7955,7 @@
           width: b2.w,
           height: b2.h,
           description:
-            'Demo · lower-right warm gold block.\nExport with Download all; name the project under Profile.'
+            'Demo Â· lower-right warm gold block.\nExport with Download all; name the project under Profile.'
         }
       ];
 
@@ -7962,7 +7963,7 @@
 
       propArtApplySavedProject(
         {
-          name: 'Demo — cane-style swatches',
+          name: 'Demo â€” cane-style swatches',
           date: new Date().toISOString(),
           image: dataUrl,
           crops: cropsDemo,
@@ -7989,7 +7990,7 @@
           propArtWorkspaceTab('canvas');
 
           propArtLiveAnnounce(
-            'Demo project loaded — four rectangular slices on a white-ground sheet.'
+            'Demo project loaded â€” four rectangular slices on a white-ground sheet.'
           );
 
           try {
@@ -7998,7 +7999,7 @@
           var stDemo = document.getElementById('status');
           if (stDemo) {
             stDemo.textContent =
-              'Demo: four preset slices · draw more with Rect/Oval · try All slices.';
+              'Demo: four preset slices Â· draw more with Rect/Oval Â· try All slices.';
           }
         }
       );
@@ -8028,7 +8029,7 @@
         return;
       }
       var st = document.getElementById('status');
-      if (st) st.textContent = 'Saving to Craft cloud…';
+      if (st) st.textContent = 'Saving to Craft cloudâ€¦';
       try {
         var uid = firebase.auth().currentUser.uid;
         var saveId =
@@ -8104,7 +8105,7 @@
       await propArtSaveCloudProject({ nameSuffix: ' (copy)' });
     }
 
-    /** Modular Storage SDK (same script version as compat); use compat app _delegate — do not rely on dynamic firebase-app.js (separate app registry). */
+    /** Modular Storage SDK (same script version as compat); use compat app _delegate â€” do not rely on dynamic firebase-app.js (separate app registry). */
     var propArtFirebaseStorageModPromise = null;
     function propArtFirebaseStorageModule() {
       if (!propArtFirebaseStorageModPromise) {
@@ -8154,7 +8155,7 @@
 
     /**
      * Read project JSON from Firebase Storage.
-     * Order: compat getBlob/getBytes → modular getStorage(app, bucket) → XHR blob → fetch.
+     * Order: compat getBlob/getBytes â†’ modular getStorage(app, bucket) â†’ XHR blob â†’ fetch.
      */
     async function propArtReadProjectJsonFromStorage(storagePath) {
       var maxChars = PROP_ART_IMPORT_JSON_MAX_CHARS;
@@ -8226,7 +8227,7 @@
       }
       var uid = firebase.auth().currentUser.uid;
       var st = document.getElementById('status');
-      if (st) st.textContent = 'Loading project…';
+      if (st) st.textContent = 'Loading projectâ€¦';
       try {
         var doc = await firebase.firestore().collection('users').doc(uid).collection('propArtSaves').doc(saveId).get();
         if (!doc.exists) {
@@ -8295,7 +8296,7 @@
     let showMeasurements = false;
     let imageFilters = { brightness: 0, contrast: 0, saturation: 0, filter: 'none' };
 
-    /** Same CSS filter string Canvas draw() applies — exports must match on-screen pixels. */
+    /** Same CSS filter string Canvas draw() applies â€” exports must match on-screen pixels. */
     function propArtGetImageFilterCssString() {
       var f = imageFilters || {};
       return (
@@ -8347,15 +8348,15 @@
     let propArtGalleryLastCropCount = -1;
     var PROP_ART_LS_GALLERY_IMAGES_ONLY = 'propArtGalleryImagesOnly';
 
-    /** autoCrop listens: text strip mask · shadow tolerance boost · morphology strength */
+    /** autoCrop listens: text strip mask Â· shadow tolerance boost Â· morphology strength */
     var propArtAutocropRuntime = {
       textIgnoreMask: null,
       shadowWeight: 0,
       metalWeight: 0,
       targetApproxCount: 0,
-      /** When true: one connected-component blob → one crop (skip watershed / valley splits). */
+      /** When true: one connected-component blob â†’ one crop (skip watershed / valley splits). */
       wholeObjectMode: false,
-      /** smart | rect | oval — how auto-crop draws each detected region */
+      /** smart | rect | oval â€” how auto-crop draws each detected region */
       autoSliceShape: 'smart',
       /** Workflow Go applies shape from the modal immediately; skip one LS hydrate so Oval is not overwritten. */
       skipHydrateSliceShapeOnce: false,
@@ -8489,7 +8490,7 @@
       markRect(0, 0, cz - 1, cz - 1);
       markRect(width - czB, height - czB, width - 1, height - 1);
       markRect(0, height - czB, czB - 1, height - 1);
-      /** Wide top strip right of ~36% — kills share/upload lanes and reconnections after morphology. */
+      /** Wide top strip right of ~36% â€” kills share/upload lanes and reconnections after morphology. */
       var barH = Math.max(28, Math.floor(height * 0.112));
       var barX0 = Math.max(2, Math.floor(width * 0.36));
       markRect(barX0, 0, width - 1, Math.min(height - 1, barH - 1));
@@ -8511,7 +8512,7 @@
       var boxA = bw * bh;
       var fracArea = boxA / Math.max(1, imageAreaPx);
       var iq = Math.min(w, h);
-      /** Merged hull: wide vs tall, top zone, touches right edge — typical earring + listing glyph ribbon. */
+      /** Merged hull: wide vs tall, top zone, touches right edge â€” typical earring + listing glyph ribbon. */
       if (
         region.minY <= Math.floor(h * 0.21) &&
         region.maxX >= w - Math.max(3, Math.floor(iq * 0.03)) &&
@@ -8534,7 +8535,7 @@
         fracArea <= 0.055 && Math.max(bw, bh) <= iq * 0.32 && Math.min(bw, bh) >= 6;
       var squarish = Math.min(bw, bh) / Math.max(bw, bh) >= 0.38;
       if (squarish && iconSized) return true;
-      /** Elongated “tab” anchored in the corner: often merges with jewelry if the hull spans the top edge. */
+      /** Elongated â€œtabâ€ anchored in the corner: often merges with jewelry if the hull spans the top edge. */
       var touchesRightEdge = region.maxX >= w - Math.max(3, Math.floor(iq * 0.04));
       var squatTopRibbon =
         fracArea <= 0.092 &&
@@ -8546,7 +8547,7 @@
     }
 
     function propArtExtractSheetPalette(maxColors) {
-      /** Auto-generated sheet histogram swatches — Pro only */
+      /** Auto-generated sheet histogram swatches â€” Pro only */
       if (!tierIsPremium()) return [];
       maxColors = Math.max(5, Math.min(25, parseInt(String(maxColors), 10) || 25));
       if (!uploadedImage || !canvas) return [];
@@ -8636,15 +8637,15 @@
         btn.style.background = 'rgb(' + c.r + ',' + c.g + ',' + c.b + ')';
         btn.setAttribute(
           'data-color',
-          'RGB(' + c.r + ', ' + c.g + ', ' + c.b + ')' + (idx === 0 ? ' · sample BG' : '')
+          'RGB(' + c.r + ', ' + c.g + ', ' + c.b + ')' + (idx === 0 ? ' Â· sample BG' : '')
         );
         btn.dataset.r = String(c.r);
         btn.dataset.g = String(c.g);
         btn.dataset.b = String(c.b);
         btn.dataset.sheetSwatch = '1';
         btn.title =
-          (idx === 0 ? 'Likely backdrop · tap to set BG' : 'Tap to sample background · swatch #' + (idx + 1)) +
-          ' · ' +
+          (idx === 0 ? 'Likely backdrop Â· tap to set BG' : 'Tap to sample background Â· swatch #' + (idx + 1)) +
+          ' Â· ' +
           btn.getAttribute('data-color');
         btn.addEventListener('click', function (evc) {
           evc.preventDefault();
@@ -8659,7 +8660,7 @@
       propArtSyncSheetPaletteBgRing();
     }
 
-    /** Non-Pro: filler under toolbar — no histogram swatches automatically. */
+    /** Non-Pro: filler under toolbar â€” no histogram swatches automatically. */
     function propArtLockedSheetPaletteStrip() {
       var paletteDisplay = document.getElementById('color-palette-display');
       if (!paletteDisplay) return;
@@ -8672,7 +8673,7 @@
       wrap.style.flexWrap = 'wrap';
       var tx = document.createElement('span');
       tx.textContent =
-        'Auto sheet palette builds from your photo on Pro — use the eyedropper beside tolerance for background.';
+        'Auto sheet palette builds from your photo on Pro â€” use the eyedropper beside tolerance for background.';
       wrap.appendChild(tx);
       var bt = document.createElement('button');
       bt.type = 'button';
@@ -8704,14 +8705,14 @@
         if (palBox) palBox.innerHTML = '';
         if (mcEl) {
           mcEl.disabled = true;
-          mcEl.title = 'Premium auto sheet palette — Standard+ unlocks Cutout workflow first.';
+          mcEl.title = 'Premium auto sheet palette â€” Standard+ unlocks Cutout workflow first.';
         }
-        if (wl) wl.textContent = 'Palette swatches (Standard+ workflow · Pro histogram)';
+        if (wl) wl.textContent = 'Palette swatches (Standard+ workflow Â· Pro histogram)';
         return;
       }
       if (!tierIsPremium()) {
         if (cap) {
-          cap.textContent = 'Sheet palette · Pro · eyedropper for BG';
+          cap.textContent = 'Sheet palette Â· Pro Â· eyedropper for BG';
           cap.title = '';
         }
         if (row) row.classList.add('tier-dimmed');
@@ -8724,8 +8725,8 @@
         return;
       }
       if (cap) {
-        cap.textContent = 'Sheet colors→BG · tap swatch';
-        cap.title = 'Scroll if many · tap = background sample';
+        cap.textContent = 'Sheet colorsâ†’BG Â· tap swatch';
+        cap.title = 'Scroll if many Â· tap = background sample';
       }
       if (row) row.classList.remove('tier-dimmed');
       if (mcEl) {
@@ -8950,7 +8951,7 @@
       } catch (eWw) {}
     }
 
-    /** When pref is on: canvas tab + Move tool + gentle scroll — best follow-up after a good Auto-crop pass. */
+    /** When pref is on: canvas tab + Move tool + gentle scroll â€” best follow-up after a good Auto-crop pass. */
     function propArtApplyMoveToolAfterAutocropIfPref() {
       if (!propArtWorkflowMoveAfterAutocropPrefOn()) return;
       try {
@@ -9079,7 +9080,7 @@
       var stat = document.getElementById('prop-art-workflow-status');
       if (stat)
         stat.textContent =
-          'Preset + sliders · swatch background if the guess is off · Run Auto-crop. Target slices: merges when there are too many blobs, splits largest blobs upward when there are too few.';
+          'Preset + sliders Â· swatch background if the guess is off Â· Run Auto-crop. Target slices: merges when there are too many blobs, splits largest blobs upward when there are too few.';
 
       var shpOpen = document.getElementById('workflow-auto-shape');
       if (shpOpen) shpOpen.value = propArtWorkflowSliceShapeReadStorage();
@@ -9177,10 +9178,10 @@
         if (crops.length === tgtNotify) tkMsg += ' Count matched.';
         else if (crops.length > tgtNotify)
           tkMsg +=
-            ' Merged extra blobs down — delete slices or raise target if needed.';
+            ' Merged extra blobs down â€” delete slices or raise target if needed.';
         else
           tkMsg +=
-            ' Under target — try Busy preset, uncheck Prefer solid blocks, use Rectangle shape, slightly lower Shadow, or nudge tolerance / background.';
+            ' Under target â€” try Busy preset, uncheck Prefer solid blocks, use Rectangle shape, slightly lower Shadow, or nudge tolerance / background.';
         propArtNotify(tkMsg, crops.length === tgtNotify ? 'success' : 'info');
       }
     }
@@ -9334,7 +9335,7 @@
       draw();
       var line =
         uh && uh.length
-          ? 'Undo — reverted: ' + uh + '.'
+          ? 'Undo â€” reverted: ' + uh + '.'
           : 'Undo: restored previous crops.';
       var st = document.getElementById('status');
       if (st) st.textContent = line;
@@ -9355,7 +9356,7 @@
       var st = document.getElementById('status');
       var line =
         typeof rh === 'string' && rh.trim()
-          ? 'Redo · reapplied: ' + rh.trim().slice(0, 116) + '.'
+          ? 'Redo Â· reapplied: ' + rh.trim().slice(0, 116) + '.'
           : 'Redo: reapplied.';
       if (st) st.textContent = line;
       propArtLiveAnnounce(line);
@@ -9697,7 +9698,7 @@
       updateCropsList();
       draw();
       var el = document.getElementById('status');
-      if (el) el.textContent = 'Outline crop added · ' + crops.length + ' piece(s)';
+      if (el) el.textContent = 'Outline crop added Â· ' + crops.length + ' piece(s)';
     }
 
     // Drag and drop support
@@ -10343,7 +10344,7 @@
       canvas.style.cursor = pickingBackground ? 'crosshair' : 'crosshair';
 
       var iconCls = pickingBackground ? 'fas fa-check' : 'fas fa-eye-dropper';
-      var sr = pickingBackground ? 'Confirm — click canvas to sample BG' : 'Pick background';
+      var sr = pickingBackground ? 'Confirm â€” click canvas to sample BG' : 'Pick background';
 
       if (btn) {
         btn.innerHTML = '<i class="' + iconCls + '" aria-hidden="true"></i><span class="sr-only">' + sr + '</span>';
@@ -10383,7 +10384,7 @@
 
     /**
      * Flat lays often have clay touching every corner while gutters/table read as bright, low-saturation pixels
-     * scattered across the frame — average those to recover paper grey instead of corner clay blue.
+     * scattered across the frame â€” average those to recover paper grey instead of corner clay blue.
      */
     function propArtEstimateBrightAmbientBackground(data, width, height) {
       var step = Math.max(2, Math.floor(Math.min(width, height) / 130));
@@ -10737,7 +10738,7 @@
           refreshTierGatedButtons();
           applyTierUI();
           
-          document.getElementById('status').textContent = `${img.width}×${img.height}px - Ready`;
+          document.getElementById('status').textContent = `${img.width}Ã—${img.height}px - Ready`;
           
           console.log('All buttons enabled');
           
@@ -10750,12 +10751,12 @@
                 var tsl = document.getElementById('tolerance-slider');
                 var tv = tsl ? parseInt(tsl.value, 10) : 60;
                 if (detectedColor && (!isFinite(tv) || tv < 22)) {
-                  tolHint = ' · Raise tolerance toward ~25–50 so light gutters match the sampled background.';
+                  tolHint = ' Â· Raise tolerance toward ~25â€“50 so light gutters match the sampled background.';
                 }
               } catch (eTol) {}
               if (detectedColor) {
                 document.getElementById('status').textContent =
-                  `${img.width}×${img.height}px • BG: rgb(${detectedColor.r}, ${detectedColor.g}, ${detectedColor.b}) — adjust tolerance if needed` +
+                  `${img.width}Ã—${img.height}px â€¢ BG: rgb(${detectedColor.r}, ${detectedColor.g}, ${detectedColor.b}) â€” adjust tolerance if needed` +
                   tolHint;
               }
               try {
@@ -10778,7 +10779,7 @@
               }
             } catch (err) {
               console.error('Background detection failed:', err);
-              document.getElementById('status').textContent = `${img.width}×${img.height}px`;
+              document.getElementById('status').textContent = `${img.width}Ã—${img.height}px`;
             }
           }, 120);
         };
@@ -11179,7 +11180,7 @@
           var stMove = document.getElementById('status');
           if (stMove) {
             stMove.textContent =
-              'Adjust slices · hover: lavender highlight · left-click deletes · right-click menu · drag to move';
+              'Adjust slices Â· hover: lavender highlight Â· left-click deletes Â· right-click menu Â· drag to move';
           }
           draw();
           return;
@@ -11189,7 +11190,7 @@
         var stHit = document.getElementById('status');
         if (stHit) {
           stHit.textContent =
-            'Adjust slices: hover a slice for actions · left deletes · right for menu · drag to move · Rectangle draws new crops.';
+            'Adjust slices: hover a slice for actions Â· left deletes Â· right for menu Â· drag to move Â· Rectangle draws new crops.';
         }
         draw();
         return;
@@ -11547,7 +11548,7 @@
       ctx.closePath();
     }
 
-    /** Community tier: small lavender chip — readable, soft shadow, fits tiny exports */
+    /** Community tier: small lavender chip â€” readable, soft shadow, fits tiny exports */
     function drawPoweredByWatermarkOnto(canvasEl) {
       var ctx = canvasEl.getContext('2d');
       if (!ctx) return;
@@ -11557,7 +11558,7 @@
       var edge = Math.max(6, Math.round(m * 0.028));
       var maxChipOuterW = Math.min(w - edge * 2, Math.max(120, Math.round(w * 0.94)));
 
-      var line1 = 'PropArt™';
+      var line1 = 'PropArtâ„¢';
       var line2 = 'prop-art-web-cropper.web.app';
 
       var mainFont = Math.max(9, Math.min(15, Math.round(m / 26)));
@@ -11843,7 +11844,7 @@
           var stm = document.getElementById('status');
           if (stm) {
             stm.textContent =
-              'All slices · hover for highlight · left deletes · right for menu · double-click opens on Canvas.';
+              'All slices Â· hover for highlight Â· left deletes Â· right for menu Â· double-click opens on Canvas.';
           }
         },
         true
@@ -11876,7 +11877,7 @@
       propArtEnsureGalleryInteractionsWired();
       if (!uploadedImage || !crops || crops.length === 0) {
         propArtGalleryLastCropCount = 0;
-        grid.innerHTML = '<p class="text-muted text-sm">No slices yet — draw crops on the canvas.</p>';
+        grid.innerHTML = '<p class="text-muted text-sm">No slices yet â€” draw crops on the canvas.</p>';
         return;
       }
 
@@ -11904,7 +11905,7 @@
           'title',
           'Slice #' +
             (index + 1) +
-            ' · hover / left deletes / right menu · double-click Canvas · notes expandable'
+            ' Â· hover / left deletes / right menu Â· double-click Canvas Â· notes expandable'
         );
 
         var thumbWrap = document.createElement('div');
@@ -11971,7 +11972,7 @@
           draw();
         });
         tile.addEventListener('click', function (ev) {
-          /* Notes live inside each tile — never hijack clicks meant for Move-tool canvas UX */
+          /* Notes live inside each tile â€” never hijack clicks meant for Move-tool canvas UX */
           if (ev.target && ev.target.closest && ev.target.closest('textarea')) return;
           if (ev.target && ev.target.closest && ev.target.closest('.gallery-tile-notes__summary'))
             return;
@@ -12006,7 +12007,7 @@
         more.style.gridColumn = '1 / -1';
         more.style.marginTop = '8px';
         more.style.justifySelf = 'center';
-        more.textContent = 'Show all ' + crops.length + ' slices…';
+        more.textContent = 'Show all ' + crops.length + ' slicesâ€¦';
         more.onclick = function () {
           propArtGalleryShowAllTiles = true;
           propArtRefreshGalleryGrid();
@@ -12017,7 +12018,7 @@
       propArtGallerySyncTileHoverZones();
     }
 
-    /** Download & share — watermarks for Community tier */
+    /** Download & share â€” watermarks for Community tier */
     function propArtSlugForFilename(str, maxLen) {
       maxLen = maxLen || 48;
       var t = String(str || '')
@@ -12067,6 +12068,31 @@
       return c.toDataURL('image/png');
     }
 
+    var propArtGlazeClientPromise = null;
+    function propArtGlazeClient() {
+      if (!propArtGlazeClientPromise) {
+        propArtGlazeClientPromise = import('./js/propart-glaze-client.mjs');
+      }
+      return propArtGlazeClientPromise;
+    }
+
+    async function propArtMaybeGlazeExportDataUrl(dataUrl, fileName) {
+      if (!dataUrl) return '';
+      try {
+        var mod = await propArtGlazeClient();
+        return await mod.glazeImageDataUrl(dataUrl, fileName || 'propart-export.png', 'image/png');
+      } catch (error) {
+        console.warn('[PropArt Glaze]', error);
+        return dataUrl;
+      }
+    }
+
+    async function propArtGetExportCropDataURL(crop, fileName) {
+      var plain = getExportCropDataURL(crop);
+      if (!plain) return '';
+      return propArtMaybeGlazeExportDataUrl(plain, fileName || 'propart-export.png');
+    }
+
     async function downloadAll() {
       if (!crops.length) return;
       var projectSlug = propArtProjectSlugForExport();
@@ -12076,7 +12102,7 @@
           var zip = new JSZip();
           for (var zi = 0; zi < n; zi++) {
             var fn = propArtSliceExportBaseName(zi, n, crops[zi], projectSlug) + '.png';
-            var du = getExportCropDataURL(crops[zi]);
+            var du = await propArtGetExportCropDataURL(crops[zi], fn);
             zip.file(fn, propArtDataUrlToBlob(du));
           }
           var zb = await zip.generateAsync({ type: 'blob' });
@@ -12095,24 +12121,25 @@
       }
       for (var j = 0; j < n; j++) {
         (function (jj) {
-          setTimeout(function () {
+          setTimeout(async function () {
             var link = document.createElement('a');
-            link.download = propArtSliceExportBaseName(jj, n, crops[jj], projectSlug) + '.png';
-            link.href = getExportCropDataURL(crops[jj]);
+            var exportName = propArtSliceExportBaseName(jj, n, crops[jj], projectSlug) + '.png';
+            link.download = exportName;
+            link.href = await propArtGetExportCropDataURL(crops[jj], exportName);
             link.click();
           }, jj * 200);
         })(j);
       }
     }
 
-    function downloadCrop(index, event) {
+    async function downloadCrop(index, event) {
       event.stopPropagation();
       var crop = crops[index];
       var projectSlug = propArtProjectSlugForExport();
+      var exportName = propArtSliceExportBaseName(index, crops.length, crop, projectSlug) + '.png';
       var link = document.createElement('a');
-      link.download =
-        propArtSliceExportBaseName(index, crops.length, crop, projectSlug) + '.png';
-      link.href = getExportCropDataURL(crop);
+      link.download = exportName;
+      link.href = await propArtGetExportCropDataURL(crop, exportName);
       link.click();
     }
 
@@ -12319,7 +12346,7 @@
       updateZoomDisplay();
       
       // Reset project name
-      document.getElementById('project-name').value = 'PropArt™ Project 1';
+      document.getElementById('project-name').value = 'PropArtâ„¢ Project 1';
       
       // Show drop hint
       updateDropHint();
@@ -12335,7 +12362,7 @@
       // Update crops list
       updateCropsList();
       
-      propArtNotify('✅ Reset complete! You can now upload a new image.', 'success');
+      propArtNotify('âœ… Reset complete! You can now upload a new image.', 'success');
     }
 
     async function clearCrops() {
@@ -12429,7 +12456,7 @@
       doc.setFontSize(11);
       doc.setFont('helvetica', 'normal');
       doc.setTextColor(240, 240, 255);
-      doc.text(getTier() === TIERS.FREE ? 'Community export · watermark on thumbnails' : 'Professional Image Catalog', margin, yPosition + 16);
+      doc.text(getTier() === TIERS.FREE ? 'Community export Â· watermark on thumbnails' : 'Professional Image Catalog', margin, yPosition + 16);
       
       // Date and count with icons
       doc.setFontSize(9);
@@ -12439,8 +12466,8 @@
         month: 'long', 
         day: 'numeric' 
       });
-      doc.text(`📅 ${dateText}`, margin, yPosition + 24);
-      doc.text(`📦 ${crops.length} Premium Pieces`, margin, yPosition + 30);
+      doc.text(`ðŸ“… ${dateText}`, margin, yPosition + 24);
+      doc.text(`ðŸ“¦ ${crops.length} Premium Pieces`, margin, yPosition + 30);
       
       yPosition = 60;
       
@@ -12557,11 +12584,11 @@
         doc.setFont('helvetica', 'normal');
         doc.setFontSize(8);
         const shapeIcon =
-          crop.shape === 'rectangle' ? '▭' : crop.shape === 'polygon' ? '⬡' : '●';
+          crop.shape === 'rectangle' ? 'â–­' : crop.shape === 'polygon' ? 'â¬¡' : 'â—';
         const shapeDisp =
           crop.shape === 'polygon' ? 'Outline' : crop.shape.charAt(0).toUpperCase() + crop.shape.slice(1);
         doc.text(`${shapeIcon} Shape: ${shapeDisp}`, textX, metaY + 3);
-        doc.text(`📏 Size: ${Math.round(propArtCropPixelSize(crop).w)} × ${Math.round(propArtCropPixelSize(crop).h)} px`, textX, metaY + 8);
+        doc.text(`ðŸ“ Size: ${Math.round(propArtCropPixelSize(crop).w)} Ã— ${Math.round(propArtCropPixelSize(crop).h)} px`, textX, metaY + 8);
         
         yPosition += rowHeight + 8;
       }
@@ -12571,7 +12598,7 @@
       doc.setFontSize(8);
       doc.setFont('helvetica', 'italic');
       doc.setTextColor(120, 120, 140);
-      doc.text(`Generated · ${getTier() === TIERS.FREE ? 'Powered by PropArt™ (Community watermark on slices above)' : 'PropArt™ Cropper Tool'} • ${crops.length} slices`, pageWidth / 2, footerY, { align: 'center' });
+      doc.text(`Generated Â· ${getTier() === TIERS.FREE ? 'Powered by PropArtâ„¢ (Community watermark on slices above)' : 'PropArtâ„¢ Cropper Tool'} â€¢ ${crops.length} slices`, pageWidth / 2, footerY, { align: 'center' });
       
       // Add decorative footer line
       doc.setDrawColor(255, 215, 0);
@@ -12580,7 +12607,7 @@
       
       // Save PDF
       doc.save(`${projectName}_Premium_Catalog.pdf`);
-      propArtNotify(`✨ Premium PDF exported with ${crops.length} pieces!`);
+      propArtNotify(`âœ¨ Premium PDF exported with ${crops.length} pieces!`);
     }
 
     function aiDetect() {
@@ -12692,7 +12719,7 @@
       updateCropsList();
       draw();
       
-      propArtNotify(`🤖 AI Detection complete!\n${uniqueRegions.length} objects found using multi-tolerance analysis.`);
+      propArtNotify(`ðŸ¤– AI Detection complete!\n${uniqueRegions.length} objects found using multi-tolerance analysis.`);
     }
 
     function toggleCloudSync() {
@@ -12734,7 +12761,7 @@
       try {
         propArtRefreshGalleryGrid();
       } catch (ePg) {}
-      propArtNotify('✨ Filters applied! Canvas, All slices thumbnails, and PNG export now match.');
+      propArtNotify('âœ¨ Filters applied! Canvas, All slices thumbnails, and PNG export now match.');
     }
 
     function resetProEdit() {
@@ -12778,7 +12805,7 @@
       propArtModalOnCloseOverlay(mem);
     }
 
-    function exportAllFormats(format) {
+    async function exportAllFormats(format) {
       if (!tierAllowsStandardToolkit()) {
         openNewsletterModal();
         return;
@@ -12787,16 +12814,17 @@
       const mimeType = format === 'png' ? 'image/png' : format === 'jpeg' ? 'image/jpeg' : 'image/webp';
       const quality = format === 'jpeg' ? 0.9 : format === 'webp' ? 0.85 : 1.0;
       
-      crops.forEach((crop, index) => {
-        setTimeout(() => {
-          const link = document.createElement('a');
-          link.download = `${projectName}_piece_${index + 1}.${format}`;
-          
-          const dataURL = getExportCropDataURL(crop);
-          if (format === 'png') {
-            link.href = dataURL;
-          } else {
-            // Convert to JPEG/WebP
+      for (let index = 0; index < crops.length; index += 1) {
+        const crop = crops[index];
+        const exportName = `${projectName}_piece_${index + 1}.${format}`;
+        const dataURL = await propArtGetExportCropDataURL(crop, exportName);
+        const link = document.createElement('a');
+        link.download = exportName;
+        if (format === 'png') {
+          link.href = dataURL;
+          link.click();
+        } else {
+          await new Promise((resolve) => {
             const img = new Image();
             img.onload = () => {
               var psz = propArtCropPixelSize(crop);
@@ -12807,16 +12835,17 @@
               tempCtx.drawImage(img, 0, 0);
               link.href = tempCanvas.toDataURL(mimeType, quality);
               link.click();
+              resolve();
             };
+            img.onerror = () => resolve();
             img.src = dataURL;
-            return;
-          }
-          link.click();
-        }, index * 200);
-      });
+          });
+        }
+        await new Promise((resolve) => setTimeout(resolve, 200));
+      }
       
       closeMultiExport();
-      propArtNotify(`📁 Exporting ${crops.length} pieces as ${format.toUpperCase()}...`);
+      propArtNotify(`ðŸ“ Exporting ${crops.length} pieces as ${format.toUpperCase()}...`);
     }
 
     // Polymer Clay Professional Features
@@ -12864,7 +12893,7 @@
         paletteDisplay.appendChild(swatch);
       });
       
-      propArtNotify(`🎨 Extracted ${sortedColors.length} dominant colors! Click any swatch to copy.`);
+      propArtNotify(`ðŸŽ¨ Extracted ${sortedColors.length} dominant colors! Click any swatch to copy.`);
     }
 
     async function showSizeCalculator() {
@@ -12885,7 +12914,7 @@
 
       const scale = tw / cw;
 
-      let report = `📏 Size calculator · ${currentWidth}mm → ${targetWidth}mm (scale ${scale.toFixed(2)}×)\n\n`;
+      let report = `ðŸ“ Size calculator Â· ${currentWidth}mm â†’ ${targetWidth}mm (scale ${scale.toFixed(2)}Ã—)\n\n`;
 
       crops.forEach((crop, i) => {
         const psz = propArtCropPixelSize(crop);
@@ -12893,7 +12922,7 @@
         const height = psz.h;
         const newWidth = (width * scale).toFixed(1);
         const newHeight = (height * scale).toFixed(1);
-        report += `Piece #${i + 1}: ${width}px × ${height}px → ${newWidth}px × ${newHeight}px\n`;
+        report += `Piece #${i + 1}: ${width}px Ã— ${height}px â†’ ${newWidth}px Ã— ${newHeight}px\n`;
       });
 
       propArtNotify(report, 'success');
@@ -12946,7 +12975,7 @@
       updateCropsList();
       draw();
 
-      propArtNotify('🪞 Mirrored crop added.', 'success');
+      propArtNotify('ðŸªž Mirrored crop added.', 'success');
     }
 
     function toggleMeasurements() {
@@ -13144,7 +13173,7 @@
 
       propArtPatternLibraryWriteAll(patterns);
 
-      propArtNotify('Pattern saved as “' + patternName + '”. ' + patterns.length + ' total in library.', 'success');
+      propArtNotify('Pattern saved as â€œ' + patternName + 'â€. ' + patterns.length + ' total in library.', 'success');
     }
 
     function propArtPatternLibraryReadAll() {
@@ -13267,7 +13296,7 @@
         upBtn.style.padding = '5px 8px';
         upBtn.style.fontSize = '11px';
         upBtn.setAttribute('aria-label', 'Move pattern up');
-        upBtn.textContent = '↑';
+        upBtn.textContent = 'â†‘';
         upBtn.onclick = function (evUp) {
           evUp.preventDefault();
           propArtPatternLibraryReorder(idx, -1);
@@ -13280,7 +13309,7 @@
         dnBtn.style.padding = '5px 8px';
         dnBtn.style.fontSize = '11px';
         dnBtn.setAttribute('aria-label', 'Move pattern down');
-        dnBtn.textContent = '↓';
+        dnBtn.textContent = 'â†“';
         dnBtn.onclick = function (evDn) {
           evDn.preventDefault();
           propArtPatternLibraryReorder(idx, 1);
@@ -13568,7 +13597,7 @@
       });
     }
 
-    /** Repeatedly merge the two closest regions (by bbox centers) until count ≤ targetN. */
+    /** Repeatedly merge the two closest regions (by bbox centers) until count â‰¤ targetN. */
     function propArtMergeAutocropRegionsToCount(regions, targetN) {
       if (!regions || regions.length <= targetN || !targetN || targetN < 1) return regions ? regions.slice() : [];
       function mergeTwo(a, b) {
@@ -13683,7 +13712,7 @@
       const width = canvas.width;
       const height = canvas.height;
 
-      /** Break thin watercolor / shadow bridges between separate subjects (skipped for “solid blocks” mode). */
+      /** Break thin watercolor / shadow bridges between separate subjects (skipped for â€œsolid blocksâ€ mode). */
       function morphOpenBinary(mask, w, h, passes) {
         var a = new Uint8Array(mask);
         var b = new Uint8Array(w * h);
@@ -13844,7 +13873,7 @@
         /** Thin scribbles tend to fill little of bbox; glyphs have higher RGB variance vs flat swatches. */
         if (solidity < 0.33) return false;
         if (ar > 14) return false;
-        /** Patterned cane reads higher variance than flat swatches — keep capsules tight via solidity/ar only */
+        /** Patterned cane reads higher variance than flat swatches â€” keep capsules tight via solidity/ar only */
         var varCap = solidity > 0.62 ? 2400 : solidity > 0.44 ? 1450 : 950;
         if (variance > varCap) return false;
         return true;
@@ -14027,7 +14056,7 @@
       const minFinalBBox = imageArea * 0.0001;
       var minFinalPx = preferColorBlocks ? 220 : 180;
 
-      // Find all objects — scan every pixel for complete coverage
+      // Find all objects â€” scan every pixel for complete coverage
       for (let y = 0; y < height; y++) {
         if ((y & 15) === 0) await propArtYieldToHost(45);
         for (let x = 0; x < width; x++) {
@@ -14181,7 +14210,7 @@
       }
 
       /**
-       * No paid APIs: split one connected foreground blob that still “reads” as multiple compact objects
+       * No paid APIs: split one connected foreground blob that still â€œreadsâ€ as multiple compact objects
        * (e.g. two earrings linked by glare) using geodesic distance to the component boundary + medial peaks
        * and a synchronized multi-source expansion (watershed-style), then fresh stats per label.
        */
@@ -14492,7 +14521,7 @@
         if (!baseOk) return false;
         if (propArtAutocropLikelyShelfUiBlob(region, width, height, imageAreaPx)) return false;
         if (!preferColorBlocks) return true;
-        /** User asked for many slices ⇒ keep patterned clay / shading (solid-block gate rejects most beads). */
+        /** User asked for many slices â‡’ keep patterned clay / shading (solid-block gate rejects most beads). */
         if (tgtPrefilter >= 6) {
           var sol = bboxArea >= 1 ? (region.pixelCount || 0) / bboxArea : 0;
           if (sol >= 0.165 && (region.pixelCount || 0) >= minFinalPx - 50) return true;
@@ -14570,7 +14599,7 @@
         );
       }
 
-      // Create crops from regions (compact regions → circle; elongated subjects → rectangle)
+      // Create crops from regions (compact regions â†’ circle; elongated subjects â†’ rectangle)
       var autoBatch = [];
       regionsForCrops.forEach(function (region) {
         const padding = 3;
@@ -14639,13 +14668,13 @@
         propArtNotify(
           'No regions passed the filter. Try:' +
             (preferColorBlocks
-              ? '\n• Turning off Prefer solid color blocks if slices disappear entirely, or loosen Tolerance.'
+              ? '\nâ€¢ Turning off Prefer solid color blocks if slices disappear entirely, or loosen Tolerance.'
               : '') +
-            '\n• Adjusting tolerance / background sample\n• Drawing crops manually — swatches touching may merge unless background matches gutters exactly.'
+            '\nâ€¢ Adjusting tolerance / background sample\nâ€¢ Drawing crops manually â€” swatches touching may merge unless background matches gutters exactly.'
         );
       } else {
         var mvNote = propArtWorkflowMoveAfterAutocropPrefOn()
-          ? ' Adjust slices is on — hover a box or use the toolbar Move tool.'
+          ? ' Adjust slices is on â€” hover a box or use the toolbar Move tool.'
           : ' Pick Move in the toolbar when you are ready to nudge slices.';
         var wantSlices = propArtAutocropRuntime.targetApproxCount | 0;
         var tgtTail = '';
@@ -14654,7 +14683,7 @@
             ` Under target (${wantSlices}): clearer gaps between beads help Auto-crop; or draw a few rectangles manually.`;
         else if (wantSlices > 0 && cropsAdded > wantSlices)
           tgtTail =
-            ' More slices than target — merge cap only runs when you have extra blobs after detection.';
+            ' More slices than target â€” merge cap only runs when you have extra blobs after detection.';
         propArtNotify(`Auto-detected ${cropsAdded} object(s).${tgtTail}${mvNote}`, 'success');
         propArtApplyMoveToolAfterAutocropIfPref();
       }
@@ -14685,11 +14714,11 @@
         } catch (eBoot) {}
       });
 
-    /** Footer quote (one at a time) · preference in Profile · localStorage */
+    /** Footer quote (one at a time) Â· preference in Profile Â· localStorage */
     var PROP_ART_LS_QUOTE = 'propArtProfileQuotePref';
     var PROP_ART_BUILTIN_QUOTES = [
-      '"Creativity takes courage." — Henri Matisse',
-      '"To practice any art … is a way to make your soul grow." — Kurt Vonnegut',
+      '"Creativity takes courage." â€” Henri Matisse',
+      '"To practice any art â€¦ is a way to make your soul grow." â€” Kurt Vonnegut',
       'The Earth without "art" is just "eh."'
     ];
 
@@ -14796,7 +14825,7 @@
       if (!window.propArtIssuesHintLogged) {
         window.propArtIssuesHintLogged = true;
         console.info(
-          '[PropArt Cropper] If DevTools shows an "Issues" count next to Console, open the Issues tab — those are usually browser notices (cookies, CSP, mixed content), not Cropper errors unless we log them here.'
+          '[PropArt Cropper] If DevTools shows an "Issues" count next to Console, open the Issues tab â€” those are usually browser notices (cookies, CSP, mixed content), not Cropper errors unless we log them here.'
         );
       }
     } catch (eIss) {}

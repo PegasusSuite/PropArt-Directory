@@ -6,7 +6,8 @@
       "firebase.json",
       "**/.*",
       "**/.git/**",
-      "**/node_modules/**"
+      "**/node_modules/**",
+      "**/*.md"
     ],
     "headers": [
       {
@@ -14,6 +15,10 @@
         "headers": [
           { "key": "X-Content-Type-Options", "value": "nosniff" },
           { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+          { "key": "X-Robots-Tag", "value": "noai, noimageai" },
+          { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains" },
+          { "key": "Content-Security-Policy", "value": "object-src 'none'; base-uri 'self'; frame-ancestors 'self'; upgrade-insecure-requests" },
+          { "key": "Content-Security-Policy-Report-Only", "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://www.gstatic.com https://apis.google.com https://www.googletagmanager.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' data: blob: https:; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://*.googleapis.com https://*.cloudfunctions.net https://*.firebaseio.com https://firestore.googleapis.com https://identitytoolkit.googleapis.com https://api.stripe.com; frame-src https://js.stripe.com https://*.firebaseapp.com" },
           { "key": "X-Frame-Options", "value": "SAMEORIGIN" }
         ]
       }

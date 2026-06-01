@@ -6,3 +6,7 @@ Desktop.ini
 
 # Owner-only consolidated notes (never publish)
 Office Bitch/
+
+# Private internal docs / backups (never commit or deploy)
+docs/private/
+*.bak
