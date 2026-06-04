@@ -98,11 +98,26 @@ After editing **`firebase.json`**, redeploy Hosting.
 
 ---
 
-## 6. Related docs
+## 6. Refresh cadence (when upstream apps ship)
+
+| Step | Action |
+|------|--------|
+| 1 | Tag/release in source repo (Cropper, Studio, Cane, POD, Blend, Creator). |
+| 2 | `npm run brand:sync` in **PropArt-Creator-Space** if SVGs changed in `Assets/`. |
+| 3 | Copy deployable tree into the matching **`PropArt-Directory/`** folder. |
+| 4 | Spot-check favicon (`/favicon.svg`) and `propart-suite-directory.js` (`PUBLIC` = `https://www.propart.app/`). |
+| 5 | `firebase deploy --only hosting --project ps---propartsuite` |
+| 6 | Verify canonical paths on `https://propart.app/...` (incognito). |
+
+**Glaze:** removed from the suite (2026-06). Do not re-import glaze clients into path-hosted copies.
+
+## 7. Related docs
 
 - **`SESSION_HANDOFF.md`** in **PropArt-Creator-Space** (`main`) — suite-wide checkpoints including **`propart.app` canonical path hosting**.
+- **`docs/BRAND_AND_HOSTING.md`** in **PropArt-Creator-Space** — `www` owner, favicon origin, enhancement order.
 - **`docs/INCIDENT_RECOVERY_PLAYBOOK.md`** in **PropArt-Creator-Space** — outage/compromise escalation.
+- **`public/MOBILE_AND_BRAND_COLLATERAL_WHITEPAPER.md`** in **PropArt-Creator-Space** — mobile and PWA tiers, print collateral (business cards, letterhead), QR policy, and per-app checklist when copying builds into this repo for path-hosted deploys.
 
 ---
 
-*Last updated: 2026-05-05*
+*Last updated: 2026-06-04*

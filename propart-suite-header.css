@@ -1,0 +1,206 @@
+/**
+ * PropArt™ suite banner — Blend-style two-row header (gradient card + suite pill).
+ * Spec: propart-blend-banner-suite-mockup.html · tokens: propart-generic-theme.css
+ */
+@import url("./propart-generic-theme.css");
+
+:root {
+  --suite-banner-gradient: linear-gradient(
+    135deg,
+    rgb(234 230 244 / 0.92) 0%,
+    rgb(244 240 250 / 0.92) 50%,
+    rgb(244 252 250 / 0.92) 100%
+  );
+  --suite-shadow-card: 0 2px 4px rgba(93, 80, 198, 0.16);
+  --suite-shadow-pill: 0 2px 4px rgba(71, 57, 113, 0.14);
+  --suite-shadow-btn: 0 1px 4px rgba(93, 80, 198, 0.18);
+  --suite-border-soft: rgba(109, 102, 146, 0.28);
+  --suite-eggplant: var(--propart-eggplant, #3d3366);
+  --suite-eggplant-muted: #5c4d85;
+  --suite-logo-pink-mid: #c96b8a;
+  --suite-logo-pink-light: #e17897;
+}
+
+.suite-banner-card {
+  border-radius: 24px;
+  border: 1px solid var(--suite-border-soft);
+  padding: 1rem 1.15rem 1.05rem;
+  background: var(--suite-banner-gradient);
+  box-shadow: var(--suite-shadow-card);
+  font-family: "Quicksand", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--suite-eggplant-muted);
+}
+
+.suite-banner-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.suite-banner-brand {
+  flex-shrink: 0;
+}
+
+.suite-banner-brand img {
+  display: block;
+  height: auto;
+  width: auto;
+  max-width: min(100%, 440px);
+  max-height: clamp(3.6rem, 9vw, 5.5rem);
+}
+
+.suite-banner-meta {
+  flex: 1 1 200px;
+  min-width: 0;
+}
+
+.suite-banner-meta h2 {
+  margin: 0;
+  font-size: 1.28rem;
+  font-weight: 700;
+  line-height: 1.15;
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: -0.02em;
+  color: var(--suite-eggplant);
+}
+
+.suite-banner-meta p {
+  margin: 0.35rem 0 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--suite-eggplant-muted);
+  max-width: 46ch;
+  line-height: 1.35;
+}
+
+.suite-banner-utils {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.suite-banner-utils .suite-banner-util-btn {
+  font-family: inherit;
+  border-radius: 999px;
+  border: 1px solid rgba(61, 51, 102, 0.22);
+  background: rgba(255, 255, 255, 0.82);
+  padding: 8px 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--suite-eggplant);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(61, 51, 102, 0.1);
+  text-decoration: none;
+}
+
+.suite-banner-pill {
+  margin-top: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 999px;
+  padding: 0.42rem 0.62rem;
+  border: 1px solid rgba(109, 102, 146, 0.22);
+  box-shadow: var(--suite-shadow-pill);
+}
+
+.suite-banner-pill__suite,
+.suite-banner-pill__tools {
+  display: flex;
+  align-items: center;
+  gap: 0.42rem;
+  flex-wrap: wrap;
+}
+
+.suite-banner-pill__suite {
+  min-width: min(100%, 280px);
+}
+
+.suite-banner-pill__tools {
+  margin-left: auto;
+}
+
+.suite-banner-pill__divider {
+  width: 1px;
+  align-self: stretch;
+  min-height: 38px;
+  background: rgba(109, 102, 146, 0.18);
+  flex-shrink: 0;
+}
+
+.pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c8c4d6;
+  flex-shrink: 0;
+  margin-right: 0.1rem;
+}
+
+.btn-suite {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid rgba(109, 102, 146, 0.22);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: var(--suite-eggplant);
+  background: linear-gradient(145deg, #ebe4f6 0%, #e3f3ef 100%);
+  box-shadow: var(--suite-shadow-btn);
+}
+
+.btn-suite.is-current {
+  background: linear-gradient(145deg, #74abff 0%, #6dd5c3 100%);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.btn-tool {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid rgba(109, 102, 146, 0.24);
+  background: linear-gradient(145deg, #ede8f7 0%, #e8f6f2 100%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  line-height: 1;
+  box-shadow: var(--suite-shadow-btn);
+}
+
+.badge-tier {
+  border-radius: 999px;
+  padding: 0.28rem 0.55rem;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  background: #d4f4ef;
+  color: var(--suite-eggplant);
+}
+
+@media (max-width: 620px) {
+  .suite-banner-pill__divider {
+    display: none;
+  }
+
+  .suite-banner-pill__tools {
+    margin-left: 0;
+    width: 100%;
+    padding-left: 1.5rem;
+    border-top: 1px solid rgba(109, 102, 146, 0.12);
+    padding-top: 0.45rem;
+  }
+}

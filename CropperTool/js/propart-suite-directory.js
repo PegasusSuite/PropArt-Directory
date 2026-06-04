@@ -6,7 +6,7 @@
  * Local dev: opening any suite HTML via file:// resolves to LOCAL_FILE.
  */
 (function () {
-  var PUBLIC = 'https://pegasussuite.github.io/PropArt-Directory/';
+  var PUBLIC = 'https://www.propart.app/';
   var LOCAL_FILE = 'file:///C:/Projects/Git/PropArt-Directory/index.html';
 
   function getSuiteDirectoryHref() {

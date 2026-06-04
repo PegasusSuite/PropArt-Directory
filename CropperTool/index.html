@@ -16,7 +16,7 @@
   </script>
   <title>PropArtâ„¢ Cropper Tool - Multi-Piece Project Management</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="icon" href="https://pegasussuite.github.io/PropArt-Directory/favicon.svg" type="image/svg+xml" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
   <link rel="apple-touch-icon" href="PropArtTM-CropperTool-PalePinkyFinal.svg" sizes="180x180">
   <meta name="theme-color" content="#9B7EBD">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -4012,7 +4012,7 @@
             <div class="cropper-banner-hero">
               <div class="cropper-banner-center cropper-banner-center--asset">
                 <h1 class="sr-only">PropArt Cropper Tool</h1>
-                <a class="cropper-banner-logo-wrap" href="https://pegasussuite.github.io/PropArt-Directory/" target="_blank" rel="noopener noreferrer" title="Open PropArt Directory">
+                <a class="cropper-banner-logo-wrap" href="https://www.propart.app/" target="_blank" rel="noopener noreferrer" title="Open PropArt Directory">
                   <img
                     src="./PropArt-MayCropperFinal.svg?v=9"
                     width="600"
@@ -12068,29 +12068,8 @@
       return c.toDataURL('image/png');
     }
 
-    var propArtGlazeClientPromise = null;
-    function propArtGlazeClient() {
-      if (!propArtGlazeClientPromise) {
-        propArtGlazeClientPromise = import('./js/propart-glaze-client.mjs');
-      }
-      return propArtGlazeClientPromise;
-    }
-
-    async function propArtMaybeGlazeExportDataUrl(dataUrl, fileName) {
-      if (!dataUrl) return '';
-      try {
-        var mod = await propArtGlazeClient();
-        return await mod.glazeImageDataUrl(dataUrl, fileName || 'propart-export.png', 'image/png');
-      } catch (error) {
-        console.warn('[PropArt Glaze]', error);
-        return dataUrl;
-      }
-    }
-
-    async function propArtGetExportCropDataURL(crop, fileName) {
-      var plain = getExportCropDataURL(crop);
-      if (!plain) return '';
-      return propArtMaybeGlazeExportDataUrl(plain, fileName || 'propart-export.png');
+    function propArtGetExportCropDataURL(crop) {
+      return getExportCropDataURL(crop);
     }
 
     async function downloadAll() {
