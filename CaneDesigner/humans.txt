@@ -1,0 +1,4 @@
+/* TEAM */
+Organization: Pegasus Suite LLC
+Brand: PropArt™ Tools for Polymer Clay Artists — Cane Design System
+GitHub: https://github.com/PegasusSuite/PropArt-Cane-Design-System

@@ -1,0 +1,9 @@
+{
+  "name": "PropArt™ Tools for Polymer Clay Artists — Cane Design System",
+  "short_name": "PropArt™ Cane Design",
+  "description": "Cane Design System — developed and owned by Pegasus Suite LLC.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f8f5fa",
+  "theme_color": "#9B7EBD"
+}
