@@ -8,7 +8,7 @@
    version="1.1"
    id="svg1"
    inkscape:version="1.4 (86a8ad7, 2024-10-11)"
-   sodipodi:docname="PropArtLogo-Final.svg"
+   sodipodi:docname="PropArtTextLogoTagline-Final.svg"
    xml:space="preserve"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -61,7 +61,7 @@
          offset="0"
          id="stop3" /><stop
          style="stop-color:#6b56ca;stop-opacity:1;"
-         offset="0.35378402"
+         offset="0.5"
          id="stop5" /><stop
          style="stop-color:#c96b8a;stop-opacity:1;"
          offset="1"
@@ -69,10 +69,10 @@
        inkscape:collect="always"
        xlink:href="#linearGradient5"
        id="linearGradient9"
-       x1="56.345562"
-       y1="171.34706"
-       x2="209.98364"
-       y2="140.49326"
+       x1="56.080421"
+       y1="139.4512"
+       x2="210.0726"
+       y2="172.12057"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(0.73471428,0,0,0.7347143,3.2111728,-96.533895)" /><linearGradient
        id="linearGradient5"
