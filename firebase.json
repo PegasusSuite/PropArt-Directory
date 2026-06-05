@@ -1,48 +1,163 @@
 {
-  "hosting": {
-    "site": "propart-directory",
-    "public": ".",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/.git/**",
-      "**/node_modules/**",
-      "**/*.md"
-    ],
-    "headers": [
-      {
-        "source": "**",
-        "headers": [
-          { "key": "X-Content-Type-Options", "value": "nosniff" },
-          { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-          { "key": "X-Robots-Tag", "value": "noai, noimageai" },
-          { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains" },
-          { "key": "Content-Security-Policy", "value": "object-src 'none'; base-uri 'self'; frame-ancestors 'self'; upgrade-insecure-requests" },
-          { "key": "Content-Security-Policy-Report-Only", "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://www.gstatic.com https://apis.google.com https://www.googletagmanager.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' data: blob: https:; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://*.googleapis.com https://*.cloudfunctions.net https://*.firebaseio.com https://firestore.googleapis.com https://identitytoolkit.googleapis.com https://api.stripe.com; frame-src https://js.stripe.com https://*.firebaseapp.com" },
-          { "key": "X-Frame-Options", "value": "SAMEORIGIN" }
-        ]
-      }
-    ],
-    "redirects": [
-      { "source": "/studio", "destination": "/Studio", "type": 301 },
-      { "source": "/creator", "destination": "/Hub", "type": 301 },
-      { "source": "/pod", "destination": "/POD", "type": 301 },
-      { "source": "/cardart", "destination": "/POD", "type": 301 },
-      { "source": "/blend", "destination": "/BlendVisualizer", "type": 301 },
-      { "source": "/cane", "destination": "/CaneDesigner", "type": 301 },
-      { "source": "/cropper", "destination": "/CropperTool", "type": 301 },
-      { "source": "/hub", "destination": "/Hub", "type": 301 },
-      { "source": "/blendvisualizer", "destination": "/BlendVisualizer", "type": 301 },
-      { "source": "/canedesigner", "destination": "/CaneDesigner", "type": 301 },
-      { "source": "/croppertool", "destination": "/CropperTool", "type": 301 }
-    ],
-    "rewrites": [
-      { "source": "/Hub", "destination": "/Hub/index.html" },
-      { "source": "/Studio", "destination": "/Studio/index.html" },
-      { "source": "/POD", "destination": "/POD/index.html" },
-      { "source": "/BlendVisualizer", "destination": "/BlendVisualizer/index.html" },
-      { "source": "/CaneDesigner", "destination": "/CaneDesigner/index.html" },
-      { "source": "/CropperTool", "destination": "/CropperTool/index.html" }
-    ]
-  }
+    "hosting":  {
+                    "site":  "propart-directory",
+                    "public":  ".",
+                    "ignore":  [
+                                   "firebase.json",
+                                   "**/.git/**",
+                                   "**/node_modules/**",
+                                   "**/*.md",
+                                   "**/docs/**",
+                                   "**/private/**",
+                                   "**/*HANDOFF*",
+                                   "**/*WHITEPAPER*",
+                                   "**/*WAKE-UP*",
+                                   "**/*EMERGENCY*",
+                                   "**/*CREDENTIAL*",
+                                   "**/*OWNER*INPUT*",
+                                   "**/*INCIDENT*",
+                                   "**/*PLAYBOOK*",
+                                   "**/OWNER-NOTES*",
+                                   "**/.well-known/test-workflows.json"
+                               ],
+                    "headers":  [
+                                    {
+                                        "headers":  [
+                                                        {
+                                                            "key":  "X-Robots-Tag",
+                                                            "value":  "noindex, nofollow, noai, noimageai"
+                                                        },
+                                                        {
+                                                            "key":  "X-Content-Type-Options",
+                                                            "value":  "nosniff"
+                                                        }
+                                                    ],
+                                        "source":  "**/*.md"
+                                    },
+                                    {
+                                        "source":  "**",
+                                        "headers":  [
+                                                        {
+                                                            "key":  "X-Content-Type-Options",
+                                                            "value":  "nosniff"
+                                                        },
+                                                        {
+                                                            "key":  "Referrer-Policy",
+                                                            "value":  "strict-origin-when-cross-origin"
+                                                        },
+                                                        {
+                                                            "key":  "X-Robots-Tag",
+                                                            "value":  "noai, noimageai"
+                                                        },
+                                                        {
+                                                            "key":  "X-Enterprise-Licensing",
+                                                            "value":  "https://www.propart.app/enterprise.html"
+                                                        },
+                                                        {
+                                                            "key":  "Strict-Transport-Security",
+                                                            "value":  "max-age=31536000; includeSubDomains"
+                                                        },
+                                                        {
+                                                            "key":  "Content-Security-Policy",
+                                                            "value":  "object-src \u0027none\u0027; base-uri \u0027self\u0027; frame-ancestors \u0027self\u0027; upgrade-insecure-requests"
+                                                        },
+                                                        {
+                                                            "key":  "Content-Security-Policy-Report-Only",
+                                                            "value":  "default-src \u0027self\u0027; base-uri \u0027self\u0027; object-src \u0027none\u0027; frame-ancestors \u0027self\u0027; script-src \u0027self\u0027 \u0027unsafe-inline\u0027 \u0027unsafe-eval\u0027 https://js.stripe.com https://www.gstatic.com https://apis.google.com https://www.googletagmanager.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src \u0027self\u0027 \u0027unsafe-inline\u0027 https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src \u0027self\u0027 data: blob: https:; font-src \u0027self\u0027 data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src \u0027self\u0027 http://127.0.0.1:8787 http://localhost:8787 https://api.propart.app https://pb.propart.app https://*.googleapis.com https://*.cloudfunctions.net https://*.firebaseio.com https://firestore.googleapis.com https://identitytoolkit.googleapis.com https://api.stripe.com; frame-src https://js.stripe.com https://*.firebaseapp.com"
+                                                        },
+                                                        {
+                                                            "key":  "Permissions-Policy",
+                                                            "value":  "camera=(), microphone=(), geolocation=(), payment=()"
+                                                        },
+                                                        {
+                                                            "key":  "X-Frame-Options",
+                                                            "value":  "SAMEORIGIN"
+                                                        }
+                                                    ]
+                                    }
+                                ],
+                    "redirects":  [
+                                      {
+                                          "source":  "/studio",
+                                          "destination":  "/Studio",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/creator",
+                                          "destination":  "/Hub",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/pod",
+                                          "destination":  "/POD",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/cardart",
+                                          "destination":  "/POD",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/blend",
+                                          "destination":  "/BlendVisualizer",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/cane",
+                                          "destination":  "/CaneDesigner",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/cropper",
+                                          "destination":  "/CropperTool",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/hub",
+                                          "destination":  "/Hub",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/blendvisualizer",
+                                          "destination":  "/BlendVisualizer",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/canedesigner",
+                                          "destination":  "/CaneDesigner",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/croppertool",
+                                          "destination":  "/CropperTool",
+                                          "type":  301
+                                      }
+                                  ],
+                    "rewrites":  [
+                                     {
+                                         "source":  "/Hub",
+                                         "destination":  "/Hub/index.html"
+                                     },
+                                     {
+                                         "source":  "/Studio",
+                                         "destination":  "/Studio/index.html"
+                                     },
+                                     {
+                                         "source":  "/POD",
+                                         "destination":  "/POD/index.html"
+                                     },
+                                     {
+                                         "source":  "/BlendVisualizer",
+                                         "destination":  "/BlendVisualizer/index.html"
+                                     },
+                                     {
+                                         "source":  "/CaneDesigner",
+                                         "destination":  "/CaneDesigner/index.html"
+                                     },
+                                     {
+                                         "source":  "/CropperTool",
+                                         "destination":  "/CropperTool/index.html"
+                                     }
+                                 ]
+                }
 }

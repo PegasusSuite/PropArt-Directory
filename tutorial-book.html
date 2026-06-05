@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" data-propart-app="directory">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow, noai, noimageai">
+  <meta name="description" content="PropArt™ Tutorial Book — compose a tutorial chapter from your project Vault assets and export PDF.">
+  <title>PropArt™ Tutorial Book</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#5d50c6">
+  <link rel="stylesheet" href="./propart-generic-theme.css">
+  <link rel="stylesheet" href="./propart-suite-chrome.css">
+  <style>
+    body { margin: 0; font-family: "Segoe UI", system-ui, sans-serif; color: #3d3366; background: #f8f5fc; }
+    main { max-width: 720px; margin: 0 auto; padding: 1.5rem 1.25rem 4rem; }
+    h1 { font-size: 1.6rem; margin: 0 0 0.35rem; }
+    .lead { color: #5c4f62; line-height: 1.55; margin: 0 0 1.25rem; }
+    .tb-toolbar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
+    .tb-btn {
+      padding: 0.55rem 1rem; border-radius: 999px; border: 1px solid rgba(93,80,198,0.35);
+      background: #fff; color: #5d50c6; font-weight: 700; cursor: pointer; font-size: 0.9rem;
+    }
+    .tb-btn--primary { background: #5d50c6; color: #fff; border-color: #5d50c6; }
+    .tb-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .tb-status { font-size: 0.85rem; color: #7a6b8a; min-height: 1.25rem; }
+    .tb-card {
+      background: #fff; border: 1px solid rgba(93,80,198,0.2); border-radius: 12px;
+      padding: 1rem 1.15rem; box-shadow: 0 4px 20px rgba(93,80,198,0.08);
+    }
+    .tb-empty { text-align: center; padding: 2rem 1rem; color: #7a6b8a; }
+    .tb-label { display: block; font-size: 0.78rem; font-weight: 700; color: #5d50c6; margin-bottom: 0.25rem; }
+    .tb-h { font-size: 1rem; margin: 1rem 0 0.5rem; color: #5d50c6; }
+    .tb-editor input, .tb-editor textarea {
+      width: 100%; box-sizing: border-box; margin-bottom: 0.5rem; padding: 0.45rem 0.55rem;
+      border: 1px solid #ddd; border-radius: 8px; font: inherit;
+    }
+    .tb-step { margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid #eee; }
+    .tb-step label { font-size: 0.75rem; font-weight: 800; color: #7a6b8a; }
+    .tb-meta { font-size: 0.78rem; color: #9a8aaa; margin-top: 1rem; }
+    .tb-row { display: grid; grid-template-columns: 1fr 120px; gap: 0.5rem; }
+    .project-pill {
+      display: inline-block; font-size: 0.8rem; background: #f0ebff; padding: 0.25rem 0.65rem;
+      border-radius: 999px; margin-bottom: 0.75rem;
+    }
+    a { color: #5d50c6; }
+  </style>
+</head>
+<body>
+  <script src="./propart-ux-level.js"></script>
+  <script src="./js/propart-platform-config.js"></script>
+  <script src="https://api.propart.app/client/propart-platform.js"></script>
+  <script src="./js/propart-platform-bridge.js"></script>
+  <script src="./js/propart-tutorial-book.js"></script>
+  <script src="./propart-suite-chrome.js" defer></script>
+  <script src="./propart-suite-bar-inject.js" defer></script>
+  <main>
+    <nav style="margin-bottom:1rem;font-size:0.9rem;">
+      <a href="./index.html">Directory</a> · <strong>Tutorial Book</strong>
+    </nav>
+    <img src="./PropArtTextLogoTagline-Final.svg" alt="PropArt™" width="360" style="max-width:100%;margin-bottom:1rem;">
+    <h1>Tutorial Book</h1>
+    <p class="lead">
+      Sketch → crop → blend → <strong>publish</strong>. Compose a tutorial chapter from your Project Vault,
+      edit steps, export PDF, and save back to Vault.
+    </p>
+    <p id="project-pill" class="project-pill" hidden></p>
+    <div class="tb-toolbar">
+      <button type="button" class="tb-btn" id="btn-compose">Compose from Vault</button>
+      <button type="button" class="tb-btn tb-btn--primary" id="btn-pdf" disabled>Download PDF</button>
+      <button type="button" class="tb-btn tb-btn--primary" id="btn-save" disabled>Save to Vault</button>
+    </div>
+    <p class="tb-status" id="status" role="status"></p>
+    <div class="tb-card" id="editor-mount">
+      <div class="tb-empty" id="empty-state">
+        Open with <code>?propart_project=proj_…</code> after saving work in Cropper, Blend, or Studio.<br><br>
+        <a href="./index.html">Start at Directory</a>
+      </div>
+    </div>
+    <footer style="margin-top:2rem;font-size:0.85rem;color:#7a6b8a;">
+      © Pegasus Suite LLC · PropArt™ · Every export lands in Vault.
+    </footer>
+  </main>
+  <script>
+    (function () {
+      var projectId = null;
+      var draft = null;
+      var readDraft = null;
+      var status = document.getElementById('status');
+      var mount = document.getElementById('editor-mount');
+      var empty = document.getElementById('empty-state');
+      var pill = document.getElementById('project-pill');
+      var btnPdf = document.getElementById('btn-pdf');
+      var btnSave = document.getElementById('btn-save');
+
+      function setStatus(msg, ok) {
+        status.textContent = msg || '';
+        status.style.color = ok === false ? '#b03030' : '#7a6b8a';
+      }
+
+      function enableActions(on) {
+        btnPdf.disabled = !on;
+        btnSave.disabled = !on;
+      }
+
+      function initProject() {
+        var q = new URLSearchParams(location.search);
+        projectId = q.get('propart_project') || (window.PropArtPlatform && window.PropArtPlatform.getActiveProjectId());
+        if (!projectId) return;
+        if (window.PropArtPlatform) window.PropArtPlatform.setActiveProjectId(projectId);
+        pill.hidden = false;
+        pill.textContent = 'Project: ' + projectId;
+        empty.style.display = 'none';
+      }
+
+      function showDraft(d) {
+        draft = d;
+        empty.style.display = 'none';
+        readDraft = window.PropArtTutorialBook.renderEditor(mount, draft, function (updated) {
+          draft = updated;
+        });
+        enableActions(true);
+      }
+
+      document.getElementById('btn-compose').addEventListener('click', function () {
+        if (!projectId) {
+          setStatus('Add ?propart_project= to the URL or save work in another app first.', false);
+          return;
+        }
+        setStatus('Composing from Vault…');
+        window.PropArtTutorialBook.compose(projectId)
+          .then(function (r) {
+            showDraft(r.draft);
+            setStatus('Composed from ' + (r.draft.sources || []).length + ' Vault asset(s). Edit, then PDF or Save.');
+          })
+          .catch(function (e) {
+            setStatus(e.message || 'Compose failed', false);
+          });
+      });
+
+      btnPdf.addEventListener('click', function () {
+        if (!draft || !readDraft) return;
+        var d = readDraft();
+        setStatus('Building PDF…');
+        window.PropArtTutorialBook.exportPdf(d)
+          .then(function () {
+            setStatus('PDF downloaded.');
+          })
+          .catch(function (e) {
+            setStatus(e.message || 'PDF failed', false);
+          });
+      });
+
+      btnSave.addEventListener('click', function () {
+        if (!projectId || !readDraft) return;
+        var d = readDraft();
+        setStatus('Saving to Vault…');
+        window.PropArtTutorialBook.saveDraft(projectId, d)
+          .then(function (r) {
+            setStatus('Saved to Vault · ' + r.vaultAssetId);
+          })
+          .catch(function (e) {
+            setStatus(e.message || 'Save failed', false);
+          });
+      });
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initProject);
+      } else {
+        initProject();
+      }
+    })();
+  </script>
+</body>
+</html>
