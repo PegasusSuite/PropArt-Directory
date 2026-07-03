@@ -14,6 +14,21 @@ Every suite app should expose **one** canonical link to the **PropArt Directory*
 
 Hosted apps **cannot** open `file://` from `https://` (browser security). The shared script `propart-suite-directory.js` picks `PUBLIC` vs `LOCAL_FILE` automatically.
 
+## Short paths (Directory Hosting → suite apps)
+
+When **`www.propart.app`** or **`propart-directory.web.app`** serves this repo, **`firebase.json`** **301** redirects these paths to each Firebase app (see **`SESSION_HANDOFF.md`** in **PropArt-Creator-Space**):
+
+| Path | App |
+|------|-----|
+| `/creator` | Creator Space |
+| `/studio` | Studio |
+| `/cropper` | Cropper |
+| `/blend` or `/color-blend` | Color Blend |
+| `/cane` | Cane Design |
+| `/pod` or `/cardart` | POD CardArt |
+
+**`index.html`** carousel/grid CTAs use these **relative** paths so links work on the Directory host before and after custom DNS. Footer **About / Shop / Pricing** still deep-link to **`propart-creator.web.app`** (no path redirect for those routes).
+
 ## Favicon and lockups
 
 | Context | Use |
