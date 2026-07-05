@@ -30,17 +30,21 @@ You have received a **complete, production-ready business strategy system** with
 
 ## 📚 All Documentation Files
 
-### Core Documentation (6 files)
+### Core Documentation
 
-| File | Purpose | Pages | Read Time | Next Click |
-|------|---------|-------|-----------|-----------|
-| 🎯 **START_HERE.md** | Begin here—quick overview | 10 | 10 min | Go read this |
-| 🗺️ **NAVIGATION_GUIDE.md** | Where everything is + reading paths | 8 | 5 min | Find your path |
-| 📊 **QUICK_REFERENCE.md** | Daily use + email templates + checklists | 12 | 15 min | Use for execution |
-| 📚 **BUSINESS_STRATEGY_GUIDE.md** | Complete strategy details for planning | 16 | 30 min | For deep dives |
-| 🔧 **TECHNICAL_DOCS.md** | Developer reference + maintenance guide | 14 | 30 min | If updating code |
-| ✅ **IMPLEMENTATION_COMPLETE.md** | Verification checklist + status | 8 | 10 min | Confirm it works |
-| 📦 **DELIVERABLES.md** | What you got + how to use it | 12 | 20 min | Understand scope |
+| File | Purpose | Read Time |
+|------|---------|-----------|
+| 🎯 **START_HERE.md** | Begin here—quick overview | 10 min |
+| 🗺️ **NAVIGATION_GUIDE.md** | Where everything is + reading paths | 5 min |
+| 📊 **QUICK_REFERENCE.md** | Daily use + email templates + checklists | 15 min |
+| 📚 **BUSINESS_STRATEGY_GUIDE.md** | Complete strategy + platform alignment (v2.1) | 30 min |
+| 🔧 **TECHNICAL_DOCS.md** | Developer reference + maintenance guide | 30 min |
+| ✅ **IMPLEMENTATION_COMPLETE.md** | Verification checklist + status | 10 min |
+| 📦 **DELIVERABLES.md** | What you got + how to use it | 20 min |
+| 🎨 **BRAND_SYSTEM.md** | Design tokens + cross-app brand rules | 15 min |
+| 🗺️ **BRAND_NAMING_MAP.md** | Canonical names + legacy redirects | 5 min |
+| 📄 **SUITE_PLATFORM_WHITEPAPER.md** | Suite continuity + backlog (internal) | 15 min |
+| 💰 **MONETIZATION_NEXT_SPRINT_WHITEPAPER.md** | Pricing/packaging sprint brief | 20 min |
 
 ---
 
@@ -100,7 +104,7 @@ IMPLEMENTATION_COMPLETE.md (10 min)
     ↓
 TECHNICAL_DOCS.md (30 min)
     ↓
-Review thirdTime.html code (20 min)
+Review index.html code (20 min)
     ↓
 Ready to maintain/update
 
@@ -236,7 +240,7 @@ Best for: Mastery and planning everything
 ### How to Access the 3 Modals from Your App
 
 ```
-Step 1: Open app (thirdTime.html)
+Step 1: Open app (index.html)
 Step 2: Scroll to "Quick Features" section
 Step 3: Click "💎 Pricing Plans" card
 Step 4: Now you're in the pricing modal with 3 buttons:
@@ -337,7 +341,7 @@ You can also navigate:
 **Essential Reading:**
 1. IMPLEMENTATION_COMPLETE.md (verification)
 2. TECHNICAL_DOCS.md (complete reference)
-3. thirdTime.html (code review)
+3. index.html (code review)
 
 **Tasks You Can Do:**
 - Replace Stripe publishable key
@@ -505,7 +509,7 @@ Use app   Execute  Pitch     Maintain   Success!
 - Advisor: BUSINESS_STRATEGY_GUIDE.md
 
 ### Keep in Your Project Root
-All files are in `ThirdTime/` folder:
+All files live in **`Hub/`** (PropArt-Directory) or **`craftinardor/`** (Creator Space):
 - Easy to version control
 - Easy to share
 - Always with your code
@@ -517,7 +521,7 @@ All files are in `ThirdTime/` folder:
 You now have:
 
 ✅ **3 Professional Modals** in your app
-✅ **7 Comprehensive Documents** (30,000+ words)
+✅ **14+ Documentation Files** (30,000+ words)
 ✅ **Complete 18-Month Growth Plan** ($250K → $25M+)
 ✅ **5 Quick Wins** for immediate revenue (+$55K/month)
 ✅ **Email Templates** for B2B outreach
@@ -546,7 +550,7 @@ You now have:
 ---
 
 **Master Index Version:** 1.0
-**Date Created:** December 2025
+**Date Created:** July 2026
 **Status:** ✅ Complete & Ready
 
 🚀 **Choose your path above and start today!**

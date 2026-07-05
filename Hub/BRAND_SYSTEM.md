@@ -131,6 +131,3 @@ When updating this system:
 3. Apply changes in one app as reference implementation.
 4. Roll out to other apps using the same classes/tokens.
 
-## Support PropArt™
-
-Tips and ongoing support: **[Ko-fi — PropArt Suite](https://ko-fi.com/propartsuite)**.

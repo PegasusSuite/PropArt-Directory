@@ -2,7 +2,9 @@
 
 ## System Overview
 
-This document describes the technical implementation of the three-modal business strategy system integrated into thirdTime.html.
+This document describes the technical implementation of the three-modal business strategy system integrated into **`index.html`** (PropArt™ Creator Space).
+
+**Note (July 2026):** Line references may predate the Creator Space migration from legacy `thirdTime.html`. Search by function name when a line number no longer matches.
 
 ---
 
@@ -266,7 +268,7 @@ document.getElementById('growthModal')?.addEventListener('click', function(e) {
 });
 ```
 
-**Location:** End of thirdTime.html, before closing `</script>` tag (around line 5700-5720)
+**Location:** End of index.html, before closing `</script>` tag (around line 5700-5720)
 
 **Function Behaviors:**
 - `openXxxModal()`: Sets display to 'flex' (shows modal centered)
@@ -734,7 +736,7 @@ document.addEventListener('keydown', function(e) {
 ---
 
 **Document Version:** 1.0  
-**Last Updated:** December 2025  
+**Last Updated:** July 2026  
 **Status:** Production Ready  
 **Maintained By:** [Your Team]  
 **Next Review:** [Quarterly]

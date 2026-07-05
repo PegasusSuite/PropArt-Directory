@@ -216,6 +216,6 @@ Sell speed-to-market and business readiness ("from one photo to clean product pa
 
 The current suite switcher model is directionally correct: focused tools with unified navigation and account continuity.
 
-Reference: [PropArt Suite Switcher](https://craft-inardor.web.app/suite.html)
+Reference: [PropArt Suite Switcher](https://www.craftinardor.com/suite.html)
 
 This whitepaper formalizes the next sprint execution path so monetization and brand perception rise together.

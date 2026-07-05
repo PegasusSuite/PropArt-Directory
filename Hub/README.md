@@ -8,7 +8,7 @@ Your application now contains a **complete, production-ready business strategy s
 
 ## 📦 What You Received
 
-### ✅ In Your App (thirdTime.html)
+### ✅ In Your App (index.html)
 
 **Three Integrated Modals:**
 
@@ -139,7 +139,7 @@ Most people should start with one of these:
 4. Then pick your specific guide
 
 ### File Location
-All files are in: `c:\Users\pilon\OneDrive\Desktop\ClayWorks\ThirdTime\`
+All files are in: `Hub/`
 
 ### Files List
 ```
@@ -151,7 +151,7 @@ All files are in: `c:\Users\pilon\OneDrive\Desktop\ClayWorks\ThirdTime\`
 ✅ TECHNICAL_DOCS.md                     ← For developers
 ✅ IMPLEMENTATION_COMPLETE.md            ← Verification
 ✅ DELIVERABLES.md                       ← Scope overview
-✅ thirdTime.html                        ← Your app with 3 modals
+✅ index.html                        ← Your app with 3 modals
 ```
 
 ---
@@ -272,7 +272,7 @@ Track these monthly:
 
 Everything is ready to use:
 
-- [x] All 3 modals integrated in thirdTime.html
+- [x] All 3 modals integrated in index.html
 - [x] All 8 documentation files created
 - [x] Pricing system with 4 tiers
 - [x] Acquisition valuation framework
@@ -293,7 +293,7 @@ Everything is ready to use:
 
 ```
 Total Deliverables:
-├─ 1 Enhanced Application (thirdTime.html - 6,655 lines)
+├─ 1 Enhanced Application (index.html - 6,655 lines)
 │  └─ 3 Professional Modals (~1,200 lines)
 ├─ 8 Comprehensive Documentation Files
 │  └─ 30,000+ Words Total
@@ -331,24 +331,26 @@ Total Deliverables:
 
 **PURPOSE:** This section contains comprehensive technical details, architecture info, component lists, and data structures needed to completely rebuild the application if something breaks.
 
+**Note (July 2026):** The live app is **`index.html`** (PropArt™ Creator Space). Line numbers below may predate the merge from legacy `thirdTime.html`—search by function name in the editor when lines drift.
+
 ### 1. COMPLETE COMPONENT & FEATURE INVENTORY
 
 #### **Core Application Features**
 ```
-✅ Admin Authentication System (Lines 5850-5980 in thirdTime.html)
+✅ Admin Authentication System (Lines 5850-5980 in index.html)
    - Admin Credentials: admin@latrese.com / LatresesStudio2026!
    - Features: Full feature bypass, role-based access control
    - Storage: localStorage (adminLoggedIn, membershipTier, adminStatus)
    - Status Indicator: Fixed top-right corner with logout button
 
-✅ Mobile Detection System (Lines 6372-6510 in thirdTime.html)
+✅ Mobile Detection System (Lines 6372-6510 in index.html)
    - Detects phones vs tablets vs desktop
    - Auto-applies data-device="phone|tablet|desktop" attribute
    - Responsive pill container positioning
    - Automatic "Open on Desktop" button on mobile
    - Re-applies on orientationchange event
 
-✅ Payment & Pricing System (Lines 3669-3770 in thirdTime.html)
+✅ Payment & Pricing System (Lines 3669-3770 in index.html)
    - 4 Membership Tiers:
      * FREE: $0/mo, basic features
      * PRO: $29/mo, premium content
@@ -361,7 +363,7 @@ Total Deliverables:
    - Stripe Integration Hooks (ready for live keys)
    - localStorage persistence: membershipTier
 
-✅ Shopping Cart System (Lines 3645-3820 in thirdTime.html)
+✅ Shopping Cart System (Lines 3645-3820 in index.html)
    - Faerie-themed sliding panel (right side)
    - Cart items with remove functionality
    - Checkout button with payment integration
@@ -640,7 +642,7 @@ Client-Side (localStorage):
 
 #### **Phase 1: Core Infrastructure**
 - [ ] Set up Firebase project (Firestore, Authentication)
-- [ ] Initialize thirdTime.html with Firebase SDK
+- [ ] Initialize index.html with Firebase SDK
 - [ ] Configure authentication (Email/Password)
 - [ ] Create Firestore collections (users, purchases, coupons)
 - [ ] Implement Mobile Detection system (lines 6372-6510)
@@ -686,7 +688,7 @@ Client-Side (localStorage):
 ### 5. CRITICAL FILE LOCATIONS & LINE NUMBERS
 
 ```
-File: c:\Users\pilon\OneDrive\Desktop\ClayWorks\ThirdTime\thirdTime.html
+File: Hub/index.html
 
 ADMIN SYSTEM
 ├─ Lines 5850-5980: Full admin authentication code
@@ -944,7 +946,7 @@ All answers are in the 8 documentation files provided. Use INDEX.md to find spec
 
 ---
 
-**Created:** December 2025  
+**Created:** July 2026  
 **Version:** 1.0 Complete  
 **Time Investment to 100x:** 18 months  
 **Your Next Step:** Open INDEX.md

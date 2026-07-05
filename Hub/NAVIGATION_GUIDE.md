@@ -3,23 +3,25 @@
 ## 📂 File Organization
 
 ```
-ThirdTime/
-├── thirdTime.html                    ← Main application (6,655 lines)
-│   ├── 💎 Pricing Modal (lines 3669-3770)
-│   ├── 💰 Valuation Modal (lines 3970-4160)
-│   └── 🚀 Growth Roadmap Modal (lines 3777-3970)
+Hub/  (PropArt-Directory repo) · craftinardor/ (Creator Space repo)
+├── index.html                    ← PropArt™ Creator Space main SPA
+│   ├── 💎 Pricing Modal
+│   ├── 💰 Valuation Modal
+│   └── 🚀 Growth Roadmap Modal
 │
 ├── 📖 DOCUMENTATION FILES
-│   ├── 🎯 START_HERE.md              ← READ THIS FIRST (10 min)
-│   ├── 📊 QUICK_REFERENCE.md         ← Daily use, templates
-│   ├── 📚 BUSINESS_STRATEGY_GUIDE.md ← Deep dive reference
-│   ├── 🔧 TECHNICAL_DOCS.md          ← For developers
-│   ├── ✅ IMPLEMENTATION_COMPLETE.md ← Verification checklist
-│   └── 📦 DELIVERABLES.md            ← What you got (this file family)
+│   ├── 🎯 START_HERE.md / 0_START_HERE_FIRST.txt
+│   ├── 📑 INDEX.md / NAVIGATION_GUIDE.md
+│   ├── 📊 QUICK_REFERENCE.md
+│   ├── 📚 BUSINESS_STRATEGY_GUIDE.md
+│   ├── 🔧 TECHNICAL_DOCS.md
+│   ├── ✅ IMPLEMENTATION_COMPLETE.md / DELIVERABLES.md
+│   ├── 🎨 BRAND_SYSTEM.md / BRAND_NAMING_MAP.md / ARDOR_NAMING_OPTIONS.md
+│   ├── 📄 SUITE_PLATFORM_WHITEPAPER.md / MONETIZATION_NEXT_SPRINT_WHITEPAPER.md
+│   └── llms.txt (public LLM/crawler summary)
 │
-├── script.js                          ← Business logic
-├── service-worker.js                  ← PWA service worker
-├── manifest.json                      ← PWA manifest
+├── suite/index.html               ← Directory of Applications
+├── script.js · community.mjs · theme.css
 │
 └── other files...
 ```
@@ -367,7 +369,7 @@ Daily reference   Investor pitch      Code maintenance
         ↓                 ↓                 ↓
 IMPLEMENTATION_COMPLETE.md (Verification)
          ↓
-thirdTime.html (Live app with 3 modals)
+index.html (Live app with 3 modals)
 ```
 
 ---
@@ -409,7 +411,7 @@ thirdTime.html (Live app with 3 modals)
 ### Developer / Tech Team
 1. IMPLEMENTATION_COMPLETE.md (overview)
 2. TECHNICAL_DOCS.md (all details)
-3. Review thirdTime.html code
+3. Review index.html code
 
 **Total: 60 minutes**
 
@@ -587,7 +589,7 @@ After using these documents, you will:
 ---
 
 **Navigation Guide Version:** 1.0  
-**Last Updated:** December 2025  
+**Last Updated:** July 2026  
 **Status:** ✅ Complete
 
 🗺️ **You now know where everything is!**

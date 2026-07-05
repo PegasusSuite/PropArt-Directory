@@ -6,7 +6,7 @@
 
 ## 1. Purpose
 
-This document collects **continuity**, **brand/domain**, and **platform** directions for the PropArt™ suite. The live [Directory of Applications](https://craft-inardor.web.app/suite) page stays a **minimal launcher**; strategy and backlog stay in this Markdown file outside the public site surface.
+This document collects **continuity**, **brand/domain**, and **platform** directions for the PropArt™ suite. The live [Directory of Applications](https://www.craftinardor.com/suite) page stays a **minimal launcher**; strategy and backlog stay in this Markdown file outside the public site surface.
 
 ## 2. Suite Vault (continuity vision)
 
@@ -50,7 +50,7 @@ Prioritize by impact vs. integration cost; not all apps need every item on day o
 
 ## 5. References
 
-- Live launcher: https://craft-inardor.web.app/suite  
+- Live launcher: https://www.craftinardor.com/suite  
 - Source Markdown (this file): `ClayWorks/craftinardor/SUITE_PLATFORM_WHITEPAPER.md`
 
 ---

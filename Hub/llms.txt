@@ -1,12 +1,16 @@
-# Craft: In Ardor — llms.txt
-# https://github.com/PegasusSuite/craftinardor
+# PropArt™ Creator Space — llms.txt
+# https://github.com/PegasusSuite/PropArt-Creator-Space
 
-Site: Quirky crafts, polymer clay shop, games, courses, and community.
+Site: PropArt™ polymer-clay workflows, booth shop, games, courses, and community.
 Primary audience: hobbyists and makers shopping handmade supplies and digital resources.
 
 ## Key URLs (when deployed)
-- / — main SPA (tabs include About, Platform, Community, Shop, Courses, Games, Events, Resources, FAQ, Contact; Admin when owner)
-- /products.html — product catalog (if present on host)
+- / — main SPA (tabs include Home, How it works, Examples, The Shop, Premium Tools; Admin when owner)
+- /products.html — PropArt™ booth catalog (3 handiwork SKUs + digital guides)
+- /booth-handout.html — print-ready customer handout (QR + SKU list)
+- /booth-table-sign.html — large-format fair-table sign
+- /suite/index.html — Directory of Applications (Cropper, Studio, Color Blend, etc.)
+- /about.html — Pegasus Suite LLC mission
 
 ## Contact
 - Public inbox: contact@latrese.world  
