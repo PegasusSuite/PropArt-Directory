@@ -45,15 +45,15 @@ The **modals, phases, and KPI tables** below remain the long-range planning narr
 
 - **Sticky section tabs** use a **compact** bar (tighter padding, `z-index` so it stays above content). **Mobile:** tabs stay on **one horizontal row** with scroll—avoiding a tall two-row strip that pushed hero content down.
 - **Shorter vertical rhythm** across header, intro trust strip, main column, section titles, and platform cards reduces **page scroll** without hiding primary actions.
-- **`scroll-padding-top`** is tuned to the shorter bar so in-page anchors and focus targets don’t sit under the sticky strip.
+- **`scroll-padding-top`** is tuned to the shorter bar so in-page anchors and focus targets don't sit under the sticky strip.
 - Removed a failed top-nav injection that shifted the page layout unexpectedly; kept shared-nav strategy as opt-in for future phases.
 
 ### Navigation, contact, and admin
 
 - The duplicate **Email** tab was removed from the public tab strip; **Contact** and newsletter paths remain. The full **Email** marketing tab content is still available via **Admin** when signed in as ops.
 - **Public inbox** for business contact: **contact@latrese.world** (also shown in **Admin → Dashboard** and Email Marketing).
-- **Cart QA (“smoke test”)** shortcuts appear on **Platform** for **guests** only; **signed-in** members use **Profile → Settings → Cart smoke tests** so the main surface stays clean.
-- **Owner session** is indicated by a **green dot + “In ardor.”** control (opens admin), replacing a large bottom banner.
+- **Cart QA ("smoke test")** shortcuts appear on **Platform** for **guests** only; **signed-in** members use **Profile → Settings → Cart smoke tests** so the main surface stays clean.
+- **Owner session** is indicated by a **green dot + "In ardor."** control (opens admin), replacing a large bottom banner.
 - Pricing strategy controls are now **owner/admin scoped** in the public experience:
   - valuation pricing tab
   - valuation tab content
@@ -417,7 +417,7 @@ Use this subsection as a living log: fold vetted ideas into the main sections ab
 
 ### Logged suggestion
 
-- **First-run usefulness appendix** — Keep an explicit “day-one visitor” lens in the white paper (and mirror it in the product): what a new visitor can *do*, *trust*, and *complete* in under five minutes without confusion. Revisit this list each release.
+- **First-run usefulness appendix** — Keep an explicit "day-one visitor" lens in the white paper (and mirror it in the product): what a new visitor can *do*, *trust*, and *complete* in under five minutes without confusion. Revisit this list each release.
 
 ### Newly completed enhancements (v2.0 update log)
 
@@ -446,18 +446,18 @@ Use this subsection as a living log: fold vetted ideas into the main sections ab
 
 ### 14 powerful ways to make the site useful on the first run
 
-1. **One sentence, one action** — Hero states who it’s for and offers a single primary CTA (e.g. shop, sample class, or newsletter).
-2. **3-step “Start here” path** — Numbered strip or Quick Jump: browse → try → buy/contact.
+1. **One sentence, one action** — Hero states who it's for and offers a single primary CTA (e.g. shop, sample class, or newsletter).
+2. **3-step "Start here" path** — Numbered strip or Quick Jump: browse → try → buy/contact.
 3. **Browse before login** — Let guests explore shop, courses, and resources; require sign-in only at cart, save, or checkout.
 4. **Instant credibility** — Above the fold: short trust line (secure checkout, reviews count, or guarantee) without cluttering the hero.
 5. **Search that works** — Prominent search with filters (product type, price, topic) so the first query returns something good.
 6. **One irresistible lead magnet** — Single newsletter or resource offer with a clear benefit and one field (email).
 7. **Frictionless contact** — Contact + FAQ one click away; expected response time or channel (email/social) stated.
 8. **Try before pay** — Free mini-lesson, PDF, or game level so the first visit delivers value without payment.
-9. **Cart and intent persistence** — Cart / wishlist / “continue where you left off” across sessions (e.g. Firebase sync when signed in).
+9. **Cart and intent persistence** — Cart / wishlist / "continue where you left off" across sessions (e.g. Firebase sync when signed in).
 10. **Mobile-first clarity** — Large tap targets, no overlapping UI, readable type; primary actions reachable with one thumb.
 11. **Fast first load** — Defer heavy scripts, optimize hero assets so Time to Interactive feels snappy on mid-tier phones.
-12. **Social proof in context** — Short testimonial or “as seen / used by” near pricing or shop, not buried at the bottom only.
+12. **Social proof in context** — Short testimonial or "as seen / used by" near pricing or shop, not buried at the bottom only.
 13. **Accessible basics** — Skip link, visible focus, button labels; avoids losing first-time users who rely on keyboard or screen readers.
 14. **Measure the first run** — One analytics funnel (land → key CTA → signup or purchase) so you can improve the first visit with data.
 
@@ -478,7 +478,7 @@ Use this subsection as a living log: fold vetted ideas into the main sections ab
 
 ### Creator platform (parametric + AR)
 - **SVG → 3D** cutter pipeline (Three.js): configurable width, studio-style edge/wall/handle defaults, **STL** download, **GLB** for **AR** (`model-viewer`).
-- **Instant quote** heuristic for merchandising; cart integration for “custom cutter — platform quote”.
+- **Instant quote** heuristic for merchandising; cart integration for "custom cutter — platform quote".
 - **Provenance**: SHA-256 of STL; optional **Firestore** `certificates` chain (`parentHash` → `blockHash`) for transparency (not a public blockchain; can be anchored on-chain later).
 
 ### Community pillars (implemented)

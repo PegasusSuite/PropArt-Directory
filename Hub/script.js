@@ -193,7 +193,8 @@ function wireContactTabForm() {
             btn.dataset._prevHtml = btn.innerHTML;
             btn.innerHTML = '<i class=\"fas fa-spinner fa-spin\"></i> Sending…';
         }
-        fetch('/api/submitSiteContact', {
+        var _fetchContact = typeof window !== 'undefined' && window.__fetchWithAppCheck ? window.__fetchWithAppCheck : fetch;
+        _fetchContact('/api/submitSiteContact', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
             credentials: 'same-origin',
@@ -1147,6 +1148,10 @@ const socialClicks = new Set();
 let visitCount = parseInt(localStorage.getItem('visitCount') || '0', 10) + 1;
 localStorage.setItem('visitCount', visitCount.toString());
 
+let materials = [];
+let timerInterval = null;
+let timerSeconds = 0;
+let timerRunning = false;
 let currentBlogPost = null;
 let blogFiles = [];
 
@@ -1455,7 +1460,7 @@ function unlockBadge(badgeId) {
     }
 }
 
-/** Roll out purchase XP / “First purchase” badge only after `site/metrics.memberCount` ≥ this (see index.html listener). */
+/** Roll out purchase XP / "First purchase" badge only after `site/metrics.memberCount` ≥ this (see index.html listener). */
 function craftPurchaseBadgesRolloutMet() {
     try {
         if (window.__CRAFT_FORCE_PURCHASE_BADGES === true) return true;
@@ -1608,6 +1613,401 @@ function updateBadgesPanel() {
         container.appendChild(categoryDiv);
     }
 }
+
+// ========================================
+// PREMIUM CALCULATOR FUNCTIONS
+// ========================================
+function calculateClayCost() {
+    const price = parseFloat(document.getElementById('clayPrice').value);
+    const oz = parseFloat(document.getElementById('clayOz').value);
+    const resultDiv = document.getElementById('costResult');
+    
+    if (isNaN(price) || isNaN(oz)) {
+        notifyInline('Please enter valid numbers!');
+        return;
+    }
+    
+    const total = (price * oz).toFixed(2);
+    resultDiv.innerHTML = 'Total Cost: $' + total;
+    resultDiv.style.display = 'block';
+    
+    unlockBadge('tool-user');
+}
+
+function mixColors() {
+    const color1 = document.getElementById('color1').value;
+    const color2 = document.getElementById('color2').value;
+    
+    const r1 = parseInt(color1.substr(1, 2), 16);
+    const g1 = parseInt(color1.substr(3, 2), 16);
+    const b1 = parseInt(color1.substr(5, 2), 16);
+    
+    const r2 = parseInt(color2.substr(1, 2), 16);
+    const g2 = parseInt(color2.substr(3, 2), 16);
+    const b2 = parseInt(color2.substr(5, 2), 16);
+    
+    const rMix = Math.round((r1 + r2) / 2);
+    const gMix = Math.round((g1 + g2) / 2);
+    const bMix = Math.round((b1 + b2) / 2);
+    
+    const mixedColor = '#' + 
+        rMix.toString(16).padStart(2, '0') +
+        gMix.toString(16).padStart(2, '0') +
+        bMix.toString(16).padStart(2, '0');
+    
+    document.getElementById('mixedColor').style.background = mixedColor;
+    
+    unlockBadge('color-mixer');
+}
+
+function startTimer() {
+    if (timerRunning) return;
+    
+    timerRunning = true;
+    timerInterval = setInterval(function() {
+        timerSeconds++;
+        updateTimerDisplay();
+    }, 1000);
+    
+    unlockBadge('time-tracker');
+}
+
+function pauseTimer() {
+    timerRunning = false;
+    if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+    }
+}
+
+function resetTimer() {
+    pauseTimer();
+    timerSeconds = 0;
+    updateTimerDisplay();
+}
+
+function updateTimerDisplay() {
+    const hours = Math.floor(timerSeconds / 3600);
+    const minutes = Math.floor((timerSeconds % 3600) / 60);
+    const seconds = timerSeconds % 60;
+    
+    const display = 
+        hours.toString().padStart(2, '0') + ':' +
+        minutes.toString().padStart(2, '0') + ':' +
+        seconds.toString().padStart(2, '0');
+    
+    const displayEl = document.getElementById('timerDisplay');
+    if (displayEl) {
+        displayEl.textContent = display;
+    }
+}
+
+function convertTemp() {
+    const temp = parseFloat(document.getElementById('tempInput').value);
+    const from = document.getElementById('tempFrom').value;
+    const resultDiv = document.getElementById('tempResult');
+    
+    if (isNaN(temp)) {
+        notifyInline('Please enter a valid temperature!');
+        return;
+    }
+    
+    let result;
+    if (from === 'f') {
+        result = ((temp - 32) * 5 / 9).toFixed(1);
+        resultDiv.innerHTML = temp + '°F = ' + result + '°C';
+    } else {
+        result = (temp * 9 / 5 + 32).toFixed(1);
+        resultDiv.innerHTML = temp + '°C = ' + result + '°F';
+    }
+    
+    resultDiv.style.display = 'block';
+}
+
+function addMaterial() {
+    const name = document.getElementById('materialName').value;
+    const cost = parseFloat(document.getElementById('materialCost').value);
+    
+    if (!name || isNaN(cost)) {
+        notifyInline('Please enter material name and cost!');
+        return;
+    }
+    
+    materials.push({ name: name, cost: cost });
+    
+    document.getElementById('materialName').value = '';
+    document.getElementById('materialCost').value = '';
+    
+    updateMaterialList();
+}
+
+function updateMaterialList() {
+    const listDiv = document.getElementById('materialList');
+    const totalDiv = document.getElementById('materialTotal');
+    
+    if (materials.length === 0) {
+        listDiv.innerHTML = '<em>No materials added yet</em>';
+        totalDiv.style.display = 'none';
+        return;
+    }
+    
+    let html = '<strong>Materials:</strong><br>';
+    let total = 0;
+    
+    materials.forEach(function(mat, index) {
+        html += (index + 1) + '. ' + mat.name + ': $' + mat.cost.toFixed(2) + '<br>';
+        total += mat.cost;
+    });
+    
+    listDiv.innerHTML = html;
+    totalDiv.innerHTML = 'Total Materials: $' + total.toFixed(2);
+    totalDiv.style.display = 'block';
+}
+
+function calculateProfit() {
+    const materialCost = parseFloat(document.getElementById('materialCostProfit').value);
+    const hours = parseFloat(document.getElementById('laborHours').value);
+    const rate = parseFloat(document.getElementById('hourlyRate').value);
+    const resultDiv = document.getElementById('profitResult');
+    
+    if (isNaN(materialCost) || isNaN(hours) || isNaN(rate)) {
+        notifyInline('Please fill in all fields!');
+        return;
+    }
+    
+    const laborCost = hours * rate;
+    const totalCost = materialCost + laborCost;
+    const suggestedPrice = (totalCost * 2).toFixed(2);
+    
+    resultDiv.innerHTML = 
+        'Material: $' + materialCost.toFixed(2) + '<br>' +
+        'Labor: $' + laborCost.toFixed(2) + '<br>' +
+        '<strong>Total Cost: $' + totalCost.toFixed(2) + '</strong><br>' +
+        '<strong>Suggested Price: $' + suggestedPrice + '</strong>';
+    resultDiv.style.display = 'block';
+}
+
+// ========================================
+// PDF EXPORT FUNCTIONS
+// ========================================
+function saveColorRecipePDF() {
+    const color1 = document.getElementById('color1')?.value;
+    const color2 = document.getElementById('color2')?.value;
+    const mixedColorEl = document.getElementById('mixedColor');
+    
+    if (!color1 || !color2 || !mixedColorEl || !mixedColorEl.style.background) {
+        notifyInline('❌ Please mix colors first before saving to PDF!');
+        return;
+    }
+    
+    const mixedColor = mixedColorEl.style.background;
+    
+    // Check if jsPDF is available
+    if (typeof window.jspdf === 'undefined') {
+        notifyInline('❌ PDF library not loaded. Please refresh the page and try again.');
+        return;
+    }
+    
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    
+    // Title
+    doc.setFontSize(22);
+    doc.setTextColor(155, 123, 168);
+    doc.text('🎨 Color Mixing Recipe', 105, 20, { align: 'center' });
+    
+    // Date
+    doc.setFontSize(10);
+    doc.setTextColor(100, 100, 100);
+    doc.text('Created: ' + new Date().toLocaleDateString(), 105, 28, { align: 'center' });
+    
+    // Recipe Section
+    doc.setFontSize(14);
+    doc.setTextColor(0, 0, 0);
+    doc.text('Recipe:', 20, 45);
+    
+    // Color 1
+    doc.setFontSize(12);
+    doc.text('Color 1:', 30, 60);
+    doc.setFillColor(color1);
+    doc.rect(70, 53, 30, 10, 'F');
+    doc.text(color1.toUpperCase(), 105, 60);
+    
+    // Plus sign
+    doc.setFontSize(16);
+    doc.text('+', 95, 80);
+    
+    // Color 2
+    doc.setFontSize(12);
+    doc.text('Color 2:', 30, 95);
+    doc.setFillColor(color2);
+    doc.rect(70, 88, 30, 10, 'F');
+    doc.text(color2.toUpperCase(), 105, 95);
+    
+    // Equals sign
+    doc.setFontSize(16);
+    doc.text('=', 95, 115);
+    
+    // Mixed Result
+    doc.setFontSize(12);
+    doc.text('Mixed Color:', 30, 130);
+    
+    // Extract RGB from mixed color
+    const rgb = mixedColor.match(/\d+/g);
+    if (rgb && rgb.length >= 3) {
+        doc.setFillColor(parseInt(rgb[0]), parseInt(rgb[1]), parseInt(rgb[2]));
+        doc.rect(70, 123, 30, 10, 'F');
+        
+        const hexMixed = '#' + 
+            parseInt(rgb[0]).toString(16).padStart(2, '0') +
+            parseInt(rgb[1]).toString(16).padStart(2, '0') +
+            parseInt(rgb[2]).toString(16).padStart(2, '0');
+        doc.text(hexMixed.toUpperCase(), 105, 130);
+    }
+    
+    // Notes section
+    doc.setFontSize(14);
+    doc.text('Notes:', 20, 160);
+    doc.setFontSize(10);
+    doc.setDrawColor(200, 200, 200);
+    doc.line(20, 168, 190, 168);
+    doc.line(20, 178, 190, 178);
+    doc.line(20, 188, 190, 188);
+    doc.line(20, 198, 190, 198);
+    
+    // Tips section
+    doc.setFontSize(11);
+    doc.setTextColor(80, 80, 80);
+    doc.text('💡 Tips:', 20, 220);
+    doc.setFontSize(9);
+    doc.text('• Mix equal parts for best results', 25, 230);
+    doc.text('• Test on scrap clay first', 25, 238);
+    doc.text('• Keep track of ratios for consistency', 25, 246);
+    
+    // Footer
+    doc.setFontSize(8);
+    doc.setTextColor(150, 150, 150);
+    doc.text((typeof window.getUserDisplayName === 'function' ? window.getUserDisplayName() : 'Guest') + "'s Clay Studio - Color Mixing Tool", 105, 285, { align: 'center' });
+    
+    // Save the PDF
+    doc.save('color-recipe-' + new Date().getTime() + '.pdf');
+    
+    notifyInline('✅ Color recipe saved as PDF!');
+    unlockBadge('pdf-export');
+}
+
+function saveMaterialsPDF() {
+    if (materials.length === 0) {
+        notifyInline('❌ No materials to export! Add some materials first.');
+        return;
+    }
+    
+    // Check if jsPDF is available
+    if (typeof window.jspdf === 'undefined') {
+        notifyInline('❌ PDF library not loaded. Please refresh the page and try again.');
+        return;
+    }
+    
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    
+    // Title
+    doc.setFontSize(22);
+    doc.setTextColor(155, 123, 168);
+    doc.text('📋 Material Cost Report', 105, 20, { align: 'center' });
+    
+    // Date
+    doc.setFontSize(10);
+    doc.setTextColor(100, 100, 100);
+    doc.text('Generated: ' + new Date().toLocaleString(), 105, 28, { align: 'center' });
+    
+    // Project Name (optional)
+    doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0);
+    const projectNote = document.getElementById('timerNote')?.value || 'Untitled Project';
+    doc.text('Project: ' + projectNote, 20, 45);
+    
+    // Table Header
+    doc.setFontSize(11);
+    doc.setFillColor(155, 123, 168);
+    doc.rect(20, 55, 170, 10, 'F');
+    doc.setTextColor(255, 255, 255);
+    doc.text('#', 25, 62);
+    doc.text('Material Name', 40, 62);
+    doc.text('Cost', 160, 62, { align: 'right' });
+    
+    // Table Rows
+    doc.setTextColor(0, 0, 0);
+    let yPos = 72;
+    let total = 0;
+    
+    materials.forEach((mat, index) => {
+        if (yPos > 250) { // Start new page if needed
+            doc.addPage();
+            yPos = 20;
+        }
+        
+        // Alternating row colors
+        if (index % 2 === 0) {
+            doc.setFillColor(245, 245, 245);
+            doc.rect(20, yPos - 7, 170, 10, 'F');
+        }
+        
+        doc.setFontSize(10);
+        doc.text((index + 1).toString(), 25, yPos);
+        doc.text(mat.name, 40, yPos);
+        doc.text('$' + mat.cost.toFixed(2), 160, yPos, { align: 'right' });
+        
+        total += mat.cost;
+        yPos += 10;
+    });
+    
+    // Total
+    yPos += 5;
+    doc.setDrawColor(155, 123, 168);
+    doc.setLineWidth(0.5);
+    doc.line(20, yPos, 190, yPos);
+    yPos += 10;
+    
+    doc.setFontSize(12);
+    doc.setFont(undefined, 'bold');
+    doc.text('TOTAL MATERIALS:', 40, yPos);
+    doc.setTextColor(155, 123, 168);
+    doc.text('$' + total.toFixed(2), 160, yPos, { align: 'right' });
+    
+    // Suggested Pricing
+    yPos += 15;
+    doc.setFont(undefined, 'normal');
+    doc.setFontSize(11);
+    doc.setTextColor(80, 80, 80);
+    doc.text('💰 Pricing Suggestions:', 20, yPos);
+    yPos += 10;
+    
+    doc.setFontSize(9);
+    const markup2x = (total * 2).toFixed(2);
+    const markup3x = (total * 3).toFixed(2);
+    const markup4x = (total * 4).toFixed(2);
+    
+    doc.text('• 2x Markup (Materials): $' + markup2x, 25, yPos);
+    yPos += 7;
+    doc.text('• 3x Markup (Standard): $' + markup3x, 25, yPos);
+    yPos += 7;
+    doc.text('• 4x Markup (Premium): $' + markup4x, 25, yPos);
+    
+    // Footer
+    doc.setFontSize(8);
+    doc.setTextColor(150, 150, 150);
+    doc.text((typeof window.getUserDisplayName === 'function' ? window.getUserDisplayName() : 'Guest') + "'s Clay Studio - Material Cost Tracker", 105, 285, { align: 'center' });
+    
+    // Save the PDF
+    doc.save('materials-' + projectNote.replace(/\s+/g, '-').toLowerCase() + '-' + new Date().getTime() + '.pdf');
+    
+    notifyInline('✅ Materials report exported as PDF!');
+    unlockBadge('pdf-export');
+}
+
+window.saveColorRecipePDF = saveColorRecipePDF;
+window.saveMaterialsPDF = saveMaterialsPDF;
 
 // ========================================
 // CART SYSTEM
@@ -2139,7 +2539,17 @@ function showUserProfile(fromAuthWait, authRetryCount) {
             } catch (e) {}
         }
         if (!user && !hasStoredEmail) {
-            if (!auth || fromAuthWait) {
+            if (!auth) {
+                openAuthModal();
+                return;
+            }
+            if (fromAuthWait && authRetryCount < 40) {
+                setTimeout(function () {
+                    showUserProfile(true, authRetryCount + 1);
+                }, 50);
+                return;
+            }
+            if (fromAuthWait) {
                 openAuthModal();
                 return;
             }
@@ -4205,6 +4615,15 @@ function showFileProtocolAuthHint() {
 }
 
 function openAuthModal() {
+    const user = getCurrentFirebaseUser();
+    let preview = false;
+    try {
+        preview = typeof localStorage !== 'undefined' && localStorage.getItem('craftPreviewAuth') === '1';
+    } catch (e) {}
+    if (user || preview) {
+        showUserProfile(false);
+        return;
+    }
     const modal = document.getElementById('authModal');
     if (modal) {
         modal.style.display = 'flex';
@@ -4237,8 +4656,6 @@ window.showSignupForm = showSignupForm;
 window.showLoginForm = showLoginForm;
 
 function syncAccountCtaButton(overrideUser) {
-    const btn = document.getElementById('accountCtaBtn');
-    if (!btn) return;
     const firebaseUser =
         arguments.length > 0 ? overrideUser : getCurrentFirebaseUser();
     let preview = false;
@@ -4247,25 +4664,32 @@ function syncAccountCtaButton(overrideUser) {
     } catch (e) {}
     const signedIn = !!(firebaseUser || preview);
 
-    const labelEl = btn.querySelector('.account-cta-label');
-    const iconEl = btn.querySelector('i');
+    const btn = document.getElementById('accountCtaBtn');
+    if (btn) {
+        const labelEl = btn.querySelector('.account-cta-label');
+        const iconEl = btn.querySelector('i');
+        if (signedIn) {
+            btn.setAttribute('data-auth', 'in');
+            btn.title = 'Profile';
+            if (labelEl) labelEl.textContent = 'Profile';
+            if (iconEl) {
+                iconEl.className = 'fas fa-user-circle';
+                iconEl.setAttribute('aria-hidden', 'true');
+            }
+        } else {
+            btn.setAttribute('data-auth', 'out');
+            btn.title = 'Sign in';
+            if (labelEl) labelEl.textContent = 'Sign in';
+            if (iconEl) {
+                iconEl.className = 'fas fa-sign-in-alt';
+                iconEl.setAttribute('aria-hidden', 'true');
+            }
+        }
+    }
 
     if (signedIn) {
-        btn.setAttribute('data-auth', 'in');
-        btn.title = 'Profile';
-        if (labelEl) labelEl.textContent = 'Profile';
-        if (iconEl) {
-            iconEl.className = 'fas fa-user-circle';
-            iconEl.setAttribute('aria-hidden', 'true');
-        }
-    } else {
-        btn.setAttribute('data-auth', 'out');
-        btn.title = 'Sign in';
-        if (labelEl) labelEl.textContent = 'Sign in';
-        if (iconEl) {
-            iconEl.className = 'fas fa-sign-in-alt';
-            iconEl.setAttribute('aria-hidden', 'true');
-        }
+        const modal = document.getElementById('authModal');
+        if (modal) modal.style.display = 'none';
     }
 }
 window.syncAccountCtaButton = syncAccountCtaButton;
@@ -4826,11 +5250,27 @@ document.addEventListener(
     true
 );
 
-// Check if user is already logged in on page load
-if (typeof firebase !== 'undefined' && firebase.auth) {
-    firebase.auth().onAuthStateChanged(user => {
+// Check if user is already logged in on page load (wait for persistence restore — ignore first null)
+(function initAuthUiSync() {
+    var auth = getAuth();
+    if (!auth || typeof auth.onAuthStateChanged !== 'function') {
+        if (typeof window.refreshUserDisplayNameInUI === 'function') window.refreshUserDisplayNameInUI();
+        return;
+    }
+    var persistenceReady = false;
+    var readyPromise =
+        typeof auth.authStateReady === 'function'
+            ? auth.authStateReady().catch(function () {})
+            : Promise.resolve();
+    readyPromise.then(function () {
+        persistenceReady = true;
+        if (typeof window.refreshUserDisplayNameInUI === 'function') {
+            window.refreshUserDisplayNameInUI(auth.currentUser || null);
+        }
+    });
+    auth.onAuthStateChanged(function (user) {
+        if (!user && !persistenceReady) return;
         if (user) {
-            // Sync user profile
             const profile = JSON.parse(localStorage.getItem('userProfile') || '{}');
             const uEmail = user.email || '';
             if (!profile.email || profile.email !== uEmail) {
@@ -4840,16 +5280,12 @@ if (typeof firebase !== 'undefined' && firebase.auth) {
                 if (!profile.joinDate) profile.joinDate = Date.now();
                 localStorage.setItem('userProfile', JSON.stringify(profile));
             }
-
             syncAuthPreferenceFromFirebaseUser(user);
-
             console.log('✅ User already logged in:', user.email || user.uid);
         }
         if (typeof window.refreshUserDisplayNameInUI === 'function') window.refreshUserDisplayNameInUI(user);
     });
-} else if (typeof window.refreshUserDisplayNameInUI === 'function') {
-    window.refreshUserDisplayNameInUI();
-}
+})();
 
 // ======================
 // BADGE OVERLAY

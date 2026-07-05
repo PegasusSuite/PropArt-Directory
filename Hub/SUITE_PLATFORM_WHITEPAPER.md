@@ -10,13 +10,13 @@ This document collects **continuity**, **brand/domain**, and **platform** direct
 
 ## 2. Suite Vault (continuity vision)
 
-**Problem:** Makers use several standalone tools (Cropper, Studio, Color Blend Visualizer, Cane Design Studio, Creator Space). Saves are scattered; returning to “what I touched last Tuesday” requires bookmarks and memory.
+**Problem:** Makers use several standalone tools (Cropper, Studio, Color Blend Visualizer, Cane Design Studio, Creator Space). Saves are scattered; returning to "what I touched last Tuesday" requires bookmarks and memory.
 
-**Direction — “Suite Vault”:** A single **signed-in** surface that aggregates **recent saves** from each app with:
+**Direction — "Suite Vault":** A single **signed-in** surface that aggregates **recent saves** from each app with:
 
 - **Source app** (Cropper · Studio · Hub · Studio Cane …)
 - **Title / thumbnail / timestamp** (metadata agreed per integration)
-- **“Open in …” deep links** that jump straight into the right screen in the originating app — **without** merging every workflow into one mega UI.
+- **"Open in …" deep links** that jump straight into the right screen in the originating app — **without** merging every workflow into one mega UI.
 
 **Principles:**
 
@@ -39,14 +39,14 @@ Prioritize by impact vs. integration cost; not all apps need every item on day o
 
 | Area | Idea |
 |------|------|
-| **Identity** | Shared Firebase (or SSO) posture across apps so “signed in once” reliably reflects on the Vault and directory. |
+| **Identity** | Shared Firebase (or SSO) posture across apps so "signed in once" reliably reflects on the Vault and directory. |
 | **Deep links** | Standard query or path conventions (`handoff=` already begun) documented in TECHNICAL_DOCS-style appendix. |
 | **Vault data** | Lean Firestore schema: `{ userId, appId, savedAt, label, deeplinkUrl, preview? }` with TTL or caps by tier. |
-| **Directory UX** | Optional “last opened” badges fed by localStorage until Vault ships. |
+| **Directory UX** | Optional "last opened" badges fed by localStorage until Vault ships. |
 | **Accessibility** | Full keyboard order through dial cards; visible focus rings; reduced-motion respected. |
 | **Observability** | Privacy-aware click aggregates from the directory → which tiles need better descriptions or CTAs. |
 | **Operations** | Lightweight status or changelog link when an app subdomain is degraded. |
-| **PWA** | Per-app install remains; optionally a **directory-only** minimal manifest as the suite “home bookmark.” |
+| **PWA** | Per-app install remains; optionally a **directory-only** minimal manifest as the suite "home bookmark." |
 
 ## 5. References
 

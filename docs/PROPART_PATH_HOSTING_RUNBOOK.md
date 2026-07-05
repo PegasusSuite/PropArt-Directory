@@ -1,6 +1,6 @@
 # PropArt™ path hosting runbook (`propart.app/<App>`)
 
-**Purpose:** Keep canonical URLs on **`https://propart.app`** (e.g. `/CropperTool`, `/Studio`) instead of redirecting visitors to **`*.web.app`** hosts. This repo’s Firebase site **`propart-directory`** serves the suite apps from folder prefixes configured in **`firebase.json`**.
+**Purpose:** Keep canonical URLs on **`https://propart.app`** (e.g. `/CropperTool`, `/Studio`) instead of redirecting visitors to **`*.web.app`** hosts. This repo's Firebase site **`propart-directory`** serves the suite apps from folder prefixes configured in **`firebase.json`**.
 
 **Project:** Firebase **`ps---propartsuite`** · Hosting site **`propart-directory`**
 
@@ -62,7 +62,7 @@ Also spot-check **`https://www.propart.app/...`** if both apex and `www` point a
 Two sections matter:
 
 1. **`redirects`** — map lowercase paths → canonical casing (`/studio` → `/Studio`).
-2. **`rewrites`** — serve each canonical path’s SPA shell:
+2. **`rewrites`** — serve each canonical path's SPA shell:
 
 ```json
 "rewrites": [

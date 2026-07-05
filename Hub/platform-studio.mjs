@@ -360,7 +360,7 @@ function wireUi() {
       reader.onload = () => {
         svgText = typeof reader.result === 'string' ? reader.result : '';
         const st = document.getElementById('platformSvgStatus');
-        if (st) st.textContent = 'SVG loaded — tap “Build 3D & quote”.';
+        if (st) st.textContent = 'SVG loaded — tap "Build 3D & quote".';
         document.getElementById('platformBuildMeshBtn').disabled = false;
         drawSvgPreview(svgText);
       };

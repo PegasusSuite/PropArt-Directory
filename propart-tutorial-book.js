@@ -94,7 +94,7 @@
     if (!container || !draft) return;
     var esc = function (s) {
       return String(s || '')
-        .replace(/&/g, '&amp;')
+        .replace(/&/g, '&')
         .replace(/</g, '&lt;')
         .replace(/"/g, '&quot;');
     };

@@ -10,11 +10,11 @@
 
 | Element | Spec |
 |--------|------|
-| Lockup | `./PropArt-May2.svg` only — **do not** repeat “Tools for polymer clay artists” under the mark; it’s embedded in the art. |
+| Lockup | `./PropArt-May2.svg` only — **do not** repeat "Tools for polymer clay artists" under the mark; it's embedded in the art. |
 | Gradient | Lavender → mint **~50% lighter** than the original Blend banner stops (mixed toward white); see `--banner-gradient` in the mockup file. |
 | Top row | Logo left; tool **title + subtitle** center-ish (`flex: 1` meta block); **Theme** + **Sign in** **inside** the gradient card, top-right (static placeholders in mockup). |
 | Pill | White pill below: **suite destinations left**, **divider**, **contextual tool icons + tier badge right**. |
-| Shadows | Keep card / pill / buttons at **~4px** blur — avoids the heavy “haze” from larger spreads. |
+| Shadows | Keep card / pill / buttons at **~4px** blur — avoids the heavy "haze" from larger spreads. |
 | Typography | **Darkest text = eggplant `#3d3366`** (`--propart-eggplant` in [`propart-generic-theme.css`](propart-generic-theme.css)). **No pure black** for primary UI copy in this pattern. Secondary body uses muted eggplant `#5c4d85`. |
 
 ## Per-app header lockups

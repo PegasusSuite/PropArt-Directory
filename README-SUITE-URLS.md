@@ -14,20 +14,24 @@ Every suite app should expose **one** canonical link to the **PropArt Directory*
 
 Hosted apps **cannot** open `file://` from `https://` (browser security). The shared script `propart-suite-directory.js` picks `PUBLIC` vs `LOCAL_FILE` automatically.
 
-## Short paths (Directory Hosting → suite apps)
+## Short paths (path-hosted on Directory — live on `www.propart.app`)
 
-When **`www.propart.app`** or **`propart-directory.web.app`** serves this repo, **`firebase.json`** **301** redirects these paths to each Firebase app (see **`SESSION_HANDOFF.md`** in **PropArt-Creator-Space**):
+When **`www.propart.app`** or **`propart-directory.web.app`** serves this repo, **`firebase.json`** **301** redirects short paths to **on-site app folders** (not separate `*.web.app` hosts):
 
-| Path | App |
-|------|-----|
-| `/creator` | Creator Space |
-| `/studio` | Studio |
-| `/cropper` | Cropper |
-| `/blend` or `/color-blend` | Color Blend |
-| `/cane` | Cane Design |
-| `/pod` or `/cardart` | POD CardArt |
+| Short path | Resolves to |
+|------------|-------------|
+| `/creator`, `/hub` | `/Hub` (Creator Space bundle) |
+| `/studio` | `/Studio` |
+| `/cropper` | `/CropperTool` |
+| `/blend` | `/BlendVisualizer` |
+| `/cane` | `/CaneDesigner` |
+| `/pod`, `/cardart` | `/POD` |
 
-**`index.html`** carousel/grid CTAs use these **relative** paths so links work on the Directory host before and after custom DNS. Footer **About / Shop / Pricing** still deep-link to **`propart-creator.web.app`** (no path redirect for those routes).
+**`index.html`** carousel/grid CTAs use these **relative** paths. **`/api/*`** on the same host rewrites to Cloud Functions (checkout, contact, downloads, webhook).
+
+**Also live:** `studio.propart.app` → `www.propart.app/Studio/`; standalone `propart-*.web.app` sites may redirect to `www` paths.
+
+Footer **About / Shop / Pricing** may still deep-link to **`propart-creator.web.app`** for legacy shop URLs, or use **`/creator`** on the hub host.
 
 ## Favicon and lockups
 
@@ -53,7 +57,7 @@ Use these **Final** exports from `Assets/` (copied beside directory pages for de
 
 ## Where this lives in repos
 
-- **`propart-suite-directory.js`** (this repo root — copy into each static app’s `public/` / `app/` as needed). **`PUBLIC`** = `https://www.propart.app/`.
+- **`propart-suite-directory.js`** (this repo root — copy into each static app's `public/` / `app/` as needed). **`PUBLIC`** = `https://www.propart.app/`.
 - **`PropArt-Cropper-Tool/public/js/propart-suite-directory.js`** — Suite header button (`data-propart-suite-directory`).
 - **`PropArt-Color-Blend-Visualizer/app/propart-suite-directory.js`** — Suite modal first row.
 - **`PropArt-Cane-Design-System/src/lib/propartSuiteDirectory.js`** — React `Suite` chip.
