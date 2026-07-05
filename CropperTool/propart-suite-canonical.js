@@ -6,7 +6,7 @@
   var CANONICAL = {
     directory: 'https://www.propart.app/',
     directoryHosting: 'https://propart-directory.web.app/',
-    creator: 'https://propart-creator.web.app/',
+    creator: 'https://www.propart.app/Hub',
     studio: 'https://propart.app/Studio',
     studioHosting: 'https://propart-studio.web.app/',
     cropper: 'https://propart.app/CropperTool',
@@ -18,9 +18,9 @@
     pod: 'https://propart.app/POD',
     podHosting: 'https://propart-pod.web.app/',
     favicon: 'https://propart-directory.web.app/favicon.svg',
-    about: 'https://propart-creator.web.app/about.html',
-    products: 'https://propart-creator.web.app/products.html',
-    pricing: 'https://propart-creator.web.app/#pricing',
+    about: 'https://www.propart.app/Hub',
+    products: 'https://www.propart.app/Hub',
+    pricing: 'https://www.propart.app/Hub#pricing',
     supportEmail: 'support@propart.app',
     koFi: 'https://ko-fi.com/propartsuite'
   };

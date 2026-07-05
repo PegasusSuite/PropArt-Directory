@@ -11,8 +11,8 @@
       title: 'Create',
       hint: 'Pick colors and design your cane — start here.',
       icon: '◇',
-      primary: { label: 'Open Color Blend', url: 'https://propart-color-blend.web.app/' },
-      secondary: { label: 'Open Cane Design', url: 'https://propart-cane.web.app/' },
+      primary: { label: 'Open Color Blend', url: '/blend' },
+      secondary: { label: 'Open Cane Design', url: '/cane' },
       classroom: true,
     },
     {
@@ -20,8 +20,8 @@
       title: 'Produce',
       hint: 'Plan slabs, slice sheets, and track inventory.',
       icon: '▤',
-      primary: { label: 'Open Studio', url: 'https://propart-studio.web.app/' },
-      secondary: { label: 'Open Cropper', url: 'https://propart-cropper.web.app/' },
+      primary: { label: 'Open Studio', url: '/studio' },
+      secondary: { label: 'Open Cropper', url: '/cropper' },
       classroom: true,
     },
     {
@@ -30,7 +30,7 @@
       hint: 'Sketch to tutorial — compose a book chapter from your project.',
       icon: '✎',
       primary: { label: 'Tutorial Book', url: './tutorial-book.html' },
-      secondary: { label: 'Creator Space', url: 'https://propart-creator.web.app/' },
+      secondary: { label: 'Creator Space', url: '/creator' },
       classroom: true,
     },
     {
@@ -38,20 +38,20 @@
       title: 'Sell',
       hint: 'Shop, POD decks, and publish your work.',
       icon: '◈',
-      primary: { label: 'Open Creator Space', url: 'https://propart-creator.web.app/' },
-      secondary: { label: 'Open CardArt / POD', url: 'https://propart-pod.web.app/' },
+      primary: { label: 'Open Creator Space', url: '/creator' },
+      secondary: { label: 'Open CardArt / POD', url: '/pod' },
       commerce: true,
     },
   ];
 
   var APP_URLS = {
-    blend: 'https://propart-color-blend.web.app/',
-    visualizer: 'https://propart-color-blend.web.app/',
-    cane: 'https://propart-cane.web.app/',
-    studio: 'https://propart-studio.web.app/',
-    cropper: 'https://propart-cropper.web.app/',
-    creator: 'https://propart-creator.web.app/',
-    pod: 'https://propart-pod.web.app/',
+    blend: '/blend',
+    visualizer: '/blend',
+    cane: '/cane',
+    studio: '/studio',
+    cropper: '/cropper',
+    creator: '/creator',
+    pod: '/pod',
   };
 
   function ctx(url) {

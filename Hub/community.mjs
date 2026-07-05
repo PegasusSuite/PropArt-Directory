@@ -189,6 +189,22 @@ async function refreshThemeVoteCounts() {
   });
 }
 
+function renderTechniqueWikiSamples(host) {
+  if (!host) return;
+  host.innerHTML = `
+      <p style="font-size:0.78rem;color:var(--text-secondary);margin:0 0 0.5rem;">Sample tips (submit yours when signed in):</p>
+      <div style="border-bottom:1px solid rgba(109,213,195,0.35);padding:0.5rem 0;margin-bottom:0.35rem;">
+        <strong style="font-size:0.88rem;">Thin Premo sheets in dry winter</strong><br/>
+        <span style="font-size:0.75rem;color:var(--text-secondary);">US Midwest · dry heat</span>
+        <p style="font-size:0.82rem;margin:0.35rem 0 0;line-height:1.45;">Tent with foil for the first 10 minutes and drop the oven 5°F if edges lift.</p>
+      </div>
+      <div style="border-bottom:1px solid rgba(109,213,195,0.35);padding:0.5rem 0;margin-bottom:0.35rem;">
+        <strong style="font-size:0.88rem;">Sanding after bake — earring scale</strong><br/>
+        <span style="font-size:0.75rem;color:var(--text-secondary);">Studio · general</span>
+        <p style="font-size:0.82rem;margin:0.35rem 0 0;line-height:1.45;">Wet-sand from 400→1200 under running water; buff with a cotton wheel for a soft glow.</p>
+      </div>`;
+}
+
 async function loadTechniqueWiki() {
   const host = document.getElementById('techniqueWikiList');
   if (!host) return;
@@ -198,6 +214,7 @@ async function loadTechniqueWiki() {
     snap = await fb.firestore().collection('techniqueWiki').limit(40).get();
   } catch (e) {
     console.warn('techniqueWiki', e);
+    renderTechniqueWikiSamples(host);
     return;
   }
   const rows = [];
@@ -219,18 +236,7 @@ async function loadTechniqueWiki() {
   });
   host.innerHTML = '';
   if (!rows.length) {
-    host.innerHTML = `
-      <p style="font-size:0.78rem;color:var(--text-secondary);margin:0 0 0.5rem;">Sample tips (submit yours when signed in):</p>
-      <div style="border-bottom:1px solid rgba(109,213,195,0.35);padding:0.5rem 0;margin-bottom:0.35rem;">
-        <strong style="font-size:0.88rem;">Thin Premo sheets in dry winter</strong><br/>
-        <span style="font-size:0.75rem;color:var(--text-secondary);">US Midwest · dry heat</span>
-        <p style="font-size:0.82rem;margin:0.35rem 0 0;line-height:1.45;">Tent with foil for the first 10 minutes and drop the oven 5°F if edges lift.</p>
-      </div>
-      <div style="border-bottom:1px solid rgba(109,213,195,0.35);padding:0.5rem 0;margin-bottom:0.35rem;">
-        <strong style="font-size:0.88rem;">Sanding after bake — earring scale</strong><br/>
-        <span style="font-size:0.75rem;color:var(--text-secondary);">Studio · general</span>
-        <p style="font-size:0.82rem;margin:0.35rem 0 0;line-height:1.45;">Wet-sand from 400→1200 under running water; buff with a cotton wheel for a soft glow.</p>
-      </div>`;
+    renderTechniqueWikiSamples(host);
     return;
   }
   rows.slice(0, 20).forEach((row) => {
@@ -427,12 +433,14 @@ function subscribeGallery() {
     .limit(24)
     .onSnapshot(
       renderGallerySnapshot,
-      () => {
+      (err) => {
+        console.warn('memberGallery snapshot', err);
         fb.firestore()
           .collection('memberGallery')
           .limit(24)
           .get()
-          .then((q) => renderGallerySnapshot(q));
+          .then((q) => renderGallerySnapshot(q))
+          .catch((e) => console.warn('memberGallery fallback', e));
       }
     );
 }

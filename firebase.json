@@ -62,10 +62,6 @@
                                                             "value":  "object-src \u0027none\u0027; base-uri \u0027self\u0027; frame-ancestors \u0027self\u0027; upgrade-insecure-requests"
                                                         },
                                                         {
-                                                            "key":  "Content-Security-Policy-Report-Only",
-                                                            "value":  "default-src \u0027self\u0027; base-uri \u0027self\u0027; object-src \u0027none\u0027; frame-ancestors \u0027self\u0027; script-src \u0027self\u0027 \u0027unsafe-inline\u0027 \u0027unsafe-eval\u0027 https://js.stripe.com https://www.gstatic.com https://apis.google.com https://www.googletagmanager.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src \u0027self\u0027 \u0027unsafe-inline\u0027 https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src \u0027self\u0027 data: blob: https:; font-src \u0027self\u0027 data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src \u0027self\u0027 http://127.0.0.1:8787 http://localhost:8787 https://api.propart.app https://pb.propart.app https://*.googleapis.com https://*.cloudfunctions.net https://*.firebaseio.com https://firestore.googleapis.com https://identitytoolkit.googleapis.com https://api.stripe.com; frame-src https://js.stripe.com https://*.firebaseapp.com"
-                                                        },
-                                                        {
                                                             "key":  "Permissions-Policy",
                                                             "value":  "camera=(), microphone=(), geolocation=(), payment=()"
                                                         },
@@ -84,7 +80,7 @@
                                       },
                                       {
                                           "source":  "/creator",
-                                          "destination":  "/Hub",
+                                          "destination":  "https://propart-creator.web.app/",
                                           "type":  301
                                       },
                                       {
@@ -113,8 +109,13 @@
                                           "type":  301
                                       },
                                       {
-                                          "source":  "/hub",
-                                          "destination":  "/Hub",
+                                          "source":  "/Hub",
+                                          "destination":  "https://propart-creator.web.app/",
+                                          "type":  301
+                                      },
+                                      {
+                                          "source":  "/Hub/**",
+                                          "destination":  "https://propart-creator.web.app/",
                                           "type":  301
                                       },
                                       {
@@ -135,8 +136,20 @@
                                   ],
                     "rewrites":  [
                                      {
-                                         "source":  "/Hub",
-                                         "destination":  "/Hub/index.html"
+                                         "source":  "/api/createCheckoutSession",
+                                         "function":  "createCheckoutSession"
+                                     },
+                                     {
+                                         "source":  "/api/getDigitalDownloadUrl",
+                                         "function":  "getDigitalDownloadUrl"
+                                     },
+                                     {
+                                         "source":  "/api/submitSiteContact",
+                                         "function":  "submitSiteContact"
+                                     },
+                                     {
+                                         "source":  "/api/stripeWebhook",
+                                         "function":  "stripeWebhook"
                                      },
                                      {
                                          "source":  "/Studio",
